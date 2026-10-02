@@ -1,0 +1,10 @@
+node_modules/
+berlin/raw/
+berlin/build/out/
+berlin/build/prev/
+berlin/build/*.wav
+berlin/build/contact.jpg
+berlin/build/cmp.jpg
+berlin/build/check_cut.jpg
+berlin/assets/voice16.f32
+berlin/assets/voice.wav
