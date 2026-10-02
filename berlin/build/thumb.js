@@ -29,13 +29,16 @@ window.renderThumb = function (v) {
       fillGeo(FRG(), '#2f6bff', 0.55); neon(FRG(), '#5b8cff', 4);
       fillGeo(DATA.zones.su, '#e3121f', 0.62); neon(DATA.zones.su, '#ff2a35', 5);
       fillGeo(WB, '#ff9a2e', 1); neon(WB, '#ffd25a', 3);
-      mapLabel('RFA', 9.0, 50.6, 1, 0, 100); mapLabel('RDA', 12.2, 51.45, 1, 0, 100);
+      mapLabel('RFA', 9.0, 50.6, 1, 0, 100); mapLabel('RDA', 11.9, 51.05, 1, 0, 100);
     });
     const p = S(13.27, 52.48); const r = 80 * p.k;
     ctx.save(); ctx.strokeStyle = '#FFE928'; ctx.lineWidth = 10; ctx.shadowColor = '#FFE928'; ctx.shadowBlur = 34; ctx.beginPath(); ctx.ellipse(p.x, p.y, r * 1.25, r, -0.2, 0, 7); ctx.stroke(); ctx.restore();
     tag(ctx, '2 MILLIONS', W / 2, 230, { size: 76, rot: -0.04 });
     bigWords([['PIÉGÉS ', '#fff'], ['ICI', '#FFE928'], [' ?!', '#fff']], 380, 138);
     curvedArrow(W / 2 + 90, 470, p.x - r * 0.2, p.y - r * 1.2, -120);
+    { const q = S(8.6, 51.2); sprite(ctx, 'soldier_us', q.x + 20, q.y + 60, 330); }
+    { const q = S(13.9, 51.55); sprite(ctx, 'soldier_su', q.x + 30, q.y + 120, 320, { flip: true }); }
+    { const q = S(12.2, 52.1); sprite(ctx, 'walker_a', q.x - 40, q.y + 40, 230); }
     return p;
   }
   if (v === 'B') { // zoom Berlin : île orange + mer turquoise impossible — "UNE ÎLE SANS MER ?!"
@@ -48,7 +51,10 @@ window.renderThumb = function (v) {
     bigWords([['SANS ', '#fff'], ['MER', '#ff2a2a'], [' ?!', '#fff']], 430, 156);
     const p = S(13.25, 52.47);
     curvedArrow(W / 2 + 300, 520, p.x + 170, p.y - 250, 160);
-    tag(ctx, 'BERLIN-OUEST', p.x, p.y + 20, { size: 60, bg: '#C00E1F', border: '#fff' });
+    tag(ctx, 'BERLIN-OUEST', p.x, p.y - 150, { size: 60, bg: '#C00E1F', border: '#fff' });
+    sprite(ctx, 'soldier_us', p.x - 130, p.y + 470, 290);
+    sprite(ctx, 'soldier_uk', p.x + 150, p.y + 460, 290, { flip: true });
+    sprite(ctx, 'plane', 250, 640, 140, { rot: -0.1, shadow: false });
     return p;
   }
   if (v === 'C') { // le mur : île bleue cerclée d'un mur néon — "155 KM DE MUR"
@@ -61,7 +67,10 @@ window.renderThumb = function (v) {
     const p = S(13.27, 52.47);
     bigWords([['155 KM', '#FFE928']], 270, 170);
     bigWords([['DE ', '#fff'], ['MUR', '#ff2a2a'], [' ?!', '#fff']], 430, 140);
-    tag(ctx, 'BERLIN-OUEST', p.x, p.y, { size: 58, bg: '#1f5dff', border: '#fff' });
+    tag(ctx, 'BERLIN-OUEST', p.x, p.y - 40, { size: 58, bg: '#1f5dff', border: '#fff' });
+    sprite(ctx, 'worker_b', p.x - 170, p.y + 330, 300);
+    sprite(ctx, 'wire', p.x + 20, p.y + 330, 130);
+    sprite(ctx, 'soldier_su', p.x + 220, p.y + 330, 330, { flip: true });
     return p;
   }
 };
