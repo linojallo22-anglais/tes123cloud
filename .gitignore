@@ -17,3 +17,8 @@ mcdonalds/build/*.wav
 mcdonalds/build/*.f32
 mcdonalds/build/shots/
 mcdonalds/long/raw/
+mcdonalds/long/build/out/
+mcdonalds/long/build/*.wav
+mcdonalds/long/build/*.f32
+mcdonalds/long/build/shots/
+mcdonalds/long/*-partie-*.mp4
