@@ -16,3 +16,4 @@ mcdonalds/build/out/
 mcdonalds/build/*.wav
 mcdonalds/build/*.f32
 mcdonalds/build/shots/
+mcdonalds/long/raw/

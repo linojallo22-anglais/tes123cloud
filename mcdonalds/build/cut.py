@@ -1,5 +1,5 @@
 from PIL import Image, ImageFilter; import numpy as np, scipy.ndimage as nd, sys
-SRC=sys.argv[1]; names=open('names.txt').read().split(); ROWS=[4,4,5,6,6]
+SRC=sys.argv[1]; names=open(sys.argv[2]).read().split(); ROWS=[int(x) for x in sys.argv[3].split(',')]; OUT=sys.argv[4]
 a=np.array(Image.open(SRC).convert('RGBA'))
 # fond semi-transparent (alpha 80-170) : on remappe l'alpha 205->0, 245->255
 al=np.clip((a[...,3].astype(np.float32)-205)/40*255,0,255).astype(np.uint8); a[...,3]=al; a[al==0,:3]=0
@@ -15,4 +15,4 @@ for idx,k in enumerate(order):
   c=Image.fromarray(b[ys.min():ys.max()+1,xs.min():xs.max()+1])
   big3=c.resize((c.width*3,c.height*3),Image.LANCZOS)
   rgb=big3.convert('RGB').filter(ImageFilter.UnsharpMask(2,70,2)); big3=Image.merge('RGBA',(*rgb.split(),big3.split()[3]))
-  big3.save(f'img/{names[idx]}.png'); print(names[idx],big3.size)
+  big3.save(f'{OUT}/{names[idx]}.png'); print(names[idx],big3.size)
