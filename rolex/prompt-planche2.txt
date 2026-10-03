@@ -1,0 +1,62 @@
+Use the attached image only as a STYLE REFERENCE (same paper-collage look, same colors, same cut-paper borders). Do not copy its elements: create a NEW image.
+
+Create ONE single image containing exactly 28 separate cutout OBJECTS for a VOX-style paper-collage finance documentary about the history of Rolex. Arrange them in a precise catalogue layout of 5 horizontal rows, in the exact numbered order below. Rows 1 and 2 are a bit larger; rows 3, 4 and 5 are smaller.
+
+ROW HEIGHTS: rows 1 and 2 about 22% of the image height each, rows 3, 4 and 5 about 18% each.
+
+GLOBAL STYLE (identical for every element, this is the VOX documentary collage look):
+- Realistic photographic objects in a desaturated archival palette of tan, ink black and halftone gray, with ONE hot red accent or a restrained mustard yellow accent; gold objects keep a muted gold tone; money objects use a muted emerald green accent.
+- A flat offset shape of colored paper (hot red or mustard yellow) slightly behind most objects.
+- Every element is hand-cut from real paper: a thin white paper margin around the silhouette with slightly rough scissor-cut edges, visible print grain and paper fiber, matte, flat even documentary lighting.
+- NOT cartoon, NOT digital illustration, NOT 3D render, NOT glossy, no gradients.
+
+ROW 1 (LARGE), from LEFT to RIGHT:
+1) An open oyster shell with a pearl inside.
+2) An old brass genie oil lamp with a thin wisp of smoke.
+3) A big white luxury yacht, side view, facing right, no name on the hull.
+4) A thick gold chain necklace.
+5) A golden royal crown with red velvet inside.
+
+ROW 2 (LARGE), from LEFT to RIGHT:
+6) A section of prison camp barbed wire fence with a wooden watchtower behind it.
+7) A brown cardboard wartime Red Cross parcel tied with string, with a red cross symbol.
+8) A World War One British steel "Brodie" helmet.
+9) A black vintage rotary telephone.
+10) A modest modern apartment building, front view.
+
+ROW 3 (SMALL), from LEFT to RIGHT:
+11) A small square red flag with a white cross (Swiss flag), waving.
+12) A small Union Jack flag, waving.
+13) A thick stack of generic banknotes with a paper band, no readable text.
+14) A neat stack of gold bars, no engraving.
+15) An old paper telegram, blurry illegible typed text, no readable words.
+16) A modern smartphone, front view, blank black screen.
+
+ROW 4 (SMALL), from LEFT to RIGHT:
+17) An open mechanical watch movement showing gears, springs and a rotor.
+18) A watchmaker's black loupe magnifier.
+19) A black Edwardian top hat.
+20) A heavy closed brass padlock.
+21) A curling blue-gray sea wave.
+22) An antique hourglass with sand running.
+
+ROW 5 (SMALL), from LEFT to RIGHT:
+23) A clipboard with a long list of blurry illegible lines, no readable words.
+24) A wooden shipping crate with rope handles, no stencil text.
+25) A small golden trophy cup.
+26) A ship's iron anchor.
+27) Two gold wedding rings.
+28) A single white rose.
+
+LAYOUT (very important):
+- Exactly 28 elements, in the exact numbered order above, rows perfectly aligned like a catalogue.
+- Clear empty space around every element, horizontally AND vertically: no element touches, overlaps or hides another element.
+- Every element fully visible, nothing cut off by the image edges.
+- Each element as large and detailed as its row allows. Sharp details, no blur.
+
+BACKGROUND: fully transparent background (PNG with alpha channel). No floor, no shadow, no scenery behind the elements.
+NO TEXT anywhere: no words, no letters, no numbers, no logos, no brand names, no watermark, no labels, no frames, no grid lines (the only symbols allowed are the red cross on element 7 and the white cross on the Swiss flag).
+
+Before finishing, count the elements: there must be exactly 28, in 5 rows (5, 5, 6, 6, 6).
+
+FORMAT: landscape 1536x1024, PNG, highest resolution possible.
