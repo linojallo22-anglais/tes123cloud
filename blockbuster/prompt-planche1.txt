@@ -1,0 +1,58 @@
+Create ONE single image containing exactly 24 separate cutout elements for a VOX-style paper-collage finance documentary about the rise and fall of the video rental chain Blockbuster (1985-2010) and its rivalry with Netflix. Arrange them in a precise catalogue layout of 5 horizontal rows, in the exact numbered order below. Elements in the upper rows are LARGER because they will be shown full screen; each row gets less height as you go down.
+
+ROW HEIGHTS: row 1 about 26% of the image height, row 2 about 22%, row 3 about 18%, rows 4 and 5 about 17% each.
+
+GLOBAL STYLE (identical for every element, this is the VOX documentary collage look):
+- PEOPLE: black and white halftone photograph cutouts, visible halftone dots, realistic photographic faces and clothing, with ONE flat offset accent shape of colored paper slightly behind each person (hot red or mustard yellow), like a VOX documentary collage.
+- OBJECTS AND PLACES: desaturated archival palette of tan, ink black and halftone gray, with ONE hot red accent or a restrained mustard yellow accent; money objects use a muted emerald green accent.
+- Every element is hand-cut from real paper: a thin white paper margin around the silhouette with slightly rough scissor-cut edges, visible print grain and paper fiber, matte, flat even documentary lighting.
+- NOT cartoon, NOT digital illustration, NOT 3D render, NOT glossy, no gradients.
+- Transparent background between the elements (PNG with alpha). If transparency is impossible, use a plain flat WHITE background, never black.
+
+ROW 1 (LARGEST), from LEFT to RIGHT:
+1) A video rental chain CEO in the year 2000: American businessman in his early 50s, short graying hair, clean-shaven, dark suit, white shirt, red tie. Tight head-and-shoulders close-up, trying very hard not to laugh: cheeks puffed, eyes squinting with amusement, one hand half covering his mouth, looking at the camera, hot red paper shape behind him. This is a YouTube thumbnail portrait: big face, strong emotion. Generic person, not a real person's likeness.
+2) A young tech founder in the year 2000: man around 40, short dark hair, clean-shaven, open-collar shirt and casual blazer, holding a red mailing envelope with a DVD, confident, facing right. Full body. Generic person, not a real person's likeness.
+3) A second tech founder in the year 2000: man in his early 40s, short curly hair, glasses, polo shirt and jeans, enthusiastic, hands open as if pitching, facing right. Full body. Generic person, not a real person's likeness.
+4) The same CEO as element 1 (same face, short graying hair, dark suit, red tie): sitting at a big conference table, leaning back in his chair with a smug smile, arms crossed, facing left. Full figure with table and chair.
+
+ROW 2 (LARGE), from LEFT to RIGHT:
+5) A powerful Wall Street investor around 2005: man in his late 60s, mostly bald with gray hair on the sides, large glasses, dark suit, arms crossed, stern unimpressed expression, facing left. Full body. Generic person, not a real person's likeness.
+6) A new corporate CEO in 2007: man in his 50s, neat dark hair, navy suit, holding a calculator and a stack of papers, serious, facing right. Full body. Generic person, not a real person's likeness.
+7) A 1980s businessman cutting a red ribbon with big scissors at a store opening, smiling, 1980s suit and wide tie, facing right. Waist-up. Generic person, not a real person's likeness.
+8) A 1990s American family on a Friday night: mother, father and two teenagers (no young children), the teenagers arguing over a VHS tape box, parents laughing. They count as ONE element. Generic people, not real people's likeness.
+9) A 1990s video store clerk: young adult in his 20s, blue polo shirt with no logo, name tag without text, holding a VHS tape, slightly smug smile, facing LEFT. Full body. Generic person, not a real person's likeness.
+
+ROW 3 (MEDIUM), from LEFT to RIGHT:
+10) An annoyed 1990s customer: woman in her 30s, denim jacket, holding a VHS tape and a receipt, outraged expression, facing RIGHT. Full body. Generic person, not a real person's likeness.
+11) A corporate executive in 2007: man in his 50s, gray suit, excited, pointing at a rising chart on a paper, facing RIGHT. Full body. Generic person, not a real person's likeness.
+12) A board member in 2007: man in his 60s, dark suit, reading glasses, holding an invoice, frowning, facing LEFT. Full body. Generic person, not a real person's likeness.
+13) Two tourists in their 30s taking a selfie with a smartphone, smiling big. They count as ONE element. Generic people, not real people's likeness.
+14) A satellite TV dish on a small pole.
+
+ROW 4 (SMALL), from LEFT to RIGHT:
+15) A large 1990s suburban video rental store, front view: a big blue sign band across the facade and a yellow torn-ticket shaped sign, glass doors, NO text, NO logo.
+16) The same kind of video store but small and slightly worn, with pine trees and a snowy mountain behind it, NO text, NO logo.
+17) The Dallas skyline as one cutout.
+18) A red DVD mailing envelope with a DVD sliding out, no text.
+19) An old VCR video player with its tape slot.
+
+ROW 5 (SMALL), from LEFT to RIGHT:
+20) A black VHS videotape.
+21) A stack of colorful VHS rental boxes with blank covers, no text.
+22) A shiny DVD disc.
+23) A red-and-white striped popcorn bucket overflowing with popcorn.
+24) A TV remote control.
+
+LAYOUT (very important):
+- Exactly 24 elements, in the exact numbered order above, rows perfectly aligned like a catalogue.
+- Clear empty space around every element, horizontally AND vertically: no element touches, overlaps or hides another element.
+- Every element fully visible, nothing cut off by the image edges.
+- Each element as large and detailed as its row allows. Sharp details, no blur.
+- The CEO must look like the same person in elements 1 and 4.
+
+BACKGROUND: fully transparent background (PNG with alpha channel). No floor, no shadow, no scenery behind the elements. If transparency is impossible, plain flat white, never black.
+NO TEXT anywhere: no words, no letters, no numbers, no logos, no brand names, no watermark, no labels, no frames, no grid lines.
+
+Before finishing, count the elements: there must be exactly 24, in 5 rows (4, 5, 5, 5, 5).
+
+FORMAT: landscape 1536x1024, PNG, highest resolution possible.
