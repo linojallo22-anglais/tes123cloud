@@ -1,0 +1,34 @@
+TITLE
+PayPal: From "Worst Idea of 1999" to Turning Down $53 Billion
+
+DESCRIPTION
+In July 2026, Stripe and Advent offered more than $53 billion for PayPal, and PayPal's board said it was too low. Not bad for a startup that began by beaming money between PalmPilots. This is the story of Max Levchin, Peter Thiel and Elon Musk: a referral war that burned millions, a fraud crisis, a boardroom coup during a honeymoon flight, a $1.5 billion sale to eBay, and the "PayPal Mafia" that went on to shape Silicon Valley.
+
+Chapters
+0:00 The $53 billion "no"
+0:59 Chapter 1: The PalmPilot idea
+2:21 Chapter 2: The money war
+3:26 Problem #1: Fraud
+4:22 Problem #2: The boss
+5:08 Chapter 3: The big exit
+5:50 Chapter 4: The PayPal Mafia
+6:51 Chapter 5: Rise and fall
+
+Sources
+Confinity (Wikipedia): https://en.wikipedia.org/wiki/Confinity
+Max Levchin (Wikipedia): https://en.wikipedia.org/wiki/Max_Levchin
+X.com and Musk's ouster (Wikipedia): https://en.wikipedia.org/wiki/X.com_(bank)
+Referral bonuses: https://www.referralcandy.com/blog/paypal
+PayPal's fight against fraud (Plaid): https://fin.plaid.com/paypals-history-of-fighting-fraud
+PayPal IPO, February 15, 2002 (CNN Money): https://money.cnn.com/2002/02/15/ipo/paypal/
+eBay to acquire PayPal (SEC filing, 2002): https://www.sec.gov/Archives/edgar/data/0001103415/000091205702026650/a2084015zex-99_1.htm
+PayPal Mafia (Wikipedia): https://en.wikipedia.org/wiki/PayPal_Mafia
+PayPal spin-off from eBay, 2015 (Fortune): https://fortune.com/2015/07/20/paypal-ebay-split-valuation/
+PayPal 2025 annual report (10-K): https://www.sec.gov/Archives/edgar/data/1633917/000163391726000024/pypl-20251231.htm
+Stripe and Advent offer, July 2026 (CNBC): https://www.cnbc.com/2026/07/15/stripe-advent-offer-to-buy-paypal-for-more-than-53-billion-reuters.html
+Why the takeover fell apart (Axios): https://www.axios.com/2026/09/01/paypal-takeover-stripe-advent
+
+#PayPal #ElonMusk #PeterThiel #Business #Finance
+
+TAGS
+paypal, paypal history, paypal mafia, elon musk, peter thiel, max levchin, x.com, confinity, ebay, stripe, paypal takeover, venmo, silicon valley, startup story, business history, company history, finance explained, business documentary, fintech, tech history

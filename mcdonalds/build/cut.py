@@ -3,7 +3,9 @@ SRC=sys.argv[1]; names=open(sys.argv[2]).read().split(); ROWS=[int(x) for x in s
 a=np.array(Image.open(SRC).convert('RGBA'))
 # fond semi-transparent (alpha 80-170) : on remappe l'alpha 205->0, 245->255
 al=np.clip((a[...,3].astype(np.float32)-205)/40*255,0,255).astype(np.uint8); a[...,3]=al; a[al==0,:3]=0
-m=al>128; m=nd.binary_opening(m,iterations=1); lab,n=nd.label(m); cnt=np.bincount(lab.ravel())
+m=al>128; m=nd.binary_opening(m,iterations=1)
+import os; DIL=int(os.environ.get('DIL','0'))
+lab,n=nd.label(nd.binary_dilation(m,iterations=DIL) if DIL else m); lab[~m]=0; cnt=np.bincount(lab.ravel())
 big=[k for k in range(1,n+1) if cnt[k]>800]; print('composantes',len(big)); assert len(big)==sum(ROWS), len(big)
 cs=dict(zip(big,nd.center_of_mass(m,lab,big)))
 rows=sorted(big,key=lambda k:cs[k][0]); order=[]; i=0

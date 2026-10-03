@@ -28,3 +28,9 @@ rolex/build/*.wav
 rolex/build/*.f32
 rolex/build/shots/
 rolex/*-partie-*.mp4
+paypal/raw/
+paypal/build/out/
+paypal/build/*.wav
+paypal/build/*.f32
+paypal/build/shots/
+paypal/*-partie-*.mp4
