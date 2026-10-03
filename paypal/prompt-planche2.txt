@@ -1,0 +1,50 @@
+Use the attached image only as a STYLE REFERENCE (same paper-collage look, same colors, same cut-paper borders). Do not copy its elements: create a NEW image.
+
+Create ONE single image containing exactly 20 separate cutout OBJECTS for a VOX-style paper-collage finance documentary about the history of PayPal. Arrange them in a precise catalogue layout of 4 horizontal rows of 5 objects, in the exact numbered order below. All rows have the same height (about 25% of the image height each).
+
+GLOBAL STYLE (identical for every element, this is the VOX documentary collage look):
+- Realistic photographic objects in a desaturated archival palette of tan, ink black and halftone gray, with ONE hot red accent or a restrained mustard yellow accent; money objects use a muted emerald green accent.
+- A flat offset shape of colored paper (hot red or mustard yellow) slightly behind most objects.
+- Every element is hand-cut from real paper: a thin white paper margin around the silhouette with slightly rough scissor-cut edges, visible print grain and paper fiber, matte, flat even documentary lighting.
+- NOT cartoon, NOT digital illustration, NOT 3D render, NOT glossy, no gradients.
+
+ROW 1, from LEFT to RIGHT:
+1) A shower of generic green banknotes flying in the air, no readable text.
+2) A small bonfire burning a pile of banknotes.
+3) A heavy round bank vault door, wide open.
+4) A small vintage metal toy robot.
+5) Four generic credit cards fanned out, no logos, no numbers.
+
+ROW 2, from LEFT to RIGHT:
+6) A big metal fishing hook.
+7) A black burglar's domino eye mask.
+8) A large magnifying glass.
+9) A modern jet airliner in flight, side view, flying toward the right, no markings.
+10) Two champagne glasses clinking.
+
+ROW 3, from LEFT to RIGHT:
+11) A sleek red electric sports car, side view, facing right, no logo.
+12) A brown cardboard shipping box taped shut, no label text.
+13) A silver laptop computer from the early 2000s, open, blank screen.
+14) An old college yearbook, closed, blank cover.
+15) Colorful fireworks bursting.
+
+ROW 4, from LEFT to RIGHT:
+16) A black chess king piece knocked over on its side.
+17) A pink ceramic piggy bank.
+18) A blank wooden sign on a post, no text.
+19) A pair of white dice.
+20) A small seedling sprouting from a pile of coins.
+
+LAYOUT (very important):
+- Exactly 20 elements, in the exact numbered order above, 4 rows of 5, rows perfectly aligned like a catalogue.
+- Clear empty space around every element, horizontally AND vertically: no element touches, overlaps or hides another element.
+- Every element fully visible, nothing cut off by the image edges.
+- Each element as large and detailed as its row allows. Sharp details, no blur.
+
+BACKGROUND: fully transparent background (PNG with alpha channel). No floor, no shadow, no scenery behind the elements.
+NO TEXT anywhere: no words, no letters, no numbers, no logos, no brand names, no watermark, no labels, no frames, no grid lines.
+
+Before finishing, count the elements: there must be exactly 20, in 4 rows of 5.
+
+FORMAT: landscape 1536x1024, PNG, highest resolution possible.

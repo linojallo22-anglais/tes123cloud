@@ -1,0 +1,57 @@
+Create ONE single image containing exactly 24 separate cutout elements for a VOX-style paper-collage finance documentary about the early history of PayPal (1998-2002). Arrange them in a precise catalogue layout of 5 horizontal rows, in the exact numbered order below. Elements in the upper rows are LARGER because they will be shown full screen; each row gets less height as you go down.
+
+ROW HEIGHTS: row 1 about 26% of the image height, row 2 about 22%, row 3 about 18%, rows 4 and 5 about 17% each.
+
+GLOBAL STYLE (identical for every element, this is the VOX documentary collage look):
+- PEOPLE: black and white halftone photograph cutouts, visible halftone dots, realistic photographic faces and clothing, with ONE flat offset accent shape of colored paper slightly behind each person (hot red or mustard yellow), like a VOX documentary collage.
+- OBJECTS AND PLACES: desaturated archival palette of tan, ink black and halftone gray, with ONE hot red accent or a restrained mustard yellow accent; money objects use a muted emerald green accent.
+- Every element is hand-cut from real paper: a thin white paper margin around the silhouette with slightly rough scissor-cut edges, visible print grain and paper fiber, matte, flat even documentary lighting.
+- NOT cartoon, NOT digital illustration, NOT 3D render, NOT glossy, no gradients.
+
+ROW 1 (LARGEST, the founders), from LEFT to RIGHT:
+1) Elon Musk around the year 2000, aged 29: young man, short brown hair slightly receding at the temples, clean-shaven, dark suit jacket over a white shirt with open collar. Tight head-and-shoulders close-up, shocked expression, eyes wide open, mouth open, looking straight at the camera, hot red paper shape behind him. This is a YouTube thumbnail portrait: big face, strong emotion.
+2) Max Levchin in 1998, aged 23: slim young man, short dark hair, clean-shaven, plain t-shirt under an open flannel shirt, jeans, sneakers, a backpack on one shoulder, standing and holding a small handheld PalmPilot organizer, determined look, facing right. Full body, head to shoes.
+3) Peter Thiel in 1998, aged 31: man with short light-brown hair, clean-shaven, blue blazer over a light dress shirt, no tie, standing behind a wooden lecture podium and speaking with one hand raised, facing left. Waist-up with the podium.
+4) Elon Musk in 2000 (same face as element 1: short brown hair, clean-shaven): dark suit, white shirt, walking toward the right while pulling a travel suitcase, smiling, a plane ticket in his hand. Full body, head to shoes.
+
+ROW 2 (LARGE), from LEFT to RIGHT:
+5) Peter Thiel in 2000 (same face as element 3): dark suit, light shirt, no tie, standing with arms crossed, calm confident expression, facing left. Full body.
+6) Max Levchin in 2000 (same face as element 2): sitting at a cluttered desk in front of a bulky beige CRT computer monitor late at night, coffee cups around, hands on his head, stressed, facing right. Full figure with desk and chair.
+7) A young tech enthusiast in 1999: man in his 20s, polo shirt and khakis, very excited, holding up a PalmPilot organizer, facing RIGHT. Full body. Generic person, not a real person's likeness.
+8) A skeptical investor in 1999: man in his 50s, gray suit and tie, reading glasses on his nose, arms crossed, unimpressed raised eyebrow, facing LEFT. Full body. Generic person, not a real person's likeness.
+9) A board member in 2000: man in his 40s, dark suit, reading a folded letter with a worried frown, facing RIGHT. Full body. Generic person, not a real person's likeness.
+
+ROW 3 (MEDIUM), from LEFT to RIGHT:
+10) A board member in 2000: woman in her 40s, dark business suit, short hair, holding a folder, serious determined expression, facing LEFT. Full body. Generic person, not a real person's likeness.
+11) An anonymous hacker: person in a dark hoodie with the hood up, face completely hidden in shadow, typing on a laptop. Generic, faceless.
+12) An online seller around 2000: woman in her 40s, cardigan, smiling while taping a cardboard shipping box. Waist-up. Generic person, not a real person's likeness.
+13) A group of six young men in their 30s posing like a 1970s mafia family: dark pinstripe suits, fedoras, open collars, arms crossed, serious faces, standing in two rows like a group photo. They count as ONE element. Generic people, not real people's likeness.
+14) The facade of a modern stock exchange building with columns, no lettering, no flags with text.
+
+ROW 4 (SMALL), from LEFT to RIGHT:
+15) A late 1990s PalmPilot handheld organizer with its stylus, gray plastic, blank green screen.
+16) A bulky beige 1990s desktop computer with a CRT monitor and keyboard, blank screen.
+17) The Chicago skyline as one cutout.
+18) A sandstone university building with arched arcades and a tall tower, Stanford style.
+19) The Sydney Opera House as one cutout.
+
+ROW 5 (SMALL), from LEFT to RIGHT:
+20) An old television set with a big red play-triangle shape on its screen, no text.
+21) A small stack of blank business cards.
+22) Five gold stars in a row.
+23) A glowing crystal ball on a small stand.
+24) A white rocket lifting off with a trail of fire and smoke.
+
+LAYOUT (very important):
+- Exactly 24 elements, in the exact numbered order above, rows perfectly aligned like a catalogue.
+- Clear empty space around every element, horizontally AND vertically: no element touches, overlaps or hides another element.
+- Every element fully visible, nothing cut off by the image edges.
+- Each element as large and detailed as its row allows. Sharp details, no blur.
+- Elon Musk must look like the same person in elements 1 and 4. Peter Thiel must look like the same person in elements 3 and 5. Max Levchin must look like the same person in elements 2 and 6.
+
+BACKGROUND: fully transparent background (PNG with alpha channel). No floor, no shadow, no scenery behind the elements.
+NO TEXT anywhere: no words, no letters, no numbers, no logos, no brand names, no watermark, no labels, no frames, no grid lines.
+
+Before finishing, count the elements: there must be exactly 24, in 5 rows (4, 5, 5, 5, 5).
+
+FORMAT: landscape 1536x1024, PNG, highest resolution possible.
