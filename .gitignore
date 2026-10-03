@@ -22,3 +22,9 @@ mcdonalds/long/build/*.wav
 mcdonalds/long/build/*.f32
 mcdonalds/long/build/shots/
 mcdonalds/long/*-partie-*.mp4
+rolex/raw/
+rolex/build/out/
+rolex/build/*.wav
+rolex/build/*.f32
+rolex/build/shots/
+rolex/*-partie-*.mp4
