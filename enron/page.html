@@ -1,0 +1,385 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:TW;src:url(../mcdonalds/node_modules/@fontsource/special-elite/files/special-elite-latin-400-normal.woff2)}
+@font-face{font-family:AN;src:url(../mcdonalds/node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#D9CCB0}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:#E4D7BC}
+#paper{position:absolute;inset:-60px;background:repeating-linear-gradient(0deg,rgba(60,45,25,.05) 0 2px,transparent 2px 26px),radial-gradient(1500px 1000px at 50% 45%,#EFE4CB 0%,#E1D2B2 60%,#C9B791 100%)}
+#paper:after{content:"";position:absolute;inset:0;opacity:.55;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' seed='4'/><feColorMatrix values='0 0 0 0 .45 0 0 0 0 .35 0 0 0 0 .2 0 0 0 .5 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>")}
+.col{position:absolute;width:280px;opacity:.12}.col i{display:block;height:8px;margin:8px 0;background:#3A2E1E;border-radius:2px}.col b{display:block;height:30px;margin:12px 0 9px;background:#3A2E1E;width:85%}
+#world{position:absolute;inset:0;transform-origin:50% 45%}
+.o{position:absolute;left:0;top:0;opacity:0;transform-origin:50% 50%}
+.cut{filter:drop-shadow(0 12px 10px rgba(40,25,10,.45)) drop-shadow(0 2px 2px rgba(40,25,10,.3))}
+.strip{background:#F7F1E3;padding:12px 28px;font-family:TW;font-size:46px;color:#1C1712;white-space:nowrap;box-shadow:0 8px 14px rgba(40,25,10,.35);clip-path:polygon(0 4%,3% 0,97% 3%,100% 0,99% 96%,96% 100%,4% 97%,0 100%)}
+.strip.r{color:#C8261E}
+.head{background:#1C1712;color:#F3EBD8;font-family:AN;font-size:96px;line-height:1;padding:16px 32px 20px;white-space:nowrap;box-shadow:0 10px 18px rgba(0,0,0,.4);clip-path:polygon(0 3%,2% 0,98% 4%,100% 0,100% 97%,97% 100%,2% 96%,0 100%)}
+.head small{font-size:.5em;color:#E8B737;display:block;margin-bottom:6px;letter-spacing:3px}
+.stamp{font-family:AN;color:#C8261E;border:8px solid #C8261E;border-radius:14px;padding:4px 24px 8px;font-size:92px;line-height:1;letter-spacing:2px;white-space:nowrap;background:rgba(247,241,227,.9);opacity:.95;-webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.3 1.55'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");-webkit-mask-size:200px}
+.stamp.g{color:#2E7D4F;border-color:#2E7D4F}
+.tape{position:absolute;width:140px;height:42px;background:rgba(236,224,180,.8);box-shadow:0 2px 3px rgba(0,0,0,.15);clip-path:polygon(0 8%,6% 0,12% 10%,20% 0,100% 5%,94% 100%,86% 90%,78% 100%,0 95%)}
+.tag{background:#E8B737;font-family:TW;font-size:40px;color:#1C1712;padding:9px 22px;white-space:nowrap;box-shadow:0 6px 10px rgba(40,25,10,.35)}
+.quote{background:#F7F1E3;border:5px solid #1C1712;border-radius:26px;padding:18px 30px;font-family:TW;font-size:42px;color:#1C1712;width:max-content;max-width:680px;line-height:1.25;box-shadow:0 8px 14px rgba(40,25,10,.35)}
+.quote em,.strip em,#sub em{font-style:normal;color:#C8261E}
+#sub{position:absolute;left:60px;right:60px;top:958px;text-align:center}
+#sub span.w{display:inline-block;background:#F7F1E3;font-family:TW;font-size:42px;white-space:nowrap;color:#1C1712;padding:9px 22px;box-shadow:0 6px 12px rgba(40,25,10,.4);clip-path:polygon(0 5%,2% 0,98% 4%,100% 0,99% 95%,97% 100%,3% 96%,0 100%)}
+svg.lay{position:absolute;left:0;top:0}
+</style></head><body><div id="stage"><div id="paper"></div><div id="world"><div id="cols"></div><div id="objs"></div>
+<svg class="lay" id="lay" width="1920" height="1080"></svg></div><div id="sub"></div></div>
+<script>
+const WORDS=[["december", 0.15], ["2", 0.55], ["2001", 1.59], ["the", 2.57], ["seventhlargest", 3.16], ["company", 3.75], ["in", 3.89], ["america", 4.27], ["files", 4.81], ["for", 5.03], ["bankruptcy", 5.45], ["the", 7.53], ["biggest", 8.03], ["bankruptcy", 8.45], ["the", 8.77], ["country", 9.09], ["has", 9.37], ["ever", 9.83], ["seen", 10.13], ["six", 11.35], ["years", 11.67], ["in", 11.83], ["a", 11.91], ["row", 12.19], ["fortune", 12.89], ["magazine", 13.35], ["had", 13.63], ["named", 13.83], ["it", 14.03], ["america's", 14.41], ["most", 14.79], ["innovative", 15.27], ["company", 15.83], ["its", 16.65], ["official", 16.95], ["values", 17.33], ["were", 17.65], ["respect", 18.21], ["integrity", 19.27], ["communication", 20.33], ["and", 20.83], ["excellence", 21.39], ["spoiler", 22.83], ["it", 23.61], ["was", 23.71], ["missing", 23.93], ["a", 24.09], ["few", 24.23], ["the", 25.39], ["year", 25.55], ["before", 25.89], ["enron", 26.51], ["reported", 27.07], ["almost", 27.47], ["one", 27.87], ["hundred", 28.27], ["and", 28.67], ["one", 29.07], ["billion", 29.47], ["dollars", 29.74], ["in", 30.01], ["revenue", 30.41], ["that's", 31.05], ["about", 31.29], ["two", 31.71], ["hundred", 32.14], ["and", 32.56], ["seventyseven", 32.99], ["million", 33.41], ["dollars", 33.79], ["a", 34.17], ["day", 34.55], ["on", 35.63], ["paper", 35.99], ["so", 37.07], ["how", 37.23], ["does", 37.37], ["a", 37.47], ["giant", 37.81], ["that", 38.23], ["big", 38.61], ["disappear", 39.15], ["in", 39.43], ["a", 39.49], ["few", 39.71], ["weeks", 40.05], ["the", 41.05], ["answer", 41.35], ["involves", 41.79], ["star", 42.17], ["wars", 42.37], ["dinosaurs", 43.39], ["a", 44.03], ["paper", 44.29], ["shredder", 44.57], ["and", 45.19], ["four", 45.65], ["boring", 46.19], ["words", 46.51], ["that", 46.79], ["nearly", 47.21], ["broke", 47.69], ["wall", 48.01], ["street", 48.29], ["marktomarket", 49.49], ["accounting", 50.69], ["houston", 52.19], ["texas", 52.63], ["1985", 53.71], ["two", 54.87], ["gas", 55.15], ["pipeline", 55.55], ["companies", 56.05], ["merge", 56.33], ["the", 57.15], ["new", 57.31], ["boss", 57.53], ["is", 57.89], ["ken", 58.13], ["lay", 58.39], ["an", 58.93], ["economist", 59.33], ["with", 59.63], ["big", 59.95], ["political", 60.41], ["friends", 60.71], ["and", 61.13], ["an", 61.25], ["even", 61.59], ["bigger", 62.03], ["smile", 62.35], ["the", 63.27], ["new", 63.41], ["company", 63.71], ["gets", 63.93], ["a", 64.09], ["name", 64.29], ["enron", 65.01], ["and", 65.91], ["for", 66.05], ["a", 66.17], ["few", 66.35], ["years", 66.67], ["it", 66.95], ["does", 67.09], ["something", 67.45], ["incredibly", 68.19], ["boring", 68.73], ["it", 69.45], ["moves", 69.77], ["natural", 70.15], ["gas", 70.43], ["through", 70.75], ["pipes", 70.99], ["nobody", 72.09], ["gets", 72.31], ["rich", 72.53], ["telling", 72.83], ["that", 73.07], ["story", 73.43], ["at", 73.55], ["parties", 73.83], ["then", 75.17], ["came", 75.63], ["jeff", 76.1], ["skilling", 76.58], ["a", 77.05], ["brilliant", 77.59], ["consultant", 78.01], ["from", 78.25], ["mckinsey", 78.73], ["skilling", 79.21], ["has", 79.69], ["an", 79.85], ["idea", 80.15], ["what", 81.15], ["if", 81.31], ["enron", 81.51], ["stopped", 82.03], ["just", 82.41], ["moving", 82.77], ["gas", 83.05], ["and", 83.45], ["started", 83.73], ["trading", 84.15], ["it", 84.43], ["like", 84.79], ["stocks", 85.07], ["on", 85.31], ["wall", 85.49], ["street", 85.73], ["a", 86.49], ["gas", 86.85], ["bank", 87.29], ["buy", 88.19], ["sell", 88.79], ["bet", 89.43], ["on", 89.57], ["prices", 89.93], ["but", 90.87], ["he", 91.01], ["has", 91.11], ["one", 91.47], ["condition", 91.87], ["before", 92.23], ["joining", 92.57], ["enron", 93.39], ["must", 93.79], ["use", 93.99], ["something", 94.31], ["called", 94.69], ["marktomarket", 95.44], ["accounting", 96.19], ["translation", 97.03], ["when", 98.05], ["you", 98.15], ["sign", 98.35], ["a", 98.49], ["twentyyear", 98.91], ["deal", 99.33], ["you", 99.81], ["count", 100.01], ["all", 100.39], ["the", 100.57], ["profit", 100.87], ["you", 101.07], ["hope", 101.31], ["to", 101.51], ["make", 101.65], ["over", 101.91], ["twenty", 102.29], ["years", 102.67], ["on", 103.27], ["day", 103.49], ["one", 103.85], ["not", 104.63], ["when", 104.79], ["the", 104.89], ["money", 105.05], ["arrives", 105.51], ["today", 106.33], ["so", 107.87], ["this", 108.27], ["contract", 108.61], ["makes", 108.83], ["money", 109.15], ["over", 109.45], ["twenty", 109.87], ["years", 110.29], ["yes", 111.21], ["and", 112.13], ["we", 112.25], ["book", 112.45], ["all", 112.81], ["of", 112.95], ["it", 113.03], ["today", 113.33], ["today", 114.41], ["and", 115.41], ["if", 115.53], ["it", 115.61], ["never", 115.93], ["makes", 116.15], ["money", 116.39], ["then", 117.43], ["we'll", 117.79], ["need", 117.93], ["a", 118.03], ["bigger", 118.17], ["contract", 118.63], ["on", 120.07], ["january", 120.45], ["30", 121.1], ["1992", 121.75], ["the", 122.55], ["regulator", 122.99], ["the", 123.45], ["sec", 123.71], ["says", 124.43], ["it", 124.57], ["won't", 124.81], ["object", 125.23], ["skilling", 126.21], ["is", 126.53], ["so", 126.87], ["happy", 127.23], ["he", 127.65], ["celebrates", 128.15], ["with", 128.43], ["champagne", 128.85], ["champagne", 130.11], ["for", 131.29], ["an", 131.41], ["accounting", 131.83], ["rule", 132.19], ["and", 133.19], ["here's", 133.35], ["the", 133.53], ["thing", 133.73], ["that", 134.47], ["rule", 134.73], ["turns", 135.09], ["enron", 135.37], ["into", 135.77], ["a", 135.87], ["machine", 136.21], ["that", 136.47], ["has", 136.61], ["to", 136.77], ["invent", 136.97], ["bigger", 137.51], ["and", 137.79], ["bigger", 138.15], ["deals", 138.51], ["every", 138.99], ["quarter", 139.37], ["just", 139.97], ["to", 140.21], ["keep", 140.33], ["the", 140.49], ["numbers", 140.69], ["growing", 141.07], ["like", 141.75], ["running", 141.99], ["on", 142.15], ["a", 142.25], ["treadmill", 142.57], ["that", 142.83], ["speeds", 143.13], ["up", 143.35], ["every", 143.79], ["three", 144.03], ["months", 144.33], ["but", 145.27], ["for", 145.43], ["a", 145.55], ["while", 145.85], ["it", 146.37], ["looks", 146.59], ["like", 146.81], ["magic", 147.37], ["enron", 148.31], ["trades", 148.79], ["gas", 149.17], ["electricity", 149.99], ["paper", 150.95], ["even", 151.57], ["internet", 152.01], ["bandwidth", 152.45], ["in", 153.33], ["1999", 153.85], ["it", 154.65], ["pays", 154.83], ["more", 155.07], ["than", 155.19], ["one", 155.64], ["hundred", 156.1], ["million", 156.55], ["dollars", 157.19], ["over", 157.55], ["thirty", 157.9], ["years", 158.25], ["to", 158.67], ["put", 158.83], ["its", 159.03], ["name", 159.21], ["on", 159.43], ["the", 159.55], ["houston", 159.89], ["astros", 160.21], ["new", 160.71], ["stadium", 161.15], ["enron", 161.95], ["field", 162.47], ["in", 163.49], ["august", 163.79], ["2000", 164.37], ["its", 164.93], ["stock", 165.19], ["hits", 165.43], ["about", 165.67], ["ninety", 166.0], ["dollars", 166.32], ["a", 166.65], ["share", 166.91], ["and", 167.43], ["in", 167.53], ["july", 167.75], ["2000", 168.35], ["remember", 169.07], ["it", 169.47], ["even", 169.89], ["signs", 170.11], ["a", 170.31], ["twentyyear", 170.77], ["deal", 171.23], ["with", 171.45], ["blockbuster", 171.71], ["to", 172.27], ["stream", 172.51], ["movies", 172.91], ["that", 173.83], ["one", 173.99], ["lasted", 174.37], ["eight", 174.75], ["months", 175.07], ["foreshadowing", 175.83], ["but", 176.97], ["there's", 177.09], ["a", 177.21], ["problem", 177.57], ["many", 178.47], ["of", 178.55], ["these", 178.77], ["deals", 179.05], ["are", 179.35], ["losing", 179.79], ["money", 180.23], ["and", 180.85], ["losses", 181.25], ["look", 181.61], ["terrible", 182.21], ["on", 182.49], ["paper", 182.79], ["enter", 183.95], ["andrew", 184.51], ["fastow", 185.09], ["enron's", 185.67], ["chief", 186.17], ["financial", 186.51], ["officer", 187.11], ["his", 187.75], ["job", 188.01], ["make", 188.73], ["the", 188.93], ["losses", 189.23], ["disappear", 190.03], ["his", 190.83], ["tool", 191.15], ["special", 192.11], ["purpose", 192.53], ["entities", 193.11], ["translation", 193.97], ["separate", 195.13], ["companies", 195.59], ["created", 196.15], ["on", 196.33], ["the", 196.43], ["side", 196.77], ["where", 197.19], ["enron", 197.47], ["can", 197.75], ["quietly", 198.29], ["park", 198.63], ["its", 198.85], ["bad", 199.07], ["assets", 199.53], ["and", 200.03], ["its", 200.27], ["debts", 200.51], ["so", 201.01], ["they", 201.13], ["don't", 201.41], ["show", 201.67], ["up", 201.85], ["on", 201.97], ["its", 202.11], ["own", 202.31], ["books", 202.65], ["out", 203.33], ["of", 203.45], ["sight", 203.67], ["out", 204.21], ["of", 204.33], ["mind", 204.57], ["and", 205.33], ["the", 205.43], ["names", 205.71], ["this", 206.57], ["is", 206.69], ["where", 206.87], ["it", 206.97], ["gets", 207.11], ["weird", 207.37], ["one", 208.23], ["partnership", 208.57], ["was", 208.93], ["called", 209.21], ["jedi", 209.77], ["another", 210.77], ["one", 211.03], ["created", 211.45], ["to", 211.65], ["help", 211.79], ["keep", 211.99], ["jedi", 212.31], ["off", 212.57], ["the", 212.69], ["books", 212.99], ["was", 213.43], ["called", 213.73], ["chewco", 214.39], ["as", 215.05], ["in", 215.21], ["chewbacca", 216.05], ["later", 216.89], ["came", 217.13], ["a", 217.23], ["group", 217.37], ["of", 217.55], ["entities", 217.83], ["called", 218.17], ["the", 218.59], ["raptors", 218.89], ["as", 219.73], ["in", 219.81], ["the", 219.93], ["dinosaurs", 220.37], ["somewhere", 221.55], ["in", 221.71], ["houston", 222.01], ["someone", 222.69], ["was", 222.89], ["having", 223.11], ["way", 223.53], ["too", 223.77], ["much", 223.95], ["fun", 224.19], ["where", 225.15], ["did", 225.25], ["we", 225.35], ["put", 225.45], ["the", 225.61], ["losses", 225.87], ["somewhere", 226.89], ["safe", 227.17], ["where", 228.05], ["chewco", 229.01], ["like", 229.97], ["chewbacca", 230.93], ["don't", 231.89], ["ask", 232.11], ["questions", 232.45], ["you", 232.63], ["don't", 232.83], ["want", 233.03], ["answered", 233.33], ["in", 234.45], ["june", 234.71], ["1999", 235.29], ["enron's", 236.07], ["own", 236.73], ["board", 237.07], ["even", 237.57], ["allowed", 237.81], ["fastow", 238.17], ["to", 238.53], ["run", 238.75], ["one", 238.97], ["of", 239.03], ["these", 239.17], ["partnerships", 239.53], ["himself", 240.19], ["called", 240.87], ["ljm", 241.65], ["translation", 242.43], ["the", 243.35], ["man", 243.59], ["in", 243.69], ["charge", 243.91], ["of", 244.13], ["enron's", 244.31], ["money", 244.77], ["was", 245.19], ["also", 245.75], ["on", 245.93], ["the", 246.05], ["other", 246.35], ["side", 246.61], ["of", 246.75], ["the", 246.83], ["deals", 247.11], ["totally", 248.15], ["normal", 248.53], ["definitely", 249.53], ["not", 249.99], ["a", 250.15], ["conflict", 250.43], ["of", 250.61], ["interest", 250.87], ["then", 252.17], ["came", 252.55], ["california", 253.01], ["in", 253.99], ["2000", 254.41], ["and", 254.71], ["2001", 255.37], ["the", 255.89], ["state", 256.13], ["goes", 256.35], ["through", 256.59], ["an", 256.71], ["energy", 257.11], ["crisis", 257.55], ["prices", 258.19], ["explode", 259.15], ["rolling", 260.07], ["blackouts", 260.33], ["hit", 260.79], ["millions", 261.15], ["of", 261.49], ["people", 261.81], ["later", 262.85], ["recordings", 263.59], ["revealed", 263.91], ["enron", 264.33], ["traders", 264.84], ["joking", 265.35], ["about", 265.63], ["the", 265.79], ["money", 265.99], ["they", 266.15], ["were", 266.23], ["making", 266.47], ["from", 266.69], ["california", 267.25], ["talking", 267.91], ["about", 268.17], ["ripping", 268.47], ["off", 268.83], ["grandma", 269.37], ["millie", 269.77], ["cue", 270.81], ["the", 271.07], ["ominous", 271.37], ["music", 271.87], ["and", 272.91], ["then", 273.17], ["the", 273.69], ["cracks", 273.96], ["start", 274.23], ["to", 274.43], ["show", 274.63], ["in", 275.43], ["february", 275.77], ["2001", 276.55], ["skilling", 277.25], ["becomes", 277.73], ["ceo", 278.23], ["in", 279.13], ["april", 279.49], ["on", 279.85], ["a", 279.93], ["call", 280.09], ["with", 280.29], ["wall", 280.43], ["street", 280.69], ["an", 281.19], ["investor", 281.49], ["asks", 281.97], ["a", 282.19], ["simple", 282.57], ["question", 283.01], ["why", 283.95], ["is", 284.13], ["enron", 284.33], ["the", 284.69], ["only", 285.13], ["financial", 285.59], ["company", 285.99], ["that", 286.25], ["can't", 286.63], ["show", 286.89], ["a", 287.01], ["balance", 287.25], ["sheet", 287.49], ["with", 287.63], ["its", 287.79], ["earnings", 288.05], ["skilling", 288.84], ["answers", 289.63], ["with", 290.03], ["an", 290.17], ["insult", 290.61], ["a", 291.37], ["word", 291.59], ["we", 291.89], ["can't", 292.23], ["say", 292.53], ["on", 292.67], ["this", 292.79], ["channel", 293.13], ["fun", 293.95], ["fact", 294.23], ["enron's", 294.87], ["advertising", 295.53], ["slogan", 295.97], ["at", 296.09], ["the", 296.21], ["time", 296.43], ["was", 296.69], ["ask", 297.39], ["why", 297.69], ["just", 298.63], ["maybe", 299.33], ["not", 299.95], ["out", 300.15], ["loud", 300.31], ["four", 301.45], ["months", 301.63], ["later", 301.97], ["on", 302.29], ["august", 302.57], ["14", 303.07], ["he", 303.57], ["suddenly", 303.95], ["resigns", 304.31], ["the", 305.27], ["very", 305.63], ["next", 305.85], ["day", 306.13], ["an", 306.61], ["enron", 306.93], ["vice", 307.25], ["president", 307.61], ["named", 307.89], ["sherron", 308.22], ["watkins", 308.55], ["sends", 309.25], ["ken", 309.59], ["lay", 309.81], ["an", 310.05], ["anonymous", 310.51], ["memo", 310.95], ["her", 311.61], ["warning", 311.95], ["the", 312.59], ["company", 312.91], ["could", 313.25], ["implode", 313.89], ["in", 314.35], ["a", 314.45], ["wave", 314.81], ["of", 315.05], ["accounting", 315.45], ["scandals", 315.85], ["lay", 316.95], ["takes", 317.23], ["the", 317.43], ["ceo", 317.79], ["job", 318.03], ["back", 318.49], ["and", 319.05], ["on", 319.13], ["september", 319.39], ["26", 320.21], ["2001", 321.03], ["in", 321.59], ["an", 321.69], ["online", 322.11], ["chat", 322.35], ["with", 322.53], ["employees", 322.97], ["he", 323.61], ["says", 323.79], ["enron's", 324.16], ["stock", 324.53], ["is", 324.91], ["an", 325.25], ["incredible", 325.87], ["bargain", 326.41], ["buy", 326.87], ["buy", 327.33], ["buy", 327.79], ["three", 328.25], ["weeks", 328.53], ["later", 328.79], ["on", 329.11], ["october", 329.41], ["16", 329.94], ["enron", 330.46], ["announces", 330.99], ["a", 331.39], ["six", 331.81], ["hundred", 332.24], ["and", 332.66], ["eighteen", 333.09], ["million", 333.51], ["dollar", 333.82], ["loss", 334.13], ["and", 334.83], ["a", 334.91], ["one", 335.24], ["point", 335.56], ["two", 335.88], ["billion", 336.21], ["dollar", 336.47], ["hit", 336.73], ["to", 336.97], ["shareholders", 337.33], ["equity", 337.89], ["partly", 338.77], ["tied", 339.01], ["to", 339.21], ["fastow's", 339.65], ["partnerships", 340.09], ["in", 341.21], ["november", 341.65], ["it", 342.15], ["admits", 342.45], ["its", 342.75], ["profits", 342.99], ["had", 343.21], ["been", 343.33], ["overstated", 343.89], ["going", 344.31], ["back", 344.53], ["to", 344.71], ["1997", 345.95], ["a", 347.11], ["smaller", 347.62], ["rival", 348.13], ["dynegy", 348.64], ["agrees", 349.15], ["to", 349.35], ["buy", 349.49], ["enron", 349.75], ["at", 350.09], ["a", 350.17], ["bargain", 350.57], ["price", 350.93], ["then", 351.93], ["it", 352.47], ["reads", 352.67], ["the", 352.87], ["books", 353.11], ["and", 353.67], ["walks", 353.95], ["away", 354.29], ["on", 354.59], ["november", 354.85], ["28", 355.67], ["that", 356.49], ["day", 356.81], ["the", 357.27], ["stock", 357.53], ["falls", 357.75], ["below", 358.13], ["one", 358.74], ["dollar", 359.34], ["from", 359.95], ["ninety", 360.42], ["dollars", 360.88], ["to", 361.35], ["less", 361.65], ["than", 361.89], ["one", 362.22], ["in", 362.55], ["about", 363.17], ["fifteen", 363.72], ["months", 364.27], ["december", 365.91], ["2", 366.55], ["2001", 367.19], ["enron", 368.07], ["files", 368.61], ["for", 368.79], ["bankruptcy", 369.13], ["and", 370.13], ["the", 370.23], ["people", 370.49], ["who", 370.65], ["pay", 370.77], ["the", 370.91], ["price", 371.19], ["are", 371.79], ["not", 372.07], ["the", 372.27], ["executives", 372.71], ["at", 373.67], ["the", 373.79], ["end", 373.95], ["of", 374.07], ["2000", 374.59], ["employees", 375.59], ["had", 375.79], ["about", 376.01], ["two", 376.38], ["point", 376.75], ["one", 377.12], ["billion", 377.49], ["dollars", 377.8], ["in", 378.11], ["their", 378.21], ["retirement", 378.57], ["plan", 378.97], ["sixtytwo", 379.61], ["percent", 380.25], ["of", 380.89], ["it", 381.01], ["was", 381.37], ["in", 381.55], ["enron", 381.79], ["stock", 382.21], ["thousands", 383.61], ["lose", 383.95], ["their", 384.15], ["jobs", 384.47], ["and", 384.75], ["a", 384.87], ["huge", 385.37], ["part", 385.57], ["of", 385.67], ["their", 385.77], ["savings", 386.11], ["at", 386.29], ["the", 386.41], ["same", 386.63], ["time", 386.97], ["but", 388.01], ["the", 388.11], ["story", 388.45], ["isn't", 388.81], ["over", 389.17], ["enron's", 390.07], ["auditor", 390.67], ["arthur", 391.21], ["andersen", 391.67], ["one", 392.13], ["of", 392.21], ["the", 392.33], ["biggest", 392.73], ["accounting", 393.11], ["firms", 393.31], ["in", 393.49], ["the", 393.59], ["world", 393.87], ["is", 394.45], ["caught", 394.67], ["shredding", 395.07], ["enron", 395.55], ["documents", 396.13], ["in", 397.03], ["june", 397.25], ["2002", 397.91], ["it's", 398.49], ["convicted", 398.93], ["three", 399.87], ["years", 400.07], ["later", 400.43], ["the", 400.85], ["supreme", 401.19], ["court", 401.49], ["overturns", 402.09], ["the", 402.39], ["conviction", 402.75], ["too", 403.59], ["late", 403.79], ["the", 404.43], ["firm", 404.67], ["has", 404.81], ["already", 405.21], ["collapsed", 405.63], ["and", 406.13], ["around", 406.29], ["twentyeight", 406.77], ["thousand", 407.25], ["people", 407.73], ["in", 407.91], ["the", 408.01], ["us", 408.27], ["are", 408.59], ["out", 408.77], ["of", 408.89], ["work", 409.09], ["washington", 410.37], ["reacts", 410.75], ["too", 411.28], ["in", 411.81], ["2002", 412.45], ["congress", 413.23], ["passes", 413.63], ["the", 413.85], ["sarbanesoxley", 414.5], ["act", 415.15], ["translation", 415.85], ["new", 416.97], ["rules", 417.29], ["forcing", 417.77], ["company", 418.19], ["bosses", 418.43], ["to", 418.73], ["personally", 419.37], ["sign", 419.67], ["off", 419.89], ["on", 420.05], ["their", 420.17], ["numbers", 420.45], ["if", 421.29], ["the", 421.37], ["numbers", 421.59], ["lie", 421.89], ["it's", 422.49], ["on", 422.65], ["them", 422.85], ["andrew", 424.13], ["fastow", 424.47], ["pleads", 424.81], ["guilty", 425.13], ["and", 425.51], ["gets", 425.65], ["six", 426.05], ["years", 426.29], ["in", 426.45], ["prison", 426.73], ["jeff", 427.32], ["skilling", 427.91], ["and", 428.25], ["ken", 428.47], ["lay", 428.67], ["are", 428.93], ["convicted", 429.37], ["in", 429.57], ["may", 429.83], ["2006", 430.63], ["skilling", 431.09], ["is", 431.55], ["sentenced", 432.01], ["to", 432.47], ["twentyfour", 432.93], ["years", 433.39], ["serves", 433.99], ["about", 434.25], ["twelve", 434.7], ["and", 435.15], ["is", 435.27], ["released", 435.57], ["in", 435.91], ["2019", 436.51], ["ken", 437.75], ["lay", 437.95], ["never", 438.39], ["goes", 438.61], ["to", 438.77], ["prison", 439.07], ["he", 439.77], ["dies", 439.95], ["of", 440.11], ["a", 440.19], ["heart", 440.33], ["attack", 440.61], ["on", 440.89], ["july", 441.05], ["5", 441.51], ["2006", 442.43], ["before", 443.15], ["his", 443.43], ["sentencing", 443.71], ["and", 444.51], ["his", 444.65], ["conviction", 445.09], ["is", 445.49], ["erased", 445.81], ["and", 446.46], ["enron", 447.11], ["field", 447.51], ["the", 448.41], ["astros", 448.61], ["buy", 448.97], ["the", 449.11], ["name", 449.25], ["back", 449.51], ["for", 449.71], ["about", 449.91], ["two", 450.22], ["point", 450.52], ["one", 450.82], ["million", 451.13], ["dollars", 451.57], ["and", 452.01], ["rename", 452.39], ["the", 452.61], ["stadium", 452.97], ["even", 453.91], ["the", 454.05], ["ballpark", 454.33], ["wanted", 454.81], ["a", 454.99], ["divorce", 455.25], ["but", 456.31], ["here's", 456.47], ["the", 456.67], ["twist", 456.91], ["in", 457.75], ["2020", 458.21], ["a", 458.81], ["comedy", 459.13], ["group", 459.43], ["reportedly", 459.93], ["bought", 460.27], ["the", 460.49], ["enron", 460.71], ["brand", 461.11], ["for", 461.31], ["two", 461.75], ["hundred", 462.2], ["and", 462.64], ["seventyfive", 463.08], ["dollars", 463.53], ["and", 463.97], ["in", 464.15], ["december", 464.49], ["2024", 465.25], ["they", 465.81], ["relaunched", 466.11], ["it", 466.53], ["as", 466.97], ["a", 467.05], ["parody", 467.43], ["their", 467.95], ["slogan", 468.47], ["we're", 469.23], ["back", 469.47], ["can", 470.11], ["we", 470.19], ["talk", 470.39], ["so", 471.51], ["what's", 471.67], ["the", 471.85], ["lesson", 472.15], ["when", 473.01], ["a", 473.07], ["company's", 473.33], ["numbers", 473.75], ["are", 473.97], ["too", 474.21], ["complicated", 474.71], ["to", 474.95], ["explain", 475.33], ["sometimes", 476.31], ["that's", 476.67], ["not", 477.01], ["genius", 477.41], ["it's", 478.17], ["the", 478.35], ["point", 478.65], ["respect", 479.79], ["integrity", 480.83], ["communication", 481.89], ["excellence", 483.03], ["four", 484.07], ["words", 484.37], ["on", 484.51], ["a", 484.61], ["wall", 484.81], ["zero", 485.48], ["on", 486.15], ["the", 486.27], ["books", 486.53], ["if", 487.59], ["you", 487.69], ["enjoyed", 487.99], ["this", 488.31], ["subscribe", 489.01], ["next", 489.73], ["time", 489.95], ["the", 490.45], ["twentyeightyearold", 491.02], ["trader", 491.59], ["who", 491.91], ["secretly", 492.47], ["lost", 492.85], ["so", 493.45], ["much", 493.71], ["money", 494.03], ["a", 494.85], ["twohundredandthirtythreeyearold", 495.82], ["bank", 496.79], ["was", 497.15], ["sold", 497.49], ["for", 497.79], ["one", 498.16], ["pound", 498.53]];
+const CAP=[[0.15, "December 2, 2001."], [2.57, "The seventh-largest company in America files for bankruptcy."], [7.53, "The biggest bankruptcy the country has ever seen."], [11.35, "Six years in a row,"], [12.89, "Fortune magazine had named it America's most innovative company."], [16.65, "Its official values were respect,"], [19.27, "integrity, communication and excellence."], [22.83, "Spoiler:"], [23.61, "it was missing a few."], [25.39, "The year before,"], [26.51, "Enron reported almost one hundred and one billion"], [29.74, "dollars in revenue."], [31.05, "That's about two hundred and seventy-seven"], [33.41, "million dollars a day."], [35.63, "On paper."], [37.07, "So how does a giant that big disappear in a few weeks?"], [41.05, "The answer involves Star Wars,"], [43.39, "dinosaurs, a paper shredder,"], [45.19, "and four boring words that nearly broke Wall Street:"], [49.49, "mark-to-market accounting."], [52.19, "Houston, Texas."], [53.71, "1985."], [54.87, "Two gas pipeline companies merge."], [57.15, "The new boss is Ken Lay,"], [58.93, "an economist with big political friends and"], [61.25, "an even bigger smile."], [63.27, "The new company gets a name:"], [65.01, "Enron."], [65.91, "And for a few years,"], [66.95, "it does something incredibly boring."], [69.45, "It moves natural gas through pipes."], [72.09, "Nobody gets rich telling that story at parties."], [75.17, "Then came Jeff Skilling."], [77.05, "A brilliant consultant from McKinsey,"], [79.21, "Skilling has an idea:"], [81.15, "what if Enron stopped just moving gas,"], [83.45, "and started trading it,"], [84.79, "like stocks on Wall Street?"], [86.49, "A gas bank."], [88.19, "Buy, sell, bet on prices."], [90.87, "But he has one condition before joining."], [93.39, "Enron must use something called mark-to-market accounting."], [97.03, "Translation:"], [98.05, "when you sign a twenty-year deal,"], [99.81, "you count all the profit you hope to make over twenty years,"], [103.27, "on day one."], [104.63, "Not when the money arrives."], [106.33, "Today."], [107.87, ""], [111.21, ""], [112.13, ""], [114.41, ""], [115.41, ""], [117.43, ""], [120.07, "On January 30,"], [121.75, "1992, the regulator,"], [123.45, "the SEC, says it won't object."], [126.21, "Skilling is so happy,"], [127.65, "he celebrates with champagne."], [130.11, "Champagne."], [131.29, "For an accounting rule."], [133.19, "And here's the thing."], [134.47, "That rule turns Enron into a machine that has"], [136.77, "to invent bigger and bigger deals every quarter,"], [139.97, "just to keep the numbers growing."], [141.75, "Like running on a treadmill that speeds up"], [143.79, "every three months."], [145.27, "But for a while,"], [146.37, "it looks like magic."], [148.31, "Enron trades gas,"], [149.99, "electricity, paper, even internet bandwidth."], [153.33, "In 1999, it pays more than one hundred million dollars,"], [157.55, "over thirty years,"], [158.67, "to put its name on the Houston Astros' new stadium:"], [161.95, "Enron Field."], [163.49, "In August 2000,"], [164.93, "its stock hits about ninety dollars a share."], [167.43, "And in July 2000,"], [169.07, "remember, it even signs a twenty-year deal"], [171.45, "with Blockbuster to stream movies."], [173.83, "That one lasted eight months."], [175.83, "Foreshadowing."], [176.97, "But there's a problem."], [178.47, "Many of these deals are losing money."], [180.85, "And losses look terrible on paper."], [183.95, "Enter Andrew Fastow,"], [185.67, "Enron's chief financial officer."], [187.75, "His job:"], [188.73, "make the losses disappear."], [190.83, "His tool:"], [192.11, "special purpose entities."], [193.97, "Translation:"], [195.13, "separate companies, created on the side,"], [197.19, "where Enron can quietly park its bad assets"], [200.03, "and its debts,"], [201.01, "so they don't show up on its own books."], [203.33, "Out of sight,"], [204.21, "out of mind."], [205.33, "And the names?"], [206.57, "This is where it gets weird."], [208.23, "One partnership was called JEDI."], [210.77, "Another one, created to help keep JEDI off the books,"], [213.43, "was called Chewco."], [215.05, "As in Chewbacca."], [216.89, "Later came a group of entities called the Raptors."], [219.73, "As in the dinosaurs."], [221.55, "Somewhere in Houston,"], [222.69, "someone was having way too much fun."], [225.15, ""], [226.89, ""], [228.05, ""], [229.01, ""], [229.97, ""], [231.89, ""], [234.45, "In June 1999,"], [236.07, "Enron's own board even allowed Fastow to run"], [238.97, "one of these partnerships himself,"], [240.87, "called LJM."], [242.43, "Translation:"], [243.35, "the man in charge of Enron's money was also"], [245.93, "on the other side of the deals."], [248.15, "Totally normal."], [249.53, "Definitely not a conflict of interest."], [252.17, "Then came California."], [253.99, "In 2000 and 2001,"], [255.89, "the state goes through an energy crisis."], [258.19, "Prices explode."], [260.07, "Rolling blackouts hit millions of people."], [262.85, "Later, recordings revealed Enron traders joking"], [265.63, "about the money they were making from California,"], [267.91, "talking about ripping off Grandma Millie."], [270.81, "Cue the ominous music."], [272.91, "And then, the cracks start to show."], [275.43, "In February 2001,"], [277.25, "Skilling becomes CEO."], [279.13, "In April, on a call with Wall Street,"], [281.19, "an investor asks a simple question:"], [283.95, "why is Enron the only financial company that"], [286.63, "can't show a balance sheet with its earnings?"], [288.84, "Skilling answers with an insult."], [291.37, "A word we can't say on this channel."], [293.95, "Fun fact:"], [294.87, "Enron's advertising slogan at the time was"], [297.39, "Ask why. Just,"], [299.33, "maybe, not out loud."], [301.45, "Four months later,"], [302.29, "on August 14,"], [303.57, "he suddenly resigns."], [305.27, "The very next day,"], [306.61, "an Enron vice president named Sherron Watkins"], [309.25, "sends Ken Lay an anonymous memo."], [311.61, "Her warning:"], [312.59, "the company could implode in a wave of accounting scandals."], [316.95, "Lay takes the CEO job back."], [319.05, "And on September 26,"], [321.03, "2001, in an online chat with employees,"], [323.61, "he says Enron's stock is an incredible bargain. Buy,"], [327.33, "buy, buy."], [328.25, "Three weeks later,"], [329.11, "on October 16,"], [330.46, "Enron announces a six hundred and eighteen"], [333.51, "million dollar loss,"], [334.83, "and a one point two billion dollar hit to shareholders' equity,"], [338.77, "partly tied to Fastow's partnerships."], [341.21, "In November, it admits its profits had been"], [343.89, "overstated going back to 1997."], [347.11, "A smaller rival,"], [348.64, "Dynegy, agrees to buy Enron at a bargain price."], [351.93, "Then it reads the books,"], [353.67, "and walks away on November 28."], [356.49, "That day, the stock falls below one dollar."], [359.95, "From ninety dollars to less than one."], [362.55, "In about fifteen months."], [365.91, "December 2, 2001."], [368.07, "Enron files for bankruptcy."], [370.13, "And the people who pay the price are not the executives."], [373.67, "At the end of 2000,"], [375.59, "employees had about two point one billion dollars"], [378.11, "in their retirement plan."], [379.61, "Sixty-two percent of it was in Enron stock."], [383.61, "Thousands lose their jobs and a huge part of"], [385.77, "their savings at the same time."], [388.01, "But the story isn't over."], [390.07, "Enron's auditor, Arthur Andersen,"], [392.13, "one of the biggest accounting firms in the world,"], [394.45, "is caught shredding Enron documents."], [397.03, "In June 2002,"], [398.49, "it's convicted."], [399.87, "Three years later,"], [400.85, "the Supreme Court overturns the conviction."], [403.59, "Too late."], [404.43, "The firm has already collapsed,"], [406.13, "and around twenty-eight thousand people in"], [408.01, "the US are out of work."], [410.37, "Washington reacts too."], [411.81, "In 2002, Congress passes the Sarbanes-Oxley Act."], [415.85, "Translation:"], [416.97, "new rules forcing company bosses to personally"], [419.67, "sign off on their numbers."], [421.29, "If the numbers lie,"], [422.49, "it's on them."], [424.13, "Andrew Fastow pleads guilty and gets six years in prison."], [427.32, "Jeff Skilling and Ken Lay are convicted in May 2006."], [431.09, "Skilling is sentenced to twenty-four years,"], [433.99, "serves about twelve,"], [435.15, "and is released in 2019."], [437.75, "Ken Lay never goes to prison."], [439.77, "He dies of a heart attack on July 5,"], [442.43, "2006, before his sentencing,"], [444.51, "and his conviction is erased."], [446.46, "And Enron Field?"], [448.41, "The Astros buy the name back for about two"], [450.52, "point one million dollars,"], [452.01, "and rename the stadium."], [453.91, "Even the ballpark wanted a divorce."], [456.31, "But here's the twist."], [457.75, "In 2020, a comedy group reportedly bought the"], [460.71, "Enron brand for two hundred and seventy-five dollars."], [463.97, "And in December 2024,"], [465.81, "they relaunched it,"], [466.97, "as a parody."], [467.95, "Their slogan:"], [469.23, "We're back."], [470.11, "Can we talk?"], [471.51, "So what's the lesson?"], [473.01, "When a company's numbers are too complicated to explain,"], [476.31, "sometimes that's not genius."], [478.17, "It's the point."], [479.79, "Respect."], [480.83, "Integrity."], [481.89, "Communication."], [483.03, "Excellence."], [484.07, "Four words on a wall."], [485.48, "Zero on the books."], [487.59, "If you enjoyed this,"], [489.01, "subscribe."], [489.73, "Next time:"], [490.45, "the twenty-eight-year-old trader who secretly"], [492.85, "lost so much money,"], [494.85, "a two-hundred-and-thirty-three-year-old bank"], [497.15, "was sold for one pound."]];
+const DUR=500.2;
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),eo=t=>1-Math.pow(1-t,3);
+const eb=t=>{const c1=1.6,c3=c1+1;return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2)},pr=(t,s,d)=>cl((t-s)/d);
+const q12=t=>Math.floor(t*12+1e-6)/12;
+window.EVENTS=[];const EV=(t,k)=>EVENTS.push([t,k]);
+(function(){let h='';for(let c=0;c<7;c++){h+=`<div class="col" style="left:${-30+c*285}px;top:-20px">`;for(let r=0;r<75;r++)h+=(r%15===3)?'<b></b>':`<i style="width:${70+((r*37+c*13)%30)}%"></i>`;h+='</div>';}$('cols').innerHTML=h})();
+// --- ancrage sur la voix : WORDS=[[mot,t],...] ---
+const nz=s=>s.toLowerCase().replace(/’/g,"'").split(/\s+/).map(w=>w.replace(/[^a-z0-9']/g,'').replace(/^'+|'+$/g,'')).filter(Boolean);
+let SCUR=0;window.MISS=[];
+function find(ph,from){const p=nz(ph);for(let i=from;i<=WORDS.length-p.length;i++){let ok=true;for(let k=0;k<p.length;k++)if(WORDS[i+k][0]!==p[k]){ok=false;break}if(ok)return i}MISS.push(ph);return -1}
+function T(ph,dt=0,k=0){const i=find(ph,SCUR);return i<0?NaN:WORDS[i+k][1]+dt}
+const OBJ=[],objs=$('objs'),SC=[];
+function scene(ph,dt=0){const i=find(ph,SCUR);if(i>=0)SCUR=i;const t=i<0?NaN:Math.max(0,WORDS[i][1]+dt-0.1);SC.push(t);return t;}
+function O(content,a,x,y,opt={}){if(isNaN(a))MISS.push('time:'+content.slice(0,40));const e=document.createElement('div');e.className='o'+(opt.img?' cut':'');
+ e.innerHTML=opt.img?`<img src="img/${content}.png" style="${opt.h?'height:'+opt.h:'width:'+opt.w}px;display:block">`:content;
+ if(opt.tape)opt.tape.forEach(tp=>{e.innerHTML+=`<div class="tape" style="left:${tp[0]}px;top:${tp[1]}px;transform:rotate(${tp[2]}deg)"></div>`});
+ objs.appendChild(e);const o={e,a,si:SC.length-1,zz:opt.z,x,y,fx:opt.fx||'drop',r:opt.r||0,id:opt.id};OBJ.push(o);
+ if(opt.sfx!==false)EV(a,opt.sfx||{stamp:'stamp',drop:'paper',slideL:'slide',slideR:'slide',slideT:'slide',slideB:'slide',pop:'tap'}[o.fx]);
+ if(opt.tape)EV(a+.35,'tape');return o;}
+const I=(n,a,x,y,o={})=>O(n,a,x,y,Object.assign({img:1},o));
+const S=(t,a,x,y,o={})=>O(`<div class="strip ${o.cls||''}" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'drop',tape:[[-66,-22,-32]]},o));
+const H=(t,a,x,y,o={})=>O(`<div class="head" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'slideL'},o));
+const ST=(t,a,x,y,o={})=>O(`<div class="stamp ${o.cls||''}" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'stamp'},o));
+const TG=(t,a,x,y,o={})=>O(`<div class="tag" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'pop'},o));
+const QT=(t,a,x,y,o={})=>O(`<div class="quote" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'pop',sfx:'pop'},o));
+const BAR=(c,h,a,x,yb,o={})=>O(`<div style="width:200px;height:${h}px;background:${c};box-shadow:0 10px 16px rgba(40,25,10,.4);clip-path:polygon(0 1%,4% 0,96% 1.5%,100% 0,100% 100%,0 100%)"></div>`,a,x,yb-h/2,Object.assign({fx:'slideB'},o));
+const MARKS=[];function circ(a,cx,cy,rx,ry){MARKS.push({a,si:SC.length-1,d:`M${cx+rx} ${cy} A${rx} ${ry} 0 1 1 ${cx+rx-2} ${cy-8}`});EV(a,'scribble');}
+function cross(a,cx,cy,s){MARKS.push({a,si:SC.length-1,d:`M${cx-s} ${cy-s*.8} L${cx+s} ${cy+s*.8} M${cx+s} ${cy-s*.8} L${cx-s} ${cy+s*.8}`});EV(a,'scribble');}
+const LINES=[];function line(a,x1,y1,x2,y2){LINES.push({a,si:SC.length-1,p:[x1,y1,x2,y2]});EV(a,'string');}
+// ================= HOOK =================
+scene("December 2, 2001. The seventh-largest");
+S('DECEMBER 2, 2001',T('december'),960,120,{cls:'r'});
+I('houston',T('the seventhlargest'),580,500,{w:780});
+ST('#7 IN AMERICA',T('seventhlargest'),1380,330,{st:'font-size:84px'});
+ST('BANKRUPT',T('files for bankruptcy'),1380,570,{r:-8,st:'font-size:110px'});
+TG('BIGGEST IN U.S. HISTORY',T('the biggest bankruptcy'),1380,800,{st:'font-size:50px'});
+scene("Six years in a row");
+ST('"MOST INNOVATIVE" &times;6',T('six years'),960,160,{cls:'g',st:'font-size:76px'});
+TG('OFFICIAL VALUES',T('official values'),960,330,{st:'font-size:46px'});
+S('RESPECT',T('respect'),560,500,{st:'font-size:58px'});
+S('INTEGRITY',T('integrity'),1360,500,{st:'font-size:58px'});
+S('COMMUNICATION',T('communication'),560,700,{st:'font-size:58px'});
+S('EXCELLENCE',T('excellence'),1360,700,{st:'font-size:58px'});
+cross(T('missing a few'),1360,500,170);
+cross(T('missing a few',0.3),560,500,160);
+scene("The year before, Enron reported");
+I('billets',T('the year before'),540,480,{w:640,sfx:'cash'});
+ST('$101 BILLION',T('one hundred and one'),1360,300,{cls:'g'});
+ST('~$277M / DAY',T('two hundred and seventyseven'),1360,540,{cls:'g',st:'font-size:84px'});
+ST('ON PAPER',T('on paper'),1360,780,{r:-6});
+scene("So how does a giant that big");
+I('lay_portrait',T('so how does'),720,500,{w:760});
+ST('GONE IN WEEKS?',T('in a few weeks'),1480,560,{r:-6,st:'font-size:72px'});
+scene("The answer involves Star Wars");
+I('vaisseau',T('star wars'),360,320,{w:460});
+I('raptor',T('dinosaurs'),960,320,{w:440});
+I('broyeuse',T('a paper shredder'),1560,320,{h:380});
+TG('4 BORING WORDS',T('four boring words'),960,620,{st:'font-size:50px'});
+H('MARK-TO-MARKET',T('marktomarket'),960,800,{st:'font-size:110px'});
+// ================= CHAPITRE 1 =================
+scene("Houston, Texas. 1985.");
+H('<small>CHAPTER 1</small>THE GAS COMPANY',T('houston texas'),960,170);
+S('HOUSTON, TEXAS &middot; 1985',T('1985'),960,340,{cls:'r'});
+I('houston',T('1985',0.2),960,670,{w:900});
+scene("Two gas pipeline companies merge");
+I('poignee',T('two gas pipeline'),520,460,{w:640});
+TG('MERGER',T('merge'),520,780,{st:'font-size:56px'});
+I('lay_ordi',T('the new boss'),1360,460,{w:660,fx:'slideR'});
+TG('KEN LAY',T('ken lay'),1360,780,{st:'font-size:56px'});
+scene("The new company gets a name");
+H('ENRON',T('enron'),960,190,{st:'font-size:150px'});
+I('ouvrier',T('incredibly boring'),480,640,{h:560});
+I('pipeline',T('natural gas'),1320,560,{w:680});
+TG('NOT A GREAT PARTY STORY',T('nobody gets rich'),1320,850,{st:'font-size:44px'});
+scene("Then came Jeff Skilling");
+I('skilling',T('then came'),960,560,{h:840,fx:'slideB'});
+TG('JEFF SKILLING',T('jeff skilling'),1480,300,{st:'font-size:58px'});
+scene("A brilliant consultant from McKinsey");
+I('skilling',T('a brilliant'),440,580,{h:760,sfx:false});
+TG('EX-McKINSEY',T('mckinsey'),1320,170,{st:'font-size:50px'});
+I('pipeline',T('stopped just moving'),1320,380,{w:440});
+ST('TRADING',T('started trading'),1320,610,{r:-5});
+ST('A GAS BANK',T('a gas bank'),1320,840,{cls:'g',st:'font-size:80px'});
+scene("But he has one condition");
+TG('ONE CONDITION',T('one condition'),960,140,{st:'font-size:50px'});
+H('MARK-TO-MARKET',T('marktomarket'),960,290,{st:'font-size:90px'});
+S('A 20-YEAR DEAL',T('a twentyyear deal'),540,520,{cls:'r',st:'font-size:54px'});
+I('billets',T('all the profit'),540,760,{w:440,sfx:'cash'});
+ST('DAY ONE',T('on day one'),1380,520,{r:-6,st:'font-size:110px'});
+TG('NOT WHEN THE MONEY ARRIVES',T('not when the money'),1380,760,{st:'font-size:40px'});
+ST('TODAY.',T('arrives today',0,1),1380,880,{cls:'g',st:'font-size:64px'});
+scene("So this contract makes money");
+I('skilling',T('so this contract'),440,650,{h:640,fx:'slideL',sfx:false});
+I('comptable',T('so this contract'),1480,700,{w:560,fx:'slideR'});
+QT('So this contract makes money over <em>20 years</em>?',T('so this contract',.1),1380,190,{z:T('and we book')});
+QT('Yes.',T('yes'),540,190,{z:T('today today',0,1)});
+QT('And we book all of it <em>today</em>?',T('and we book'),1380,190,{z:T('and if it')});
+QT('Today.',T('today today',0,1),540,190,{z:T("then we'll")});
+QT('And if it never makes money?',T('and if it'),1380,190);
+QT("Then we'll need a <em>bigger contract</em>.",T("then we'll"),540,190);
+scene("On January 30, 1992");
+S('JANUARY 30, 1992',T('january 30'),960,110,{cls:'r'});
+TG('THE SEC: NO OBJECTION',T("won't object"),540,250,{st:'font-size:44px'});
+I('champagne',T('celebrates with champagne'),540,560,{h:520,id:'mix',sfx:'pop'});
+I('skilling',T('skilling is so happy'),1360,590,{h:760,sfx:false});
+ST('FOR AN ACCOUNTING RULE',T('for an accounting'),720,880,{r:-4,st:'font-size:58px'});
+scene("And here's the thing. That rule");
+I('tapis_roulant',T("and here's the thing"),560,540,{h:620,id:'mix'});
+TG('BIGGER DEALS EVERY QUARTER',T('bigger and bigger'),1360,300,{st:'font-size:44px'});
+ST('FASTER',T('speeds up'),1360,560,{r:-6,st:'font-size:120px'});
+TG('EVERY 3 MONTHS',T('every three months'),1360,800,{st:'font-size:50px'});
+// ================= CHAPITRE 2 =================
+scene("But for a while, it looks like magic");
+H('<small>CHAPTER 2</small>THE MAGIC YEARS',T('but for a while'),960,450,{st:'font-size:120px'});
+scene("Enron trades gas, electricity");
+TG('GAS',T('trades gas'),300,190,{st:'font-size:56px'});
+TG('ELECTRICITY',T('electricity'),720,190,{st:'font-size:56px'});
+TG('PAPER',T('paper even'),1170,190,{st:'font-size:56px'});
+TG('BANDWIDTH',T('internet bandwidth'),1590,190,{st:'font-size:56px'});
+I('pylone',T('electricity'),560,600,{h:560,sfx:false});
+I('ordi',T('internet bandwidth'),1360,600,{w:480});
+scene("In 1999, it pays more");
+S('1999',T('in 1999'),960,110,{cls:'r'});
+I('stade',T('houston astros'),600,480,{w:840});
+ST('$100M+ / 30 YEARS',T('one hundred million'),1440,290,{cls:'g',st:'font-size:70px'});
+H('ENRON FIELD',T('enron field'),1440,530,{st:'font-size:84px'});
+I('batteur',T('enron field',0.4),1440,800,{h:300,fx:'pop'});
+scene("In August 2000, its stock");
+S('AUGUST 2000',T('in august 2000'),960,110,{cls:'r'});
+I('ticker',T('its stock'),560,520,{w:660});
+ST('~$90 / SHARE',T('ninety dollars'),1360,520,{cls:'g'});
+scene("And in July 2000, remember");
+S('JULY 2000',T('in july 2000'),960,110,{cls:'r'});
+TG('20-YEAR DEAL WITH BLOCKBUSTER',T('with blockbuster'),960,280,{st:'font-size:48px'});
+I('ordi',T('stream movies'),560,620,{w:480,sfx:false});
+ST('LASTED 8 MONTHS',T('eight months'),1360,580,{r:-5,st:'font-size:76px'});
+TG('FORESHADOWING...',T('foreshadowing'),1360,820,{st:'font-size:50px'});
+scene("But there's a problem");
+I('billets',T("there's a problem"),560,520,{w:620,sfx:false});
+cross(T('losing money',0.2),560,520,220);
+ST('LOSING MONEY',T('losing money'),1360,420,{r:-6});
+TG('LOOKS TERRIBLE ON PAPER',T('look terrible'),1360,680,{st:'font-size:46px'});
+scene("Enter Andrew Fastow");
+I('fastow',T('enter andrew'),480,580,{h:800,fx:'slideL'});
+TG('ANDREW FASTOW, CFO',T('andrew fastow'),1360,180,{st:'font-size:50px'});
+ST('MAKE LOSSES DISAPPEAR',T('make the losses'),1360,420,{st:'font-size:62px'});
+TG('"SPECIAL PURPOSE ENTITIES"',T('special purpose'),1360,660,{st:'font-size:44px'});
+scene("Translation: separate companies");
+I('carton',T('separate companies'),540,500,{w:580});
+TG('SIDE COMPANIES',T('separate companies',0.3),540,820,{st:'font-size:50px'});
+ST('BAD ASSETS',T('bad assets'),1360,240,{st:'font-size:80px'});
+ST('DEBTS',T('its debts'),1360,450,{st:'font-size:80px'});
+TG('OFF ENRON\'S BOOKS',T("don't show up"),1360,640,{st:'font-size:48px'});
+ST('OUT OF SIGHT',T('out of sight'),1360,840,{cls:'g',st:'font-size:72px'});
+scene("And the names? This is where");
+H('THE NAMES',T('and the names'),960,140);
+TG('JEDI',T('called jedi'),400,330,{st:'font-size:70px'});
+I('vaisseau',T('called jedi',0.2),400,610,{w:480,id:'float',fx:'pop'});
+TG('CHEWCO',T('called chewco'),960,330,{st:'font-size:70px'});
+ST('CHEWBACCA?',T('as in chewbacca'),960,600,{r:-6,st:'font-size:80px'});
+TG('RAPTORS',T('the raptors'),1520,330,{st:'font-size:70px'});
+I('raptor',T('as in the dinosaurs'),1520,630,{w:460});
+ST('WAY TOO MUCH FUN',T('way too much'),960,860,{cls:'g',st:'font-size:60px'});
+scene("Where did we put the losses");
+I('auditeur',T('where did we'),440,660,{h:620,fx:'slideL',sfx:false});
+I('fastow',T('where did we'),1480,640,{h:680,fx:'slideR'});
+QT('Where did we put the <em>losses</em>?',T('where did we',.1),540,190,{z:T('where chewco')});
+QT('Somewhere safe.',T('somewhere safe'),1380,190,{z:T('where chewco',0,1)});
+QT('Where?',T('where chewco'),540,190,{z:T('like chewbacca')});
+QT('Chewco.',T('where chewco',0,1),1380,190,{z:T("don't ask")});
+QT('Like... <em>Chewbacca</em>?',T('like chewbacca'),540,190);
+QT("Don't ask questions you don't want answered.",T("don't ask"),1380,190);
+scene("In June 1999, Enron's own board");
+S('JUNE 1999',T('in june 1999'),960,110,{cls:'r'});
+I('conseil',T("enron's own board"),560,450,{w:780});
+TG('FASTOW RUNS "LJM"',T('called ljm'),560,770,{st:'font-size:50px'});
+I('fastow',T('the man in charge'),1380,480,{h:580,sfx:false});
+ST('TOTALLY NORMAL',T('totally normal'),1380,860,{r:-5,st:'font-size:62px'});
+// ================= CHAPITRE 3 =================
+scene("Then came California");
+H('<small>CHAPTER 3</small>CALIFORNIA',T('then came california'),960,450,{st:'font-size:120px'});
+scene("In 2000 and 2001, the state");
+S('2000 &ndash; 2001',T('in 2000 and 2001'),960,110,{cls:'r'});
+I('pylone',T('energy crisis'),500,540,{h:640});
+ST('PRICES EXPLODE',T('prices explode'),1360,300,{r:-5,st:'font-size:80px'});
+TG('ROLLING BLACKOUTS',T('rolling blackouts'),1360,520,{st:'font-size:52px'});
+I('bougie',T('millions of people'),1360,780,{h:320});
+scene("Later, recordings revealed");
+I('traders',T('later recordings'),600,470,{w:900});
+ST('RIPPING OFF',T('ripping off'),600,830,{r:-5,st:'font-size:80px'});
+I('mamie',T('grandma millie'),1440,600,{w:560,fx:'slideR'});
+TG('"GRANDMA MILLIE"',T('grandma millie',0.3),1440,250,{st:'font-size:56px'});
+// ================= CHAPITRE 4 =================
+scene("And then, the cracks start to show");
+H('<small>CHAPTER 4</small>THE CRACKS',T('the cracks'),960,450,{st:'font-size:120px'});
+scene("In February 2001, Skilling becomes CEO");
+S('FEBRUARY 2001',T('in february 2001'),960,110,{cls:'r'});
+I('skilling',T('skilling becomes'),960,600,{h:760,sfx:false});
+TG('SKILLING: CEO',T('becomes ceo'),1500,330,{st:'font-size:56px'});
+scene("In April, on a call with Wall Street");
+S('APRIL 2001',T('in april'),960,110,{cls:'r'});
+I('analyste',T('an investor asks'),540,520,{w:780});
+QT('Why is Enron the only one that can\'t show a <em>balance sheet</em>?',T('why is enron'),1380,330);
+ST('#@!%&amp;!',T('with an insult'),1380,640,{r:-8,st:'font-size:120px'});
+TG("CAN'T SAY IT HERE",T("can't say"),1380,860,{st:'font-size:48px'});
+scene("Fun fact: Enron's advertising slogan");
+TG("ENRON'S AD SLOGAN",T('advertising slogan'),960,200,{st:'font-size:54px'});
+H('"ASK WHY."',T('ask why'),960,440,{st:'font-size:160px'});
+ST('NOT OUT LOUD',T('not out loud'),960,780,{r:-5});
+scene("Four months later, on August 14");
+S('AUGUST 14, 2001',T('august 14'),960,110,{cls:'r'});
+I('depart',T('suddenly resigns'),560,580,{h:640,id:'drive'});
+ST('SKILLING QUITS',T('suddenly resigns',0.2),1360,520,{r:-6,st:'font-size:90px'});
+scene("The very next day");
+I('watkins',T('the very next day'),480,580,{h:760,fx:'slideL'});
+TG('SHERRON WATKINS, VP',T('sherron watkins'),1360,170,{st:'font-size:50px'});
+I('memo',T('anonymous memo'),1360,440,{h:400});
+S('"IMPLODE IN A WAVE OF<br>ACCOUNTING SCANDALS"',T('implode'),1360,800,{cls:'r',st:'font-size:44px;text-align:center'});
+scene("Lay takes the CEO job back");
+I('lay_ordi',T('lay takes'),560,520,{w:840});
+S('SEPTEMBER 26, 2001',T('september 26'),1380,160,{cls:'r'});
+TG('CHAT WITH EMPLOYEES',T('online chat'),1380,340,{st:'font-size:46px'});
+ST('"AN INCREDIBLE BARGAIN"',T('incredible bargain'),1380,560,{cls:'g',st:'font-size:58px'});
+ST('BUY BUY BUY',T('buy buy buy'),1380,800,{r:-6,st:'font-size:80px'});
+scene("Three weeks later, on October 16");
+S('OCTOBER 16, 2001',T('october 16'),960,110,{cls:'r'});
+ST('&minus;$618 MILLION',T('six hundred and eighteen'),580,360,{st:'font-size:90px'});
+ST('&minus;$1.2 BILLION',T('one point two'),580,610,{st:'font-size:90px'});
+TG('SHAREHOLDERS\' EQUITY',T('shareholders'),580,820,{st:'font-size:48px'});
+I('fastow',T("fastow's partnerships"),1400,580,{h:700,sfx:false});
+scene("In November, it admits");
+S('NOVEMBER 2001',T('in november'),960,110,{cls:'r'});
+TG('PROFITS OVERSTATED SINCE 1997',T('overstated'),960,270,{st:'font-size:48px'});
+I('poignee',T('dynegy agrees'),560,580,{w:620});
+TG('DYNEGY',T('dynegy agrees'),560,850,{st:'font-size:52px'});
+I('depart',T('walks away'),1380,580,{h:540,id:'drive'});
+TG('WALKS AWAY &middot; NOV 28',T('walks away'),1380,880,{st:'font-size:44px'});
+scene("From ninety dollars to less than one");
+BAR('#2E7D4F',540,T('from ninety'),700,860);
+ST('$90',T('from ninety',0.2),700,230,{cls:'g'});
+BAR('#C8261E',10,T('less than one'),1220,860);
+ST('&lt; $1',T('less than one',0.2),1220,700);
+TG('IN ~15 MONTHS',T('fifteen months'),1220,420,{st:'font-size:52px'});
+scene("December 2, 2001. Enron files");
+S('DECEMBER 2, 2001',T('december 2'),960,110,{cls:'r'});
+I('tampon',T('enron files'),560,540,{h:580,sfx:false});
+ST('BANKRUPT',T('for bankruptcy'),1360,520,{r:-8,st:'font-size:140px'});
+scene("And the people who pay the price");
+I('couple',T('the people who pay'),540,440,{w:740});
+TG('NOT THE EXECUTIVES',T('not the executives'),1360,170,{st:'font-size:52px'});
+ST('$2.1 BILLION SAVED',T('two point one billion'),1360,380,{cls:'g',st:'font-size:70px'});
+ST('62% IN ENRON STOCK',T('sixtytwo percent'),540,820,{st:'font-size:70px'});
+I('employe_carton',T('thousands lose'),1240,710,{h:440});
+I('tirelire',T('their savings'),1640,760,{w:300});
+// ================= CHAPITRE 5 =================
+scene("But the story isn't over");
+H('<small>CHAPTER 5</small>THE FALLOUT',T('but the story'),960,450,{st:'font-size:120px'});
+scene("Enron's auditor, Arthur Andersen");
+I('auditeur',T("enron's auditor"),460,570,{h:720,fx:'slideL'});
+TG('ARTHUR ANDERSEN',T('arthur andersen'),1360,170,{st:'font-size:56px'});
+I('broyeuse',T('caught shredding'),1360,460,{h:420,id:'mix'});
+S('JUNE 2002: CONVICTED',T('in june 2002'),1360,790,{cls:'r'});
+scene("Three years later, the Supreme Court");
+I('juge',T('the supreme court'),540,520,{w:740});
+ST('OVERTURNED',T('overturns'),1360,300,{r:-6,st:'font-size:90px'});
+ST('TOO LATE',T('too late'),1360,540,{st:'font-size:90px'});
+TG('~28,000 U.S. JOBS GONE',T('twentyeight thousand'),1360,780,{st:'font-size:48px'});
+scene("Washington reacts too");
+I('senateur',T('washington reacts'),540,560,{w:780});
+S('2002',T('in 2002'),1380,150,{cls:'r'});
+H('SARBANES-OXLEY',T('sarbanesoxley'),1380,330,{st:'font-size:76px'});
+TG('BOSSES SIGN THEIR NUMBERS',T('personally sign'),1380,560,{st:'font-size:44px'});
+ST("IF THEY LIE: IT'S ON THEM",T("it's on them"),1380,790,{st:'font-size:52px'});
+scene("Andrew Fastow pleads guilty");
+TG('ANDREW FASTOW',T('andrew fastow'),560,160,{st:'font-size:50px'});
+I('prisonnier',T('pleads guilty'),560,520,{h:520});
+ST('6 YEARS',T('six years'),560,860,{st:'font-size:80px'});
+TG('JEFF SKILLING',T('jeff skilling and'),1360,160,{st:'font-size:50px'});
+I('prison',T('convicted in may'),1360,500,{h:480});
+ST('24 YEARS',T('twentyfour years'),1360,790,{st:'font-size:80px'});
+TG('OUT IN 2019',T('released in 2019'),1640,640,{st:'font-size:40px',r:6});
+scene("Ken Lay never goes to prison");
+I('lay_portrait',T('ken lay never'),580,520,{w:760});
+TG('NEVER GOES TO PRISON',T('never goes'),1380,220,{st:'font-size:50px'});
+S('DIES JULY 5, 2006',T('july 5'),1380,460,{cls:'r'});
+ST('CONVICTION ERASED',T('conviction is erased'),1380,720,{r:-5,st:'font-size:64px'});
+scene("And Enron Field? The Astros");
+I('stade',T('and enron field'),560,480,{w:820});
+H('ENRON FIELD',T('and enron field'),1380,260,{st:'font-size:80px'});
+cross(T('rename the stadium'),1380,260,260);
+ST('~$2.1 MILLION',T('two point one million'),1380,520,{cls:'g',st:'font-size:84px'});
+TG('EVEN THE BALLPARK WANTED A DIVORCE',T('even the ballpark'),960,860,{st:'font-size:42px'});
+scene("But here's the twist");
+S('2020',T('in 2020'),560,140,{cls:'r'});
+I('comiques',T('a comedy group'),560,500,{w:720});
+ST('$275',T('two hundred and seventyfive'),560,850,{cls:'g'});
+S('DECEMBER 2024',T('in december 2024'),1380,140,{cls:'r'});
+H('ENRON IS BACK?',T('relaunched it'),1380,350,{st:'font-size:80px'});
+TG('AS A PARODY',T('as a parody'),1380,560,{st:'font-size:50px'});
+QT("&ldquo;We're back. Can we talk?&rdquo;",T("we're back"),1380,780);
+// ================= FIN =================
+scene("So what's the lesson?");
+H('THE LESSON',T("so what's"),960,140);
+I('ticker',T('too complicated'),540,520,{w:640});
+TG('TOO COMPLICATED TO EXPLAIN?',T('too complicated'),1380,330,{st:'font-size:42px'});
+TG('NOT GENIUS',T("that's not genius"),1380,520,{st:'font-size:52px'});
+ST("IT'S THE POINT",T("it's the point"),1380,740,{st:'font-size:80px'});
+scene("Respect. Integrity. Communication. Excellence. Four words");
+S('RESPECT',T('respect'),960,170,{st:'font-size:58px'});
+S('INTEGRITY',T('integrity'),960,320,{st:'font-size:58px'});
+S('COMMUNICATION',T('communication'),960,470,{st:'font-size:58px'});
+S('EXCELLENCE',T('excellence'),960,620,{st:'font-size:58px'});
+ST('ZERO ON THE BOOKS',T('zero on the'),960,820,{r:-4,st:'font-size:80px'});
+[170,320,470,620].forEach((y,i)=>cross(T('zero on the',0.15+0.15*i),960,y,170));
+scene("If you enjoyed this, subscribe");
+ST('SUBSCRIBE',T('subscribe'),960,230,{cls:'g',st:'font-size:140px'});
+H('<small>NEXT TIME</small>THE ROGUE TRADER',T('next time'),960,560,{st:'font-size:110px'});
+TG('A 233-YEAR-OLD BANK SOLD FOR &pound;1',T('sold for one pound'),960,830,{st:'font-size:42px'});
+// fin de scène = début de la scène suivante
+const zOf=si=>SC[si+1]!==undefined?SC[si+1]:DUR;
+OBJ.forEach(o=>{o.z=o.zz!==undefined?o.zz:zOf(o.si)});MARKS.forEach(m=>m.z=zOf(m.si));LINES.forEach(L=>L.z=zOf(L.si));
+const lay=$('lay');
+MARKS.forEach((m,i)=>{lay.innerHTML+=`<path id="mk${i}" d="${m.d}" stroke="#C8261E" stroke-width="10" stroke-linecap="round" fill="none" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>`;});
+LINES.forEach((L,i)=>{const [x1,y1,x2,y2]=L.p;lay.innerHTML+=`<path id="ln${i}" d="M${x1} ${y1} Q${(x1+x2)/2} ${Math.min(y1,y2)-80} ${x2} ${y2}" stroke="#C8261E" stroke-width="6" fill="none" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><circle id="pa${i}" cx="${x1}" cy="${y1}" r="11" fill="#B8872B" opacity="0"/><circle id="pb${i}" cx="${x2}" cy="${y2}" r="11" fill="#B8872B" opacity="0"/>`;});
+SC.slice(1).forEach(t=>EV(t-.08,'whoosh'));
+OBJ.forEach(o=>{if(o.e.querySelector('.strip'))for(let k=0;k<5;k++)EV(o.a+.05+k*.055,'key');});
+window.render=function(t){const tq=q12(t);
+ let si=0;for(let i=0;i<SC.length;i++)if(t>=SC[i])si=i;const st=SC[si],sd=(SC[si+1]||DUR)-st,k=pr(t,st,sd);
+ const jit=(Math.sin(Math.floor(t*12)*12.9898)*43758.5453)%1;
+ $('world').style.transform=`scale(${1+.04*k}) rotate(${(si%2?-1:1)*.3*k}deg)`;
+ $('paper').style.transform=`translate(${(si%2?-1:1)*14*k}px,${-6*k}px)`;
+ for(const o of OBJ){const e=o.e;if(t<o.a||t>o.z+.35){e.style.opacity=0;continue}
+  const w=e.offsetWidth,h=e.offsetHeight;let x=o.x,y=o.y,s=1,op=1,r=o.r;
+  const p=pr(tq,o.a,o.fx==='stamp'?.25:.42),pe=eb(p);
+  if(o.fx==='slideL')x=o.x-2100*(1-pe);if(o.fx==='slideR')x=o.x+2100*(1-pe);
+  if(o.fx==='slideT')y=o.y-1300*(1-pe);if(o.fx==='slideB')y=o.y+1300*(1-pe);
+  if(o.fx==='drop'){s=1.35-.35*eo(p);op=cl(p*3);r=o.r+(1-eo(p))*8;}
+  if(o.fx==='stamp'){s=2.4-1.4*eo(p);op=cl(p*4);}
+  if(o.fx==='pop'){s=.2+.8*pe;op=cl(p*3);}
+  if(o.fx.startsWith('slide'))r=o.r+(1-eo(p))*(o.fx==='slideL'?-10:10);
+  const since=tq-o.a;if(since>.42&&since<.9)r+=Math.sin(since*40)*1.2*(1-(since-.42)/.48);
+  if(o.id==='mix'&&since>.45&&since<1.8){x+=Math.sin(tq*90)*4;r+=Math.sin(tq*70)*.8;}
+  if(o.id==='drive'&&since>.42){x+=Math.min(since-.42,5)*30;}
+  if(o.id==='fly'&&since>.42){x+=(since-.42)*90;y-=(since-.42)*12;}
+  if(o.id==='dive'&&since>.42){y+=Math.min(since-.42,8)*16;}
+  if(o.id==='float'){y+=Math.sin(tq*2.2)*6;}
+  const q=pr(t,o.z,.35);if(q>0){y-=q*120;op*=1-q;s*=1-.06*q;}
+  e.style.opacity=op;e.style.transform=`translate(${x-w/2}px,${y-h/2}px) scale(${s}) rotate(${r+(jit-.5)*.35}deg)`;}
+ MARKS.forEach((m,i)=>{const el=$('mk'+i);el.style.strokeDashoffset=1-eo(pr(t,m.a,.4));el.style.opacity=(t>=m.a&&t<m.z+.2)?1:0;});
+ LINES.forEach((L,i)=>{const p=eo(pr(t,L.a,.6)),q=pr(t,L.z,.3),on=t>=L.a&&t<L.z+.3;$('ln'+i).style.strokeDashoffset=1-p;$('ln'+i).style.opacity=on?1-q:0;$('pa'+i).setAttribute('opacity',on?1-q:0);$('pb'+i).setAttribute('opacity',on&&p>.95?1-q:0);});
+ let c=null;for(const x of CAP)if(t>=x[0])c=x;const sb=$('sub');
+ if(c&&c[1]&&t<DUR-.3){const p=pr(tq,c[0],.17);sb.innerHTML=`<span class="w">${c[1]}</span>`;sb.style.opacity=cl(p*2);sb.style.transform=`translateY(${20*(1-eo(p))}px) rotate(${(CAP.indexOf(c)%2?-1:1)*.8}deg)`;}else sb.innerHTML='';};
+document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>i.onload=r))).then(()=>{render(0);window.READY=true;}));
+</script></body></html>

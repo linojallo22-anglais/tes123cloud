@@ -42,3 +42,11 @@ blockbuster/build/*.f32
 blockbuster/build/shots/
 blockbuster/build/recut/
 blockbuster/*-partie-*.mp4
+enron/raw/
+enron/build/test/
+enron/build/out/
+enron/build/*.wav
+enron/build/*.f32
+enron/build/shots/
+enron/build/recut/
+enron/*-partie-*.mp4
