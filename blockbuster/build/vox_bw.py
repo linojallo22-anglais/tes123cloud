@@ -7,7 +7,7 @@ def convert(src,dst):
     hue=np.zeros_like(mx)
     d=np.maximum(mx-mn,1e-6)
     hue=np.where(mx==r,((g-b)/d)%6,np.where(mx==g,(b-r)/d+2,(r-g)/d+4))*60
-    paper=(sat>0.55)&(mx>0.55)&(((hue<14)|(hue>345))|((hue>36)&(hue<56)))   # rouge vif ou jaune moutarde
+    paper=(sat>0.62)&(mx>0.6)&(((hue<14)|(hue>345))|((hue>36)&(hue<56)))   # rouge vif ou jaune moutarde
     # ne garder que les grandes zones de papier (pas une cravate isolée? on la garde aussi : accent Vox)
     lab,n=nd.label(paper); cnt=np.bincount(lab.ravel()); big=np.isin(lab,[k for k in range(1,n+1) if cnt[k]>1500]); paper=big
     paper=nd.binary_closing(paper,iterations=2)

@@ -36,3 +36,9 @@ paypal/build/shots/
 paypal/*-partie-*.mp4
 blockbuster/raw/
 blockbuster/build/test/
+blockbuster/build/out/
+blockbuster/build/*.wav
+blockbuster/build/*.f32
+blockbuster/build/shots/
+blockbuster/build/recut/
+blockbuster/*-partie-*.mp4

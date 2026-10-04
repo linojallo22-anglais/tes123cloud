@@ -1,0 +1,361 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:TW;src:url(../mcdonalds/node_modules/@fontsource/special-elite/files/special-elite-latin-400-normal.woff2)}
+@font-face{font-family:AN;src:url(../mcdonalds/node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#D9CCB0}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:#E4D7BC}
+#paper{position:absolute;inset:-60px;background:repeating-linear-gradient(0deg,rgba(60,45,25,.05) 0 2px,transparent 2px 26px),radial-gradient(1500px 1000px at 50% 45%,#EFE4CB 0%,#E1D2B2 60%,#C9B791 100%)}
+#paper:after{content:"";position:absolute;inset:0;opacity:.55;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' seed='4'/><feColorMatrix values='0 0 0 0 .45 0 0 0 0 .35 0 0 0 0 .2 0 0 0 .5 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>")}
+.col{position:absolute;width:280px;opacity:.12}.col i{display:block;height:8px;margin:8px 0;background:#3A2E1E;border-radius:2px}.col b{display:block;height:30px;margin:12px 0 9px;background:#3A2E1E;width:85%}
+#world{position:absolute;inset:0;transform-origin:50% 45%}
+.o{position:absolute;left:0;top:0;opacity:0;transform-origin:50% 50%}
+.cut{filter:drop-shadow(0 12px 10px rgba(40,25,10,.45)) drop-shadow(0 2px 2px rgba(40,25,10,.3))}
+.strip{background:#F7F1E3;padding:12px 28px;font-family:TW;font-size:46px;color:#1C1712;white-space:nowrap;box-shadow:0 8px 14px rgba(40,25,10,.35);clip-path:polygon(0 4%,3% 0,97% 3%,100% 0,99% 96%,96% 100%,4% 97%,0 100%)}
+.strip.r{color:#C8261E}
+.head{background:#1C1712;color:#F3EBD8;font-family:AN;font-size:96px;line-height:1;padding:16px 32px 20px;white-space:nowrap;box-shadow:0 10px 18px rgba(0,0,0,.4);clip-path:polygon(0 3%,2% 0,98% 4%,100% 0,100% 97%,97% 100%,2% 96%,0 100%)}
+.head small{font-size:.5em;color:#E8B737;display:block;margin-bottom:6px;letter-spacing:3px}
+.stamp{font-family:AN;color:#C8261E;border:8px solid #C8261E;border-radius:14px;padding:4px 24px 8px;font-size:92px;line-height:1;letter-spacing:2px;white-space:nowrap;background:rgba(247,241,227,.9);opacity:.95;-webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.3 1.55'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");-webkit-mask-size:200px}
+.stamp.g{color:#2E7D4F;border-color:#2E7D4F}
+.tape{position:absolute;width:140px;height:42px;background:rgba(236,224,180,.8);box-shadow:0 2px 3px rgba(0,0,0,.15);clip-path:polygon(0 8%,6% 0,12% 10%,20% 0,100% 5%,94% 100%,86% 90%,78% 100%,0 95%)}
+.tag{background:#E8B737;font-family:TW;font-size:40px;color:#1C1712;padding:9px 22px;white-space:nowrap;box-shadow:0 6px 10px rgba(40,25,10,.35)}
+.quote{background:#F7F1E3;border:5px solid #1C1712;border-radius:26px;padding:18px 30px;font-family:TW;font-size:42px;color:#1C1712;width:max-content;max-width:680px;line-height:1.25;box-shadow:0 8px 14px rgba(40,25,10,.35)}
+.quote em,.strip em,#sub em{font-style:normal;color:#C8261E}
+#sub{position:absolute;left:60px;right:60px;top:958px;text-align:center}
+#sub span.w{display:inline-block;background:#F7F1E3;font-family:TW;font-size:42px;white-space:nowrap;color:#1C1712;padding:9px 22px;box-shadow:0 6px 12px rgba(40,25,10,.4);clip-path:polygon(0 5%,2% 0,98% 4%,100% 0,99% 95%,97% 100%,3% 96%,0 100%)}
+svg.lay{position:absolute;left:0;top:0}
+</style></head><body><div id="stage"><div id="paper"></div><div id="world"><div id="cols"></div><div id="objs"></div>
+<svg class="lay" id="lay" width="1920" height="1080"></svg></div><div id="sub"></div></div>
+<script>
+const WORDS=[["dallas", 0.11], ["the", 0.81], ["year", 1.05], ["2000", 1.71], ["two", 2.81], ["young", 3.01], ["founders", 3.43], ["walk", 3.79], ["into", 4.03], ["blockbuster's", 4.47], ["headquarters", 4.91], ["and", 5.61], ["offer", 5.91], ["to", 6.13], ["sell", 6.35], ["their", 6.55], ["tiny", 6.97], ["company", 7.41], ["for", 7.77], ["fifty", 8.26], ["million", 8.75], ["dollars", 9.61], ["across", 10.47], ["the", 10.67], ["table", 10.97], ["blockbuster's", 11.64], ["ceo", 12.31], ["is", 12.71], ["trying", 12.97], ["very", 13.41], ["hard", 13.79], ["not", 14.11], ["to", 14.31], ["laugh", 14.53], ["that", 15.65], ["tiny", 15.89], ["company", 16.27], ["was", 16.77], ["netflix", 17.13], ["today", 18.13], ["it's", 18.63], ["worth", 18.81], ["roughly", 19.21], ["three", 19.72], ["hundred", 20.24], ["billion", 20.75], ["dollars", 21.35], ["and", 21.95], ["blockbuster", 22.13], ["its", 23.29], ["entire", 23.77], ["empire", 24.23], ["now", 24.63], ["fits", 24.85], ["inside", 25.19], ["one", 25.59], ["single", 25.97], ["store", 26.33], ["in", 26.73], ["a", 26.81], ["small", 27.09], ["town", 27.43], ["in", 27.69], ["oregon", 28.01], ["at", 29.03], ["its", 29.15], ["peak", 29.47], ["blockbuster", 30.03], ["made", 30.47], ["around", 30.73], ["eight", 31.16], ["hundred", 31.6], ["million", 32.03], ["dollars", 32.28], ["a", 32.53], ["year", 32.75], ["from", 33.07], ["late", 33.39], ["fees", 33.69], ["alone", 34.19], ["that's", 35.01], ["more", 35.21], ["than", 35.35], ["two", 35.7], ["million", 36.05], ["dollars", 36.29], ["a", 36.53], ["day", 36.91], ["from", 37.49], ["people", 37.79], ["who", 37.97], ["forgot", 38.37], ["to", 38.59], ["return", 38.85], ["a", 38.99], ["movie", 39.29], ["but", 40.35], ["here's", 40.53], ["what", 40.71], ["almost", 40.95], ["nobody", 41.39], ["tells", 41.73], ["you", 42.01], ["blockbuster", 42.75], ["didn't", 43.35], ["die", 43.71], ["because", 43.99], ["it", 44.13], ["ignored", 44.37], ["the", 44.61], ["internet", 44.95], ["it", 45.61], ["saw", 45.85], ["it", 45.95], ["coming", 46.29], ["it", 46.91], ["fought", 47.17], ["back", 47.61], ["and", 48.31], ["for", 48.45], ["a", 48.59], ["moment", 48.87], ["it", 49.23], ["was", 49.35], ["actually", 49.79], ["winning", 50.21], ["until", 51.21], ["a", 51.37], ["billionaire", 51.81], ["investor", 52.37], ["walked", 52.79], ["into", 53.07], ["the", 53.21], ["boardroom", 53.41], ["dallas", 55.37], ["texas", 55.83], ["october", 56.61], ["19", 56.95], ["1985", 58.13], ["a", 59.41], ["man", 59.61], ["named", 59.89], ["david", 60.17], ["cook", 60.41], ["opens", 60.91], ["a", 61.07], ["video", 61.33], ["rental", 61.63], ["store", 61.93], ["unlike", 62.35], ["anything", 63.05], ["people", 63.43], ["have", 63.55], ["seen", 63.77], ["bright", 64.79], ["lights", 65.25], ["wide", 65.87], ["aisles", 66.19], ["around", 66.91], ["eight", 67.34], ["thousand", 67.76], ["tapes", 68.19], ["on", 68.37], ["the", 68.49], ["shelves", 68.77], ["and", 69.23], ["a", 69.31], ["computer", 69.67], ["system", 70.03], ["to", 70.19], ["check", 70.37], ["them", 70.53], ["out", 70.77], ["video", 71.77], ["stores", 72.09], ["back", 72.29], ["then", 72.53], ["were", 72.69], ["usually", 72.97], ["small", 73.51], ["dark", 74.17], ["and", 74.59], ["a", 74.89], ["little", 75.15], ["sketchy", 75.41], ["blockbuster", 76.43], ["felt", 76.91], ["like", 77.09], ["a", 77.21], ["supermarket", 77.77], ["for", 78.11], ["movies", 78.39], ["then", 79.57], ["a", 79.85], ["businessman", 80.23], ["named", 80.73], ["wayne", 80.97], ["huizenga", 81.38], ["takes", 81.79], ["over", 82.15], ["and", 82.41], ["turns", 82.73], ["it", 82.95], ["into", 83.23], ["a", 83.35], ["machine", 83.75], ["new", 84.69], ["stores", 84.95], ["everywhere", 85.71], ["make", 86.51], ["it", 86.65], ["a", 86.69], ["blockbuster", 86.89], ["night", 87.49], ["friday", 88.51], ["evening", 88.83], ["becomes", 89.17], ["a", 89.35], ["ritual", 89.73], ["you", 90.37], ["walk", 90.61], ["the", 90.85], ["aisles", 90.99], ["you", 91.45], ["fight", 91.75], ["your", 91.93], ["siblings", 92.15], ["over", 92.45], ["the", 92.57], ["box", 92.81], ["and", 93.29], ["the", 93.39], ["one", 93.65], ["movie", 93.93], ["you", 94.11], ["actually", 94.63], ["wanted", 94.95], ["is", 95.27], ["always", 95.87], ["somehow", 96.63], ["rented", 97.17], ["out", 97.45], ["do", 98.33], ["you", 98.41], ["have", 98.53], ["the", 98.65], ["new", 98.75], ["jurassic", 98.99], ["park", 99.29], ["all", 100.21], ["forty", 100.5], ["copies", 100.79], ["are", 100.95], ["out", 101.11], ["forty", 102.46], ["forty", 103.82], ["want", 105.17], ["a", 105.25], ["documentary", 105.61], ["about", 105.93], ["bees", 106.17], ["in", 107.59], ["1994", 108.31], ["the", 108.79], ["media", 109.13], ["giant", 109.47], ["viacom", 109.79], ["buys", 110.51], ["blockbuster", 110.77], ["for", 111.31], ["eight", 111.69], ["point", 112.07], ["four", 112.45], ["billion", 112.83], ["dollars", 113.45], ["by", 114.07], ["2004", 114.75], ["there", 115.31], ["are", 115.39], ["nine", 115.78], ["thousand", 116.17], ["and", 116.57], ["ninetyfour", 116.96], ["blockbuster", 117.35], ["stores", 117.89], ["around", 118.27], ["the", 118.47], ["world", 118.73], ["and", 119.19], ["more", 119.37], ["than", 119.49], ["eightyfour", 120.07], ["thousand", 120.65], ["employees", 121.23], ["and", 122.19], ["here's", 122.45], ["the", 122.67], ["dirty", 122.95], ["secret", 123.39], ["of", 123.53], ["the", 123.63], ["business", 123.91], ["model", 124.27], ["late", 125.05], ["fees", 125.39], ["return", 126.37], ["your", 126.55], ["tape", 126.75], ["a", 126.87], ["day", 127.11], ["late", 127.35], ["and", 127.83], ["you", 127.97], ["pay", 128.17], ["blockbuster", 129.13], ["reportedly", 129.89], ["made", 130.23], ["about", 130.55], ["eight", 131.0], ["hundred", 131.44], ["million", 131.89], ["dollars", 132.14], ["a", 132.39], ["year", 132.63], ["this", 132.85], ["way", 133.07], ["roughly", 133.77], ["sixteen", 134.14], ["percent", 134.5], ["of", 134.87], ["its", 135.01], ["revenue", 135.37], ["translation", 136.27], ["one", 136.84], ["dollar", 137.4], ["out", 137.97], ["of", 138.05], ["every", 138.45], ["six", 138.87], ["came", 139.17], ["from", 139.33], ["punishing", 139.81], ["its", 140.17], ["own", 140.55], ["customers", 141.05], ["that's", 142.17], ["four", 142.41], ["dollars", 142.65], ["for", 142.89], ["the", 142.99], ["rental", 143.23], ["great", 143.97], ["and", 144.83], ["eight", 145.08], ["dollars", 145.34], ["of", 145.59], ["late", 145.75], ["fees", 146.01], ["for", 146.71], ["a", 146.81], ["movie", 147.11], ["i", 147.31], ["didn't", 147.61], ["even", 147.83], ["like", 148.13], ["especially", 149.33], ["for", 149.57], ["that", 149.77], ["one", 149.99], ["then", 151.85], ["came", 152.29], ["the", 152.45], ["red", 152.61], ["envelope", 152.97], ["in", 153.79], ["1997", 154.59], ["two", 155.31], ["entrepreneurs", 155.65], ["in", 156.03], ["california", 156.59], ["reed", 157.07], ["hastings", 157.55], ["and", 158.01], ["marc", 158.26], ["randolph", 158.51], ["start", 159.29], ["a", 159.45], ["company", 159.75], ["that", 160.03], ["rents", 160.38], ["dvds", 160.73], ["by", 161.19], ["mail", 161.49], ["no", 162.23], ["store", 162.59], ["no", 163.17], ["driving", 163.55], ["you", 164.29], ["pick", 164.47], ["a", 164.59], ["movie", 164.77], ["on", 164.91], ["a", 164.99], ["website", 165.33], ["and", 165.71], ["it", 165.83], ["shows", 166.09], ["up", 166.35], ["in", 166.45], ["your", 166.55], ["mailbox", 166.81], ["they", 167.71], ["call", 167.93], ["it", 168.13], ["netflix", 168.73], ["there's", 169.91], ["a", 170.05], ["famous", 170.37], ["legend", 170.77], ["that", 171.11], ["hastings", 171.39], ["started", 171.87], ["netflix", 172.25], ["out", 172.59], ["of", 172.75], ["rage", 173.15], ["after", 173.59], ["paying", 173.83], ["a", 173.97], ["fortydollar", 174.41], ["late", 174.85], ["fee", 175.09], ["on", 175.31], ["apollo", 175.59], ["13", 176.05], ["great", 176.99], ["story", 177.35], ["but", 178.21], ["his", 178.51], ["cofounder", 178.92], ["later", 179.33], ["called", 179.63], ["it", 179.81], ["a", 180.01], ["convenient", 180.57], ["fiction", 181.05], ["basically", 182.17], ["branding", 182.77], ["very", 183.59], ["hollywood", 183.95], ["still", 185.03], ["in", 185.55], ["2000", 186.11], ["netflix", 186.71], ["is", 186.97], ["losing", 187.29], ["money", 187.67], ["and", 187.89], ["needs", 188.11], ["help", 188.37], ["so", 189.13], ["hastings", 189.41], ["and", 189.69], ["randolph", 189.89], ["fly", 190.39], ["to", 190.53], ["dallas", 190.75], ["with", 191.03], ["an", 191.17], ["offer", 191.43], ["buy", 192.39], ["us", 192.63], ["for", 192.81], ["fifty", 193.18], ["million", 193.55], ["dollars", 194.1], ["you", 194.65], ["run", 194.79], ["the", 194.93], ["stores", 195.23], ["we'll", 195.65], ["run", 196.07], ["the", 196.21], ["online", 196.43], ["business", 196.75], ["for", 196.99], ["you", 197.15], ["according", 198.33], ["to", 198.49], ["randolph", 198.98], ["blockbuster's", 199.47], ["ceo", 200.33], ["john", 200.81], ["antioco", 201.25], ["was", 201.69], ["struggling", 202.21], ["not", 202.63], ["to", 202.87], ["laugh", 203.11], ["the", 203.93], ["meeting", 204.15], ["went", 204.33], ["downhill", 204.69], ["fast", 205.23], ["no", 206.13], ["deal", 206.31], ["but", 207.23], ["here's", 207.45], ["the", 207.65], ["twist", 207.87], ["almost", 208.27], ["everyone", 208.91], ["forgets", 209.29], ["blockbuster", 210.41], ["wasn't", 211.01], ["ignoring", 211.41], ["the", 211.63], ["internet", 211.93], ["at", 212.23], ["all", 212.59], ["that", 213.51], ["same", 213.83], ["year", 214.13], ["in", 214.41], ["july", 214.63], ["2000", 215.25], ["it", 215.75], ["signed", 215.93], ["a", 216.07], ["twentyyear", 216.55], ["deal", 217.03], ["to", 217.27], ["stream", 217.53], ["movies", 217.89], ["over", 218.17], ["the", 218.31], ["internet", 218.63], ["its", 219.43], ["partner", 219.75], ["a", 220.53], ["hot", 220.93], ["innovative", 221.43], ["energy", 221.85], ["company", 222.15], ["from", 222.39], ["houston", 222.73], ["called", 223.15], ["enron", 223.53], ["yes", 224.61], ["that", 225.37], ["enron", 225.61], ["cue", 226.34], ["the", 227.07], ["ominous", 227.37], ["music", 227.93], ["they", 229.09], ["tested", 229.43], ["it", 229.59], ["with", 229.69], ["about", 229.93], ["a", 230.03], ["thousand", 230.45], ["homes", 230.73], ["in", 231.01], ["four", 231.29], ["cities", 231.65], ["and", 232.35], ["by", 232.47], ["march", 232.73], ["2001", 233.41], ["eight", 233.99], ["months", 234.21], ["later", 234.55], ["the", 235.05], ["twentyyear", 235.47], ["deal", 235.89], ["was", 236.13], ["already", 236.57], ["over", 236.93], ["a", 237.81], ["few", 237.93], ["months", 238.09], ["after", 238.37], ["that", 238.59], ["enron", 239.13], ["collapsed", 239.81], ["in", 240.11], ["one", 240.25], ["of", 240.31], ["the", 240.45], ["biggest", 240.89], ["frauds", 241.21], ["in", 241.49], ["american", 241.87], ["history", 242.35], ["blockbuster's", 243.33], ["first", 244.05], ["streaming", 244.43], ["partner", 244.85], ["a", 245.45], ["company", 245.83], ["built", 246.23], ["on", 246.49], ["fake", 246.85], ["numbers", 247.23], ["you", 248.05], ["can't", 248.27], ["make", 248.49], ["this", 248.71], ["up", 248.93], ["and", 249.91], ["then", 250.21], ["antioco", 250.73], ["does", 251.25], ["something", 251.63], ["bold", 252.03], ["in", 252.93], ["2004", 253.67], ["blockbuster", 254.31], ["launches", 254.89], ["its", 255.17], ["own", 255.55], ["online", 256.01], ["rental", 256.31], ["service", 256.77], ["blockbuster", 257.29], ["online", 257.95], ["and", 258.89], ["on", 258.99], ["january", 259.43], ["1", 259.95], ["2005", 260.47], ["it", 261.09], ["kills", 261.63], ["late", 261.91], ["fees", 262.17], ["gone", 262.89], ["just", 264.41], ["like", 264.59], ["that", 264.83], ["a", 265.55], ["huge", 266.03], ["revenue", 266.33], ["stream", 266.67], ["thrown", 267.23], ["away", 267.55], ["on", 267.95], ["purpose", 268.37], ["to", 268.89], ["win", 269.07], ["back", 269.25], ["customers", 269.69], ["then", 270.85], ["in", 271.21], ["late", 271.45], ["2006", 272.15], ["comes", 272.63], ["the", 272.83], ["masterstroke", 273.25], ["total", 274.49], ["access", 274.89], ["rent", 275.87], ["dvds", 276.15], ["online", 276.69], ["like", 277.21], ["netflix", 277.49], ["but", 278.25], ["when", 278.37], ["you're", 278.47], ["done", 278.73], ["drop", 279.29], ["them", 279.51], ["at", 279.65], ["any", 279.99], ["blockbuster", 280.23], ["store", 280.81], ["and", 281.05], ["walk", 281.33], ["out", 281.63], ["with", 281.77], ["a", 281.87], ["new", 282.11], ["movie", 282.47], ["instantly", 283.15], ["netflix", 284.43], ["had", 284.67], ["mailboxes", 284.91], ["blockbuster", 285.99], ["had", 286.49], ["mailboxes", 286.85], ["and", 287.39], ["nine", 287.86], ["thousand", 288.32], ["stores", 288.79], ["it", 289.69], ["works", 290.01], ["by", 290.97], ["the", 291.07], ["end", 291.25], ["of", 291.35], ["2006", 292.01], ["blockbuster", 292.53], ["online", 293.23], ["has", 293.47], ["about", 293.69], ["two", 294.13], ["million", 294.57], ["subscribers", 295.15], ["according", 296.27], ["to", 296.47], ["the", 296.57], ["book", 296.73], ["netflixed", 297.36], ["new", 297.99], ["signups", 298.27], ["suddenly", 298.93], ["swing", 299.41], ["toward", 299.69], ["blockbuster", 299.93], ["by", 301.07], ["the", 301.19], ["end", 301.33], ["of", 301.45], ["january", 301.87], ["2007", 302.61], ["netflix's", 303.35], ["stock", 303.83], ["has", 304.05], ["dropped", 304.29], ["almost", 304.65], ["twelve", 305.26], ["percent", 305.88], ["for", 306.49], ["the", 306.59], ["first", 306.95], ["time", 307.29], ["the", 307.81], ["little", 308.13], ["red", 308.33], ["envelope", 308.69], ["is", 309.11], ["scared", 309.55], ["picture", 310.61], ["it", 310.83], ["the", 311.29], ["dinosaur", 311.79], ["is", 312.19], ["learning", 312.49], ["to", 312.69], ["fly", 312.93], ["but", 314.09], ["then", 314.47], ["came", 314.87], ["the", 315.05], ["billionaire", 315.51], ["enter", 316.13], ["carl", 316.57], ["icahn", 317.05], ["one", 317.53], ["of", 317.61], ["wall", 317.79], ["street's", 317.97], ["most", 318.27], ["famous", 318.77], ["activist", 319.31], ["investors", 319.97], ["translation", 320.75], ["someone", 321.75], ["who", 321.89], ["buys", 322.09], ["a", 322.33], ["big", 322.63], ["chunk", 322.85], ["of", 323.03], ["a", 323.11], ["company's", 323.43], ["shares", 323.75], ["and", 324.17], ["then", 324.31], ["pressures", 324.75], ["management", 325.21], ["to", 325.49], ["do", 325.65], ["things", 325.91], ["his", 326.23], ["way", 326.51], ["by", 327.37], ["2005", 328.05], ["he", 328.63], ["owns", 328.81], ["nearly", 329.09], ["ten", 329.45], ["percent", 329.81], ["of", 330.17], ["blockbuster", 330.39], ["and", 331.15], ["wins", 331.33], ["three", 331.73], ["seats", 332.13], ["on", 332.33], ["the", 332.43], ["board", 332.65], ["and", 333.55], ["icahn", 334.09], ["hates", 334.63], ["the", 334.91], ["plan", 335.17], ["the", 335.91], ["online", 336.15], ["service", 336.51], ["is", 336.69], ["expensive", 337.23], ["killing", 338.05], ["late", 338.31], ["fees", 338.51], ["cost", 338.87], ["a", 339.05], ["fortune", 339.53], ["antioco's", 340.25], ["bonus", 340.97], ["way", 341.89], ["too", 342.13], ["big", 342.39], ["according", 342.77], ["to", 342.95], ["icahn", 343.5], ["we're", 344.05], ["finally", 344.57], ["beating", 344.91], ["netflix", 345.29], ["wonderful", 346.55], ["how", 347.17], ["much", 347.29], ["is", 347.41], ["it", 347.49], ["costing", 347.93], ["us", 348.31], ["a", 348.83], ["lot", 349.19], ["then", 350.01], ["stop", 350.39], ["beating", 350.81], ["them", 351.03], ["so", 351.21], ["expensively", 351.65], ["the", 352.59], ["fight", 352.89], ["gets", 353.27], ["ugly", 353.73], ["and", 354.33], ["in", 354.41], ["2007", 355.11], ["antioco", 355.77], ["is", 356.43], ["out", 356.75], ["his", 357.71], ["replacement", 358.15], ["is", 358.47], ["jim", 358.77], ["keyes", 359.17], ["the", 359.57], ["former", 359.87], ["boss", 360.17], ["of", 360.33], ["7eleven", 360.98], ["his", 361.63], ["priority", 362.07], ["pay", 362.56], ["down", 363.05], ["debt", 363.27], ["and", 363.53], ["bring", 363.73], ["focus", 364.15], ["back", 364.51], ["to", 364.71], ["the", 364.81], ["stores", 365.09], ["marketing", 366.17], ["for", 366.33], ["the", 366.43], ["online", 366.67], ["service", 367.07], ["gets", 367.31], ["cut", 367.65], ["growth", 368.47], ["stalls", 369.01], ["antioco", 369.78], ["later", 370.55], ["said", 370.85], ["he", 371.07], ["believed", 371.29], ["blockbuster", 371.63], ["online", 372.33], ["could", 372.69], ["have", 372.87], ["reached", 373.01], ["ten", 373.44], ["million", 373.87], ["subscribers", 374.45], ["if", 374.81], ["it", 374.87], ["had", 374.95], ["kept", 375.13], ["going", 375.47], ["meanwhile", 376.55], ["in", 377.03], ["january", 377.41], ["2007", 378.21], ["netflix", 378.93], ["quietly", 379.59], ["launches", 379.99], ["something", 380.45], ["new", 380.75], ["streaming", 381.71], ["watch", 382.83], ["instantly", 383.39], ["no", 384.09], ["envelope", 384.45], ["no", 385.11], ["store", 385.49], ["no", 386.09], ["late", 386.31], ["fees", 386.57], ["ever", 387.51], ["you", 388.45], ["can", 388.55], ["probably", 388.93], ["guess", 389.13], ["the", 389.31], ["rest", 389.47], ["september", 390.41], ["23", 390.93], ["2010", 391.81], ["blockbuster", 392.67], ["files", 393.29], ["for", 393.49], ["bankruptcy", 393.87], ["with", 394.43], ["about", 394.65], ["one", 395.04], ["point", 395.44], ["five", 395.84], ["billion", 396.23], ["dollars", 396.49], ["of", 396.75], ["debt", 396.99], ["in", 397.89], ["2011", 398.45], ["the", 398.89], ["satellite", 399.21], ["tv", 399.57], ["company", 399.93], ["dish", 400.23], ["buys", 400.67], ["what's", 400.87], ["left", 401.19], ["including", 401.91], ["about", 402.17], ["seventeen", 402.66], ["hundred", 403.14], ["stores", 403.63], ["in", 404.11], ["a", 404.21], ["deal", 404.45], ["valued", 404.83], ["at", 404.99], ["around", 405.21], ["three", 405.53], ["hundred", 405.84], ["and", 406.16], ["twenty", 406.47], ["million", 406.79], ["dollars", 407.44], ["the", 408.09], ["stores", 408.35], ["close", 408.73], ["one", 409.49], ["after", 409.99], ["another", 410.37], ["until", 411.15], ["only", 411.57], ["one", 411.93], ["is", 412.11], ["left", 412.43], ["bend", 413.37], ["oregon", 413.87], ["by", 414.79], ["2019", 415.37], ["this", 416.11], ["is", 416.33], ["the", 416.49], ["last", 416.83], ["blockbuster", 417.15], ["store", 417.69], ["on", 417.89], ["the", 418.01], ["planet", 418.45], ["and", 419.21], ["instead", 419.45], ["of", 419.59], ["disappearing", 420.09], ["it", 420.59], ["becomes", 420.83], ["a", 421.01], ["tourist", 421.33], ["attraction", 421.85], ["people", 422.67], ["fly", 423.05], ["in", 423.29], ["to", 423.43], ["take", 423.65], ["selfies", 424.07], ["buy", 424.64], ["tshirts", 425.22], ["rent", 425.79], ["a", 425.95], ["dvd", 426.23], ["for", 426.61], ["old", 426.79], ["times", 427.24], ["sake", 427.68], ["in", 428.13], ["2020", 428.63], ["the", 429.13], ["store", 429.33], ["was", 429.47], ["even", 429.65], ["listed", 429.93], ["on", 430.13], ["airbnb", 430.57], ["for", 431.21], ["four", 431.48], ["dollars", 431.74], ["a", 432.01], ["night", 432.21], ["it", 432.97], ["got", 433.09], ["its", 433.25], ["own", 433.45], ["documentary", 434.05], ["and", 434.69], ["in", 434.77], ["2026", 435.09], ["it's", 436.17], ["still", 436.57], ["open", 437.05], ["and", 437.89], ["netflix", 438.21], ["more", 439.05], ["than", 439.19], ["three", 439.68], ["hundred", 440.18], ["million", 440.67], ["paying", 440.99], ["members", 441.43], ["worth", 442.21], ["roughly", 442.55], ["three", 443.04], ["hundred", 443.54], ["billion", 444.03], ["dollars", 444.55], ["the", 445.17], ["company", 445.47], ["blockbuster", 445.79], ["could", 446.29], ["have", 446.43], ["bought", 446.61], ["for", 446.85], ["fifty", 447.31], ["million", 447.77], ["so", 448.71], ["what's", 448.85], ["the", 449.03], ["lesson", 449.33], ["blockbuster", 450.23], ["didn't", 450.73], ["fail", 451.15], ["because", 451.45], ["it", 451.59], ["couldn't", 451.77], ["see", 452.03], ["the", 452.15], ["future", 452.51], ["it", 453.17], ["saw", 453.55], ["it", 453.79], ["built", 454.29], ["it", 454.55], ["and", 454.91], ["was", 455.11], ["winning", 455.45], ["and", 456.31], ["then", 456.59], ["it", 456.89], ["chose", 457.11], ["shortterm", 457.61], ["numbers", 458.11], ["over", 458.47], ["the", 458.59], ["long", 458.81], ["game", 459.11], ["sometimes", 460.25], ["the", 460.49], ["most", 460.65], ["expensive", 461.19], ["decision", 461.69], ["isn't", 462.07], ["the", 462.31], ["one", 462.43], ["you", 462.57], ["refuse", 463.01], ["it's", 463.67], ["the", 463.85], ["one", 464.03], ["you", 464.17], ["abandon", 464.65], ["halfway", 465.13], ["fifty", 465.9], ["million", 466.67], ["dollars", 467.3], ["one", 467.93], ["laugh", 468.19], ["and", 468.97], ["the", 469.09], ["last", 469.33], ["laugh", 469.81], ["went", 470.11], ["to", 470.29], ["the", 470.39], ["red", 470.57], ["envelope", 470.95], ["if", 471.99], ["you", 472.09], ["enjoyed", 472.35], ["this", 472.71], ["subscribe", 473.31], ["next", 474.03], ["time", 474.31], ["the", 474.91], ["company", 475.25], ["that", 475.45], ["tried", 475.71], ["to", 475.91], ["stream", 476.25], ["movies", 476.67], ["with", 476.89], ["blockbuster", 477.17], ["and", 478.15], ["turned", 478.37], ["out", 478.55], ["to", 478.69], ["be", 478.83], ["one", 479.03], ["of", 479.11], ["the", 479.25], ["biggest", 479.77], ["frauds", 480.19], ["in", 480.55], ["history", 481.05], ["enron", 482.25]];
+const CAP=[[0.11, "Dallas, the year 2000."], [2.81, "Two young founders walk into Blockbuster's"], [4.91, "headquarters and offer to sell their tiny company"], [7.77, "for fifty million dollars."], [10.47, "Across the table,"], [11.64, "Blockbuster's CEO is trying very hard not to laugh."], [15.65, "That tiny company was Netflix."], [18.13, "Today, it's worth roughly three hundred billion dollars."], [21.95, "And Blockbuster?"], [23.29, "Its entire empire now fits inside one single store,"], [26.73, "in a small town in Oregon."], [29.03, "At its peak,"], [30.03, "Blockbuster made around eight hundred million"], [32.28, "dollars a year from late fees alone."], [35.01, "That's more than two million dollars a day,"], [37.49, "from people who forgot to return a movie."], [40.35, "But here's what almost nobody tells you."], [42.75, "Blockbuster didn't die because it ignored the internet."], [45.61, "It saw it coming."], [46.91, "It fought back."], [48.31, "And for a moment,"], [49.23, "it was actually winning."], [51.21, "Until a billionaire investor walked into the boardroom."], [55.37, "Dallas, Texas."], [56.61, "October 19, 1985."], [59.41, "A man named David Cook opens a video rental"], [61.93, "store unlike anything people have seen."], [64.79, "Bright lights."], [65.87, "Wide aisles."], [66.91, "Around eight thousand tapes on the shelves,"], [69.23, "and a computer system to check them out."], [71.77, "Video stores back then were usually small,"], [74.17, "dark and a little sketchy."], [76.43, "Blockbuster felt like a supermarket for movies."], [79.57, "Then a businessman named Wayne Huizenga takes"], [82.15, "over and turns it into a machine."], [84.69, "New stores everywhere."], [86.51, "Make it a Blockbuster night."], [88.51, "Friday evening becomes a ritual."], [90.37, "You walk the aisles,"], [91.45, "you fight your siblings over the box,"], [93.29, "and the one movie you actually wanted is always,"], [96.63, "somehow, rented out."], [98.33, ""], [100.21, ""], [102.46, ""], [103.82, ""], [107.59, "In 1994, the media giant Viacom buys Blockbuster"], [111.31, "for eight point four billion dollars."], [114.07, "By 2004, there are nine thousand and ninety-four"], [117.35, "Blockbuster stores around the world,"], [119.19, "and more than eighty-four thousand employees."], [122.19, "And here's the dirty secret of the business model:"], [125.05, "late fees."], [126.37, "Return your tape a day late,"], [127.83, "and you pay."], [129.13, "Blockbuster reportedly made about eight hundred"], [131.89, "million dollars a year this way."], [133.77, "Roughly sixteen percent of its revenue."], [136.27, "Translation:"], [136.84, "one dollar out of every six came from punishing"], [140.17, "its own customers."], [142.17, ""], [143.97, ""], [144.83, ""], [146.71, ""], [149.33, ""], [151.85, "Then came the red envelope."], [153.79, "In 1997, two entrepreneurs in California,"], [157.07, "Reed Hastings and Marc Randolph,"], [159.29, "start a company that rents DVDs by mail."], [162.23, "No store."], [163.17, "No driving."], [164.29, "You pick a movie on a website,"], [165.71, "and it shows up in your mailbox."], [167.71, "They call it Netflix."], [169.91, "There's a famous legend that Hastings started"], [172.25, "Netflix out of rage after paying a forty-dollar"], [174.85, "late fee on Apollo 13."], [176.99, "Great story."], [178.21, "But his co-founder later called it a convenient fiction."], [182.17, "Basically, branding."], [183.59, "Very Hollywood."], [185.03, "Still, in 2000,"], [186.71, "Netflix is losing money and needs help."], [189.13, "So Hastings and Randolph fly to Dallas with an offer."], [192.39, "Buy us for fifty million dollars."], [194.65, "You run the stores."], [195.65, "We'll run the online business for you."], [198.33, "According to Randolph,"], [199.47, "Blockbuster's CEO, John Antioco,"], [201.69, "was struggling not to laugh."], [203.93, "The meeting went downhill fast."], [206.13, "No deal."], [207.23, "But here's the twist almost everyone forgets."], [210.41, "Blockbuster wasn't ignoring the internet at all."], [213.51, "That same year,"], [214.41, "in July 2000,"], [215.75, "it signed a twenty-year deal to stream movies"], [218.17, "over the internet."], [219.43, "Its partner?"], [220.53, "A hot, innovative energy company from Houston called Enron."], [224.61, "Yes."], [225.37, "That Enron."], [226.34, "Cue the ominous music."], [229.09, "They tested it with about a thousand homes"], [231.01, "in four cities."], [232.35, "And by March 2001,"], [233.99, "eight months later,"], [235.05, "the twenty-year deal was already over."], [237.81, "A few months after that,"], [239.13, "Enron collapsed in one of the biggest frauds"], [241.49, "in American history."], [243.33, "Blockbuster's first streaming partner:"], [245.45, "a company built on fake numbers."], [248.05, "You can't make this up."], [249.91, "And then, Antioco does something bold."], [252.93, "In 2004, Blockbuster launches its own online rental service,"], [257.29, "Blockbuster Online."], [258.89, "And on January 1,"], [260.47, "2005, it kills late fees."], [262.89, "Gone."], [264.41, "Just like that."], [265.55, "A huge revenue stream,"], [267.23, "thrown away on purpose,"], [268.89, "to win back customers."], [270.85, "Then, in late 2006,"], [272.63, "comes the masterstroke:"], [274.49, "Total Access."], [275.87, "Rent DVDs online,"], [277.21, "like Netflix."], [278.25, "But when you're done,"], [279.29, "drop them at any Blockbuster store and walk"], [281.63, "out with a new movie,"], [283.15, "instantly."], [284.43, "Netflix had mailboxes."], [285.99, "Blockbuster had mailboxes and nine thousand stores."], [289.69, "It works."], [290.97, "By the end of 2006,"], [292.53, "Blockbuster Online has about two million subscribers."], [296.27, "According to the book Netflixed,"], [297.99, "new sign-ups suddenly swing toward Blockbuster."], [301.07, "By the end of January 2007,"], [303.35, "Netflix's stock has dropped almost twelve percent."], [306.49, "For the first time,"], [307.81, "the little red envelope is scared."], [310.61, "Picture it."], [311.29, "The dinosaur is learning to fly."], [314.09, "But then came the billionaire."], [316.13, "Enter Carl Icahn,"], [317.53, "one of Wall Street's most famous activist investors."], [320.75, "Translation:"], [321.75, "someone who buys a big chunk of a company's"], [323.75, "shares and then pressures management to do"], [325.91, "things his way."], [327.37, "By 2005, he owns nearly ten percent of Blockbuster"], [331.15, "and wins three seats on the board."], [333.55, "And Icahn hates the plan."], [335.91, "The online service is expensive."], [338.05, "Killing late fees cost a fortune."], [340.25, "Antioco's bonus?"], [341.89, "Way too big,"], [342.77, "according to Icahn."], [344.05, ""], [346.55, ""], [348.83, ""], [350.01, ""], [352.59, "The fight gets ugly."], [354.33, "And in 2007,"], [355.77, "Antioco is out."], [357.71, "His replacement is Jim Keyes,"], [359.57, "the former boss of 7-Eleven."], [361.63, "His priority:"], [362.56, "pay down debt and bring focus back to the stores."], [366.17, "Marketing for the online service gets cut."], [368.47, "Growth stalls."], [369.78, "Antioco later said he believed Blockbuster"], [372.33, "Online could have reached ten million subscribers"], [374.81, "if it had kept going."], [376.55, "Meanwhile, in January 2007,"], [378.93, "Netflix quietly launches something new:"], [381.71, "streaming."], [382.83, "Watch instantly."], [384.09, "No envelope."], [385.11, "No store."], [386.09, "No late fees."], [387.51, "Ever."], [388.45, "You can probably guess the rest."], [390.41, "September 23, 2010."], [392.67, "Blockbuster files for bankruptcy,"], [394.43, "with about one point five billion dollars of debt."], [397.89, "In 2011, the satellite TV company Dish buys what's left,"], [401.91, "including about seventeen hundred stores,"], [404.11, "in a deal valued at around three hundred and"], [406.47, "twenty million dollars."], [408.09, "The stores close,"], [409.49, "one after another."], [411.15, "Until only one is left."], [413.37, "Bend, Oregon."], [414.79, "By 2019, this is the last Blockbuster store"], [417.89, "on the planet."], [419.21, "And instead of disappearing,"], [420.59, "it becomes a tourist attraction."], [422.67, "People fly in to take selfies."], [424.64, "Buy t-shirts."], [425.79, "Rent a DVD for old times' sake."], [428.13, "In 2020, the store was even listed on Airbnb,"], [431.21, "for four dollars a night."], [432.97, "It got its own documentary."], [434.69, "And in 2026,"], [436.17, "it's still open."], [437.89, "And Netflix?"], [439.05, "More than three hundred million paying members."], [442.21, "Worth roughly three hundred billion dollars."], [445.17, "The company Blockbuster could have bought for fifty million."], [448.71, "So what's the lesson?"], [450.23, "Blockbuster didn't fail because it couldn't"], [452.03, "see the future."], [453.17, "It saw it,"], [454.29, "built it, and was winning."], [456.31, "And then it chose short-term numbers over the long game."], [460.25, "Sometimes the most expensive decision isn't"], [462.31, "the one you refuse."], [463.67, "It's the one you abandon halfway."], [465.9, "Fifty million dollars."], [467.93, "One laugh."], [468.97, "And the last laugh went to the red envelope."], [471.99, "If you enjoyed this,"], [473.31, "subscribe."], [474.03, "Next time:"], [474.91, "the company that tried to stream movies with Blockbuster,"], [478.15, "and turned out to be one of the biggest frauds in history."], [482.25, "Enron."]];
+const DUR=484.1;
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),eo=t=>1-Math.pow(1-t,3);
+const eb=t=>{const c1=1.6,c3=c1+1;return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2)},pr=(t,s,d)=>cl((t-s)/d);
+const q12=t=>Math.floor(t*12+1e-6)/12;
+window.EVENTS=[];const EV=(t,k)=>EVENTS.push([t,k]);
+(function(){let h='';for(let c=0;c<7;c++){h+=`<div class="col" style="left:${-30+c*285}px;top:-20px">`;for(let r=0;r<75;r++)h+=(r%15===3)?'<b></b>':`<i style="width:${70+((r*37+c*13)%30)}%"></i>`;h+='</div>';}$('cols').innerHTML=h})();
+// --- ancrage sur la voix : WORDS=[[mot,t],...] ---
+const nz=s=>s.toLowerCase().replace(/’/g,"'").split(/\s+/).map(w=>w.replace(/[^a-z0-9']/g,'').replace(/^'+|'+$/g,'')).filter(Boolean);
+let SCUR=0;window.MISS=[];
+function find(ph,from){const p=nz(ph);for(let i=from;i<=WORDS.length-p.length;i++){let ok=true;for(let k=0;k<p.length;k++)if(WORDS[i+k][0]!==p[k]){ok=false;break}if(ok)return i}MISS.push(ph);return -1}
+function T(ph,dt=0,k=0){const i=find(ph,SCUR);return i<0?NaN:WORDS[i+k][1]+dt}
+const OBJ=[],objs=$('objs'),SC=[];
+function scene(ph,dt=0){const i=find(ph,SCUR);if(i>=0)SCUR=i;const t=i<0?NaN:Math.max(0,WORDS[i][1]+dt-0.1);SC.push(t);return t;}
+function O(content,a,x,y,opt={}){if(isNaN(a))MISS.push('time:'+content.slice(0,40));const e=document.createElement('div');e.className='o'+(opt.img?' cut':'');
+ e.innerHTML=opt.img?`<img src="img/${content}.png" style="${opt.h?'height:'+opt.h:'width:'+opt.w}px;display:block">`:content;
+ if(opt.tape)opt.tape.forEach(tp=>{e.innerHTML+=`<div class="tape" style="left:${tp[0]}px;top:${tp[1]}px;transform:rotate(${tp[2]}deg)"></div>`});
+ objs.appendChild(e);const o={e,a,si:SC.length-1,zz:opt.z,x,y,fx:opt.fx||'drop',r:opt.r||0,id:opt.id};OBJ.push(o);
+ if(opt.sfx!==false)EV(a,opt.sfx||{stamp:'stamp',drop:'paper',slideL:'slide',slideR:'slide',slideT:'slide',slideB:'slide',pop:'tap'}[o.fx]);
+ if(opt.tape)EV(a+.35,'tape');return o;}
+const I=(n,a,x,y,o={})=>O(n,a,x,y,Object.assign({img:1},o));
+const S=(t,a,x,y,o={})=>O(`<div class="strip ${o.cls||''}" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'drop',tape:[[-66,-22,-32]]},o));
+const H=(t,a,x,y,o={})=>O(`<div class="head" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'slideL'},o));
+const ST=(t,a,x,y,o={})=>O(`<div class="stamp ${o.cls||''}" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'stamp'},o));
+const TG=(t,a,x,y,o={})=>O(`<div class="tag" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'pop'},o));
+const QT=(t,a,x,y,o={})=>O(`<div class="quote" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'pop',sfx:'pop'},o));
+const BAR=(c,h,a,x,yb,o={})=>O(`<div style="width:200px;height:${h}px;background:${c};box-shadow:0 10px 16px rgba(40,25,10,.4);clip-path:polygon(0 1%,4% 0,96% 1.5%,100% 0,100% 100%,0 100%)"></div>`,a,x,yb-h/2,Object.assign({fx:'slideB'},o));
+const MARKS=[];function circ(a,cx,cy,rx,ry){MARKS.push({a,si:SC.length-1,d:`M${cx+rx} ${cy} A${rx} ${ry} 0 1 1 ${cx+rx-2} ${cy-8}`});EV(a,'scribble');}
+function cross(a,cx,cy,s){MARKS.push({a,si:SC.length-1,d:`M${cx-s} ${cy-s*.8} L${cx+s} ${cy+s*.8} M${cx+s} ${cy-s*.8} L${cx-s} ${cy+s*.8}`});EV(a,'scribble');}
+const LINES=[];function line(a,x1,y1,x2,y2){LINES.push({a,si:SC.length-1,p:[x1,y1,x2,y2]});EV(a,'string');}
+// ================= HOOK =================
+scene("Dallas, the year 2000");
+S('DALLAS &middot; 2000',-0.4,960,120,{cls:'r'});
+I('dallas',-0.4,560,420,{w:720,fx:'pop',sfx:false});
+I('hastings',T('two young founders'),1250,600,{h:620,fx:'slideR'});
+I('randolph',T('two young founders',0.3),1630,600,{h:600,fx:'slideR',sfx:false});
+ST('$50 MILLION',T('fifty million'),560,770,{cls:'g',sfx:'cash'});
+scene("Across the table");
+I('ceo_rire',T('across the table'),620,520,{w:840});
+ST('TRYING NOT TO LAUGH',T('not to laugh'),1460,480,{r:-6,st:'font-size:70px'});
+scene("That tiny company was Netflix");
+I('enveloppe_rouge',T('that tiny company'),560,460,{w:540});
+H('NETFLIX',T('was netflix'),560,780,{st:'font-size:100px'});
+ST('~$300 BILLION',T('three hundred billion'),1380,420,{cls:'g',st:'font-size:96px',sfx:'cash'});
+scene("And Blockbuster? Its entire empire");
+I('dernier_magasin',T('and blockbuster'),740,480,{w:820});
+TG('ONE STORE LEFT',T('one single store'),1520,420,{st:'font-size:54px'});
+TG('OREGON',T('in oregon'),1520,580,{st:'font-size:54px'});
+scene("At its peak, Blockbuster made");
+I('ticket',T('at its peak'),520,500,{h:640});
+ST('$800M / YEAR',T('eight hundred million'),1350,320,{st:'font-size:96px'});
+TG('IN LATE FEES',T('late fees alone'),1350,530,{st:'font-size:56px'});
+ST('$2M+ / DAY',T('two million dollars a day'),1350,750,{cls:'g',st:'font-size:84px'});
+scene("But here's what almost nobody tells you");
+I('laptop',T("but here's what"),560,480,{w:580});
+TG('IT SAW IT COMING',T('saw it coming'),1350,250,{st:'font-size:54px'});
+TG('IT FOUGHT BACK',T('fought back'),1350,400,{st:'font-size:54px'});
+ST('IT WAS WINNING',T('actually winning'),1350,630,{cls:'g',st:'font-size:86px'});
+scene("Until a billionaire investor");
+I('investisseur',T('until a billionaire'),960,580,{h:720,fx:'slideB'});
+ST('UNTIL...',T('until a billionaire',0.2),1520,320,{r:-8});
+// ================= CHAPITRE 1 =================
+scene("Dallas, Texas. October 19, 1985.");
+H('<small>CHAPTER 1</small>THE EMPIRE',T('dallas texas'),960,170);
+S('DALLAS, TEXAS &middot; OCTOBER 19, 1985',T('october 19'),960,330,{cls:'r'});
+I('magasin',T('1985',0.2),960,650,{w:840});
+scene("A man named David Cook");
+I('ruban',T('a man named'),520,540,{w:660,fx:'slideL'});
+TG('DAVID COOK',T('david cook'),520,190,{st:'font-size:58px'});
+TG('BRIGHT LIGHTS',T('bright lights'),1350,230);
+TG('WIDE AISLES',T('wide aisles'),1350,360);
+I('boites_vhs',T('eight thousand tapes'),1350,580,{w:420});
+ST('~8,000 TAPES',T('eight thousand tapes',0.3),1350,800,{st:'font-size:64px'});
+scene("Video stores back then");
+I('magnetoscope',T('video stores back'),520,470,{w:580});
+TG('SMALL. DARK. SKETCHY.',T('a little sketchy'),520,760,{st:'font-size:46px'});
+I('magasin',T('blockbuster felt like'),1350,450,{w:640,sfx:'pop'});
+ST('A SUPERMARKET FOR MOVIES',T('a supermarket'),1350,770,{cls:'g',st:'font-size:62px'});
+scene("Then a businessman named Wayne Huizenga");
+TG('WAYNE HUIZENGA',T('wayne huizenga'),560,180,{st:'font-size:58px'});
+[[340,420],[780,420],[340,700],[780,700]].forEach((p,i)=>I('magasin',T('new stores everywhere',0.2*i),p[0],p[1],{w:380,fx:'pop',sfx:'pop',r:(i%2?2:-2)}));
+ST('"MAKE IT A BLOCKBUSTER NIGHT"',T('make it a blockbuster'),1420,420,{st:'font-size:46px',r:-4});
+I('popcorn',T('friday evening'),1420,700,{h:320});
+scene("You walk the aisles");
+I('famille',T('you walk the'),700,520,{w:920});
+I('boites_vhs',T('fight your siblings'),1560,380,{w:360});
+TG('ALWAYS RENTED OUT',T('rented out'),1560,690,{st:'font-size:48px'});
+scene("Do you have the new Jurassic Park");
+I('cliente',T('do you have'),470,620,{h:600,fx:'slideL'});
+I('employe',T('do you have'),1450,620,{h:600,fx:'slideR',sfx:false});
+QT('Do you have the new <em>Jurassic Park</em>?',T('do you have',.1),540,170,{z:T('are out forty',0,2)});
+QT('All forty copies are out.',T('all forty'),1420,170,{z:T('forty want')});
+QT('Forty?',T('are out forty',0,2),540,170);
+QT('Forty. Want a documentary about <em>bees</em>?',T('forty want'),1420,170);
+I('abeille',T('about bees'),960,430,{w:300,fx:'pop'});
+scene("In 1994, the media giant Viacom");
+S('1994',T('in 1994'),960,120,{cls:'r'});
+I('poignee',T('viacom buys'),560,450,{w:620});
+TG('VIACOM BUYS BLOCKBUSTER',T('viacom'),560,720,{st:'font-size:46px'});
+ST('$8.4 BILLION',T('eight point four'),1350,420,{cls:'g',sfx:'cash'});
+scene("By 2004, there are nine thousand");
+S('2004 &middot; THE PEAK',T('by 2004'),960,120,{cls:'r'});
+I('magasin',T('by 2004'),560,450,{w:660});
+ST('9,094 STORES',T('nine thousand and ninetyfour'),1350,380);
+ST('84,000+ EMPLOYEES',T('eightyfour thousand'),1350,620,{cls:'g',st:'font-size:76px'});
+scene("And here's the dirty secret");
+I('horloge',T('dirty secret'),520,480,{w:500});
+H('LATE FEES',T('late fees'),1350,400,{st:'font-size:120px'});
+TG('RETURN A DAY LATE = PAY',T('a day late'),1350,680,{st:'font-size:46px'});
+scene("Blockbuster reportedly made about eight hundred");
+I('bocal',T('blockbuster reportedly'),520,500,{h:580});
+ST('~$800M / YEAR',T('eight hundred million'),1350,320,{st:'font-size:90px'});
+ST('~16% OF REVENUE',T('sixteen percent'),1350,550,{st:'font-size:76px'});
+TG('$1 OUT OF EVERY $6',T('one dollar out'),1350,770,{st:'font-size:52px'});
+scene("That's four dollars for the rental");
+I('cliente',T("that's four"),470,620,{h:600,fx:'slideL',sfx:false});
+I('employe',T("that's four"),1450,620,{h:600,fx:'slideR'});
+QT("That's four dollars for the rental.",T("that's four",.1),1420,170,{z:T('and eight dollars')});
+QT('Great.',T('great'),540,170,{z:T('for a movie')});
+QT('And <em>eight dollars</em> of late fees.',T('and eight dollars'),1420,170,{z:T('especially')});
+QT("For a movie I didn't even like?",T('for a movie'),540,170);
+QT('Especially for that one.',T('especially'),1420,170);
+I('ticket',T('and eight dollars',0.3),960,560,{h:380,fx:'pop'});
+// ================= CHAPITRE 2 =================
+scene("Then came the red envelope");
+H('<small>CHAPTER 2</small>THE RED ENVELOPE',T('then came'),960,250,{st:'font-size:110px'});
+I('enveloppe_rouge',T('red envelope'),960,660,{w:540});
+scene("In 1997, two entrepreneurs");
+S('1997 &middot; CALIFORNIA',T('in 1997'),960,120,{cls:'r'});
+I('hastings',T('reed hastings'),420,600,{h:660,fx:'slideL'});
+I('randolph',T('marc randolph'),830,600,{h:640,fx:'slideL'});
+TG('NO STORE. NO DRIVING.',T('no store'),1420,200,{st:'font-size:48px'});
+I('dvd',T('rents dvds'),1420,420,{w:340});
+I('enveloppe_rouge',T('in your mailbox'),1440,710,{w:440});
+scene("There's a famous legend");
+I('vhs',T("there's a famous"),520,440,{w:540});
+ST('$40 LATE FEE?',T('fortydollar'),520,740,{st:'font-size:76px'});
+TG('APOLLO 13',T('apollo 13'),1350,270,{st:'font-size:58px'});
+ST('"CONVENIENT FICTION"',T('convenient fiction'),1350,510,{r:-5,st:'font-size:72px'});
+TG('VERY HOLLYWOOD',T('very hollywood'),1350,750,{st:'font-size:54px'});
+scene("Still, in 2000, Netflix is losing");
+S('2000',T('still in 2000'),960,120,{cls:'r'});
+I('fleche_rouge',T('losing money'),460,450,{w:460});
+I('dallas',T('fly to dallas'),1320,380,{w:640});
+ST('BUY US: $50M',T('buy us for'),1320,640,{cls:'g',st:'font-size:84px'});
+TG('YOU: STORES &middot; US: ONLINE',T('you run the stores'),1320,830,{st:'font-size:42px'});
+scene("According to Randolph, Blockbuster's CEO");
+I('ceo_table',T('according to randolph'),640,520,{w:880});
+TG('JOHN ANTIOCO, CEO',T('john antioco'),1460,290,{st:'font-size:50px'});
+ST('NO DEAL',T('no deal'),1460,560,{r:-8,st:'font-size:120px'});
+// ================= ENRON =================
+scene("But here's the twist almost everyone forgets");
+H('<small>THE TWIST</small>STREAMING, IN 2000',T("but here's the twist"),960,170,{st:'font-size:90px'});
+I('laptop',T("wasn't ignoring"),560,580,{w:580});
+S('JULY 2000 &middot; A 20-YEAR DEAL',T('in july 2000'),1350,430,{cls:'r'});
+I('gratte_ciel',T('energy company'),1350,720,{h:330});
+scene("Yes. That Enron.");
+I('gratte_ciel',T('yes that enron'),560,500,{h:660,sfx:false});
+H('ENRON',T('that enron'),1350,400,{st:'font-size:150px'});
+I('orage',T('cue the ominous'),1350,730,{w:440,id:'float'});
+scene("They tested it with about a thousand homes");
+TG('~1,000 HOMES &middot; 4 CITIES',T('a thousand homes'),960,190,{st:'font-size:54px'});
+S('MARCH 2001',T('by march 2001'),960,420,{cls:'r'});
+ST('20-YEAR DEAL: OVER AFTER 8 MONTHS',T('already over'),960,660,{r:-4,st:'font-size:66px'});
+scene("A few months after that");
+I('broyeuse',T('enron collapsed'),560,500,{h:620});
+ST('FRAUD',T('biggest frauds'),1350,330,{r:-6,st:'font-size:110px'});
+TG('A PARTNER BUILT ON FAKE NUMBERS',T('fake numbers'),1350,580,{st:'font-size:42px'});
+ST("YOU CAN'T MAKE THIS UP",T("you can't make"),1350,790,{cls:'g',st:'font-size:60px'});
+// ================= CHAPITRE 3 =================
+scene("And then, Antioco does something bold");
+H('<small>CHAPTER 3</small>THE COMEBACK',T('and then antioco'),960,450,{st:'font-size:120px'});
+scene("In 2004, Blockbuster launches");
+S('2004',T('in 2004'),560,150,{cls:'r'});
+I('laptop',T('blockbuster online'),560,440,{w:540});
+TG('BLOCKBUSTER ONLINE',T('blockbuster online',0.2),560,720,{st:'font-size:50px'});
+S('JANUARY 1, 2005',T('on january 1'),1350,150,{cls:'r'});
+I('horloge',T('kills late fees'),1350,430,{w:380});
+cross(T('gone'),1350,430,190);
+ST('NO MORE LATE FEES',T('just like that'),1350,720,{cls:'g',st:'font-size:70px'});
+scene("Then, in late 2006, comes the masterstroke");
+S('LATE 2006',T('late 2006'),960,120,{cls:'r'});
+H('TOTAL ACCESS',T('total access'),960,300,{st:'font-size:110px'});
+I('enveloppe_rouge',T('rent dvds online'),420,620,{w:440});
+I('magasin',T('drop them at'),1000,620,{w:540});
+I('dvd',T('a new movie'),1560,620,{w:300});
+TG('MAILBOXES + 9,000 STORES',T('blockbuster had mailboxes'),960,850,{st:'font-size:46px'});
+scene("It works. By the end of 2006");
+I('fleche_verte',T('it works'),520,450,{w:540});
+ST('~2 MILLION SUBSCRIBERS',T('two million subscribers'),1350,270,{cls:'g',st:'font-size:72px'});
+TG('SIGN-UPS SWING TO BLOCKBUSTER',T('suddenly swing'),1350,470,{st:'font-size:40px'});
+ST('NETFLIX STOCK: -12%',T('almost twelve percent'),1350,680,{st:'font-size:76px'});
+scene("For the first time, the little red envelope");
+I('enveloppe_rouge',T('for the first time'),560,500,{w:560});
+ST('SCARED.',T('is scared'),1350,480,{r:-6,st:'font-size:130px'});
+scene("Picture it. The dinosaur");
+I('dino',T('picture it'),600,520,{w:700});
+I('avion_papier',T('learning to fly'),1350,400,{w:540,id:'fly'});
+TG('THE DINOSAUR LEARNS TO FLY',T('the dinosaur is'),1350,730,{st:'font-size:46px'});
+// ================= CHAPITRE 4 =================
+scene("But then came the billionaire");
+H('<small>CHAPTER 4</small>THE BILLIONAIRE',T('but then came'),960,450,{st:'font-size:120px'});
+scene("Enter Carl Icahn");
+I('investisseur',T('enter carl'),500,580,{h:720,fx:'slideL'});
+TG('CARL ICAHN',T('carl icahn'),1350,210,{st:'font-size:62px'});
+TG('ACTIVIST INVESTOR',T('activist investors'),1350,360,{st:'font-size:52px'});
+TG('BUYS A BIG CHUNK, THEN PUSHES',T('translation'),1350,510,{st:'font-size:38px'});
+ST('~10% + 3 BOARD SEATS',T('nearly ten percent'),1350,730,{st:'font-size:66px'});
+scene("And Icahn hates the plan");
+I('investisseur',T('and icahn hates'),460,580,{h:700,sfx:false});
+I('laptop',T('online service is expensive'),1130,320,{w:360});
+cross(T('is expensive'),1130,320,160);
+I('horloge',T('killing late fees'),1580,320,{w:280});
+cross(T('cost a fortune'),1580,320,140);
+I('liasse',T("antioco's bonus"),1250,690,{w:380,sfx:'cash'});
+ST('TOO BIG',T('way too big'),1620,760,{r:-8});
+scene("We're finally beating Netflix");
+I('cadre',T("we're finally"),470,620,{h:600,fx:'slideL'});
+I('administrateur',T("we're finally"),1450,620,{h:600,fx:'slideR',sfx:false});
+QT("We're finally beating Netflix!",T("we're finally",.1),540,170,{z:T('a lot')});
+QT('Wonderful. How much is it costing us?',T('wonderful'),1420,170,{z:T('then stop')});
+QT('A lot.',T('a lot'),540,170);
+QT('Then stop beating them <em>so expensively</em>.',T('then stop'),1420,170);
+scene("The fight gets ugly");
+I('gant',T('the fight gets'),560,480,{w:540});
+S('2007',T('in 2007'),1350,300,{cls:'r'});
+ST('ANTIOCO: OUT',T('antioco is out'),1350,540,{r:-6});
+scene("His replacement is Jim Keyes");
+I('keyes',T('his replacement'),500,580,{h:720,fx:'slideL'});
+TG('JIM KEYES, EX-7-ELEVEN',T('jim keyes'),1350,210,{st:'font-size:46px'});
+TG('PAY DOWN DEBT',T('pay down debt'),1350,360,{st:'font-size:54px'});
+TG('BACK TO THE STORES',T('back to the stores'),1350,500,{st:'font-size:54px'});
+I('fleche_rouge',T('growth stalls'),1350,730,{w:340});
+scene("Antioco later said");
+I('ceo_table',T('antioco later'),620,520,{w:840,sfx:false});
+ST('10 MILLION SUBSCRIBERS?',T('ten million subscribers'),1420,450,{cls:'g',st:'font-size:68px'});
+TG('HIS VIEW, IF IT HAD KEPT GOING',T('if it had kept'),1420,680,{st:'font-size:38px'});
+scene("Meanwhile, in January 2007");
+S('JANUARY 2007',T('meanwhile'),960,120,{cls:'r'});
+I('laptop',T('quietly launches'),560,480,{w:620});
+H('STREAMING',T('streaming'),1350,380,{st:'font-size:120px'});
+TG('NO ENVELOPE &middot; NO STORE &middot; NO LATE FEES',T('no envelope'),1350,640,{st:'font-size:36px'});
+scene("You can probably guess the rest");
+I('orage',T('you can probably'),960,450,{w:660,id:'float'});
+// ================= CHAPITRE 5 =================
+scene("September 23, 2010.");
+H('<small>CHAPTER 5</small>THE END',T('september 23'),960,160,{st:'font-size:90px'});
+S('SEPTEMBER 23, 2010',T('september 23',0.3),960,320,{cls:'r'});
+I('tombe',T('files for bankruptcy'),560,630,{h:520});
+ST('BANKRUPT',T('files for bankruptcy',0.3),1350,520,{r:-8});
+TG('~$1.5 BILLION OF DEBT',T('one point five billion'),1350,760,{st:'font-size:52px'});
+scene("In 2011, the satellite TV company Dish");
+S('2011',T('in 2011'),960,120,{cls:'r'});
+I('parabole',T('dish buys'),520,500,{h:580});
+TG('~1,700 STORES',T('seventeen hundred'),1350,310,{st:'font-size:58px'});
+ST('~$320 MILLION',T('three hundred and twenty'),1350,550,{cls:'g'});
+TG('THE STORES CLOSE',T('the stores close'),1350,780,{st:'font-size:52px'});
+scene("Until only one is left");
+I('dernier_magasin',T('until only one'),960,430,{w:900});
+ST('ONLY ONE LEFT',T('one is left'),960,800,{r:-4,st:'font-size:90px'});
+scene("Bend, Oregon. By 2019");
+S('BEND, OREGON',T('bend oregon'),960,120,{cls:'r'});
+I('dernier_magasin',T('by 2019'),560,420,{w:660,sfx:false});
+TG('LAST BLOCKBUSTER ON THE PLANET',T('the last blockbuster'),560,700,{st:'font-size:40px'});
+I('touristes',T('tourist attraction'),1400,410,{w:580});
+I('tshirt',T('buy tshirts'),1290,750,{w:250});
+I('dvd',T('rent a dvd'),1620,760,{w:230});
+scene("In 2020, the store was even listed on Airbnb");
+S('2020',T('in 2020'),960,120,{cls:'r'});
+I('lit',T('listed on airbnb'),560,470,{w:640});
+ST('$4 A NIGHT',T('four dollars a night'),1350,370,{cls:'g'});
+I('clap',T('its own documentary'),1350,650,{w:360});
+S('STILL OPEN IN 2026',T('still open'),960,840,{cls:'r'});
+scene("And Netflix? More than three hundred million");
+H('NETFLIX',T('and netflix'),960,150,{st:'font-size:90px'});
+ST('300M+ MEMBERS',T('three hundred million'),560,450,{cls:'g'});
+ST('~$300 BILLION',T('worth roughly'),1350,450,{cls:'g'});
+TG('BLOCKBUSTER COULD HAVE BOUGHT IT FOR $50M',T('could have bought'),960,720,{st:'font-size:42px'});
+// ================= FIN =================
+scene("So what's the lesson?");
+H('THE LESSON',T("so what's"),960,150);
+TG('IT SAW THE FUTURE',T('it saw it'),560,330,{st:'font-size:52px'});
+TG('IT BUILT IT',T('built it'),560,470,{st:'font-size:52px'});
+TG('IT WAS WINNING',T('and was winning'),560,610,{st:'font-size:52px'});
+I('rewind',T('shortterm numbers'),1350,440,{w:480});
+ST('ABANDONED HALFWAY',T('abandon halfway'),1350,740,{st:'font-size:70px'});
+scene("Fifty million dollars. One laugh.");
+I('ceo_rire',T('one laugh'),600,540,{w:660});
+ST('$50M',T('fifty million dollars one'),1350,280,{cls:'g',st:'font-size:110px'});
+I('enveloppe_rouge',T('the last laugh'),1350,600,{w:460});
+TG('THE LAST LAUGH',T('the last laugh',0.3),1350,840,{st:'font-size:50px'});
+scene("If you enjoyed this, subscribe");
+ST('SUBSCRIBE',T('subscribe'),960,230,{cls:'g',st:'font-size:140px'});
+H('<small>NEXT TIME</small>ENRON',T('next time'),960,570,{st:'font-size:130px'});
+TG('A FRAUD BUILT ON FAKE NUMBERS',T('biggest frauds'),960,830,{st:'font-size:42px'});
+// fin de scène = début de la scène suivante
+const zOf=si=>SC[si+1]!==undefined?SC[si+1]:DUR;
+OBJ.forEach(o=>{o.z=o.zz!==undefined?o.zz:zOf(o.si)});MARKS.forEach(m=>m.z=zOf(m.si));LINES.forEach(L=>L.z=zOf(L.si));
+const lay=$('lay');
+MARKS.forEach((m,i)=>{lay.innerHTML+=`<path id="mk${i}" d="${m.d}" stroke="#C8261E" stroke-width="10" stroke-linecap="round" fill="none" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>`;});
+LINES.forEach((L,i)=>{const [x1,y1,x2,y2]=L.p;lay.innerHTML+=`<path id="ln${i}" d="M${x1} ${y1} Q${(x1+x2)/2} ${Math.min(y1,y2)-80} ${x2} ${y2}" stroke="#C8261E" stroke-width="6" fill="none" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><circle id="pa${i}" cx="${x1}" cy="${y1}" r="11" fill="#B8872B" opacity="0"/><circle id="pb${i}" cx="${x2}" cy="${y2}" r="11" fill="#B8872B" opacity="0"/>`;});
+SC.slice(1).forEach(t=>EV(t-.08,'whoosh'));
+OBJ.forEach(o=>{if(o.e.querySelector('.strip'))for(let k=0;k<5;k++)EV(o.a+.05+k*.055,'key');});
+window.render=function(t){const tq=q12(t);
+ let si=0;for(let i=0;i<SC.length;i++)if(t>=SC[i])si=i;const st=SC[si],sd=(SC[si+1]||DUR)-st,k=pr(t,st,sd);
+ const jit=(Math.sin(Math.floor(t*12)*12.9898)*43758.5453)%1;
+ $('world').style.transform=`scale(${1+.04*k}) rotate(${(si%2?-1:1)*.3*k}deg)`;
+ $('paper').style.transform=`translate(${(si%2?-1:1)*14*k}px,${-6*k}px)`;
+ for(const o of OBJ){const e=o.e;if(t<o.a||t>o.z+.35){e.style.opacity=0;continue}
+  const w=e.offsetWidth,h=e.offsetHeight;let x=o.x,y=o.y,s=1,op=1,r=o.r;
+  const p=pr(tq,o.a,o.fx==='stamp'?.25:.42),pe=eb(p);
+  if(o.fx==='slideL')x=o.x-2100*(1-pe);if(o.fx==='slideR')x=o.x+2100*(1-pe);
+  if(o.fx==='slideT')y=o.y-1300*(1-pe);if(o.fx==='slideB')y=o.y+1300*(1-pe);
+  if(o.fx==='drop'){s=1.35-.35*eo(p);op=cl(p*3);r=o.r+(1-eo(p))*8;}
+  if(o.fx==='stamp'){s=2.4-1.4*eo(p);op=cl(p*4);}
+  if(o.fx==='pop'){s=.2+.8*pe;op=cl(p*3);}
+  if(o.fx.startsWith('slide'))r=o.r+(1-eo(p))*(o.fx==='slideL'?-10:10);
+  const since=tq-o.a;if(since>.42&&since<.9)r+=Math.sin(since*40)*1.2*(1-(since-.42)/.48);
+  if(o.id==='mix'&&since>.45&&since<1.8){x+=Math.sin(tq*90)*4;r+=Math.sin(tq*70)*.8;}
+  if(o.id==='drive'&&since>.42){x+=Math.min(since-.42,5)*30;}
+  if(o.id==='fly'&&since>.42){x+=(since-.42)*90;y-=(since-.42)*12;}
+  if(o.id==='dive'&&since>.42){y+=Math.min(since-.42,8)*16;}
+  if(o.id==='float'){y+=Math.sin(tq*2.2)*6;}
+  const q=pr(t,o.z,.35);if(q>0){y-=q*120;op*=1-q;s*=1-.06*q;}
+  e.style.opacity=op;e.style.transform=`translate(${x-w/2}px,${y-h/2}px) scale(${s}) rotate(${r+(jit-.5)*.35}deg)`;}
+ MARKS.forEach((m,i)=>{const el=$('mk'+i);el.style.strokeDashoffset=1-eo(pr(t,m.a,.4));el.style.opacity=(t>=m.a&&t<m.z+.2)?1:0;});
+ LINES.forEach((L,i)=>{const p=eo(pr(t,L.a,.6)),q=pr(t,L.z,.3),on=t>=L.a&&t<L.z+.3;$('ln'+i).style.strokeDashoffset=1-p;$('ln'+i).style.opacity=on?1-q:0;$('pa'+i).setAttribute('opacity',on?1-q:0);$('pb'+i).setAttribute('opacity',on&&p>.95?1-q:0);});
+ let c=null;for(const x of CAP)if(t>=x[0])c=x;const sb=$('sub');
+ if(c&&c[1]&&t<DUR-.3){const p=pr(tq,c[0],.17);sb.innerHTML=`<span class="w">${c[1]}</span>`;sb.style.opacity=cl(p*2);sb.style.transform=`translateY(${20*(1-eo(p))}px) rotate(${(CAP.indexOf(c)%2?-1:1)*.8}deg)`;}else sb.innerHTML='';};
+document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>i.onload=r))).then(()=>{render(0);window.READY=true;}));
+</script></body></html>
