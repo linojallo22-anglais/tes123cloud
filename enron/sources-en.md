@@ -1,0 +1,21 @@
+# Sources — Enron (YouTube EN 8 min)
+
+- Wikipedia, Enron (fusion 1985 à Houston, Ken Lay, 7e entreprise des États-Unis, 101 Md$ de chiffre d'affaires en 2000, « most innovative » 6 ans de suite selon Fortune, valeurs RICE) : https://en.wikipedia.org/wiki/Enron
+- History.com, faillite le 2 décembre 2001 : https://www.history.com/this-day-in-history/december-2/enron-files-for-bankruptcy
+- Mark-to-market, accord de la SEC (30/01/1992) et champagne (d'après The Smartest Guys in the Room) : https://pressbooks.pub/professionalethicsforaccountants/chapter/chapter-10/
+- Wikipedia, Chewco (JEDI, Chewco, LJM, Raptors) : https://en.wikipedia.org/wiki/Chewco
+- CBS News, enregistrements des traders (« Grandma Millie », crise californienne) : https://www.cbsnews.com/news/enron-tapes-anger-lawmakers
+- Wikipedia, Jeffrey Skilling (CEO en février 2001, démission le 14 août, insulte à l'analyste le 17 avril 2001, 24 ans de prison, libéré en 2019) : https://en.wikipedia.org/wiki/Jeffrey_Skilling
+- Benzinga, l'insulte de Skilling à l'analyste Richard Grubman (17/04/2001) : https://benzinga.com/z/11529045
+- ZenBusiness, slogan publicitaire « Ask Why » : https://www.zenbusiness.com/blog/good-slogans-bad-things/
+- CFO.com, mémo de Sherron Watkins (« implode in a wave of accounting scandals ») : https://www.cfo.com/news/watkins-lay-lied/677082/
+- PlanSponsor, chat de Ken Lay du 26/09/2001 (« incredible bargain ») : https://www.plansponsor.com/lay-lauds-enron-prospects-in-september-employee-meeting/
+- Communiqué Enron du 16/10/2001 (perte de 618 M$, -1,2 Md$ de fonds propres) : https://picker.uchicago.edu/Enron/EarningsRelease%2810-16-01%29.pdf
+- Seattle Times, chronologie (Dynegy, 28/11/2001, action sous 1 $) : https://archive.seattletimes.com/archive/20060129/enronchron29/timeline--enrons-collapse-and-the-fallout
+- Brookings, plan de retraite 401(k) : 2,1 Md$, 62 % en actions Enron : https://www.brookings.edu/articles/are-empowerment-and-education-enough-underdiversification-in-401k-plans/
+- NPR, condamnation d'Arthur Andersen annulée par la Cour suprême (2005), ~28 000 emplois aux États-Unis : https://www.npr.org/2005/05/31/4673930/supreme-court-throws-out-arthur-andersen-conviction
+- Wikipedia, procès de Lay et Skilling (mai 2006, mort de Lay le 5 juillet 2006, condamnation effacée) : https://en.wikipedia.org/wiki/Trial_of_Kenneth_Lay_and_Jeffrey_Skilling
+- NBC News, Andrew Fastow condamné à 6 ans : https://www.nbcnews.com/id/wbna15011592
+- ESPN, les Astros rachètent le nom du stade (~2,1 M$) : https://a.espncdn.com/mlb/news/2002/0227/1341349.html
+- Fortune, relance parodique de la marque Enron (décembre 2024, rachat de la marque pour 275 $ selon les créateurs) : https://fortune.com/2024/12/04/social-media-influencers-birds-arent-real-resurrect-enron-brand
+- Teaser, Nick Leeson et Barings (banque de 233 ans vendue 1 £) : https://en.wikipedia.org/wiki/Nick_Leeson
