@@ -1,0 +1,59 @@
+Create ONE single image containing exactly 24 separate cutout elements for a VOX-style paper-collage finance documentary about the collapse of Barings, the 233-year-old British bank, in 1995. Arrange them in a precise catalogue layout of 5 horizontal rows, in the exact numbered order below. Elements in the upper rows are LARGER because they will be shown full screen; each row gets less height as you go down.
+
+ROW HEIGHTS: row 1 about 26% of the image height, row 2 about 22%, row 3 about 18%, rows 4 and 5 about 17% each.
+
+GLOBAL STYLE (identical for every element, this is the VOX documentary collage look):
+- PEOPLE: strictly BLACK AND WHITE halftone photograph cutouts (grayscale only, no skin color, no colored clothing, no colored ties), visible halftone dots, realistic photographic faces and clothing, with ONE flat offset accent shape of colored paper slightly behind each person (hot red or mustard yellow). The colored paper shape is the ONLY color on a person element.
+- OBJECTS AND PLACES: desaturated archival palette of tan, ink black and halftone gray, with ONE hot red accent or a restrained mustard yellow accent; money objects use a muted emerald green accent.
+- Every element is hand-cut from real paper: a thin white paper margin around the silhouette with slightly rough scissor-cut edges, visible print grain and paper fiber, matte, flat even documentary lighting.
+- NOT cartoon, NOT digital illustration, NOT 3D render, NOT glossy, no gradients.
+- Transparent background between the elements (PNG with alpha). If transparency is impossible, use a plain flat WHITE background, never black.
+
+ROW 1 (LARGEST), from LEFT to RIGHT:
+1) A young British derivatives trader in 1995: man aged 28, short dark hair, round boyish face, white shirt and loose tie. Tight head-and-shoulders close-up, panicked guilty expression: eyes wide, teeth clenched in an awkward grimace, sweat drops on his forehead, looking at the camera, hot red paper shape behind him. This is a YouTube thumbnail portrait: big face, strong emotion. Black and white halftone. Generic person, not a real person's likeness.
+2) The same young trader as element 1 (same face): on a busy trading floor, wearing a loose striped trading jacket over his shirt and tie, shouting and making hand signals with one arm raised, facing right. Full body. Black and white halftone. Generic person, not a real person's likeness.
+3) The same young trader as element 1 (same face): fleeing, walking fast with a suitcase, sunglasses on, looking nervously over his shoulder, facing left. Full body. Black and white halftone. Generic person, not a real person's likeness.
+4) The same young trader as element 1 (same face): sitting at a desk with two bulky 1990s computer screens, a phone at his ear, smug confident smile, feet up on the desk, facing right. Full figure with desk and chair. Black and white halftone. Generic person, not a real person's likeness.
+
+ROW 2 (LARGE), from LEFT to RIGHT:
+5) An 18th-century London banker: man in his 30s, powdered wig, dark frock coat, white cravat, holding a quill pen, dignified, facing right. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+6) An early 19th-century French aristocrat statesman: man in his 50s, high collar, dark coat with medals, raising one finger as if making a famous statement, facing left. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+7) Three elderly British bankers in pinstripe three-piece suits sitting in leather armchairs in a wood-panelled room, drinking tea, relaxed. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+8) A young woman in her late 20s in 1995, sunglasses, summer dress, carrying a handbag, worried, facing left. Full body. Black and white halftone. Generic person, not a real person's likeness.
+9) A crowd of four futures traders in loose striped trading jackets on an exchange floor, shouting with arms raised, holding papers. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+
+ROW 3 (MEDIUM), from LEFT to RIGHT:
+10) A bank auditor in 1994: woman in her 40s, glasses, blazer, holding a thick report, serious, facing right. Full body. Black and white halftone. Generic person, not a real person's likeness.
+11) A senior London bank executive in 1995: man in his 60s, gray hair, three-piece suit, on the phone, relaxed confident smile, facing left. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+12) A young bank employee in 1995: man in his 30s, shirt and tie, holding a stack of papers, worried, facing right. Full body. Black and white halftone. Generic person, not a real person's likeness.
+13) Two German police officers in 1995 uniforms and caps, no insignia text, standing and waiting, facing left. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+14) A judge in a black robe, sitting, holding a gavel, stern, facing left. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+
+ROW 4 (SMALL), from LEFT to RIGHT:
+15) A young man in a plain prison uniform sitting on a bench, head in his hands, facing right. Full body. Black and white halftone. Generic person, not a real person's likeness.
+16) A man in his 50s with a shaved head, suit, speaking on a stage with a handheld microphone, facing right. Full body. Black and white halftone. Generic person, not a real person's likeness.
+17) A Dutch bank executive in 1995: man in his 50s, glasses, suit, signing a document at a small table, facing right. Waist-up with the table. Black and white halftone. Generic person, not a real person's likeness.
+18) A gambler at a casino table pushing a big stack of chips forward, excited, facing right. Waist-up with the table. Black and white halftone. Generic person, not a real person's likeness.
+19) A rescue worker in a helmet and jacket standing near collapsed rubble after an earthquake, facing right. Full body, respectful, no injured people. Black and white halftone. Generic person, not a real person's likeness.
+
+ROW 5 (SMALL), from LEFT to RIGHT:
+20) A schoolboy at a desk grading his own exam paper with a red pen, smug smile, facing right. Waist-up with the desk. Black and white halftone. Generic person, not a real person's likeness.
+21) An early 1800s American statesman in a dark coat and cravat holding a rolled map, facing left. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+22) An elegant elderly British lady in a hat and pearls holding a teacup. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+23) A young man on a beach lounger wearing a party hat, holding a cocktail, looking nervous, facing right. Full figure with the lounger. Black and white halftone. Generic person, not a real person's likeness.
+24) A 1990s TV news presenter at a desk, serious, facing right. Waist-up with the desk. Black and white halftone. Generic person, not a real person's likeness.
+
+LAYOUT (very important):
+- Exactly 24 elements, in the exact numbered order above, rows perfectly aligned like a catalogue.
+- Clear empty space around every element, horizontally AND vertically: no element touches, overlaps or hides another element.
+- Every element fully visible, nothing cut off by the image edges.
+- Each element as large and detailed as its row allows. Sharp details, no blur.
+- The young trader must look like the same person in elements 1, 2, 3 and 4.
+- ALL PEOPLE IN BLACK AND WHITE: grayscale photos only; the only color allowed on a person element is the red or yellow paper shape behind them.
+
+BACKGROUND: fully transparent background (PNG with alpha channel). No floor, no shadow, no scenery behind the elements. If transparency is impossible, plain flat pure white (#FFFFFF). NEVER draw a fake gray-and-white checkerboard transparency pattern, never black.
+NO TEXT anywhere: no words, no letters, no numbers, no logos, no brand names, no watermark, no labels, no frames, no grid lines.
+
+Before finishing, count the elements: there must be exactly 24, in 5 rows (4, 5, 5, 5, 5).
+
+FORMAT: landscape 1536x1024, PNG, highest resolution possible.

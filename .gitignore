@@ -50,3 +50,11 @@ enron/build/*.f32
 enron/build/shots/
 enron/build/recut/
 enron/*-partie-*.mp4
+barings/raw/
+barings/build/test/
+barings/build/out/
+barings/build/*.wav
+barings/build/*.f32
+barings/build/shots/
+barings/build/recut/
+barings/*-partie-*.mp4

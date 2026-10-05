@@ -1,0 +1,50 @@
+Use the attached image only as a STYLE REFERENCE (same paper-collage look, same colors, same cut-paper borders). Do not copy its elements: create a NEW image.
+
+Create ONE single image containing exactly 20 separate cutout OBJECTS for a VOX-style paper-collage finance documentary about the collapse of Barings bank in 1995. Arrange them in a precise catalogue layout of 4 horizontal rows of 5 objects, in the exact numbered order below. All rows have the same height (about 25% of the image height each).
+
+GLOBAL STYLE (identical for every element, this is the VOX documentary collage look):
+- Realistic photographic objects in a desaturated archival palette of tan, ink black and halftone gray, with ONE hot red accent or a restrained mustard yellow accent; money objects use a muted emerald green accent.
+- A flat offset shape of colored paper (hot red or mustard yellow) slightly behind most objects.
+- Every element is hand-cut from real paper: a thin white paper margin around the silhouette with slightly rough scissor-cut edges, visible print grain and paper fiber, matte, flat even documentary lighting.
+- NOT cartoon, NOT digital illustration, NOT 3D render, NOT glossy, no gradients.
+
+ROW 1, from LEFT to RIGHT:
+1) An old 18th-century London stone bank building with columns, front view, no text.
+2) An antique paper map of North America with the large central Louisiana territory tinted hot red, no text, no labels.
+3) An open wooden desk drawer stuffed with crumpled papers and banknotes.
+4) A red Chinese lucky envelope with gold decoration, no characters, no text.
+5) A seismograph paper strip with a wild zigzag line.
+
+ROW 2, from LEFT to RIGHT:
+6) A 1990s black office telephone with a coiled cord.
+7) A bulky 1990s trading screen showing a red line chart falling sharply, no numbers, no text.
+8) A thick stack of generic British-style banknotes held with a paper band, no readable text.
+9) A single shiny gold-colored coin, seen slightly from the side, no text.
+10) An airline ticket and a passport, blank covers, no text.
+
+ROW 3, from LEFT to RIGHT:
+11) A hard-shell travel suitcase with a handle.
+12) A small folded handwritten note on a single sheet of paper, the writing is just illegible scribbles.
+13) A pair of steel handcuffs.
+14) Tall stacks of casino chips.
+15) A paper coffee cup with a lid.
+
+ROW 4, from LEFT to RIGHT:
+16) A palm tree next to a beach lounger and a parasol.
+17) A small birthday cake with one lit candle.
+18) A chocolate candy bar in a plain red wrapper, no text.
+19) A hardcover book with a plain red cover, no text.
+20) A 1990s Singapore-style city skyline of skyscrapers as one cutout, no text.
+
+LAYOUT (very important):
+- Exactly 20 elements, in the exact numbered order above, 4 rows of 5, rows perfectly aligned like a catalogue.
+- Clear empty space around every element, horizontally AND vertically: no element touches, overlaps or hides another element.
+- Every element fully visible, nothing cut off by the image edges.
+- Each element as large and detailed as its row allows. Sharp details, no blur.
+
+BACKGROUND: fully transparent background (PNG with alpha channel). No floor, no shadow, no scenery behind the elements. If transparency is impossible, plain flat pure white (#FFFFFF). NEVER draw a fake gray-and-white checkerboard transparency pattern, never black.
+NO TEXT anywhere: no words, no letters, no numbers, no logos, no brand names, no watermark, no labels, no frames, no grid lines.
+
+Before finishing, count the elements: there must be exactly 20, in 4 rows of 5.
+
+FORMAT: landscape 1536x1024, PNG, highest resolution possible.
