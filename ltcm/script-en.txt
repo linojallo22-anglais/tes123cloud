@@ -1,0 +1,98 @@
+September 23, 1998. New York. The bosses of Wall Street's biggest banks are packed into a conference room at the Federal Reserve. Their mission: save a single hedge fund. Not a bank. A hedge fund. One that most Americans had never even heard of.
+
+Its name: Long-Term Capital Management. Its team included two Nobel Prize winners. Its math was supposed to be perfect. And in less than four months, it lost four point six billion dollars.
+
+So how do the smartest people in finance almost break the system they understand better than anyone?
+
+The answer involves a poker game, a country that stopped paying its debts, an offer from Warren Buffett, and one little word that ruins everything: leverage.
+
+Meet John Meriwether.
+
+In the 1980s, he runs the star bond-trading team at Salomon Brothers, one of the hottest firms on Wall Street. And according to the writer Michael Lewis, he's a legend at a game called Liar's Poker.
+
+One day, Salomon's boss challenges him: "One hand, one million dollars, no tears."
+Meriwether answers: "If we're going to play for those kinds of numbers, I'd rather play for real money. Ten million dollars. No tears."
+The boss passes.
+
+Translation: this is a man who likes big bets.
+
+In 1991, after a scandal involving one of his traders, Meriwether leaves Salomon. And in 1994, he launches his own hedge fund in Greenwich, Connecticut. Translation: a private investment fund for the very rich, that can bet on almost anything.
+
+And he builds a dream team. His best traders from Salomon. A former vice chairman of the Federal Reserve. And two famous professors, Myron Scholes and Robert Merton, whose math helped Wall Street price options. Translation: a formula that tells you what a bet on a future price should cost. In 1997, they win the Nobel Prize in economics.
+
+Investors line up. The minimum ticket is reportedly ten million dollars. And the fees are steep: two percent a year, plus a quarter of the profits.
+
+"So what's your strategy?"
+"We can't really tell you."
+"And the risk?"
+"Very low. We have math."
+"And the fee?"
+"A quarter of the profits."
+"Where do I sign?"
+
+In February 1994, the fund starts trading with about one billion dollars.
+
+So what do they actually do?
+
+Their favorite trick is called convergence trading. Translation: find two things that are almost identical, but priced a tiny bit differently. Buy the cheap one, bet against the expensive one, and wait for the prices to come back together.
+
+Classic example: two US government bonds, one issued a few months before the other. Almost the same thing. But the newer one usually costs a little more. LTCM bets that the gap will close.
+
+The profit on each trade? Tiny. Like picking up nickels.
+
+So to make real money, you need a lot of nickels. And that means borrowing. A lot.
+
+At the beginning of 1998, LTCM has about four point seven billion dollars of its own. And it has borrowed more than one hundred and twenty-four billion. That's more than twenty-five dollars borrowed for every dollar it owns. And its swap contracts have a total face value of about one point two five trillion dollars. Trillion, with a T.
+
+Critics have a name for this strategy: picking up nickels in front of a steamroller. Small, steady gains. Until the steamroller shows up.
+
+And for a while, there's no steamroller. After fees, investors make about twenty-one percent in the first year. Then forty-three percent. Then forty-one percent. The partners get incredibly rich, and they put more and more of their own fortunes into the fund.
+
+At the end of 1997, they're so confident that they give two point seven billion dollars back to investors. Translation: less money, same bets. The leverage goes up.
+
+And their models say a really bad day is extremely unlikely. Reportedly, the fund didn't expect to lose more than about thirty-five million dollars in a single day.
+
+Then came the steamroller.
+
+First, a financial crisis hits Asia in 1997. Then, on August 17, 1998, Russia defaults on its debt and devalues its currency. Translation: a nuclear superpower says it won't pay its bills.
+
+Investors panic. They dump anything risky and run to the safest assets on the planet. And all those almost identical prices that LTCM bet would come together? They fly apart.
+
+The problem? The models were built on years of past data. And in that data, a panic like this barely existed.
+
+Friday, August 21, 1998. Remember the thirty-five million dollar bad day? That day, LTCM loses about five hundred and fifty-three million dollars. In one day.
+
+By the end of August, one point eight five billion dollars are gone.
+
+And there's a bigger problem. Half of Wall Street has copied LTCM's trades. To survive, the fund needs to sell. But when it sells, prices move even further against it. Like trying to leave a burning movie theater through one tiny door, with everyone else.
+
+"How bad is it?"
+"Our model says this almost never happens."
+"And?"
+"It's happening every day."
+
+In September, Warren Buffett, on vacation in Alaska with Bill Gates, makes an offer with AIG and Goldman Sachs: buy out the partners for two hundred and fifty million dollars, and put in about three point seven five billion to save the fund. But the deadline is short. The offer expires. No deal.
+
+Now the Federal Reserve is worried. LTCM owes money to almost every big bank on Wall Street. If it collapses and dumps more than one hundred billion dollars of positions at once, prices crash, banks take huge losses, and panic spreads. Translation: too connected to fail.
+
+So on September 23, the New York Fed brings the bosses of the big banks into one room. Fourteen firms agree to put in about three point six billion dollars, in exchange for ninety percent of the fund.
+
+One bank refuses to pay. Bear Stearns. Even though it handled LTCM's trades every day. Remember that name.
+
+And just in case, over the next few weeks, the Fed cuts interest rates three times to calm the markets.
+
+For the partners, it's brutal. Their own fortunes were inside the fund, and almost all of it is gone. The fund is wound down, and closed in early 2000.
+
+So what happened next?
+
+Scholes and Merton keep their Nobel Prizes. Meriwether starts a new fund in 1999, with the same kind of strategy. In the 2008 crisis, it loses heavily, and closes in 2009.
+
+A few weeks after the rescue, Warren Buffett summed it up to a room full of students. To make money they didn't have and didn't need, they risked what they did have and did need. That is foolish.
+
+So what's the lesson?
+
+The math wasn't stupid. The people weren't stupid. The problem was one assumption: that tomorrow would look like yesterday. And when you borrow twenty-five times your money, you don't get to be wrong. Not even once.
+
+Two Nobel Prizes. One hundred and twenty-four billion dollars of debt. And a model that said the worst day would cost thirty-five million. Turns out the steamroller doesn't read the model.
+
+If you enjoyed this, subscribe. Next time: the Wall Street bank that refused to help. Ten years later, it needed rescuing itself, and was sold for two dollars a share.

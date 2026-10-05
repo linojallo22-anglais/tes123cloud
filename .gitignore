@@ -58,3 +58,11 @@ barings/build/*.f32
 barings/build/shots/
 barings/build/recut/
 barings/*-partie-*.mp4
+ltcm/raw/
+ltcm/build/test/
+ltcm/build/out/
+ltcm/build/*.wav
+ltcm/build/*.f32
+ltcm/build/shots/
+ltcm/build/recut/
+ltcm/*-partie-*.mp4

@@ -1,0 +1,59 @@
+Create ONE single image containing exactly 24 separate cutout elements for a VOX-style paper-collage finance documentary about the 1998 collapse of the hedge fund Long-Term Capital Management. Arrange them in a precise catalogue layout of 5 horizontal rows, in the exact numbered order below. Elements in the upper rows are LARGER because they will be shown full screen; each row gets less height as you go down.
+
+ROW HEIGHTS: row 1 about 26% of the image height, row 2 about 22%, row 3 about 18%, rows 4 and 5 about 17% each.
+
+GLOBAL STYLE (identical for every element, this is the VOX documentary collage look):
+- PEOPLE: strictly BLACK AND WHITE halftone photograph cutouts (grayscale only, no skin color, no colored clothing, no colored ties), visible halftone dots, realistic photographic faces and clothing, with ONE flat offset accent shape of colored paper slightly behind each person (hot red or mustard yellow). The colored paper shape is the ONLY color on a person element.
+- OBJECTS AND PLACES: desaturated archival palette of tan, ink black and halftone gray, with ONE hot red accent or a restrained mustard yellow accent; money objects use a muted emerald green accent.
+- Every element is hand-cut from real paper: a thin white paper margin around the silhouette with slightly rough scissor-cut edges, visible print grain and paper fiber, matte, flat even documentary lighting.
+- NOT cartoon, NOT digital illustration, NOT 3D render, NOT glossy, no gradients.
+- Transparent background between the elements (PNG with alpha). If transparency is impossible, use a plain flat WHITE background, never black. NO blurred colored background, NO gradient, NO glow or haze around the elements: the space between elements must be one single flat uniform color.
+
+ROW 1 (LARGEST), from LEFT to RIGHT:
+1) An American hedge fund founder in 1998: man in his early 50s, receding hair, clean-shaven, dark suit, white shirt, tie. Tight head-and-shoulders close-up, shocked and horrified: eyes wide, mouth open, one hand on his forehead, looking at the camera, hot red paper shape behind him. This is a YouTube thumbnail portrait: big face, strong emotion. Black and white halftone. Generic person, not a real person's likeness.
+2) The same man as element 1 (same face), younger, in 1986 at a trading desk: shirt sleeves and suspenders, holding a dollar bill close to his face like a poker card, sly confident smile, facing right. Waist-up with the desk. Black and white halftone. Generic person, not a real person's likeness.
+3) A businessman in a suit bending down to pick up coins from the road, while a huge road steamroller drives right behind him, facing right. Full scene as ONE element. Black and white halftone. Generic person, not a real person's likeness.
+4) Twelve bank executives in dark suits crowded around a long conference table in a wood-panelled meeting room, tense, arguing. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+
+ROW 2 (LARGE), from LEFT to RIGHT:
+5) Two economics professors in their 50s, one bald with glasses, one with gray hair, standing in front of a chalkboard covered with abstract chalk scribbles. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+6) A professor in his 50s in a tuxedo on a stage, proudly holding up a gold medal, facing right. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+7) A 1980s Wall Street boss in his 50s: suspenders, cigar, pointing his finger in a challenge, facing right. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+8) Four 1980s bond traders shouting into telephones at a crowded trading desk. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+9) A wealthy investor in his 60s in 1994, signing a big check at a desk, smiling, facing right. Waist-up with the desk. Black and white halftone. Generic person, not a real person's likeness.
+
+ROW 3 (MEDIUM), from LEFT to RIGHT:
+10) A young hedge fund partner in the 1990s: man in his 30s, polo shirt and khakis, arms crossed, very confident smile, facing left. Full body. Black and white halftone. Generic person, not a real person's likeness.
+11) A government official in his 50s at a press conference podium with several microphones, announcing bad news, facing right. Waist-up with the podium. Black and white halftone. Generic person, not a real person's likeness.
+12) A crowd of panicked investors in suits running, papers flying. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+13) A risk analyst in 1998 in front of two bulky computer screens, both hands on his head, facing left. Waist-up with the screens. Black and white halftone. Generic person, not a real person's likeness.
+14) An elderly American billionaire investor in his late 60s, glasses, cardigan, talking on a bulky 1990s satellite phone, sitting by a train window with snowy mountains outside, facing right. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+
+ROW 4 (SMALL), from LEFT to RIGHT:
+15) A central bank official in his 60s, dark suit, standing at the head of a table, both hands raised to calm a room, serious, facing left. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+16) A Wall Street banker in his 60s, arms crossed, shaking his head no, stubborn, facing left. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+17) Four fund partners in suits sitting on a bench, heads down, defeated. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+18) A row of university students in an auditorium, listening and taking notes. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+19) An elderly man in his late 60s, glasses, suit, speaking at a lectern, one finger raised, facing right. Waist-up with the lectern. Black and white halftone. Generic person, not a real person's likeness.
+
+ROW 5 (SMALL), from LEFT to RIGHT:
+20) The same man as element 1 (same face): on the phone, stressed, loosening his tie, facing left. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+21) A crowd of people pushing and squeezing toward one narrow exit door of a dark movie theater. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+22) A rich couple in their 60s in 1990s golf clothes, smiling, holding champagne glasses. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+23) A businessman sweating, loosening his tie, staring at a long paper printout of a falling chart, facing right. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+24) A man in a suit walking out of a glass office building carrying a cardboard box, facing left. Full body. Black and white halftone. Generic person, not a real person's likeness.
+
+LAYOUT (very important):
+- Exactly 24 elements, in the exact numbered order above, rows perfectly aligned like a catalogue.
+- Clear empty space around every element, horizontally AND vertically: no element touches, overlaps or hides another element.
+- Every element fully visible, nothing cut off by the image edges.
+- Each element as large and detailed as its row allows. Sharp details, no blur.
+- The hedge fund founder must look like the same person in elements 1, 2 and 20.
+- ALL PEOPLE IN BLACK AND WHITE: grayscale photos only; the only color allowed on a person element is the red or yellow paper shape behind them.
+
+BACKGROUND: fully transparent background (PNG with alpha channel). No floor, no shadow, no scenery behind the elements. If transparency is impossible, plain flat pure white (#FFFFFF). NEVER draw a fake gray-and-white checkerboard transparency pattern, never black. NO blurred colored background, NO gradient, NO glow or haze around the elements: the space between elements must be one single flat uniform color.
+NO TEXT anywhere: no words, no letters, no numbers, no logos, no brand names, no watermark, no labels, no frames, no grid lines.
+
+Before finishing, count the elements: there must be exactly 24, in 5 rows (4, 5, 5, 5, 5).
+
+FORMAT: landscape 1536x1024, PNG, highest resolution possible.
