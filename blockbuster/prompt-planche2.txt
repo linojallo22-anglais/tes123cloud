@@ -1,0 +1,50 @@
+Use the attached image only as a STYLE REFERENCE (same paper-collage look, same colors, same cut-paper borders). Do not copy its elements: create a NEW image.
+
+Create ONE single image containing exactly 20 separate cutout OBJECTS for a VOX-style paper-collage finance documentary about Blockbuster and Netflix. Arrange them in a precise catalogue layout of 4 horizontal rows of 5 objects, in the exact numbered order below. All rows have the same height (about 25% of the image height each).
+
+GLOBAL STYLE (identical for every element, this is the VOX documentary collage look):
+- Realistic photographic objects in a desaturated archival palette of tan, ink black and halftone gray, with ONE hot red accent or a restrained mustard yellow accent; money objects use a muted emerald green accent.
+- A flat offset shape of colored paper (hot red or mustard yellow) slightly behind most objects.
+- Every element is hand-cut from real paper: a thin white paper margin around the silhouette with slightly rough scissor-cut edges, visible print grain and paper fiber, matte, flat even documentary lighting.
+- NOT cartoon, NOT digital illustration, NOT 3D render, NOT glossy, no gradients.
+
+ROW 1, from LEFT to RIGHT:
+1) A plastic toy T-rex dinosaur, roaring, facing right.
+2) A honey bee, large and detailed.
+3) A long curled paper store receipt, blank, no text.
+4) A round wall clock.
+5) A glass jar full of coins.
+
+ROW 2, from LEFT to RIGHT:
+6) A tall glass office skyscraper.
+7) A paper shredder with shredded paper strips spilling out.
+8) A folded paper airplane in flight.
+9) A blank gray tombstone, no engraving.
+10) A cozy single bed with a pillow and a folded blanket.
+
+ROW 3, from LEFT to RIGHT:
+11) A blank yellow t-shirt, no print.
+12) A smartphone on a selfie stick.
+13) A blank paper price tag on a string.
+14) A film clapperboard, blank, no text.
+15) An old 35mm film reel with a strip of film.
+
+ROW 4, from LEFT to RIGHT:
+16) An open DVD case, empty.
+17) A comfortable old sofa, front view.
+18) A large soda cup with a straw, no logo.
+19) An open pizza box with a pizza inside.
+20) A big red "rewind" style double triangle shape made of cut paper, pointing left, no text.
+
+LAYOUT (very important):
+- Exactly 20 elements, in the exact numbered order above, 4 rows of 5, rows perfectly aligned like a catalogue.
+- Clear empty space around every element, horizontally AND vertically: no element touches, overlaps or hides another element.
+- Every element fully visible, nothing cut off by the image edges.
+- Each element as large and detailed as its row allows. Sharp details, no blur.
+
+BACKGROUND: fully transparent background (PNG with alpha channel). No floor, no shadow, no scenery behind the elements. If transparency is impossible, plain flat white, never black.
+NO TEXT anywhere: no words, no letters, no numbers, no logos, no brand names, no watermark, no labels, no frames, no grid lines.
+
+Before finishing, count the elements: there must be exactly 20, in 4 rows of 5.
+
+FORMAT: landscape 1536x1024, PNG, highest resolution possible.

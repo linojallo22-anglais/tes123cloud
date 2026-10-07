@@ -1,0 +1,25 @@
+Use the attached image as the REFERENCE. Recreate exactly the same thumbnail (same person, same composition, same colors, same text), but as a crisp, sharp, high-definition YouTube thumbnail. Do not copy its blur, its low resolution or its compression artifacts.
+
+FORMAT: 16:9 landscape, 1920x1080 px, ultra sharp, high contrast, readable even as a tiny thumbnail on a phone.
+
+STYLE: VOX-style documentary paper collage. Real cut paper, visible paper grain, matte, flat even lighting, slight soft drop shadows under each paper piece. NOT cartoon, NOT 3D render, NOT glossy, NOT blurry.
+
+BACKGROUND: warm beige paper (#E6D8BC) filling the whole image, very subtle paper fiber texture, slightly lighter in the center-right, slightly darker toward the edges. No other objects in the background.
+
+LEFT ELEMENT (person):
+- The same man as in the attached image, same face, same hair, same clothes (dark suit jacket, white shirt, no tie). Keep his identity and features faithful to the reference.
+- Head-and-shoulders portrait, facing the camera, with the same shocked expression: eyes wide open, eyebrows raised, mouth open in surprise.
+- Strictly BLACK AND WHITE halftone photo cutout (grayscale only, fine visible halftone dots), with sharp, detailed eyes, skin texture and hair. No color on the person.
+- A thin white paper margin around his silhouette with slightly rough scissor-cut edges.
+- Behind him, a large flat torn shape of hot red paper (#C8261E), following his silhouette with a margin of about 4% of the width, also with a white rough-cut paper edge. A small corner of mustard yellow paper (#E8B737) peeks out behind his right shoulder (on the right side of the image, near the bottom).
+- Position: left side of the image, from the left edge to about 52% of the width. His head starts at about 10% from the top, his shoulders are cut off by the bottom edge of the image. His face is large: from forehead to chin it takes about 60% of the image height.
+
+TEXT 1 (top right): the text "$53 BILLION", in very bold condensed uppercase letters (Anton / Impact style), emerald green color (#2E7D4F), on a cream paper label (#F7F1E3) with a thick emerald green border and rounded corners, like a rubber stamp. Slightly rotated counter-clockwise (about -5 degrees). Placed from about 51% to 97% of the width, centered vertically around 31% of the height. Large: the letters take about 15% of the image height.
+
+TEXT 2 (bottom right): the text "NOT ENOUGH", in very bold condensed uppercase letters (Anton / Impact style), cream color (#F3EBD8), on a solid black torn-paper label (#1C1712) with slightly rough edges and a soft drop shadow. Slightly rotated clockwise (about +2 degrees). Placed from about 53% to 98% of the width, centered vertically around 66% of the height. Large: the letters take about 17% of the image height.
+
+TEXT RULES (very important):
+- The only text in the image is exactly "$53 BILLION" and exactly "NOT ENOUGH". Spell them exactly like this, with the dollar sign. No other words, letters, numbers, logos or watermark anywhere.
+- Both labels are perfectly sharp, high contrast and fully readable. The text never touches the man's face, the red paper shape or the edges of the image.
+
+QUALITY: crisp edges, no blur, no motion blur, no noise, no compression artifacts, no extra objects, no border or frame around the whole image.

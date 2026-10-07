@@ -1,0 +1,85 @@
+July 2026. Stripe and the investment firm Advent offer more than fifty-three billion dollars to buy PayPal. And PayPal's board says: not enough.
+
+Not bad for a company whose first idea was reportedly named one of the worst business ideas of 1999. Beaming money between PalmPilots. Yes. PalmPilots.
+
+Today, PayPal moves about one point eight trillion dollars a year. That's roughly fifty-seven thousand dollars every single second.
+
+But here's the thing: the money isn't even the strangest part of this story. The people are. Because the small team that built PayPal went on to shape Tesla and SpaceX, and to build YouTube, LinkedIn, Yelp and Palantir. So how did one startup produce half of Silicon Valley?
+
+And how did it survive fraudsters stealing millions every month, and a boardroom coup launched while its CEO was flying to his honeymoon?
+
+Chicago, 1991.
+
+A teenage boy arrives from Kyiv with his family. His name is Max Levchin. He's a coding genius, the kind of kid who probably thinks sleep is a bug.
+
+Seven years later, in 1998, he's in Silicon Valley, sleeping on a friend's floor. One day he walks into a lecture at Stanford given by a young investor named Peter Thiel. Within forty-eight hours, Thiel agrees to back him.
+
+In December 1998, they start a company called Confinity with Luke Nosek, Ken Howery and Yu Pan. The plan? Send money between PalmPilots. Translation: those little digital organizers from the nineties. Think smartphone, minus the phone, minus the internet, minus the fun.
+
+"So you want people to send money with a PalmPilot?"
+"Exactly!"
+"How many people own a PalmPilot?"
+"Counting us? At least five."
+
+To prove it works, investors from Nokia and Deutsche Bank beam their three-million-dollar investment to Thiel. From a PalmPilot. Very futuristic. Very nineties.
+
+But here's the twist. The PalmPilot part goes nowhere. What does take off is a simple side feature: sending money by email. They call it PayPal. And suddenly, sellers on a website called eBay start using it everywhere.
+
+Then came the competition.
+
+Enter Elon Musk. In 1999, he sells his first startup, Zip2, to Compaq for three hundred and seven million dollars. His share: about twenty-two million. So naturally, he puts a big chunk of it into his next idea: X.com, an online bank.
+
+And X.com is chasing the exact same customers as PayPal. So the two start throwing money at people. Literally. PayPal gives you twenty dollars just for signing up, and twenty more for every friend you bring. Free money, on the internet, in 1999. What could go wrong?
+
+Growth explodes. By March 2000, about one million users. But every new user costs cash. Musk later estimated the referral bonuses cost around sixty million dollars. That's not a marketing budget. That's a bonfire.
+
+So in March 2000, the two rivals do the logical thing. They merge. Soon after, Musk takes over as CEO. For now. And then, the real problems begin.
+
+Problem number one: fraud.
+
+Criminals discover that PayPal is basically an open vault. Stolen credit cards. Fake accounts. Bots signing up by the thousands. At its worst, PayPal is reportedly losing more than ten million dollars a month to fraud, while bringing in less than one million in revenue. Translation: for every dollar coming in, ten are walking out the door.
+
+One fraudster even taunted the team. So Levchin built a system to hunt down people like him, and named it after him: Igor. One of the first big uses of data to catch criminals online. Petty? Absolutely. Effective? Also yes.
+
+And to stop the bots, Levchin and engineer David Gausebeck built one of the first commercial versions of those annoying squiggly letters you have to type to prove you're human. Yes. Every time you squint at a blurry bus in a captcha, you can thank a fraud war from the year 2000.
+
+Problem number two: the boss.
+
+Inside the company, people clash with Musk over almost everything. Which technology to use. What to call the product. Musk wants everything to be X.com. The team prefers PayPal. Things get tense.
+
+September 2000. Musk leaves for a fundraising trip that ends with his honeymoon in Sydney. And while he's on the plane, executives hand the board letters of no confidence.
+
+"Should we wait until he lands?"
+"How long is the flight?"
+"About fifteen hours."
+"Then we have time."
+
+Within days, Musk is no longer CEO. Peter Thiel takes over. Musk stays on as a big shareholder. Remember that, it matters later. Game of Thrones, Silicon Valley edition. Fewer dragons. More spreadsheets.
+
+And here's where it gets interesting. Instead of collapsing, PayPal gets stronger.
+
+February 15, 2002. PayPal goes public. Translation: anyone can now buy its shares on the stock market. Price: thirteen dollars. By the end of the first day, twenty dollars and nine cents. A jump of about fifty-five percent.
+
+Five months later, eBay, the website where PayPal grew up, decides that if you can't beat them, you buy them. In July 2002, eBay agrees to buy PayPal for one point five billion dollars.
+
+And that's when the strangest part begins. The team cashes out, leaves, and scatters across Silicon Valley.
+
+Peter Thiel becomes the first outside investor in a tiny college website called Facebook. Five hundred thousand dollars for about ten percent. He also co-founds Palantir. Reid Hoffman starts LinkedIn. Three former PayPal employees, Chad Hurley, Steve Chen and Jawed Karim, create YouTube. Jeremy Stoppelman launches Yelp. Levchin later founds Affirm, the buy now, pay later company. And Musk? Still a big shareholder when eBay bought PayPal, he walks away with a fortune, and puts it into SpaceX and Tesla.
+
+In 2007, Fortune magazine gives them a nickname: the PayPal Mafia. They even pose for a photo dressed as gangsters. It's basically the Avengers, if the Avengers had stock options.
+
+Musk, by the way, never forgot his first love. In 2017, he buys back the domain x.com from PayPal. Great sentimental value, he says. And in 2023, he renames Twitter: X. Some people collect stamps. Musk collects letters.
+
+PayPal keeps growing inside eBay. In 2013, it buys a company called Braintree, which comes with a little app called Venmo. Fast forward to 2015. eBay spins PayPal off as its own company. On its first day of trading, PayPal is worth around forty-nine billion dollars. More than eBay itself. The kid has outgrown the parents.
+
+Then comes the pandemic. Everyone shops online. And in July 2021, PayPal hits a value of around three hundred and sixty billion dollars.
+
+But then came the fall. Apple Pay. Google Pay. New rivals everywhere. The stock collapses. By 2025, PayPal still brings in thirty-three billion dollars of revenue a year, with about four hundred and thirty-nine million active accounts. But the market isn't impressed anymore.
+
+Which brings us back to July 2026. Stripe and Advent offer sixty dollars and fifty cents a share. Over fifty-three billion dollars in total. PayPal's board says it's too low. A few weeks later, the buyers walk away.
+
+So what's the lesson? The PalmPilot idea was terrible. But the people who chased it were not. Sometimes a startup's real product isn't the product. It's the team it creates.
+
+The worst business idea of 1999 just turned down fifty-three billion dollars.
+
+If you enjoyed this, subscribe. Next time: the video rental giant that could have bought Netflix for fifty million dollars, and said no. Blockbuster.

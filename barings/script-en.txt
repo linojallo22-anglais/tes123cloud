@@ -1,0 +1,94 @@
+February 1995. In Singapore, a twenty-seven-year-old trader leaves a note behind. Two words: "I'm sorry." Then he disappears.
+
+Three days later, one of the oldest banks in Britain collapses. Barings. Two hundred and thirty-three years old. A bank that helped the United States buy Louisiana. A bank that reportedly counted the Queen among its clients.
+
+And a few days after that, it's sold for one pound. One. British. Pound. The price of a cup of coffee.
+
+So how does one guy in his twenties sink a bank that's older than the United States?
+
+The answer involves a lucky number, an earthquake, and a secret account that nobody bothered to open.
+
+London, 1762.
+
+Francis Baring opens a small merchant bank. Over the next decades, it becomes one of the most powerful banks on the planet. In 1803, Barings helps finance the Louisiana Purchase. America doubles in size, and a London bank helps pay the bill.
+
+In 1818, a French statesman, the Duc de Richelieu, said there were six great powers in Europe: England, France, Prussia, Austria, Russia, and the Baring Brothers. Translation: a bank, ranked right next to empires.
+
+But Barings had already almost died once. In 1890, bad bets in Argentina nearly sank it, and the Bank of England organized a rescue. Remember that. It matters later.
+
+By the 1990s, Barings is an elegant, very British bank. Old portraits. Old money. Old habits. And it wants some new money. So it moves into a faster, riskier business: derivatives trading in Asia. Translation: betting on where markets will go, using contracts that can multiply your gains, or your losses.
+
+Enter Nick Leeson.
+
+Born in 1967 near London, the son of a plasterer. No university degree. He joins Barings in 1989, in the back office. Translation: the people who check the trades and do the paperwork. Not glamorous. But he's good at it.
+
+In 1992, Barings sends him to Singapore, to run its futures business on the Singapore exchange, SIMEX. Futures, translation: contracts to buy or sell something later, at a price fixed today.
+
+And here's the problem. Leeson runs the trading. And he also runs the back office, the people who are supposed to check the trading. Translation: the student is grading his own exam.
+
+"Who checks Nick's trades?"
+"The back office."
+"And who runs the back office?"
+"Nick."
+"Perfect. Next item."
+
+In July 1992, an error account is opened in Singapore. Number: eight, eight, eight, eight, eight. Translation: an error account is a little drawer where a bank parks small mistakes until they're fixed. And eight is a lucky number in Chinese culture. Five eights? That's very lucky. Spoiler: not that lucky.
+
+According to Leeson, it starts with a colleague's mistake, about twenty thousand pounds. He hides it in the drawer. Then he starts hiding his own losing trades there too. By the end of 1992, the drawer holds about two million pounds of losses.
+
+Meanwhile, on paper, he's a superstar. In 1993, he reportedly makes more than ten million pounds for Barings. About ten percent of the whole bank's profit. His bonus: around one hundred and thirty thousand pounds, on top of a fifty-thousand-pound salary.
+
+In London, he's the golden boy. And nobody asks how he does it. Because when someone makes you that much money, asking questions feels rude.
+
+In 1994, an internal audit even warned that Leeson controlled both the trading and the back office. Its advice: split the two jobs. It never really happened. The report went into a drawer. Not the lucky one, but still a drawer.
+
+But every time he loses, he bets bigger to win it back. Translation: the strategy of everyone who ever said "just one more hand" at a casino.
+
+By the end of 1994, the lucky drawer is hiding two hundred and eight million pounds.
+
+Then came the earthquake.
+
+In January 1995, Leeson has a huge bet on Japan's stock market, the Nikkei. A short straddle. Translation: he's betting the market stays calm. If it barely moves, he wins a little. If it moves a lot, in any direction, he can lose a lot.
+
+On January 17, at 5:46 in the morning, a massive earthquake hits Kobe, Japan. More than six thousand people die. And Japan's stock market drops.
+
+A normal trader cuts his losses. Leeson does the opposite. He buys more and more Nikkei futures, betting the market will bounce back. One man in Singapore, trying to hold up the Japanese stock market by himself.
+
+To keep his positions open, he needs cash. So London keeps sending money to Singapore. Hundreds of millions of pounds.
+
+"Singapore needs more money."
+"How much?"
+"A lot."
+"For what?"
+"Clients, apparently."
+"Well, Nick knows what he's doing."
+
+The market doesn't bounce back.
+
+February 23, 1995. Leeson leaves the office, leaves his note, "I'm sorry", and flees with his wife Lisa. Across the border into Malaysia. Then a luxury resort in Borneo. On February 25, he turns twenty-eight. Happy birthday.
+
+The next day, February 26, Barings collapses. The total loss: about eight hundred and twenty-seven million pounds. Roughly one point three billion dollars. More than the bank's entire capital. Translation: everything the bank had was not enough to cover what one man lost.
+
+And remember 1890? This time, the Bank of England looks for a rescue, and can't find one.
+
+On March 2, Leeson lands in Frankfurt. The German police are waiting for him.
+
+Days later, the Dutch group ING buys Barings. For one pound. Then it pumps in about six hundred and sixty million pounds to keep it alive. The sixth great power of Europe, for the price of a candy bar.
+
+So what happened to Nick?
+
+He's sent back to Singapore. In December 1995, he's sentenced to six and a half years in Changi Prison. In prison, he's diagnosed with colon cancer. He survives it, and he's released in July 1999. His wife divorces him.
+
+He writes a book called Rogue Trader. It becomes a movie, starring Ewan McGregor. And today, he gives talks to companies about risk. The man who broke the bank now explains how not to break the bank. And in 2018, he even joined Celebrity Big Brother.
+
+And the Barings name? It survived. Today, Barings is an investment firm based in Charlotte, North Carolina, owned by an American insurance company. The bank that helped America buy Louisiana is now, well, American.
+
+So what's the lesson?
+
+It wasn't just one rogue trader. It was a bank that let one man make trades and check his own trades. A bank that never asked how a twenty-something made ten percent of its profits. And a bank that kept sending him millions without asking why.
+
+When something makes you too much money to question, that's exactly when you should question it.
+
+Eight, eight, eight, eight, eight. The luckiest number in the world. Until someone opens the drawer.
+
+If you enjoyed this, subscribe. Next time: the hedge fund run by Nobel Prize winners that lost four point six billion dollars in a few months, and needed Wall Street to save it.

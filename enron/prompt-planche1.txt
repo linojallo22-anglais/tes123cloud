@@ -1,0 +1,59 @@
+Create ONE single image containing exactly 24 separate cutout elements for a VOX-style paper-collage finance documentary about the rise and fall of the American energy company Enron (1985-2001). Arrange them in a precise catalogue layout of 5 horizontal rows, in the exact numbered order below. Elements in the upper rows are LARGER because they will be shown full screen; each row gets less height as you go down.
+
+ROW HEIGHTS: row 1 about 26% of the image height, row 2 about 22%, row 3 about 18%, rows 4 and 5 about 17% each.
+
+GLOBAL STYLE (identical for every element, this is the VOX documentary collage look):
+- PEOPLE: strictly BLACK AND WHITE halftone photograph cutouts (grayscale only, no skin color, no colored clothing, no colored ties), visible halftone dots, realistic photographic faces and clothing, with ONE flat offset accent shape of colored paper slightly behind each person (hot red or mustard yellow). The colored paper shape is the ONLY color on a person element.
+- OBJECTS AND PLACES: desaturated archival palette of tan, ink black and halftone gray, with ONE hot red accent or a restrained mustard yellow accent; money objects use a muted emerald green accent.
+- Every element is hand-cut from real paper: a thin white paper margin around the silhouette with slightly rough scissor-cut edges, visible print grain and paper fiber, matte, flat even documentary lighting.
+- NOT cartoon, NOT digital illustration, NOT 3D render, NOT glossy, no gradients.
+- Transparent background between the elements (PNG with alpha). If transparency is impossible, use a plain flat WHITE background, never black.
+
+ROW 1 (LARGEST), from LEFT to RIGHT:
+1) An energy company chairman in 2001: American man around 60, receding gray hair, round friendly face, dark suit, white shirt, tie. Tight head-and-shoulders close-up, a huge forced politician smile while nervous sweat drops run down his forehead, eyes slightly worried, looking at the camera, hot red paper shape behind him. This is a YouTube thumbnail portrait: big face, strong emotion. Black and white halftone. Generic person, not a real person's likeness.
+2) An energy company president in the late 1990s: man in his late 40s, thinning short hair, rimless glasses, sharp dark suit, raising a glass of champagne in a toast with a proud grin, facing right. Full body. Black and white halftone. Generic person, not a real person's likeness.
+3) A chief financial officer around 2000: man in his late 30s, short dark hair, slicked back, sharp pinstripe suit, holding a briefcase overflowing with papers, sly smile, finger on his lips as if saying "shhh", facing left. Full body. Black and white halftone. Generic person, not a real person's likeness.
+4) The same chairman as element 1 (same face, receding gray hair, dark suit): sitting at a desk in front of a bulky 2001 computer monitor, typing, giving a confident thumbs up, facing right. Full figure with desk, chair and computer. Black and white halftone.
+
+ROW 2 (LARGE), from LEFT to RIGHT:
+5) A corporate vice president in 2001: woman in her early 40s, short blond bob haircut, blazer, holding a one-page memo against her chest, worried serious expression, facing right. Full body. Black and white halftone. Generic person, not a real person's likeness.
+6) A young energy trader in 2000: man in his late 20s, shirt with rolled sleeves and loose tie, a telephone receiver at each ear, laughing loudly, facing right. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+7) Three young traders in shirts and ties at a trading desk with bulky monitors, laughing and high-fiving. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+8) A skeptical Wall Street fund manager in 2001: man in his 50s, glasses, suit, leaning over a conference speakerphone on a small table, one eyebrow raised, asking a question, facing left. Waist-up with the phone. Black and white halftone. Generic person, not a real person's likeness.
+9) A laid-off office employee in 2001: man in his 40s, shirt and tie, carrying a cardboard box with his belongings (plant, framed photo, mug), sad, facing left. Full body. Black and white halftone. Generic person, not a real person's likeness.
+
+ROW 3 (MEDIUM), from LEFT to RIGHT:
+10) An auditor in 2001: man in his 30s, suit, glasses, arms full of a tall pile of documents, looking over his shoulder nervously as he hurries, facing right. Full body. Black and white halftone. Generic person, not a real person's likeness.
+11) An elderly woman in her 70s in a cardigan, sitting in an armchair in the dark holding a lit candle during a power blackout, annoyed, facing right. Full figure with armchair. Black and white halftone. Generic person, not a real person's likeness.
+12) A federal judge in a black robe, gray hair, holding a gavel, stern, facing left. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+13) A US congressman in 2002: man in his 60s, suit, standing behind a wooden podium, holding up a pen, about to sign a document, facing right. Waist-up with podium. Black and white halftone. Generic person, not a real person's likeness.
+14) Two young comedians in their 20s wearing hoodies, laughing, holding up a blank cardboard sign. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+
+ROW 4 (SMALL), from LEFT to RIGHT:
+15) A businessman in a prison jumpsuit, handcuffed, head down, walking, facing left. Full body. Black and white halftone. Generic person, not a real person's likeness.
+16) A TV news reporter in 2001 holding a microphone, speaking to the camera, facing right. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+17) An older couple in their 60s at a kitchen table looking at a paper statement in shock, hands on their faces. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+18) A 1985 gas pipeline worker with a hard hat and a big wrench, proud, facing right. Full body. Black and white halftone. Generic person, not a real person's likeness.
+19) A businessman in a suit running on a treadmill, sweating, tie flying, exhausted, facing right. Full figure with the treadmill. Black and white halftone. Generic person, not a real person's likeness.
+
+ROW 5 (SMALL), from LEFT to RIGHT:
+20) A baseball batter in a plain uniform with no logo and no number, swinging a bat, facing right. Full body. Black and white halftone. Generic person, not a real person's likeness.
+21) A nervous accountant in 2001 with a calculator and a long paper tape, sweating, facing left. Waist-up. Black and white halftone. Generic person, not a real person's likeness.
+22) A board of directors: four executives in suits seated around a table, all raising their hands to vote yes. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+23) Two 1985 businessmen in suits shaking hands over a signed contract. They count as ONE element. Black and white halftone. Generic people, not real people's likeness.
+24) A businessman seen from the back, walking away with a briefcase, facing right. Full body. Black and white halftone. Generic person, not a real person's likeness.
+
+LAYOUT (very important):
+- Exactly 24 elements, in the exact numbered order above, rows perfectly aligned like a catalogue.
+- Clear empty space around every element, horizontally AND vertically: no element touches, overlaps or hides another element.
+- Every element fully visible, nothing cut off by the image edges.
+- Each element as large and detailed as its row allows. Sharp details, no blur.
+- The chairman must look like the same person in elements 1 and 4.
+- ALL PEOPLE IN BLACK AND WHITE: grayscale photos only; the only color allowed on a person element is the red or yellow paper shape behind them.
+
+BACKGROUND: fully transparent background (PNG with alpha channel). No floor, no shadow, no scenery behind the elements. If transparency is impossible, plain flat white, never black.
+NO TEXT anywhere: no words, no letters, no numbers, no logos, no brand names, no watermark, no labels, no frames, no grid lines.
+
+Before finishing, count the elements: there must be exactly 24, in 5 rows (4, 5, 5, 5, 5).
+
+FORMAT: landscape 1536x1024, PNG, highest resolution possible.

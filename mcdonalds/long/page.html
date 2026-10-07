@@ -1,0 +1,487 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:TW;src:url(../node_modules/@fontsource/special-elite/files/special-elite-latin-400-normal.woff2)}
+@font-face{font-family:AN;src:url(../node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#D9CCB0}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:#E4D7BC}
+#paper{position:absolute;inset:-60px;background:repeating-linear-gradient(0deg,rgba(60,45,25,.05) 0 2px,transparent 2px 26px),radial-gradient(1500px 1000px at 50% 45%,#EFE4CB 0%,#E1D2B2 60%,#C9B791 100%)}
+#paper:after{content:"";position:absolute;inset:0;opacity:.55;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' seed='4'/><feColorMatrix values='0 0 0 0 .45 0 0 0 0 .35 0 0 0 0 .2 0 0 0 .5 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>")}
+.col{position:absolute;width:280px;opacity:.12}.col i{display:block;height:8px;margin:8px 0;background:#3A2E1E;border-radius:2px}.col b{display:block;height:30px;margin:12px 0 9px;background:#3A2E1E;width:85%}
+#world{position:absolute;inset:0;transform-origin:50% 45%}
+.o{position:absolute;left:0;top:0;opacity:0;transform-origin:50% 50%}
+.cut{filter:drop-shadow(0 12px 10px rgba(40,25,10,.45)) drop-shadow(0 2px 2px rgba(40,25,10,.3))}
+.strip{background:#F7F1E3;padding:12px 28px;font-family:TW;font-size:46px;color:#1C1712;white-space:nowrap;box-shadow:0 8px 14px rgba(40,25,10,.35);clip-path:polygon(0 4%,3% 0,97% 3%,100% 0,99% 96%,96% 100%,4% 97%,0 100%)}
+.strip.r{color:#C8261E}
+.head{background:#1C1712;color:#F3EBD8;font-family:AN;font-size:96px;line-height:1;padding:16px 32px 20px;white-space:nowrap;box-shadow:0 10px 18px rgba(0,0,0,.4);clip-path:polygon(0 3%,2% 0,98% 4%,100% 0,100% 97%,97% 100%,2% 96%,0 100%)}
+.head small{font-size:.5em;color:#E8B737;display:block;margin-bottom:6px;letter-spacing:3px}
+.stamp{font-family:AN;color:#C8261E;border:8px solid #C8261E;border-radius:14px;padding:4px 24px 8px;font-size:92px;line-height:1;letter-spacing:2px;white-space:nowrap;background:rgba(247,241,227,.9);opacity:.95;-webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.3 1.55'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");-webkit-mask-size:200px}
+.stamp.g{color:#2E7D4F;border-color:#2E7D4F}
+.tape{position:absolute;width:140px;height:42px;background:rgba(236,224,180,.8);box-shadow:0 2px 3px rgba(0,0,0,.15);clip-path:polygon(0 8%,6% 0,12% 10%,20% 0,100% 5%,94% 100%,86% 90%,78% 100%,0 95%)}
+.tag{background:#E8B737;font-family:TW;font-size:40px;color:#1C1712;padding:9px 22px;white-space:nowrap;box-shadow:0 6px 10px rgba(40,25,10,.35)}
+.quote{background:#F7F1E3;border:5px solid #1C1712;border-radius:26px;padding:18px 30px;font-family:TW;font-size:42px;color:#1C1712;width:max-content;max-width:680px;line-height:1.25;box-shadow:0 8px 14px rgba(40,25,10,.35)}
+.quote em,.strip em,#sub em{font-style:normal;color:#C8261E}
+#sub{position:absolute;left:60px;right:60px;top:958px;text-align:center}
+#sub span.w{display:inline-block;background:#F7F1E3;font-family:TW;font-size:42px;white-space:nowrap;color:#1C1712;padding:9px 22px;box-shadow:0 6px 12px rgba(40,25,10,.4);clip-path:polygon(0 5%,2% 0,98% 4%,100% 0,99% 95%,97% 100%,3% 96%,0 100%)}
+svg.lay{position:absolute;left:0;top:0}
+</style></head><body><div id="stage"><div id="paper"></div><div id="world"><div id="cols"></div><div id="objs"></div>
+<svg class="lay" id="lay" width="1920" height="1080"></svg></div><div id="sub"></div></div>
+<script>
+const WORDS=[["every", 0.11], ["year", 0.51], ["mcdonald's", 1.09], ["collects", 1.49], ["ten", 2.06], ["billion", 2.63], ["dollars", 2.93], ["in", 3.23], ["rent", 3.45], ["not", 4.49], ["from", 4.65], ["selling", 4.91], ["burgers", 5.25], ["from", 6.09], ["being", 6.29], ["a", 6.43], ["landlord", 6.83], ["and", 7.69], ["the", 7.77], ["man", 7.93], ["who", 8.09], ["built", 8.33], ["that", 8.49], ["machine", 8.81], ["was", 9.13], ["a", 9.25], ["fiftytwoyearold", 9.9], ["milkshake", 10.55], ["mixer", 11.01], ["salesman", 11.39], ["with", 11.79], ["diabetes", 12.27], ["arthritis", 13.03], ["and", 13.55], ["no", 13.85], ["gallbladder", 14.05], ["ten", 15.32], ["billion", 16.59], ["dollars", 16.89], ["a", 17.19], ["year", 17.45], ["that's", 18.23], ["about", 18.47], ["nineteen", 18.95], ["thousand", 19.43], ["dollars", 19.91], ["every", 20.39], ["single", 20.75], ["minute", 21.11], ["in", 21.85], ["rent", 22.13], ["so", 23.05], ["here's", 23.19], ["the", 23.35], ["question", 23.71], ["if", 24.51], ["mcdonald's", 24.81], ["is", 25.07], ["really", 25.43], ["a", 25.57], ["landlord", 25.93], ["then", 26.63], ["what", 26.99], ["exactly", 27.51], ["is", 27.69], ["it", 27.77], ["selling", 28.05], ["you", 28.29], ["and", 29.05], ["the", 29.13], ["two", 29.29], ["brothers", 29.55], ["who", 29.75], ["invented", 30.05], ["the", 30.23], ["whole", 30.35], ["thing", 30.59], ["they", 31.27], ["ended", 31.47], ["up", 31.63], ["with", 31.81], ["one", 32.09], ["restaurant", 32.51], ["no", 33.03], ["name", 33.35], ["and", 33.71], ["a", 33.9], ["promise", 34.09], ["that", 34.39], ["according", 34.81], ["to", 35.01], ["their", 35.11], ["family", 35.51], ["was", 35.99], ["never", 36.31], ["kept", 36.59], ["san", 37.55], ["bernardino", 37.77], ["california", 38.65], ["1948", 39.93], ["brothers", 40.87], ["dick", 41.21], ["and", 41.41], ["mac", 41.57], ["mcdonald", 41.91], ["run", 42.31], ["a", 42.43], ["busy", 42.73], ["drivein", 43.34], ["carhops", 43.96], ["a", 44.57], ["big", 44.83], ["menu", 45.17], ["then", 45.95], ["they", 46.29], ["do", 46.41], ["something", 46.73], ["insane", 47.31], ["they", 48.03], ["shut", 48.29], ["it", 48.41], ["down", 48.69], ["they", 49.41], ["rebuild", 49.79], ["the", 50.03], ["kitchen", 50.29], ["goodbye", 51.01], ["carhops", 51.61], ["the", 52.21], ["menu", 52.43], ["shrinks", 52.69], ["to", 52.99], ["nine", 53.23], ["items", 53.63], ["and", 53.95], ["a", 54.09], ["hamburger", 54.37], ["costs", 54.73], ["fifteen", 55.35], ["cents", 55.97], ["excuse", 56.59], ["me", 56.83], ["where's", 57.27], ["the", 57.45], ["waitress", 57.63], ["gone", 58.51], ["walk", 59.19], ["up", 59.27], ["to", 59.39], ["the", 59.49], ["window", 59.73], ["and", 60.49], ["the", 60.63], ["menu", 60.89], ["hamburger", 61.59], ["cheeseburger", 62.41], ["you're", 63.15], ["welcome", 63.39], ["they", 64.15], ["call", 64.35], ["it", 64.53], ["the", 64.71], ["speedee", 65.11], ["service", 65.51], ["system", 65.97], ["translation", 66.95], ["an", 67.43], ["assembly", 67.91], ["line", 68.19], ["like", 68.49], ["henry", 68.71], ["ford's", 68.95], ["car", 69.25], ["factory", 69.69], ["but", 70.01], ["for", 70.17], ["burgers", 70.49], ["every", 71.37], ["worker", 71.73], ["does", 71.97], ["one", 72.29], ["job", 72.71], ["grill", 73.33], ["fries", 74.05], ["shakes", 74.51], ["again", 75.31], ["and", 75.71], ["again", 76.05], ["picture", 76.85], ["a", 77.01], ["formula", 77.31], ["one", 77.53], ["pit", 77.77], ["stop", 78.03], ["where", 78.23], ["everybody", 78.79], ["smells", 79.05], ["like", 79.29], ["onions", 79.53], ["it", 80.37], ["works", 80.71], ["the", 81.29], ["lines", 81.57], ["go", 81.79], ["out", 82.09], ["the", 82.25], ["door", 82.49], ["and", 83.09], ["two", 83.35], ["thousand", 83.61], ["miles", 83.87], ["away", 84.17], ["a", 84.55], ["salesman", 84.87], ["notices", 85.31], ["something", 85.69], ["strange", 86.17], ["in", 86.41], ["his", 86.53], ["order", 86.73], ["book", 86.97], ["enter", 87.87], ["ray", 88.21], ["kroc", 88.79], ["born", 89.37], ["in", 89.47], ["1902", 89.77], ["near", 90.47], ["chicago", 90.85], ["at", 91.57], ["fifteen", 91.97], ["he", 92.37], ["lies", 92.57], ["about", 92.81], ["his", 93.01], ["age", 93.21], ["to", 93.43], ["drive", 93.61], ["a", 93.77], ["red", 93.95], ["cross", 94.19], ["ambulance", 94.65], ["in", 94.91], ["world", 95.09], ["war", 95.29], ["one", 95.8], ["during", 96.31], ["training", 96.67], ["he", 97.03], ["meets", 97.21], ["another", 97.47], ["young", 97.73], ["driver", 98.01], ["named", 98.37], ["walt", 98.65], ["disney", 99.03], ["totally", 99.91], ["normal", 100.21], ["people", 100.55], ["to", 100.71], ["hang", 100.87], ["out", 101.01], ["with", 101.19], ["after", 102.05], ["the", 102.17], ["war", 102.37], ["kroc", 102.77], ["tries", 103.17], ["everything", 103.83], ["piano", 104.45], ["player", 104.95], ["real", 105.47], ["estate", 105.75], ["then", 106.31], ["years", 106.71], ["selling", 107.07], ["paper", 107.35], ["cups", 107.63], ["for", 107.87], ["the", 108.01], ["lilytulip", 108.46], ["company", 108.91], ["finally", 109.87], ["he", 110.19], ["goes", 110.35], ["all", 110.69], ["in", 110.93], ["on", 111.17], ["one", 111.47], ["product", 111.91], ["the", 112.43], ["multimixer", 112.73], ["a", 113.57], ["machine", 113.87], ["that", 114.11], ["makes", 114.27], ["five", 114.67], ["milkshakes", 114.97], ["at", 115.45], ["once", 115.71], ["then", 116.67], ["in", 116.99], ["1954", 117.79], ["he", 118.37], ["hears", 118.57], ["about", 118.77], ["a", 118.91], ["little", 119.13], ["restaurant", 119.53], ["in", 119.67], ["california", 120.21], ["using", 120.57], ["eight", 120.99], ["of", 121.21], ["his", 121.35], ["machines", 121.73], ["eight", 122.55], ["that's", 123.17], ["forty", 123.57], ["milkshakes", 123.97], ["at", 124.31], ["the", 124.41], ["same", 124.71], ["time", 125.15], ["for", 125.75], ["one", 126.11], ["burger", 126.37], ["stand", 126.75], ["even", 127.41], ["a", 127.51], ["stadium", 127.93], ["doesn't", 128.19], ["need", 128.41], ["that", 128.57], ["much", 128.95], ["so", 129.55], ["kroc", 129.76], ["goes", 129.97], ["to", 130.15], ["see", 130.31], ["it", 130.41], ["for", 130.53], ["himself", 130.85], ["and", 131.51], ["here's", 131.79], ["where", 132.01], ["it", 132.13], ["gets", 132.21], ["interesting", 132.71], ["he", 133.39], ["doesn't", 133.57], ["see", 133.81], ["a", 133.91], ["restaurant", 134.31], ["he", 135.03], ["sees", 135.33], ["a", 135.53], ["photocopier", 135.89], ["if", 137.11], ["it", 137.19], ["works", 137.37], ["here", 137.67], ["it", 138.15], ["works", 138.39], ["everywhere", 139.01], ["the", 139.75], ["brothers", 139.97], ["already", 140.43], ["license", 140.81], ["a", 140.99], ["few", 141.19], ["restaurants", 141.67], ["but", 142.25], ["kroc", 142.61], ["offers", 142.97], ["to", 143.17], ["take", 143.33], ["franchising", 143.71], ["nationwide", 144.67], ["translation", 145.61], ["local", 146.81], ["owners", 147.11], ["pay", 147.47], ["to", 147.71], ["use", 147.89], ["the", 148.05], ["name", 148.25], ["and", 148.65], ["the", 148.79], ["system", 149.13], ["the", 149.89], ["deal", 150.09], ["each", 150.99], ["new", 151.15], ["franchise", 151.53], ["pays", 151.89], ["nine", 152.53], ["hundred", 153.17], ["and", 153.81], ["fifty", 153.93], ["dollars", 154.06], ["and", 154.18], ["kroc", 154.31], ["collects", 154.43], ["one", 154.72], ["point", 155.01], ["nine", 155.29], ["percent", 155.58], ["of", 155.87], ["every", 156.27], ["restaurant's", 156.7], ["sales", 157.13], ["half", 157.91], ["a", 157.99], ["percent", 158.37], ["goes", 158.65], ["to", 158.83], ["the", 158.93], ["brothers", 159.15], ["april", 160.29], ["15", 161.01], ["1955", 161.73], ["kroc", 162.5], ["opens", 163.27], ["his", 163.47], ["own", 163.75], ["mcdonald's", 164.05], ["in", 164.49], ["des", 164.77], ["plaines", 165.05], ["illinois", 165.33], ["he's", 166.13], ["fiftytwo", 166.86], ["in", 167.59], ["his", 167.73], ["memoir", 167.99], ["he", 168.49], ["lists", 168.75], ["his", 168.93], ["health", 169.15], ["like", 169.35], ["a", 169.45], ["grocery", 169.71], ["list", 170.13], ["diabetes", 170.91], ["arthritis", 172.15], ["no", 172.83], ["gallbladder", 173.03], ["most", 174.01], ["of", 174.17], ["his", 174.29], ["thyroid", 174.63], ["gone", 174.93], ["and", 175.77], ["then", 175.91], ["he", 176.03], ["says", 176.27], ["the", 176.63], ["best", 176.93], ["is", 177.15], ["still", 177.45], ["ahead", 177.69], ["of", 177.83], ["him", 177.99], ["peak", 178.75], ["salesman", 179.05], ["energy", 179.55], ["but", 180.41], ["there's", 180.53], ["a", 180.69], ["problem", 181.07], ["we", 181.99], ["sold", 182.21], ["another", 182.45], ["franchise", 182.91], ["great", 184.03], ["minus", 184.77], ["the", 185.03], ["trainers", 185.39], ["the", 185.83], ["inspectors", 186.13], ["the", 186.77], ["travel", 187.15], ["so", 188.15], ["how", 188.51], ["much", 188.67], ["did", 188.77], ["we", 188.89], ["make", 189.09], ["do", 189.99], ["you", 190.07], ["want", 190.21], ["the", 190.41], ["honest", 190.77], ["number", 191.19], ["or", 191.61], ["the", 191.85], ["motivating", 192.31], ["one", 192.61], ["kroc", 193.14], ["pays", 193.67], ["for", 193.89], ["training", 194.21], ["and", 194.51], ["inspectors", 194.83], ["his", 195.75], ["one", 196.05], ["point", 196.35], ["four", 196.65], ["percent", 196.95], ["barely", 197.25], ["covers", 197.57], ["it", 197.81], ["worse", 198.55], ["the", 199.17], ["contract", 199.51], ["says", 199.79], ["he", 200.03], ["can't", 200.33], ["change", 200.67], ["the", 200.81], ["system", 201.15], ["unless", 201.51], ["both", 201.93], ["brothers", 202.29], ["approve", 202.63], ["it", 202.85], ["in", 203.03], ["writing", 203.31], ["want", 204.23], ["to", 204.35], ["tweak", 204.53], ["something", 204.89], ["send", 205.49], ["a", 205.63], ["letter", 205.79], ["wait", 206.79], ["hope", 207.75], ["kroc", 208.38], ["is", 209.01], ["building", 209.31], ["an", 209.49], ["empire", 209.89], ["on", 210.25], ["a", 210.33], ["salary", 210.69], ["of", 210.99], ["crumbs", 211.35], ["spoiler", 212.45], ["those", 213.31], ["crumbs", 213.61], ["are", 213.93], ["about", 214.19], ["to", 214.39], ["turn", 214.55], ["into", 214.75], ["bricks", 214.95], ["enter", 216.11], ["harry", 216.53], ["sonneborn", 216.79], ["a", 217.73], ["finance", 218.05], ["man", 218.37], ["from", 218.55], ["the", 218.69], ["ice", 218.85], ["cream", 219.05], ["chain", 219.37], ["tasteefreez", 220.13], ["he", 220.89], ["asks", 221.17], ["one", 221.53], ["simple", 221.91], ["question", 222.35], ["what", 223.15], ["if", 223.29], ["the", 223.41], ["money", 223.63], ["isn't", 224.05], ["in", 224.25], ["the", 224.37], ["burgers", 224.63], ["in", 225.57], ["the", 225.67], ["midfifties", 226.13], ["they", 226.59], ["set", 226.79], ["up", 226.89], ["a", 226.97], ["separate", 227.29], ["company", 227.69], ["called", 228.01], ["franchise", 228.27], ["realty", 228.89], ["corporation", 229.47], ["here's", 230.39], ["the", 230.57], ["plan", 230.81], ["mcdonald's", 231.81], ["leases", 232.15], ["or", 232.69], ["buys", 232.95], ["the", 233.17], ["land", 233.45], ["puts", 233.87], ["up", 234.05], ["the", 234.17], ["restaurant", 234.49], ["then", 235.03], ["rents", 235.23], ["the", 235.47], ["whole", 235.73], ["package", 236.11], ["to", 236.37], ["the", 236.47], ["franchisee", 236.81], ["with", 237.75], ["a", 237.85], ["markup", 238.01], ["reportedly", 239.11], ["as", 239.57], ["high", 239.79], ["as", 240.03], ["forty", 240.56], ["percent", 241.08], ["and", 241.61], ["the", 241.71], ["rent", 241.97], ["a", 242.61], ["fixed", 242.91], ["minimum", 243.29], ["or", 243.77], ["a", 243.99], ["percentage", 244.27], ["of", 244.49], ["sales", 244.79], ["whichever", 245.41], ["is", 245.67], ["higher", 245.91], ["translation", 246.71], ["if", 247.75], ["the", 247.87], ["restaurant", 248.17], ["does", 248.43], ["badly", 248.81], ["mcdonald's", 249.49], ["still", 250.05], ["gets", 250.25], ["paid", 250.57], ["if", 251.27], ["it", 251.35], ["does", 251.47], ["great", 251.81], ["mcdonald's", 252.49], ["gets", 252.77], ["paid", 253.01], ["more", 253.27], ["heads", 254.03], ["i", 254.25], ["win", 254.47], ["tails", 255.05], ["you", 255.35], ["pay", 255.53], ["rent", 255.75], ["congratulations", 257.01], ["here's", 257.67], ["your", 257.83], ["restaurant", 258.17], ["amazing", 259.31], ["and", 259.93], ["the", 260.03], ["land", 260.21], ["oh", 260.99], ["the", 261.37], ["land", 261.55], ["is", 261.69], ["ours", 261.91], ["rent", 262.55], ["is", 262.73], ["due", 262.85], ["on", 262.99], ["the", 263.05], ["first", 263.27], ["welcome", 264.17], ["to", 264.35], ["the", 264.43], ["family", 264.73], ["sonneborn", 265.67], ["later", 266.21], ["put", 266.45], ["it", 266.57], ["bluntly", 266.77], ["we", 267.69], ["are", 267.79], ["not", 268.05], ["technically", 268.47], ["in", 268.75], ["the", 268.81], ["food", 269.01], ["business", 269.37], ["we", 270.09], ["are", 270.39], ["in", 270.49], ["the", 270.61], ["real", 270.87], ["estate", 271.13], ["business", 271.55], ["and", 272.39], ["it", 272.49], ["works", 272.71], ["in", 273.53], ["1958", 274.15], ["there", 274.67], ["are", 274.75], ["thirtyfour", 275.31], ["mcdonald's", 275.87], ["in", 276.71], ["1959", 277.39], ["alone", 277.88], ["kroc", 278.36], ["opens", 278.85], ["sixtyseven", 279.49], ["more", 280.13], ["sonneborn", 280.97], ["becomes", 281.49], ["the", 281.71], ["company's", 281.99], ["first", 282.49], ["president", 282.91], ["there's", 283.41], ["just", 283.61], ["one", 284.05], ["thing", 284.35], ["kroc", 284.71], ["still", 285.07], ["doesn't", 285.37], ["own", 285.65], ["the", 286.47], ["name", 286.73], ["fast", 287.91], ["forward", 288.23], ["to", 288.47], ["1961", 289.25], ["kroc", 289.89], ["wants", 290.53], ["the", 290.71], ["brothers", 290.93], ["out", 291.35], ["he", 292.05], ["asks", 292.33], ["for", 292.57], ["their", 292.71], ["price", 293.01], ["the", 293.69], ["answer", 293.95], ["two", 294.41], ["point", 294.87], ["seven", 295.33], ["million", 295.79], ["dollars", 296.33], ["cash", 296.87], ["enough", 297.73], ["for", 297.95], ["one", 298.23], ["million", 298.49], ["each", 298.97], ["after", 299.45], ["taxes", 299.81], ["they", 300.65], ["want", 300.81], ["two", 301.13], ["point", 301.46], ["seven", 301.79], ["million", 302.11], ["for", 302.95], ["a", 303.09], ["name", 303.37], ["for", 304.17], ["a", 304.29], ["name", 304.49], ["and", 305.03], ["a", 305.19], ["menu", 305.45], ["with", 305.67], ["nine", 305.93], ["items", 306.37], ["kroc", 307.12], ["reportedly", 307.87], ["went", 308.27], ["ballistic", 308.87], ["but", 309.65], ["sonneborn", 310.04], ["finds", 310.43], ["the", 310.63], ["money", 310.87], ["including", 311.53], ["a", 311.75], ["oneandahalfmilliondollar", 312.54], ["loan", 313.33], ["from", 313.65], ["three", 314.01], ["insurance", 314.43], ["companies", 314.85], ["then", 315.73], ["at", 316.05], ["the", 316.17], ["closing", 316.43], ["table", 316.79], ["a", 317.31], ["twist", 317.49], ["the", 318.31], ["brothers", 318.59], ["are", 318.81], ["keeping", 319.15], ["their", 319.43], ["original", 319.83], ["restaurant", 320.23], ["they're", 320.81], ["giving", 321.09], ["it", 321.25], ["to", 321.39], ["their", 321.53], ["employees", 322.03], ["kroc", 322.69], ["is", 323.35], ["furious", 323.95], ["according", 324.91], ["to", 325.13], ["the", 325.21], ["mcdonald", 325.49], ["family", 325.97], ["there", 326.35], ["was", 326.45], ["also", 326.89], ["a", 327.11], ["handshake", 327.41], ["promise", 327.95], ["a", 328.59], ["share", 328.87], ["of", 329.09], ["future", 329.45], ["sales", 329.91], ["forever", 330.53], ["it", 331.41], ["was", 331.53], ["never", 331.77], ["written", 331.99], ["down", 332.31], ["and", 332.91], ["it", 332.99], ["was", 333.13], ["never", 333.37], ["paid", 333.67], ["the", 334.31], ["brothers", 334.67], ["restaurant", 335.03], ["can't", 335.37], ["be", 335.57], ["called", 335.75], ["mcdonald's", 336.13], ["anymore", 336.63], ["so", 337.17], ["it", 337.49], ["becomes", 337.81], ["the", 338.15], ["big", 338.45], ["m", 338.67], ["and", 339.37], ["kroc", 339.83], ["he", 340.29], ["opens", 340.57], ["a", 340.77], ["brandnew", 341.18], ["mcdonald's", 341.59], ["one", 342.19], ["block", 342.43], ["away", 342.77], ["cue", 343.22], ["the", 343.67], ["ominous", 343.89], ["music", 344.49], ["six", 345.35], ["years", 345.57], ["later", 345.91], ["the", 346.35], ["big", 346.65], ["m", 346.77], ["closes", 347.23], ["this", 348.21], ["is", 348.53], ["the", 348.67], ["game", 348.85], ["of", 349.03], ["thrones", 349.21], ["chapter", 349.67], ["of", 349.81], ["the", 349.91], ["story", 350.19], ["minus", 350.91], ["the", 351.17], ["dragons", 351.39], ["that", 352.19], ["same", 352.49], ["year", 352.81], ["1961", 353.81], ["mcdonald's", 354.59], ["opens", 355.13], ["hamburger", 355.59], ["university", 356.37], ["in", 356.77], ["the", 356.87], ["basement", 357.15], ["of", 357.41], ["a", 357.47], ["restaurant", 357.81], ["in", 358.07], ["elk", 358.29], ["grove", 358.51], ["village", 358.93], ["illinois", 359.27], ["the", 360.09], ["first", 360.29], ["class", 360.55], ["fifteen", 361.29], ["graduates", 362.03], ["their", 362.67], ["degree", 362.95], ["hamburgerology", 363.75], ["yes", 365.03], ["really", 365.67], ["then", 366.45], ["came", 366.81], ["the", 366.99], ["money", 367.25], ["april", 367.91], ["21", 368.78], ["1965", 369.65], ["mcdonald's", 370.59], ["goes", 370.99], ["public", 371.49], ["translation", 372.19], ["anyone", 373.37], ["can", 373.59], ["now", 373.83], ["buy", 374.01], ["a", 374.17], ["piece", 374.31], ["of", 374.49], ["it", 374.69], ["twentytwo", 375.03], ["dollars", 375.37], ["and", 375.71], ["fifty", 376.05], ["cents", 376.39], ["a", 376.73], ["share", 376.99], ["by", 377.63], ["the", 377.73], ["end", 377.85], ["of", 377.97], ["day", 378.07], ["one", 378.35], ["it's", 378.79], ["around", 378.99], ["thirty", 379.52], ["kroc", 380.06], ["buys", 380.59], ["a", 380.73], ["ranch", 380.91], ["as", 381.61], ["one", 381.75], ["does", 381.95], ["in", 382.53], ["1967", 383.39], ["a", 383.87], ["franchisee", 384.21], ["near", 384.61], ["pittsburgh", 384.97], ["named", 385.39], ["jim", 385.71], ["delligatti", 386.13], ["wants", 386.55], ["a", 386.75], ["bigger", 387.05], ["burger", 387.41], ["for", 387.61], ["adults", 387.95], ["two", 388.73], ["patties", 388.99], ["three", 389.61], ["buns", 389.85], ["special", 390.61], ["sauce", 390.87], ["the", 391.59], ["big", 391.83], ["mac", 392.03], ["the", 392.81], ["company's", 393.07], ["most", 393.49], ["famous", 393.83], ["product", 394.27], ["came", 394.57], ["from", 394.75], ["a", 394.87], ["franchisee", 395.27], ["not", 396.13], ["headquarters", 396.59], ["and", 397.27], ["sonneborn", 397.81], ["that", 398.35], ["same", 398.65], ["year", 398.97], ["he's", 399.31], ["convinced", 399.69], ["a", 399.95], ["recession", 400.39], ["is", 400.61], ["coming", 400.85], ["kroc", 401.36], ["wants", 401.87], ["to", 402.03], ["keep", 402.19], ["building", 402.55], ["they", 403.15], ["clash", 403.45], ["on", 404.27], ["june", 404.47], ["8", 404.79], ["1967", 405.85], ["sonneborn", 406.47], ["resigns", 407.07], ["and", 407.63], ["sells", 407.91], ["his", 408.11], ["stock", 408.33], ["for", 408.57], ["several", 409.01], ["million", 409.49], ["dollars", 409.93], ["that", 410.71], ["stock", 411.03], ["became", 411.43], ["worth", 411.73], ["far", 412.13], ["more", 412.39], ["the", 413.05], ["real", 413.29], ["estate", 413.47], ["genius", 413.93], ["beaten", 414.59], ["by", 414.95], ["his", 415.09], ["own", 415.37], ["timing", 415.67], ["ray", 416.37], ["kroc", 416.64], ["dies", 416.91], ["on", 417.23], ["january", 417.57], ["14", 418.42], ["1984", 419.27], ["by", 419.97], ["then", 420.21], ["seven", 420.64], ["thousand", 421.07], ["five", 421.51], ["hundred", 421.94], ["restaurants", 422.37], ["his", 422.87], ["own", 423.11], ["baseball", 423.41], ["team", 423.89], ["the", 424.11], ["san", 424.25], ["diego", 424.45], ["padres", 424.87], ["and", 425.55], ["the", 425.67], ["word", 425.87], ["founder", 426.39], ["next", 426.71], ["to", 426.89], ["his", 427.03], ["name", 427.23], ["in", 427.49], ["a", 427.59], ["lot", 427.85], ["of", 428.09], ["history", 428.33], ["books", 428.65], ["and", 429.25], ["today", 429.49], ["more", 430.45], ["than", 430.59], ["fortyfive", 431.26], ["thousand", 431.94], ["restaurants", 432.61], ["about", 433.35], ["ninetyfive", 433.81], ["percent", 434.27], ["run", 434.73], ["by", 434.91], ["franchisees", 435.27], ["in", 436.27], ["2024", 437.01], ["mcdonald's", 437.65], ["collected", 438.09], ["ten", 438.64], ["billion", 439.19], ["dollars", 439.47], ["in", 439.75], ["rent", 439.97], ["and", 440.45], ["five", 440.77], ["point", 441.09], ["six", 441.41], ["billion", 441.73], ["in", 441.93], ["royalties", 442.13], ["its", 442.62], ["cut", 443.11], ["of", 443.31], ["sales", 443.51], ["rent", 444.29], ["wins", 444.61], ["by", 444.81], ["almost", 445.11], ["two", 445.38], ["to", 445.65], ["one", 446.17], ["on", 446.69], ["its", 446.83], ["books", 447.13], ["the", 447.53], ["company's", 447.81], ["land", 448.25], ["and", 448.43], ["buildings", 448.73], ["add", 449.15], ["up", 449.27], ["to", 449.39], ["more", 449.57], ["than", 449.71], ["fortyone", 450.33], ["billion", 450.95], ["dollars", 451.51], ["and", 452.07], ["that's", 452.21], ["at", 452.35], ["the", 452.45], ["price", 452.65], ["it", 452.85], ["originally", 453.33], ["paid", 453.65], ["and", 454.41], ["the", 454.49], ["very", 454.77], ["first", 455.09], ["mcdonald's", 455.39], ["site", 455.75], ["in", 455.89], ["san", 456.05], ["bernardino", 456.31], ["the", 457.13], ["one", 457.39], ["piece", 457.61], ["of", 457.77], ["land", 457.97], ["kroc", 458.27], ["never", 458.57], ["got", 458.91], ["in", 459.57], ["1998", 460.09], ["after", 460.79], ["the", 460.95], ["owner", 461.11], ["couldn't", 461.33], ["pay", 461.65], ["it", 462.17], ["sold", 462.39], ["at", 462.57], ["a", 462.65], ["foreclosure", 462.81], ["auction", 463.57], ["for", 463.83], ["one", 464.24], ["hundred", 464.66], ["and", 465.07], ["thirtyfive", 465.49], ["thousand", 465.9], ["dollars", 466.32], ["the", 466.73], ["buyer", 467.03], ["was", 467.33], ["the", 467.45], ["founder", 467.77], ["of", 467.97], ["a", 468.05], ["chicken", 468.31], ["restaurant", 468.65], ["chain", 468.99], ["he", 469.65], ["turned", 469.85], ["it", 470.05], ["into", 470.33], ["an", 470.45], ["unofficial", 470.69], ["mcdonald's", 471.51], ["museum", 472.11], ["so", 472.91], ["what's", 473.03], ["the", 473.23], ["lesson", 473.49], ["sometimes", 474.61], ["the", 474.93], ["product", 475.29], ["is", 475.55], ["just", 475.83], ["the", 476.05], ["excuse", 476.43], ["the", 477.13], ["real", 477.37], ["business", 477.73], ["is", 478.05], ["whatever", 478.31], ["sits", 478.63], ["underneath", 479.09], ["it", 479.37], ["nineteen", 479.91], ["thousand", 480.45], ["dollars", 480.99], ["a", 481.53], ["minute", 481.87], ["in", 482.51], ["rent", 482.73], ["the", 483.41], ["burger", 483.67], ["was", 484.11], ["never", 484.37], ["the", 484.55], ["point", 484.81], ["if", 485.53], ["you", 485.61], ["enjoyed", 485.89], ["this", 486.15], ["subscribe", 486.73], ["next", 487.55], ["time", 487.79], ["the", 488.31], ["luxury", 488.69], ["watch", 489.07], ["giant", 489.43], ["that", 489.63], ["has", 489.79], ["no", 490.13], ["shareholders", 490.53], ["at", 491.01], ["all", 491.35]];
+const CAP=[[0.11, "Every year, McDonald's collects ten billion"], [2.93, "dollars in rent."], [4.49, "Not from selling burgers."], [6.09, "From being a landlord."], [7.69, "And the man who built that machine was a fifty-two-year-old"], [10.55, "milkshake mixer salesman with diabetes,"], [13.03, "arthritis and no gallbladder."], [15.32, "Ten billion dollars a year."], [18.23, "That's about nineteen thousand dollars every single minute."], [21.85, "In rent."], [23.05, "So here's the question."], [24.51, "If McDonald's is really a landlord,"], [26.63, "then what exactly is it selling you?"], [29.05, "And the two brothers who invented the whole thing?"], [31.27, "They ended up with one restaurant,"], [33.03, "no name, and a promise that,"], [34.81, "according to their family,"], [35.99, "was never kept."], [37.55, "San Bernardino, California."], [39.93, "1948."], [40.87, "Brothers Dick and Mac McDonald run a busy drive-in."], [43.96, "Carhops, a big menu."], [45.95, "Then they do something insane."], [48.03, "They shut it down."], [49.41, "They rebuild the kitchen."], [51.01, "Goodbye, carhops."], [52.21, "The menu shrinks to nine items,"], [53.95, "and a hamburger costs fifteen cents."], [56.59, ""], [58.51, ""], [60.49, ""], [61.59, ""], [64.15, "They call it the Speedee Service System."], [66.95, "Translation:"], [67.43, "an assembly line,"], [68.49, "like Henry Ford's car factory,"], [70.01, "but for burgers."], [71.37, "Every worker does one job."], [73.33, "Grill."], [74.05, "Fries."], [74.51, "Shakes."], [75.31, "Again and again."], [76.85, "Picture a Formula One pit stop where everybody"], [79.05, "smells like onions."], [80.37, "It works."], [81.29, "The lines go out the door."], [83.09, "And two thousand miles away,"], [84.55, "a salesman notices something strange in his order book."], [87.87, "Enter Ray Kroc."], [89.37, "Born in 1902,"], [90.47, "near Chicago."], [91.57, "At fifteen, he lies about his age to drive"], [93.77, "a Red Cross ambulance in World War One."], [96.31, "During training, he meets another young driver"], [98.37, "named Walt Disney."], [99.91, "Totally normal people to hang out with."], [102.05, "After the war,"], [102.77, "Kroc tries everything."], [104.45, "Piano player."], [105.47, "Real estate."], [106.31, "Then years selling paper cups for the Lily-Tulip company."], [109.87, "Finally, he goes all in on one product:"], [112.43, "the Multimixer, a machine that makes five milkshakes at once."], [116.67, "Then, in 1954,"], [118.37, "he hears about a little restaurant in California"], [120.57, "using eight of his machines."], [122.55, "Eight."], [123.17, "That's forty milkshakes at the same time."], [125.75, "For one burger stand."], [127.41, "Even a stadium doesn't need that much."], [129.55, "So Kroc goes to see it for himself."], [131.51, "And here's where it gets interesting."], [133.39, "He doesn't see a restaurant."], [135.03, "He sees a photocopier."], [137.11, "If it works here,"], [138.15, "it works everywhere."], [139.75, "The brothers already license a few restaurants,"], [142.25, "but Kroc offers to take franchising nationwide."], [145.61, "Translation:"], [146.81, "local owners pay to use the name and the system."], [149.89, "The deal:"], [150.99, "each new franchise pays nine hundred and fifty dollars,"], [154.18, "and Kroc collects one point nine percent of"], [156.27, "every restaurant's sales."], [157.91, "Half a percent goes to the brothers."], [160.29, "April 15, 1955."], [162.5, "Kroc opens his own McDonald's in Des Plaines,"], [165.33, "Illinois."], [166.13, "He's fifty-two."], [167.59, "In his memoir,"], [168.49, "he lists his health like a grocery list:"], [170.91, "diabetes, arthritis, no gallbladder,"], [174.01, "most of his thyroid gone."], [175.77, "And then he says the best is still ahead of him."], [178.75, "Peak salesman energy."], [180.41, "But there's a problem."], [181.99, ""], [184.03, ""], [188.15, ""], [189.99, ""], [193.14, "Kroc pays for training and inspectors."], [195.75, "His one point four percent barely covers it."], [198.55, "Worse, the contract says he can't change the"], [201.15, "system unless both brothers approve it in writing."], [204.23, "Want to tweak something?"], [205.49, "Send a letter."], [206.79, "Wait."], [207.75, "Hope."], [208.38, "Kroc is building an empire on a salary of crumbs."], [212.45, "Spoiler:"], [213.31, "those crumbs are about to turn into bricks."], [216.11, "Enter Harry Sonneborn."], [217.73, "A finance man from the ice cream chain Tastee-Freez."], [220.89, "He asks one simple question."], [223.15, "What if the money isn't in the burgers?"], [225.57, "In the mid-fifties,"], [226.59, "they set up a separate company called Franchise Realty Corporation."], [230.39, "Here's the plan."], [231.81, "McDonald's leases or buys the land,"], [233.87, "puts up the restaurant,"], [235.03, "then rents the whole package to the franchisee."], [237.75, "With a markup."], [239.11, "Reportedly as high as forty percent."], [241.61, "And the rent?"], [242.61, "A fixed minimum,"], [243.77, "or a percentage of sales,"], [245.41, "whichever is higher."], [246.71, "Translation:"], [247.75, "if the restaurant does badly,"], [249.49, "McDonald's still gets paid."], [251.27, "If it does great,"], [252.49, "McDonald's gets paid more."], [254.03, "Heads I win,"], [255.05, "tails you pay rent."], [257.01, ""], [259.31, ""], [260.99, ""], [264.17, ""], [265.67, "Sonneborn later put it bluntly."], [267.69, "We are not technically in the food business."], [270.09, "We are in the real estate business."], [272.39, "And it works."], [273.53, "In 1958, there are thirty-four McDonald's."], [276.71, "In 1959 alone,"], [278.36, "Kroc opens sixty-seven more."], [280.97, "Sonneborn becomes the company's first president."], [283.41, "There's just one thing Kroc still doesn't own."], [286.47, "The name."], [287.91, "Fast forward to 1961."], [289.89, "Kroc wants the brothers out."], [292.05, "He asks for their price."], [293.69, "The answer:"], [294.41, "two point seven million dollars."], [296.87, "Cash."], [297.73, "Enough for one million each,"], [299.45, "after taxes."], [300.65, ""], [302.95, ""], [304.17, ""], [307.12, "Kroc reportedly went ballistic."], [309.65, "But Sonneborn finds the money,"], [311.53, "including a one-and-a-half-million-dollar loan"], [313.65, "from three insurance companies."], [315.73, "Then, at the closing table,"], [317.31, "a twist."], [318.31, "The brothers are keeping their original restaurant."], [320.81, "They're giving it to their employees."], [322.69, "Kroc is furious."], [324.91, "According to the McDonald family,"], [326.35, "there was also a handshake promise:"], [328.59, "a share of future sales,"], [330.53, "forever."], [331.41, "It was never written down."], [332.91, "And it was never paid."], [334.31, "The brothers' restaurant can't be called McDonald's anymore,"], [337.17, "so it becomes The Big M."], [339.37, "And Kroc?"], [340.29, "He opens a brand-new McDonald's one block away."], [343.22, "Cue the ominous music."], [345.35, "Six years later,"], [346.35, "the Big M closes."], [348.21, "This is the Game of Thrones chapter of the story."], [350.91, "Minus the dragons."], [352.19, "That same year,"], [353.81, "1961, McDonald's opens Hamburger University,"], [356.77, "in the basement of a restaurant in Elk Grove Village,"], [359.27, "Illinois."], [360.09, "The first class:"], [361.29, "fifteen graduates."], [362.67, "Their degree?"], [363.75, "Hamburgerology."], [365.03, "Yes, really."], [366.45, "Then came the money."], [367.91, "April 21, 1965."], [370.59, "McDonald's goes public."], [372.19, "Translation:"], [373.37, "anyone can now buy a piece of it."], [375.03, "Twenty-two dollars and fifty cents a share."], [377.63, "By the end of day one,"], [378.79, "it's around thirty."], [380.06, "Kroc buys a ranch."], [381.61, "As one does."], [382.53, "In 1967, a franchisee near Pittsburgh named"], [385.71, "Jim Delligatti wants a bigger burger for adults."], [388.73, "Two patties, three buns,"], [390.61, "special sauce."], [391.59, "The Big Mac."], [392.81, "The company's most famous product came from a franchisee,"], [396.13, "not headquarters."], [397.27, "And Sonneborn?"], [398.35, "That same year,"], [399.31, "he's convinced a recession is coming."], [401.36, "Kroc wants to keep building."], [403.15, "They clash."], [404.27, "On June 8,"], [405.85, "1967, Sonneborn resigns,"], [407.63, "and sells his stock for several million dollars."], [410.71, "That stock became worth far more."], [413.05, "The real estate genius,"], [414.59, "beaten by his own timing."], [416.37, "Ray Kroc dies on January 14,"], [419.27, "1984."], [419.97, "By then:"], [420.64, "seven thousand five hundred restaurants,"], [422.87, "his own baseball team,"], [424.11, "the San Diego Padres,"], [425.55, "and the word founder next to his name in a"], [427.85, "lot of history books."], [429.25, "And today?"], [430.45, "More than forty-five thousand restaurants."], [433.35, "About ninety-five percent run by franchisees."], [436.27, "In 2024, McDonald's collected ten billion dollars in rent,"], [440.45, "and five point six billion in royalties,"], [442.62, "its cut of sales."], [444.29, "Rent wins by almost two to one."], [446.69, "On its books,"], [447.53, "the company's land and buildings add up to"], [449.57, "more than forty-one billion dollars."], [452.07, "And that's at the price it originally paid."], [454.41, "And the very first McDonald's site in San Bernardino?"], [457.13, "The one piece of land Kroc never got?"], [459.57, "In 1998, after the owner couldn't pay,"], [462.17, "it sold at a foreclosure auction for one hundred"], [465.07, "and thirty-five thousand dollars."], [466.73, "The buyer was the founder of a chicken restaurant chain."], [469.65, "He turned it into an unofficial McDonald's museum."], [472.91, "So what's the lesson?"], [474.61, "Sometimes the product is just the excuse."], [477.13, "The real business is whatever sits underneath it."], [479.91, "Nineteen thousand dollars a minute."], [482.51, "In rent."], [483.41, "The burger was never the point."], [485.53, "If you enjoyed this,"], [486.73, "subscribe."], [487.55, "Next time:"], [488.31, "the luxury watch giant that has no shareholders at all."]];
+const DUR=492.8;
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),eo=t=>1-Math.pow(1-t,3);
+const eb=t=>{const c1=1.6,c3=c1+1;return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2)},pr=(t,s,d)=>cl((t-s)/d);
+const q12=t=>Math.floor(t*12+1e-6)/12;
+window.EVENTS=[];const EV=(t,k)=>EVENTS.push([t,k]);
+(function(){let h='';for(let c=0;c<7;c++){h+=`<div class="col" style="left:${-30+c*285}px;top:-20px">`;for(let r=0;r<75;r++)h+=(r%15===3)?'<b></b>':`<i style="width:${70+((r*37+c*13)%30)}%"></i>`;h+='</div>';}$('cols').innerHTML=h})();
+// --- ancrage sur la voix : WORDS=[[mot,t],...] ---
+const nz=s=>s.toLowerCase().replace(/’/g,"'").split(/\s+/).map(w=>w.replace(/[^a-z0-9']/g,'').replace(/^'+|'+$/g,'')).filter(Boolean);
+let SCUR=0;window.MISS=[];
+function find(ph,from){const p=nz(ph);for(let i=from;i<=WORDS.length-p.length;i++){let ok=true;for(let k=0;k<p.length;k++)if(WORDS[i+k][0]!==p[k]){ok=false;break}if(ok)return i}MISS.push(ph);return -1}
+function T(ph,dt=0){const i=find(ph,SCUR);return i<0?NaN:WORDS[i][1]+dt}
+const OBJ=[],objs=$('objs'),SC=[];
+function scene(ph,dt=0){const i=find(ph,SCUR);if(i>=0)SCUR=i;const t=i<0?NaN:Math.max(0,WORDS[i][1]+dt-0.1);SC.push(t);return t;}
+function O(content,a,x,y,opt={}){if(isNaN(a))MISS.push('time:'+content.slice(0,40));const e=document.createElement('div');e.className='o'+(opt.img?' cut':'');
+ e.innerHTML=opt.img?`<img src="../img/${content}.png" style="${opt.h?'height:'+opt.h:'width:'+opt.w}px;display:block">`:content;
+ if(opt.tape)opt.tape.forEach(tp=>{e.innerHTML+=`<div class="tape" style="left:${tp[0]}px;top:${tp[1]}px;transform:rotate(${tp[2]}deg)"></div>`});
+ objs.appendChild(e);const o={e,a,si:SC.length-1,zz:opt.z,x,y,fx:opt.fx||'drop',r:opt.r||0,id:opt.id};OBJ.push(o);
+ if(opt.sfx!==false)EV(a,opt.sfx||{stamp:'stamp',drop:'paper',slideL:'slide',slideR:'slide',slideT:'slide',slideB:'slide',pop:'tap'}[o.fx]);
+ if(opt.tape)EV(a+.35,'tape');return o;}
+const I=(n,a,x,y,o={})=>O(n,a,x,y,Object.assign({img:1},o));
+const S=(t,a,x,y,o={})=>O(`<div class="strip ${o.cls||''}" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'drop',tape:[[-66,-22,-32]]},o));
+const H=(t,a,x,y,o={})=>O(`<div class="head" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'slideL'},o));
+const ST=(t,a,x,y,o={})=>O(`<div class="stamp ${o.cls||''}" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'stamp'},o));
+const TG=(t,a,x,y,o={})=>O(`<div class="tag" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'pop'},o));
+const QT=(t,a,x,y,o={})=>O(`<div class="quote" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'pop',sfx:'pop'},o));
+const BAR=(c,h,a,x,yb,o={})=>O(`<div style="width:200px;height:${h}px;background:${c};box-shadow:0 10px 16px rgba(40,25,10,.4);clip-path:polygon(0 1%,4% 0,96% 1.5%,100% 0,100% 100%,0 100%)"></div>`,a,x,yb-h/2,Object.assign({fx:'slideB'},o));
+const MARKS=[];function circ(a,cx,cy,rx,ry){MARKS.push({a,si:SC.length-1,d:`M${cx+rx} ${cy} A${rx} ${ry} 0 1 1 ${cx+rx-2} ${cy-8}`});EV(a,'scribble');}
+function cross(a,cx,cy,s){MARKS.push({a,si:SC.length-1,d:`M${cx-s} ${cy-s*.8} L${cx+s} ${cy+s*.8} M${cx+s} ${cy-s*.8} L${cx-s} ${cy+s*.8}`});EV(a,'scribble');}
+const LINES=[];function line(a,x1,y1,x2,y2){LINES.push({a,si:SC.length-1,p:[x1,y1,x2,y2]});EV(a,'string');}
+// ================= HOOK =================
+scene("Every year, McDonald's collects");
+H("McDONALD'S",-0.4,960,150,{sfx:'whoosh_s'});
+I('resto',-0.4,620,560,{w:820,r:-2,fx:'pop',sfx:false});
+ST('$10 BILLION',T('ten billion'),1380,420,{cls:'g',r:-6,sfx:'cash'});
+TG('IN RENT',T('in rent'),1380,620,{r:3,st:'font-size:52px'});
+scene("Not from selling burgers");
+I('burger',T('not from'),560,500,{w:440,r:-4});
+cross(T('burgers'),560,500,190);
+I('cle',T('from being'),1340,480,{w:500,r:6});
+ST('LANDLORD',T('landlord'),1340,760,{cls:'g',r:-5});
+scene("And the man who built");
+I('kr_walk',T('and the man'),520,540,{h:780,fx:'slideL'});
+ST('52 YEARS OLD',T('fiftytwoyearold'),1300,190,{r:-5,st:'font-size:80px'});
+TG('DIABETES',T('diabetes'),1150,420,{r:-3});
+TG('ARTHRITIS',T('arthritis'),1450,540,{r:2});
+TG('NO GALLBLADDER',T('no gallbladder'),1250,680,{r:-2});
+scene("Ten billion dollars a year");
+I('chrono',T('ten billion'),560,500,{w:440,r:-4});
+ST('$19,000',T('nineteen thousand'),1300,360,{cls:'g',r:-5,st:'font-size:130px',sfx:'cash'});
+TG('EVERY SINGLE MINUTE',T('every single minute'),1300,570);
+ST('IN RENT',T('in rent'),1300,760,{r:4});
+scene("So here's the question");
+I('proprio',T("so here's"),560,560,{h:640,fx:'slideL'});
+ST('?',T('what exactly'),1350,420,{st:'font-size:260px;padding:0 60px 20px',r:6});
+TG('WHAT IS IT SELLING YOU?',T('selling you'),1350,760,{st:'font-size:46px'});
+scene("And the two brothers who invented");
+I('freres',T('and the two'),500,540,{h:720,fx:'slideL'});
+I('resto',T('one restaurant'),1320,320,{w:420,r:3});
+TG('NO NAME',T('no name'),1320,500,{r:-3});
+I('poignee',T('a promise'),1320,700,{w:420,r:-2});
+ST('NEVER KEPT',T('never kept'),1500,820,{r:-8,st:'font-size:64px'});
+// ================= CHAPITRE 1 =================
+scene("San Bernardino, California. 1948.");
+H('<small>CHAPTER 1</small>THE BURGER MACHINE',T('san bernardino'),960,180);
+S('SAN BERNARDINO, CALIFORNIA &middot; 1948',T('california'),960,350,{cls:'r'});
+I('resto',T('1948',0.2),960,640,{w:760,r:-1});
+scene("Brothers Dick and Mac McDonald");
+I('freres',T('brothers dick'),520,540,{h:740,fx:'slideL'});
+TG('DICK & MAC',T('dick and mac'),520,120,{r:-2});
+TG('CARHOPS',T('carhops'),1300,280,{r:3});
+TG('A BIG MENU',T('a big menu'),1400,420,{r:-2});
+ST('INSANE?',T('insane'),1350,640,{r:-7});
+scene("They shut it down");
+I('resto',T('they shut'),620,480,{w:780,r:-2});
+ST('CLOSED',T('shut it down',0.2),620,480,{r:-10});
+TG('NEW KITCHEN',T('rebuild'),1400,240,{r:2});
+cross(T('goodbye'),1400,240,170);
+ST('9 ITEMS',T('nine items'),1400,470,{r:-4});
+I('burger',T('a hamburger costs'),1300,760,{w:260,r:5});
+ST('15¢',T('fifteen cents'),1600,760,{cls:'g',r:-6});
+scene('Excuse me');
+I('franchise',T('excuse me'),470,620,{h:600,fx:'slideL'});
+I('client',T('excuse me'),1450,620,{h:600,fx:'slideR',sfx:false});
+QT("Excuse me, where's the waitress?",T('excuse me',.1),1420,170,{z:T('and the menu')});
+QT('Gone. Walk up to the window.',T('gone'),540,170,{z:T('hamburger cheeseburger')});
+QT('And the menu?',T('and the menu'),1420,170);
+QT("Hamburger. Cheeseburger. <em>You're welcome.</em>",T('hamburger cheeseburger'),540,170);
+scene("They call it the Speedee");
+H('SPEEDEE SERVICE SYSTEM',T('they call it'),960,150);
+I('ford',T("henry ford's"),480,480,{w:600,fx:'slideL'});
+TG('ASSEMBLY LINE',T('assembly line'),480,720,{r:-2});
+I('burger',T('grill'),1150,500,{w:260,fx:'pop'});
+I('frites',T('fries'),1420,500,{h:290,fx:'pop'});
+I('milkshake',T('shakes'),1680,500,{h:320,fx:'pop'});
+TG('AGAIN AND AGAIN',T('again and again'),1420,760,{r:2});
+scene("Picture a Formula One");
+I('chrono',T('picture a'),640,500,{w:480,r:-4});
+TG('PIT STOP',T('pit stop'),1300,380,{r:3,st:'font-size:56px'});
+ST('+ ONIONS',T('onions'),1300,620,{r:-6});
+scene("It works. The lines go out the door");
+I('resto',T('it works'),520,480,{w:720,r:-2});
+I('fleche_verte',T('the lines'),560,780,{w:260});
+I('carte_usa',T('two thousand miles',-0.3),1350,520,{w:760,r:2,sfx:'pin'});
+line(T('two thousand miles'),1060,560,1500,430);
+TG('ORDER BOOK',T('order book'),1500,820,{r:-2});
+// ================= CHAPITRE 2 =================
+scene("Enter Ray Kroc.");
+H('<small>CHAPTER 2</small>ENTER RAY KROC',T('enter ray'),960,190);
+I('kr_point',T('ray kroc'),960,640,{h:640,fx:'slideR'});
+scene("Born in 1902");
+S('1902 &middot; NEAR CHICAGO',T('born in'),960,130,{cls:'r'});
+I('ambulance',T('red cross ambulance',-0.4),640,520,{w:760,fx:'slideL',id:'drive'});
+TG('LIED ABOUT HIS AGE',T('lies about'),1420,340,{r:-2});
+TG('WORLD WAR ONE',T('world war'),1420,480,{r:2});
+scene("During training, he meets");
+I('ambulance',T('during training'),560,520,{w:600,sfx:false});
+TG('WALT DISNEY',T('walt disney'),1350,400,{st:'font-size:60px',r:-3});
+ST('TOTALLY NORMAL',T('totally normal'),1350,640,{r:-6,st:'font-size:76px'});
+scene("After the war, Kroc tries everything");
+I('piano',T('piano'),400,480,{w:440,r:-3});
+TG('PIANO PLAYER',T('piano'),400,740);
+I('terrain',T('real estate'),960,480,{w:480,r:2});
+TG('REAL ESTATE',T('real estate'),960,740);
+I('gobelets',T('paper cups'),1520,470,{h:340,r:4});
+TG('PAPER CUPS',T('paper cups'),1520,740);
+scene("Finally, he goes all in");
+I('mixeur',T('finally'),640,500,{w:680,r:-2,id:'mix',sfx:'whir'});
+TG('THE MULTIMIXER',T('the multimixer'),1380,340,{st:'font-size:52px'});
+ST('5 SHAKES AT ONCE',T('five milkshakes'),1380,580,{r:-5,st:'font-size:76px'});
+scene("Then, in 1954, he hears");
+S('1954',T('in 1954'),960,120,{cls:'r'});
+I('resto',T('a little restaurant'),560,400,{w:620,r:-2});
+ST('×8',T('eight of his'),1150,330,{r:-8,st:'font-size:130px'});
+for(let i=0;i<8;i++)I('milkshake',T('eight',0.15+i*.07),330+i*180,790,{h:200,fx:'pop',sfx:i%2?false:'pop',r:(i%3-1)*4});
+ST('40 SHAKES',T('forty milkshakes'),1550,380,{cls:'g',r:5});
+circ(T('even a stadium'),960,790,780,140);
+scene("So Kroc goes to see it");
+I('avion',T('so kroc'),620,400,{w:640,fx:'slideL',id:'fly'});
+I('kr_walk',T('for himself'),1400,560,{h:700,fx:'slideL'});
+scene("He doesn't see a restaurant");
+I('resto',T("he doesn't"),480,500,{w:620,r:-2});
+ST('PHOTOCOPIER',T('photocopier'),480,800,{r:-5,st:'font-size:72px'});
+[[1120,300],[1520,300],[1120,640],[1520,640]].forEach((p,i)=>I('resto',T('if it works',0.25*i),p[0],p[1],{w:340,fx:'pop',sfx:'pop',r:(i%2?3:-3)}));
+scene("The brothers already license");
+I('kr_point',T('the brothers already'),480,580,{h:680,fx:'slideL'});
+I('freres',T('a few restaurants'),1420,580,{h:680,fx:'slideR'});
+TG('NATIONWIDE',T('nationwide'),960,170,{st:'font-size:56px'});
+scene("Translation: local owners");
+S('TRANSLATION:',T('translation'),960,120);
+I('franchise',T('local owners'),500,580,{h:660,fx:'slideL'});
+TG('PAY TO USE',T('pay to use'),1300,380);
+TG('THE NAME + THE SYSTEM',T('the name and the system'),1300,540,{st:'font-size:46px'});
+scene("The deal: each new franchise");
+I('contrat',T('the deal'),540,500,{w:620,r:-3});
+ST('$950',T('nine hundred'),1350,250,{cls:'g',r:-5});
+ST('1.9%',T('collects one point nine',0.3),1350,500,{r:4});
+TG('0.5% → THE BROTHERS',T('half a percent'),1350,730,{st:'font-size:46px'});
+scene("April 15, 1955.");
+S('APRIL 15, 1955 &middot; DES PLAINES, ILLINOIS',T('april 15'),960,130,{cls:'r'});
+I('resto',T('kroc opens'),700,560,{w:780,r:-2});
+ST('AGE 52',T("he's fiftytwo"),1500,520,{r:-6});
+scene("In his memoir, he lists");
+I('kr_point',T('in his memoir'),460,580,{h:680,fx:'slideL'});
+S('THE GROCERY LIST:',T('grocery list'),1300,180);
+TG('&#10003; DIABETES',T('diabetes'),1300,330,{r:-2});
+TG('&#10003; ARTHRITIS',T('arthritis'),1300,450,{r:2});
+TG('&#10003; NO GALLBLADDER',T('no gallbladder'),1300,570,{r:-1});
+TG('&#10003; MOST OF HIS THYROID',T('most of his thyroid'),1300,690,{r:2});
+scene("And then he says the best");
+I('fleche_verte',T('and then he'),640,480,{w:520});
+ST('PEAK SALESMAN ENERGY',T('peak salesman'),1300,520,{cls:'g',r:-5,st:'font-size:80px'});
+scene("But there's a problem.");
+I('orage',T("but there's"),960,330,{w:560,id:'float'});
+H("BUT THERE'S A PROBLEM",T('a problem'),960,700);
+scene('"We sold another franchise!"');
+I('comptable',T('we sold'),470,620,{h:600,fx:'slideL'});
+I('clerk',T('we sold'),1450,620,{h:600,fx:'slideR',sfx:false});
+QT('We sold another franchise!',T('we sold',.1),1420,170,{z:T('so how much')});
+QT('Great. Minus the trainers, the inspectors, the travel...',T('great minus'),540,170,{z:T('do you want')});
+QT('So how much did we make?',T('so how much'),1420,170);
+QT('Do you want the <em>honest</em> number, or the <em>motivating</em> one?',T('do you want'),540,170);
+scene("Kroc pays for training");
+I('kr_desk',T('kroc pays'),620,560,{w:820});
+ST('1.4%',T('one point four'),1450,330,{r:-5});
+I('miette',T('barely covers'),1450,620,{w:380,r:3});
+scene("Worse, the contract says");
+I('contrat',T('worse'),480,500,{w:560,r:-4});
+TG('BOTH BROTHERS MUST APPROVE',T('both brothers'),1300,180,{st:'font-size:40px'});
+I('enveloppe',T('send a letter'),1100,480,{w:380,r:-5});
+I('boite_lettres',T('wait'),1600,520,{h:420,r:2});
+ST('HOPE.',T('hope'),1250,780,{r:-6});
+scene("Kroc is building an empire");
+I('miette',T('kroc is building'),560,480,{w:560,r:-3});
+TG('SALARY: CRUMBS',T('salary of crumbs'),560,760,{r:-2});
+ST('SPOILER',T('spoiler'),1350,200,{r:-6});
+I('terrain',T('bricks',-0.2),1350,520,{w:600,r:2});
+I('liasse',T('bricks',0.3),1350,790,{w:360,r:-4,sfx:'cash'});
+// ================= CHAPITRE 3 =================
+scene("Enter Harry Sonneborn.");
+H('<small>CHAPTER 3</small>ENTER HARRY SONNEBORN',T('enter harry'),960,180);
+I('fin_explain',T('harry sonneborn'),620,660,{h:620,fx:'slideL'});
+TG('EX-TASTEE-FREEZ',T('tasteefreez'),1350,500,{r:-2});
+scene("He asks one simple question");
+I('fin_explain',T('he asks'),480,580,{h:680,sfx:false});
+I('burger',T("isn't in the burgers",-0.3),1350,450,{w:380,r:4});
+ST('?',T('burgers',0.2),1600,330,{st:'font-size:200px;padding:0 50px 16px',r:8});
+TG('WHAT IF THE MONEY ISN\'T HERE?',T('what if the money'),1350,750,{st:'font-size:40px'});
+scene("In the mid-fifties, they set up");
+H('FRANCHISE REALTY CORPORATION',T('franchise realty'),960,160,{st:'font-size:84px'});
+I('financier',T('in the midfifties'),960,640,{h:620});
+scene("Here's the plan.");
+S("HERE'S THE PLAN",T("here's the plan"),960,120);
+I('terrain',T('the land'),370,430,{w:480,r:-2});
+line(T('puts up'),600,430,760,430);
+I('resto',T('puts up'),960,430,{w:420,r:2});
+line(T('then rents'),1180,430,1340,430);
+I('franchise',T('to the franchisee'),1560,470,{h:500,fx:'slideR'});
+ST('+ MARKUP',T('with a markup'),640,780,{cls:'g',r:-5});
+TG('UP TO 40% (REPORTEDLY)',T('reportedly'),1300,790,{st:'font-size:42px'});
+scene("And the rent? A fixed minimum");
+I('calendrier',T('and the rent'),440,480,{w:440,r:-4});
+TG('A FIXED MINIMUM',T('fixed minimum'),1150,260,{st:'font-size:46px'});
+TG('OR % OF SALES',T('percentage of sales'),1150,420,{st:'font-size:46px'});
+ST('WHICHEVER IS HIGHER',T('whichever'),1200,650,{r:-4,st:'font-size:78px'});
+scene("Translation: if the restaurant does badly");
+S('TRANSLATION:',T('translation'),960,120);
+I('fleche_rouge',T('does badly'),500,440,{w:420});
+TG('McDONALD\'S STILL GETS PAID',T('still gets paid'),500,720,{st:'font-size:38px'});
+I('fleche_verte',T('does great'),1420,440,{w:420});
+TG('McDONALD\'S GETS PAID MORE',T('gets paid more'),1420,720,{st:'font-size:38px'});
+scene("Heads I win");
+I('pieces',T('heads'),960,380,{w:520,sfx:'coin'});
+ST('HEADS I WIN',T('heads'),620,730,{cls:'g',r:-5});
+ST('TAILS YOU PAY RENT',T('tails'),1330,730,{r:4,st:'font-size:76px'});
+scene('Congratulations');
+I('franchise',T('congratulations'),470,620,{h:600,fx:'slideL'});
+I('proprio',T('congratulations'),1430,620,{h:600,fx:'slideR',sfx:false});
+QT("Congratulations, here's your restaurant!",T('congratulations',.1),1420,170,{z:T('oh the land')});
+QT('Amazing. And the land?',T('amazing'),540,170,{z:T('welcome to')});
+QT('Oh, the land is ours. <em>Rent is due on the first.</em>',T('oh the land'),1420,170,{z:T('welcome to')});
+I('calendrier',T('rent is due'),960,360,{w:240,fx:'pop'});
+QT('Welcome to the family.',T('welcome to'),1420,170);
+scene("Sonneborn later put it bluntly");
+I('fin_explain',T('sonneborn later'),440,580,{h:680,fx:'slideL'});
+QT('"We are not technically in the <em>food</em> business."',T('we are not'),1250,220);
+I('burger',T('food business',-0.2),1250,500,{w:280,r:4});
+cross(T('food business',0.3),1250,500,130);
+ST('REAL ESTATE BUSINESS',T('in the real estate'),1250,770,{cls:'g',r:-4,st:'font-size:76px'});
+scene("And it works. In 1958");
+I('carte_usa',T('and it works'),640,500,{w:820,r:-2,sfx:'pin'});
+ST('1958: 34',T('thirtyfour'),1500,280,{r:-4});
+ST('1959: +67',T('sixtyseven'),1500,520,{cls:'g',r:4});
+TG('SONNEBORN: FIRST PRESIDENT',T('first president'),1450,760,{st:'font-size:38px'});
+scene("There's just one thing Kroc");
+I('kr_1961',T("there's just"),600,560,{w:820});
+H('THE NAME.',T('the name'),1430,520,{st:'font-size:140px'});
+// ================= CHAPITRE 4 =================
+scene("Fast forward to 1961.");
+H('<small>CHAPTER 4</small>THE BUYOUT',T('fast forward'),960,170);
+S('1961',T('1961',-0.1),960,320,{cls:'r',st:'font-size:60px'});
+I('kr_arms',T('kroc wants'),500,640,{h:620,fx:'slideL'});
+I('freres_suits',T('the brothers out'),1420,650,{h:580,fx:'slideR'});
+scene("He asks for their price");
+I('liasse',T('he asks for'),560,500,{w:600,r:-4});
+ST('$2.7 MILLION',T('the answer'),1350,300,{cls:'g',r:-5,sfx:'cash'});
+TG('CASH',T('cash'),1350,500,{st:'font-size:60px'});
+TG('$1M EACH, AFTER TAXES',T('one million each'),1350,680);
+scene('"They want two point seven');
+I('avocat',T('they want two'),470,620,{h:600,fx:'slideL'});
+I('clerk',T('they want two'),1450,620,{h:600,fx:'slideR',sfx:false});
+QT('They want <em>$2.7 million.</em>',T('they want two',.1),540,170,{z:T('for a name and')});
+QT('For a name?',T('for a name'),1420,170);
+QT('For a name, and a menu with nine items.',T('for a name and'),540,170);
+scene("Kroc reportedly went ballistic");
+I('kr_shock',T('kroc reportedly'),600,520,{w:820});
+ST('BALLISTIC',T('ballistic'),1450,420,{r:-8,sfx:'boom'});
+scene("But Sonneborn finds the money");
+I('fin_explain',T('but sonneborn'),460,580,{h:680,fx:'slideL'});
+I('liasse',T('finds the money'),1060,420,{w:440,r:-3,sfx:'cash'});
+ST('$1.5M LOAN',T('loan'),1620,470,{cls:'g',r:5});
+TG('FROM 3 INSURANCE COMPANIES',T('three insurance'),1350,720,{st:'font-size:40px'});
+scene("Then, at the closing table");
+H('PLOT TWIST',T('a twist'),960,150);
+I('contrat',T('closing table'),560,520,{w:560,r:-3});
+I('resto',T('original restaurant'),1350,500,{w:600,r:2});
+TG('→ GIVEN TO THE EMPLOYEES',T('their employees'),1350,780,{st:'font-size:42px'});
+scene("Kroc is furious.");
+I('gant',T('kroc is furious'),620,500,{w:560,r:-6});
+ST('FURIOUS',T('furious',0.1),1350,500,{r:-7,sfx:'thud'});
+scene("According to the McDonald family");
+I('poignee',T('according to'),600,460,{w:760});
+TG('ACCORDING TO THE FAMILY',T('mcdonald family'),600,720,{st:'font-size:40px'});
+TG('A SHARE OF FUTURE SALES, FOREVER',T('a share of'),1350,250,{st:'font-size:38px'});
+ST('NEVER WRITTEN DOWN',T('never written'),1350,480,{r:-4,st:'font-size:72px'});
+ST('NEVER PAID',T('never paid'),1350,720,{r:5});
+scene("The brothers' restaurant can't");
+I('resto',T("the brothers' restaurant"),620,480,{w:800,r:-2});
+cross(T("can't be called"),620,440,230);
+H('THE BIG M',T('the big m'),1450,620,{st:'font-size:130px'});
+scene("And Kroc? He opens a brand-new");
+I('resto',T('and kroc'),480,480,{w:560,r:-2,sfx:false});
+TG('THE BIG M',T('and kroc'),480,200);
+I('resto',T('brandnew'),1440,560,{w:560,r:2,fx:'slideR'});
+TG("McDONALD'S",T('brandnew'),1440,820);
+line(T('one block away'),640,560,1250,600);
+I('orage',T('cue the ominous'),960,190,{w:380,id:'float'});
+ST('CLOSED',T('closes'),480,480,{r:-10,sfx:'thud'});
+scene("This is the Game of Thrones");
+I('epee',T('this is the game'),560,500,{h:640,r:-8});
+TG('THE GAME OF THRONES CHAPTER',T('game of thrones'),1300,380,{st:'font-size:42px'});
+ST('MINUS THE DRAGONS',T('minus the dragons'),1300,620,{r:-5,st:'font-size:76px'});
+scene("That same year, 1961, McDonald's opens Hamburger");
+I('toque',T('that same year'),520,460,{w:620,r:-4});
+TG('HAMBURGER UNIVERSITY',T('hamburger university'),1350,240,{st:'font-size:52px'});
+S('A BASEMENT IN ELK GROVE VILLAGE',T('in the basement'),1350,420,{st:'font-size:38px',tape:false});
+ST('15 GRADUATES',T('fifteen graduates'),1350,640,{r:-4});
+scene("Their degree?");
+I('toque',T('their degree'),520,440,{w:560,r:5,sfx:false});
+H('HAMBURGEROLOGY',T('hamburgerology'),1250,420,{st:'font-size:110px'});
+ST('YES, REALLY',T('yes really'),1250,700,{cls:'g',r:-5});
+// ================= CHAPITRE 5 =================
+scene("Then came the money.");
+I('sac_dollar',T('then came'),960,330,{w:380,sfx:'cash'});
+H('<small>CHAPTER 5</small>THEN CAME THE MONEY',T('the money'),960,700);
+scene("April 21, 1965.");
+S('APRIL 21, 1965',T('april 21'),960,120,{cls:'r'});
+I('trader',T('goes public'),500,600,{h:640,fx:'slideL'});
+I('action',T('goes public'),1350,400,{w:600,r:3});
+TG('ANYONE CAN BUY A PIECE',T('anyone can'),1350,700,{st:'font-size:44px'});
+scene("Twenty-two dollars and fifty cents");
+I('fleche_verte',T('twentytwo'),560,500,{w:520});
+ST('$22.50',T('twentytwo'),1300,330,{r:-4});
+ST('DAY ONE: ~$30',T('around thirty'),1350,600,{cls:'g',r:4,sfx:'cash'});
+scene("Kroc buys a ranch");
+I('chapeau',T('kroc buys'),600,480,{w:600,r:-6});
+TG('A RANCH',T('a ranch'),1350,380,{st:'font-size:60px'});
+ST('AS ONE DOES',T('as one does'),1350,620,{r:-5});
+scene("In 1967, a franchisee near Pittsburgh");
+S('1967 &middot; NEAR PITTSBURGH',T('in 1967'),960,120,{cls:'r'});
+I('franchise',T('a franchisee'),480,620,{h:600,fx:'slideL'});
+TG('JIM DELLIGATTI, FRANCHISEE',T('jim delligatti'),480,250,{st:'font-size:38px'});
+I('bigmac',T('a bigger burger',-0.2),1350,500,{w:520,r:3});
+ST('BIG MAC',T('the big mac'),1350,800,{r:-5});
+scene("The company's most famous product");
+I('bigmac',T("the company's most"),560,480,{w:520,sfx:false});
+ST('MADE BY A FRANCHISEE',T('came from a franchisee'),1300,380,{cls:'g',r:-4,st:'font-size:72px'});
+TG('NOT HEADQUARTERS',T('not headquarters'),1300,620,{st:'font-size:52px'});
+scene("And Sonneborn? That same year");
+I('fin_explain',T('and sonneborn'),480,600,{h:660,fx:'slideL'});
+I('orage',T('a recession'),1350,380,{w:600,id:'float'});
+TG('"A RECESSION IS COMING"',T('recession is coming'),1350,720,{st:'font-size:44px'});
+scene("Kroc wants to keep building");
+I('fin_explain',T('kroc wants to keep'),460,620,{h:620,sfx:false});
+I('kr_arms',T('kroc wants to keep'),1460,620,{h:620,fx:'slideR'});
+TG('KEEP BUILDING!',T('keep building'),1460,190);
+ST('CLASH',T('they clash'),960,380,{r:-8,sfx:'boom'});
+scene("On June 8, 1967, Sonneborn resigns");
+S('JUNE 8, 1967',T('on june'),960,120,{cls:'r'});
+I('fin_leave',T('resigns'),560,600,{h:680,fx:'slideL',id:'drive'});
+I('action',T('sells his stock'),1350,400,{w:520,r:-3});
+ST('SOLD',T('sells his stock',0.3),1350,400,{r:-10});
+I('fleche_verte',T('became worth'),1400,720,{w:380});
+scene("The real estate genius, beaten");
+I('chrono',T('the real estate genius'),600,500,{w:480,r:-4});
+ST('BAD TIMING',T('beaten by'),1300,500,{r:-5});
+scene("Ray Kroc dies on January 14, 1984");
+S('JANUARY 14, 1984',T('ray kroc dies'),960,120,{cls:'r'});
+I('kr_old',T('ray kroc dies'),560,580,{w:760});
+ST('7,500 RESTAURANTS',T('seven thousand'),1400,330,{cls:'g',r:-4,st:'font-size:72px'});
+I('baseball',T('baseball team'),1400,560,{w:420,r:-6});
+TG('SAN DIEGO PADRES',T('san diego'),1400,760);
+scene("and the word founder");
+I('kr_old',T('and the word'),560,580,{w:760,sfx:false});
+H('"FOUNDER"',T('founder'),1400,500,{st:'font-size:140px'});
+// ================= CHAPITRE 6 =================
+scene("And today?");
+H('<small>CHAPTER 6</small>AND TODAY?',T('and today'),960,520,{st:'font-size:140px'});
+scene("More than forty-five thousand");
+I('globe',T('more than fortyfive'),540,500,{w:600,r:-3});
+ST('45,000+',T('restaurants'),1350,340,{cls:'g',r:-4,st:'font-size:130px'});
+TG('~95% RUN BY FRANCHISEES',T('ninetyfive'),1350,600,{st:'font-size:46px'});
+scene("In 2024, McDonald's collected");
+S('2024',T('in 2024'),960,110,{cls:'r'});
+I('cle',T('ten billion dollars in rent',-0.3),620,280,{w:240,r:-5});
+ST('$10B RENT',T('ten billion dollars in rent'),620,430,{cls:'g',r:-3,st:'font-size:70px'});
+BAR('#2E7D4F',380,T('ten billion dollars in rent',0.3),620,900);
+I('burger',T('royalties',-0.3),1250,440,{w:220,r:5});
+ST('$5.6B ROYALTIES',T('royalties'),1250,580,{r:-3,st:'font-size:64px'});
+BAR('#C8261E',212,T('royalties',0.3),1250,900);
+ST('RENT WINS',T('rent wins'),1650,330,{cls:'g',r:8});
+scene("On its books");
+I('terrain',T('on its books'),540,380,{w:560,r:-3});
+I('resto',T('and buildings'),540,700,{w:500,r:2});
+ST('$41 BILLION+',T('fortyone billion'),1350,400,{cls:'g',r:-4,st:'font-size:110px'});
+TG('AT THE ORIGINAL PRICE',T('originally paid'),1350,640,{st:'font-size:46px'});
+scene("And the very first McDonald's site");
+I('resto',T('and the very first'),600,480,{w:780,r:-2});
+TG('THE ONE KROC NEVER GOT',T('the one piece'),1400,480,{st:'font-size:44px'});
+scene("In 1998, after the owner");
+S('1998',T('in 1998'),960,110,{cls:'r'});
+I('marteau',T('foreclosure auction'),520,480,{w:560,r:-4,sfx:'thud'});
+ST('$135,000',T('foreclosure auction',0.6),1350,330,{cls:'g',r:-4});
+I('poulet',T('chicken restaurant'),1350,600,{w:440,r:3});
+TG('UNOFFICIAL McDONALD\'S MUSEUM',T('unofficial'),960,840,{st:'font-size:40px'});
+// ================= FIN =================
+scene("So what's the lesson?");
+H('THE LESSON',T("so what's"),960,150);
+I('burger',T('the product'),960,440,{w:380,r:-3});
+I('terrain',T('underneath it',-0.2),960,720,{w:620});
+TG('THE PRODUCT',T('the product'),1450,420);
+TG('THE REAL BUSINESS',T('the real business'),1500,720);
+scene("Nineteen thousand dollars a minute");
+I('chrono',T('nineteen thousand'),540,500,{w:460,r:-4});
+ST('$19,000 / MINUTE',T('a minute'),1350,400,{cls:'g',r:-4,st:'font-size:90px',sfx:'cash'});
+ST('IN RENT',T('in rent'),1350,640,{r:4});
+scene("The burger was never the point");
+I('burger',T('the burger was'),960,470,{w:620,r:-3});
+cross(T('never the point'),960,470,300);
+scene("If you enjoyed this, subscribe");
+ST('SUBSCRIBE',T('subscribe'),960,250,{cls:'g',st:'font-size:140px',r:-3});
+H('<small>NEXT TIME</small>A WATCH GIANT WITH NO SHAREHOLDERS',T('next time'),960,620,{st:'font-size:76px'});
+// fin de scène = début de la scène suivante
+const zOf=si=>SC[si+1]!==undefined?SC[si+1]:DUR;
+OBJ.forEach(o=>{o.z=o.zz!==undefined?o.zz:zOf(o.si)});MARKS.forEach(m=>m.z=zOf(m.si));LINES.forEach(L=>L.z=zOf(L.si));
+const lay=$('lay');
+MARKS.forEach((m,i)=>{lay.innerHTML+=`<path id="mk${i}" d="${m.d}" stroke="#C8261E" stroke-width="10" stroke-linecap="round" fill="none" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>`;});
+LINES.forEach((L,i)=>{const [x1,y1,x2,y2]=L.p;lay.innerHTML+=`<path id="ln${i}" d="M${x1} ${y1} Q${(x1+x2)/2} ${Math.min(y1,y2)-80} ${x2} ${y2}" stroke="#C8261E" stroke-width="6" fill="none" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><circle id="pa${i}" cx="${x1}" cy="${y1}" r="11" fill="#B8872B" opacity="0"/><circle id="pb${i}" cx="${x2}" cy="${y2}" r="11" fill="#B8872B" opacity="0"/>`;});
+SC.slice(1).forEach(t=>EV(t-.08,'whoosh'));
+OBJ.forEach(o=>{if(o.e.querySelector('.strip'))for(let k=0;k<5;k++)EV(o.a+.05+k*.055,'key');});
+window.render=function(t){const tq=q12(t);
+ let si=0;for(let i=0;i<SC.length;i++)if(t>=SC[i])si=i;const st=SC[si],sd=(SC[si+1]||DUR)-st,k=pr(t,st,sd);
+ const jit=(Math.sin(Math.floor(t*12)*12.9898)*43758.5453)%1;
+ $('world').style.transform=`scale(${1+.04*k}) rotate(${(si%2?-1:1)*.3*k}deg)`;
+ $('paper').style.transform=`translate(${(si%2?-1:1)*14*k}px,${-6*k}px)`;
+ for(const o of OBJ){const e=o.e;if(t<o.a||t>o.z+.35){e.style.opacity=0;continue}
+  const w=e.offsetWidth,h=e.offsetHeight;let x=o.x,y=o.y,s=1,op=1,r=o.r;
+  const p=pr(tq,o.a,o.fx==='stamp'?.25:.42),pe=eb(p);
+  if(o.fx==='slideL')x=o.x-2100*(1-pe);if(o.fx==='slideR')x=o.x+2100*(1-pe);
+  if(o.fx==='slideT')y=o.y-1300*(1-pe);if(o.fx==='slideB')y=o.y+1300*(1-pe);
+  if(o.fx==='drop'){s=1.35-.35*eo(p);op=cl(p*3);r=o.r+(1-eo(p))*8;}
+  if(o.fx==='stamp'){s=2.4-1.4*eo(p);op=cl(p*4);}
+  if(o.fx==='pop'){s=.2+.8*pe;op=cl(p*3);}
+  if(o.fx.startsWith('slide'))r=o.r+(1-eo(p))*(o.fx==='slideL'?-10:10);
+  const since=tq-o.a;if(since>.42&&since<.9)r+=Math.sin(since*40)*1.2*(1-(since-.42)/.48);
+  if(o.id==='mix'&&since>.45&&since<1.8){x+=Math.sin(tq*90)*4;r+=Math.sin(tq*70)*.8;}
+  if(o.id==='drive'&&since>.42){x+=Math.min(since-.42,5)*30;}
+  if(o.id==='fly'&&since>.42){x+=(since-.42)*90;y-=(since-.42)*12;}
+  if(o.id==='float'){y+=Math.sin(tq*2.2)*6;}
+  const q=pr(t,o.z,.35);if(q>0){y-=q*120;op*=1-q;s*=1-.06*q;}
+  e.style.opacity=op;e.style.transform=`translate(${x-w/2}px,${y-h/2}px) scale(${s}) rotate(${r+(jit-.5)*.35}deg)`;}
+ MARKS.forEach((m,i)=>{const el=$('mk'+i);el.style.strokeDashoffset=1-eo(pr(t,m.a,.4));el.style.opacity=(t>=m.a&&t<m.z+.2)?1:0;});
+ LINES.forEach((L,i)=>{const p=eo(pr(t,L.a,.6)),q=pr(t,L.z,.3),on=t>=L.a&&t<L.z+.3;$('ln'+i).style.strokeDashoffset=1-p;$('ln'+i).style.opacity=on?1-q:0;$('pa'+i).setAttribute('opacity',on?1-q:0);$('pb'+i).setAttribute('opacity',on&&p>.95?1-q:0);});
+ let c=null;for(const x of CAP)if(t>=x[0])c=x;const sb=$('sub');
+ if(c&&c[1]&&t<DUR-.3){const p=pr(tq,c[0],.17);sb.innerHTML=`<span class="w">${c[1]}</span>`;sb.style.opacity=cl(p*2);sb.style.transform=`translateY(${20*(1-eo(p))}px) rotate(${(CAP.indexOf(c)%2?-1:1)*.8}deg)`;}else sb.innerHTML='';};
+document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>i.onload=r))).then(()=>{render(0);window.READY=true;}));
+</script></body></html>

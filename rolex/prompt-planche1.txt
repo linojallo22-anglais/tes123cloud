@@ -1,0 +1,59 @@
+Create ONE single image containing exactly 26 separate cutout elements for a VOX-style paper-collage finance documentary about the history of Rolex and its founder Hans Wilsdorf (1881-1960). Arrange them in a precise catalogue layout of 5 horizontal rows, in the exact numbered order below. Elements in the upper rows are LARGER because they will be shown full screen; each row gets less height as you go down.
+
+ROW HEIGHTS: row 1 about 26% of the image height, row 2 about 22%, row 3 about 18%, rows 4 and 5 about 17% each.
+
+GLOBAL STYLE (identical for every element, this is the VOX documentary collage look):
+- PEOPLE: black and white halftone photograph cutouts, visible halftone dots, realistic photographic faces and clothing, with ONE flat offset accent shape of colored paper slightly behind each person (hot red or mustard yellow), like a VOX documentary collage.
+- OBJECTS AND PLACES: desaturated archival palette of tan, ink black and halftone gray, with ONE hot red accent or a restrained mustard yellow accent; gold watches keep a muted gold tone; money objects use a muted emerald green accent.
+- Every element is hand-cut from real paper: a thin white paper margin around the silhouette with slightly rough scissor-cut edges, visible print grain and paper fiber, matte, flat even documentary lighting.
+- NOT cartoon, NOT digital illustration, NOT 3D render, NOT glossy, no gradients.
+
+ROW 1 (LARGEST, Hans Wilsdorf), from LEFT to RIGHT:
+1) Hans Wilsdorf in the 1950s, in his 70s: elderly Swiss-German businessman, mostly bald with short gray hair on the sides, round wire-rimmed glasses, clean-shaven, dark three-piece suit, white shirt, dark tie. Tight head-and-shoulders close-up, amazed expression, eyebrows raised, mouth slightly open, looking straight at the camera, hot red paper shape behind him. This is a YouTube thumbnail portrait: big face, strong emotion.
+2) Hans Wilsdorf in 1905, aged 24: the same face, young, dark hair neatly parted and combed, clean-shaven, Edwardian three-piece suit with high white collar and tie, standing proudly, holding up a small wristwatch in one hand to show it, facing right. Full body, head to shoes.
+3) Hans Wilsdorf in the 1920s, in his 40s: the same face, hair receding, round wire-rimmed glasses, dark suit, sitting at a wooden desk and examining a wristwatch through a watchmaker's loupe, facing right. Full figure with desk and chair.
+4) Hans Wilsdorf in the 1950s, in his 70s (same face as element 1: mostly bald, short gray hair on the sides, round wire-rimmed glasses, dark three-piece suit): standing calmly with his hands behind his back, slight wise smile, facing left. Full body, head to shoes.
+
+ROW 2 (LARGE), from LEFT to RIGHT:
+5) Mercedes Gleitze in 1927: a young British woman swimmer in her mid-20s, 1920s black wool one-piece swimsuit, white rubber swim cap, a small round gold wristwatch hanging on a ribbon around her neck, smiling and waving one hand, facing right. Full body.
+6) An Edwardian gentleman around 1905: man in his 50s, top hat, thick mustache, dark frock coat, holding a gold pocket watch on a chain, shocked and offended expression, facing LEFT. Full body. Generic person, not a real person's likeness.
+7) An Edwardian young salesman around 1905: man in his 20s, neat suit and bow tie, enthusiastic smile, holding up a small wristwatch toward the left side, facing RIGHT. Full body. Generic person, not a real person's likeness.
+8) A World War Two British officer prisoner of war: man in his late 20s, worn battledress uniform and officer's cap, slightly unshaven, holding a folded letter, hopeful smile, facing RIGHT. Full body. Generic person, not a real person's likeness.
+9) A 1940s Swiss watch shop clerk: man in his 40s, white work coat over shirt and tie, small round glasses, holding a small watch box, polite smile, facing LEFT. Full body. Generic person, not a real person's likeness.
+
+ROW 3 (MEDIUM), from LEFT to RIGHT:
+10) A modern rich investor: man in his 40s, expensive navy suit, open collar, sunglasses pushed up on his head, holding a checkbook and a pen, confident smirk, facing RIGHT. Full body. Generic person, not a real person's likeness.
+11) A calm Swiss foundation director: woman in her 60s, gray bob haircut, elegant dark suit, hands folded, polite but firm expression, facing LEFT. Full body. Generic person, not a real person's likeness.
+12) An auctioneer at a wooden podium, man in his 50s in a dark suit, raising a wooden gavel, facing left. Generic person, not a real person's likeness.
+13) A 1900s London horse-drawn double-decker omnibus with passengers on the open top deck, side view, facing right, no lettering or advertisements.
+14) Geneva lakeside: the tall Jet d'Eau water fountain over Lake Geneva with a few old buildings, as one cutout.
+
+ROW 4 (SMALL), from LEFT to RIGHT:
+15) The bathyscaphe Trieste deep-sea submersible (1960), side view: long float hull with a round observation sphere underneath.
+16) A row of old half-timbered Bavarian town houses.
+17) The Big Ben clock tower in London.
+18) An old Georgian observatory building with a small dome.
+19) A brass marine chronometer in an open wooden box.
+20) An antique gold pocket watch with an open lid and a chain.
+
+ROW 5 (SMALL), from LEFT to RIGHT:
+21) A classic men's gold wristwatch with a fluted bezel and a five-piece gold bracelet, plain dial without any text or logo.
+22) A stainless steel diver's wristwatch with a black rotating bezel and steel bracelet, black dial without any text or logo.
+23) A 1920s cushion-shaped gold wristwatch on a black ribbon, plain dial without any text or logo.
+24) A vintage steel chronograph wristwatch with three small sub-dials on a cream dial, black leather strap, no text or logo.
+25) A tiny 1900s ladies' wristwatch on a thin leather strap, like a bracelet.
+26) A folded 1927 British newspaper front page, blurry illegible print, no readable words.
+
+LAYOUT (very important):
+- Exactly 26 elements, in the exact numbered order above, rows perfectly aligned like a catalogue.
+- Clear empty space around every element, horizontally AND vertically: no element touches, overlaps or hides another element.
+- Every element fully visible, nothing cut off by the image edges.
+- Each element as large and detailed as its row allows. Sharp details, no blur.
+- Hans Wilsdorf must look like the same person in elements 1, 2, 3 and 4 (at different ages).
+
+BACKGROUND: fully transparent background (PNG with alpha channel). No floor, no shadow, no scenery behind the elements.
+NO TEXT anywhere: no words, no letters, no numbers on watch dials, no logos, no crown symbol, no brand names, no watermark, no labels, no frames, no grid lines.
+
+Before finishing, count the elements: there must be exactly 26, in 5 rows (4, 5, 5, 6, 6).
+
+FORMAT: landscape 1536x1024, PNG, highest resolution possible.

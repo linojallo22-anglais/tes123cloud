@@ -1,0 +1,58 @@
+Create ONE single image containing exactly 25 separate cutout elements for a VOX-style paper-collage finance documentary about how McDonald's became a real estate empire in the 1950s. Arrange them in a precise catalogue layout of 5 horizontal rows, in the exact numbered order below. Elements in the upper rows are LARGER because they will be shown full screen; each row gets less height as you go down.
+
+ROW HEIGHTS: row 1 about 26% of the image height, row 2 about 22%, row 3 about 18%, rows 4 and 5 about 17% each.
+
+GLOBAL STYLE (identical for every element, this is the VOX documentary collage look):
+- PEOPLE: black and white halftone photograph cutouts, visible halftone dots, realistic photographic faces and clothing, with ONE flat offset accent shape of colored paper slightly behind each person (hot red or mustard yellow), like a VOX documentary collage.
+- OBJECTS AND PLACES: desaturated archival palette of tan, ink black and halftone gray, with ONE hot red accent or a restrained mustard yellow accent; money objects use a muted emerald green accent instead.
+- Every element is hand-cut from real paper: a thin white paper margin around the silhouette with slightly rough scissor-cut edges, visible print grain and paper fiber, matte, flat even documentary lighting.
+- NOT cartoon, NOT digital illustration, NOT 3D render, NOT glossy, no gradients.
+
+ROW 1 (LARGEST, the main characters), from LEFT to RIGHT:
+1) Ray Kroc in 1954: American man in his early 50s, thinning dark hair slicked straight back, clean-shaven, gray single-breasted 1950s suit, white shirt, narrow dark tie, carrying a small leather salesman's sample case in one hand, walking toward the right. Full body, head to shoes.
+2) The same Ray Kroc in 1954 (same face, same thinning dark slicked-back hair, same gray suit, white shirt, narrow dark tie): standing, confident grin, pointing forward with his right index finger, body facing left. Full body, head to shoes.
+3) The same Ray Kroc in 1961, a few years older: same face, thinning slicked-back hair now partly gray, dark charcoal suit, white shirt, narrow dark tie, laughing with his mouth open, holding a fountain pen, facing right. Waist-up portrait.
+4) Two American brothers in their 40s and 50s from the 1950s, short dark hair, white short-sleeved shirts, white paper cooks' caps, standing side by side, arms crossed, calm proud expression, facing left. They count as ONE element. Full body, head to shoes. Generic people, not a real person's likeness.
+
+ROW 2 (LARGE), from LEFT to RIGHT:
+5) A 1950s financier: slim man in his 40s, round glasses, dark hair neatly combed, dark three-piece suit, holding a rolled-up land survey map under his arm, facing right. Full body. Generic person, not a real person's likeness.
+6) A 1950s small restaurant owner: man in his 30s, white short-sleeved shirt, white apron, white paper cap, big hopeful smile, both hands open in front of him, facing RIGHT. Full body. Generic person, not a real person's likeness.
+7) A 1950s landlord businessman: man in his 50s, dark suit, fedora hat, polite smile, holding out a large door key in one hand and a folded contract in the other, facing LEFT. Full body. Generic person, not a real person's likeness.
+8) A 1950s American walk-up hamburger stand: small red-and-white tiled building with large front windows, two tall yellow parabolic arches rising through the roof on each side, seen from the front at a slight angle. No sign, no letters, no logo.
+
+ROW 3 (MEDIUM), from LEFT to RIGHT:
+9) A 1950s chrome commercial milkshake mixer with five spindles in a row, a stainless steel cup under each spindle.
+10) A tall 1950s milkshake glass with whipped cream and a red-and-white striped straw.
+11) A classic hamburger half-wrapped in plain white paper.
+12) French fries in a plain white paper bag, no print.
+13) An empty square plot of bare dirt land seen from above at an angle, with four wooden survey stakes connected by red string.
+
+ROW 4 (SMALL), from LEFT to RIGHT:
+14) A typed lease contract with illegible gray lines and a red wax seal, a black fountain pen lying across it.
+15) A large old brass door key with a blank paper tag on a string.
+16) A thick stack of US dollar bills with a paper band.
+17) A canvas money bag with a large dollar sign printed on it.
+18) Two small old US coins (a dime and a nickel) side by side. They count as ONE element.
+19) A single tiny bread crumb on a small white saucer.
+
+ROW 5 (SMALL), from LEFT to RIGHT:
+20) A blank paper wall calendar page with an empty grid, one square circled in red marker, no numbers.
+21) A thick green arrow pointing up and to the right.
+22) A thick red arrow pointing down and to the right.
+23) A paper map silhouette of the contiguous United States with five small red map pins stuck in it.
+24) A vintage desk globe on a stand.
+25) A single red leather boxing glove.
+
+LAYOUT (very important):
+- Exactly 25 elements, in the exact numbered order above, rows perfectly aligned like a catalogue.
+- Clear empty space around every element, horizontally AND vertically: no element touches, overlaps or hides another element.
+- Every element fully visible, nothing cut off by the image edges.
+- Each element as large and detailed as its row allows. Sharp details, no blur.
+- Ray Kroc must look like the same person in elements 1, 2 and 3.
+
+BACKGROUND: fully transparent background (PNG with alpha channel). No floor, no shadow, no scenery behind the elements.
+NO TEXT anywhere: no words, no letters, no numbers, no logos, no watermark, no labels, no frames, no grid lines (the only symbol allowed is the dollar sign on element 17).
+
+Before finishing, count the elements: there must be exactly 25, in 5 rows (4, 4, 5, 6, 6).
+
+FORMAT: landscape 1536x1024, PNG, highest resolution possible.

@@ -1,0 +1,36 @@
+Use the attached image only as a LAYOUT REFERENCE (same composition, same colors, same text). Recreate it from scratch as a crisp, sharp, high-definition YouTube thumbnail. Do not copy its blur or low resolution.
+
+FORMAT: 16:9 landscape, 1920x1080 px, ultra sharp, high contrast, readable even as a tiny thumbnail on a phone.
+
+STYLE: VOX-style documentary paper collage. Real cut paper, visible paper grain, matte, flat even lighting, slight drop shadows under each paper piece. NOT cartoon, NOT 3D render, NOT glossy, NOT blurry.
+
+BACKGROUND:
+- Top 60% of the image: warm beige paper (#E9DDC4), very subtle paper fiber texture, slightly lighter in the center.
+- Bottom 40%: a wide hot red torn-paper band (#C8261E) across the full width, with a rough hand-torn top edge that rises slightly from left to right (top edge at about 62% of the height on the left, about 58% on the right).
+
+LEFT ELEMENT (person):
+- A young businessman around 1905: man in his mid-20s, short dark hair neatly combed, clean-shaven, white shirt with high collar, dark tie, dark three-piece suit. Standing, full body, facing right, holding up an open silver pocket watch in his raised right hand and looking at it with pride.
+- Strictly BLACK AND WHITE halftone photograph cutout (grayscale only, visible fine halftone dots, sharp face details, sharp suit fabric).
+- A thin white paper margin around his silhouette with slightly rough scissor-cut edges.
+- Behind him, a flat torn shape of mustard yellow paper (#E8B737), slightly offset.
+- Position: left side, from about 6% to 22% of the width; his head near the top (about 5% from the top) and his feet resting on the red band.
+- Generic person, not a real person's likeness.
+
+RIGHT ELEMENT (watch):
+- A large luxury men's gold wristwatch, seen at a slight three-quarter angle, lying horizontally: round yellow-gold case, fluted gold bezel, champagne-gold dial with thin gold stick hour markers and gold hands, a three-link gold bracelet with semicircular links stretching to the left and right.
+- ABSOLUTELY NO brand name, NO logo, NO crown symbol, NO numbers, NO text on the dial or anywhere on the watch.
+- Sharp metal details and crisp reflections, but a matte printed-paper look (like a photo cut from a magazine).
+- A thin white paper margin around it with slightly rough scissor-cut edges, and a flat torn shape of mustard yellow paper (#E8B737) behind it.
+- Position: right half, from about 55% to 98% of the width, vertically from about 6% to 48% of the height. It must NOT touch the red band.
+
+ARROW: a thick hand-drawn black ink arrow (#1C1712), curved like an arch, starting at about 31% of the width and 32% of the height, rising slightly, and ending with a sharp arrowhead pointing at the watch (about 54% of the width, 33% of the height). Clean, bold, slightly irregular marker stroke.
+
+TEXT 1 (bottom left): the single word "ORPHAN", in very bold condensed uppercase letters (Anton / Impact style), hot red color (#C8261E), on a cream paper label (#F7F1E3) with a thick hot red border and rounded corners, like a rubber stamp. Slightly rotated counter-clockwise (about -6 degrees). Centered horizontally around 23% of the width, vertically around 76% of the height, on top of the red band. Large: the letters take about 18% of the image height.
+
+TEXT 2 (bottom right): the text "CHF 10B", in very bold condensed uppercase letters (Anton / Impact style), emerald green color (#2E7D4F), on a cream paper label (#F7F1E3) with a thick emerald green border and rounded corners, like a rubber stamp. Slightly rotated clockwise (about +4 degrees). Centered horizontally around 76% of the width, vertically around 74% of the height, on top of the red band. Large: the letters take about 20% of the image height.
+
+TEXT RULES (very important):
+- The only text in the image is exactly "ORPHAN" and exactly "CHF 10B". Spell them exactly like this. No other words, no letters, no numbers, no logos, no watermark anywhere else.
+- Both labels are perfectly sharp, high contrast and fully readable. No text touches the edges of the image, the man or the watch.
+
+QUALITY: crisp edges, no blur, no motion blur, no noise, no compression artifacts, no extra objects, no borders or frames around the whole image.

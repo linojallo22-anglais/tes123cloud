@@ -1,0 +1,212 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:TW;src:url(node_modules/@fontsource/special-elite/files/special-elite-latin-400-normal.woff2)}
+@font-face{font-family:AN;src:url(node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#D9CCB0}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#E4D7BC}
+#paper{position:absolute;inset:-60px;background:repeating-linear-gradient(0deg,rgba(60,45,25,.05) 0 2px,transparent 2px 26px),radial-gradient(1100px 1600px at 50% 42%,#EFE4CB 0%,#E1D2B2 60%,#C9B791 100%)}
+#paper:after{content:"";position:absolute;inset:0;opacity:.55;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' seed='4'/><feColorMatrix values='0 0 0 0 .45 0 0 0 0 .35 0 0 0 0 .2 0 0 0 .5 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>")}
+.col{position:absolute;width:280px;opacity:.12}.col i{display:block;height:8px;margin:8px 0;background:#3A2E1E;border-radius:2px}.col b{display:block;height:30px;margin:12px 0 9px;background:#3A2E1E;width:85%}
+#world{position:absolute;inset:0;transform-origin:50% 42%}
+.o{position:absolute;left:0;top:0;opacity:0;transform-origin:50% 50%}
+.cut{filter:drop-shadow(0 12px 10px rgba(40,25,10,.45)) drop-shadow(0 2px 2px rgba(40,25,10,.3))}
+.strip{background:#F7F1E3;padding:14px 30px;font-family:TW;font-size:58px;color:#1C1712;white-space:nowrap;box-shadow:0 8px 14px rgba(40,25,10,.35);clip-path:polygon(0 4%,3% 0,97% 3%,100% 0,99% 96%,96% 100%,4% 97%,0 100%)}
+.strip.r{color:#C8261E}
+.head{background:#1C1712;color:#F3EBD8;font-family:AN;font-size:104px;line-height:1;padding:18px 34px 22px;white-space:nowrap;box-shadow:0 10px 18px rgba(0,0,0,.4);clip-path:polygon(0 3%,2% 0,98% 4%,100% 0,100% 97%,97% 100%,2% 96%,0 100%)}
+.stamp{font-family:AN;color:#C8261E;border:9px solid #C8261E;border-radius:14px;padding:4px 26px 10px;font-size:104px;line-height:1;letter-spacing:2px;white-space:nowrap;background:rgba(247,241,227,.9);opacity:.95;-webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.3 1.55'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");-webkit-mask-size:200px}
+.stamp.g{color:#2E7D4F;border-color:#2E7D4F}
+.tape{position:absolute;width:150px;height:44px;background:rgba(236,224,180,.8);box-shadow:0 2px 3px rgba(0,0,0,.15);clip-path:polygon(0 8%,6% 0,12% 10%,20% 0,100% 5%,94% 100%,86% 90%,78% 100%,0 95%)}
+.tag{background:#E8B737;font-family:TW;font-size:46px;color:#1C1712;padding:10px 24px;white-space:nowrap;box-shadow:0 6px 10px rgba(40,25,10,.35)}
+.quote{background:#F7F1E3;border:6px solid #1C1712;border-radius:28px;padding:20px 32px;font-family:TW;font-size:50px;color:#1C1712;width:max-content;max-width:640px;line-height:1.2;box-shadow:0 8px 14px rgba(40,25,10,.35)}
+.quote em,.strip em,#sub em,.head em{font-style:normal;color:#C8261E}
+#sub{position:absolute;left:40px;right:40px;top:1530px;text-align:center}
+#sub span.w{display:inline-block;background:#F7F1E3;font-family:TW;font-size:58px;line-height:1.15;color:#1C1712;padding:12px 26px;max-width:1000px;box-shadow:0 6px 12px rgba(40,25,10,.4);clip-path:polygon(0 5%,2% 0,98% 4%,100% 0,99% 95%,97% 100%,3% 96%,0 100%)}
+svg.lay{position:absolute;left:0;top:0}
+</style></head><body><div id="stage"><div id="paper"></div><div id="world"><div id="cols"></div><div id="objs"></div>
+<svg class="lay" id="lay" width="1080" height="1920"></svg></div><div id="sub"></div></div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),eo=t=>1-Math.pow(1-t,3),eio=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const eb=t=>{const c1=1.6,c3=c1+1;return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2)},pr=(t,s,d)=>cl((t-s)/d);
+const q12=t=>Math.floor(t*12+1e-6)/12;
+const DUR=89.6;
+window.EVENTS=[];const EV=(t,k)=>EVENTS.push([t,k]);
+(function(){let h='';for(let c=0;c<4;c++){h+=`<div class="col" style="left:${-20+c*285}px;top:-20px">`;for(let r=0;r<130;r++)h+=(r%15===3)?'<b></b>':`<i style="width:${70+((r*37+c*13)%30)}%"></i>`;h+='</div>';}$('cols').innerHTML=h})();
+const OBJ=[],objs=$('objs'),SC=[];let Z=0;
+function scene(a,z){SC.push(a);Z=z;}
+function O(content,a,x,y,opt={}){const e=document.createElement('div');e.className='o'+(opt.img?' cut':'');
+ e.innerHTML=opt.img?`<img src="img/${content}.png" style="${opt.h?'height:'+opt.h:'width:'+opt.w}px;display:block">`:content;
+ if(opt.tape)opt.tape.forEach(tp=>{e.innerHTML+=`<div class="tape" style="left:${tp[0]}px;top:${tp[1]}px;transform:rotate(${tp[2]}deg)"></div>`});
+ objs.appendChild(e);const o={e,a,z:opt.z||Z,x,y,fx:opt.fx||'drop',r:opt.r||0,id:opt.id};OBJ.push(o);
+ if(opt.sfx!==false)EV(a,opt.sfx||{stamp:'stamp',drop:'paper',slideL:'slide',slideR:'slide',slideT:'slide',slideB:'slide',pop:'tap'}[o.fx]);
+ if(opt.tape)EV(a+.35,'tape');return o;}
+const I=(n,a,x,y,o={})=>O(n,a,x,y,Object.assign({img:1},o));
+const S=(t,a,x,y,o={})=>O(`<div class="strip ${o.cls||''}" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'drop'},o));
+const H=(t,a,x,y,o={})=>O(`<div class="head" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'slideL'},o));
+const ST=(t,a,x,y,o={})=>O(`<div class="stamp ${o.cls||''}" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'stamp'},o));
+const TG=(t,a,x,y,o={})=>O(`<div class="tag" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'pop'},o));
+const QT=(t,a,x,y,o={})=>O(`<div class="quote" style="${o.st||''}">${t}</div>`,a,x,y,Object.assign({fx:'pop',sfx:'pop'},o));
+const BAR=(c,h,a,x,yb,o={})=>O(`<div style="width:230px;height:${h}px;background:${c};box-shadow:0 10px 16px rgba(40,25,10,.4);clip-path:polygon(0 1%,4% 0,96% 1.5%,100% 0,100% 100%,0 100%)"></div>`,a,x,yb-h/2,Object.assign({fx:'slideB'},o));
+const MARKS=[];function circ(a,cx,cy,rx,ry){MARKS.push({a,z:Z,d:`M${cx+rx} ${cy} A${rx} ${ry} 0 1 1 ${cx+rx-2} ${cy-8}`});EV(a,'scribble');}
+function cross(a,cx,cy,s){MARKS.push({a,z:Z,d:`M${cx-s} ${cy-s*.8} L${cx+s} ${cy+s*.8} M${cx+s} ${cy-s*.8} L${cx-s} ${cy+s*.8}`});EV(a,'scribble');}
+const LINES=[];function line(a,x1,y1,x2,y2){LINES.push([a,Z,x1,y1,x2,y2]);EV(a,'string');}
+
+// ===== SCÈNES =====
+// 1. Hook
+scene(0,4.95);
+H("McDONALD'S",-0.5,540,330,{r:-2,sfx:'whoosh_s'});
+I('resto',-0.5,540,850,{w:980,r:-2,z:1.85,fx:'pop',sfx:false});
+I('cle',1.95,290,820,{w:470,r:-6});
+TG('LOYERS',2.1,290,1090,{r:-3,st:'font-size:54px'});
+I('burger',2.89,790,820,{w:470,r:5});
+TG('BURGERS',3.05,790,1090,{r:3,st:'font-size:54px'});
+ST('VOULU.',3.85,540,1340,{r:-6});
+// 2. Californie 1954, Kroc vendeur
+scene(4.95,10.05);
+S('CALIFORNIE, 1954',5.05,540,290,{cls:'r',r:-2,tape:[[-30,-16,-14]]});
+I('kr_walk',7.55,330,960,{h:1000,fx:'slideL'});
+I('mixeur',9.0,790,1080,{w:470,r:3,id:'mix',sfx:'whir'});
+// 3. San Bernardino, huit mixeurs
+scene(10.05,15.85);
+I('resto',10.1,540,580,{w:900,r:-1});
+TG('SAN BERNARDINO',10.5,540,265,{r:-2});
+ST('HUIT !',13.1,790,820,{r:-8});
+for(let i=0;i<8;i++)I('milkshake',13.25+i*.07,180+(i%4)*240,i<4?1075:1320,{w:118,fx:'pop',sfx:i%2?false:'pop',r:(i%3-1)*4});
+circ(14.3,540,1200,500,235);
+// 4. Les frères, burger 15 cents, chaîne de montage
+scene(15.85,22.55);
+I('freres',15.95,370,760,{h:800,fx:'slideL'});
+I('burger',17.6,840,700,{w:330,r:4,z:21.8});
+ST('15 CENTS',18.15,820,960,{cls:'g',r:-6});
+I('frites',21.85,840,700,{h:380,r:-3});
+H('CHAÎNE DE MONTAGE',20.15,540,1330,{r:1,st:'font-size:92px'});
+// 5. Franchises partout
+scene(22.55,24.65);
+I('kr_point',22.6,330,900,{h:980,fx:'slideL'});
+I('carte_usa',23.4,800,620,{w:470,r:4,sfx:'pin'});
+H('FRANCHISES',23.9,700,1330,{r:-2});
+// 6. Traduction : patron local, 1,9 %, une miette, il rame
+scene(24.65,32.45);
+S('TRADUCTION :',24.75,540,280,{r:-2,tape:[[-30,-16,-14]]});
+I('franchise',25.75,330,860,{h:700,fx:'slideL'});
+ST('1,9 %',28.75,800,620,{r:-7,sfx:'coin'});
+I('miette',30.6,800,960,{w:380,r:3});
+I('fleche_rouge',31.6,780,1300,{w:300,fx:'slideL'});
+// 7. Sonneborn et le plan
+scene(32.45,40.35);
+TG('HARRY SONNEBORN',33.4,330,300,{r:-2});
+I('financier',33.25,320,850,{h:760,fx:'slideL'});
+I('terrain',36.25,800,640,{w:470,r:3});
+I('cle',37.3,800,960,{w:300,r:-8});
+ST('+ MARGE',38.95,790,1260,{cls:'g',r:-6,sfx:'cash'});
+// 8. Mini-sketch
+scene(40.35,48.35);
+I('franchise',40.4,270,1090,{h:540,fx:'slideL',sfx:false});
+I('proprio',40.4,775,1090,{h:540,fx:'slideR'});
+QT('Félicitations, voici votre restaurant !',40.55,720,420,{z:43.25});
+QT('Super. Et le terrain ?',43.35,330,600,{r:-1});
+QT('Le terrain, c\'est le nôtre. Loyer <em>le 1<sup>er</sup> du mois</em>.',45.35,700,370,{r:1});
+I('calendrier',46.95,800,700,{w:250,fx:'pop',r:5});
+circ(47.3,846,722,34,30);
+// 9. La phrase de Sonneborn
+scene(48.35,54.1);
+I('financier',48.4,300,1010,{h:720,fx:'slideL'});
+QT('« Nous ne sommes pas dans la restauration… »',50.4,700,420,{r:1});
+I('burger',51.35,800,800,{w:300,r:4});
+cross(51.9,800,800,140);
+ST('IMMOBILIER',52.55,760,1180,{cls:'g',r:-6});
+// 10. 1961, rachat
+scene(54.1,58.45);
+S('1961',54.15,540,270,{cls:'r',r:-2,tape:[[-30,-16,-14]],st:'font-size:72px'});
+I('kr_1961',55.15,540,740,{w:860,fx:'slideR'});
+I('liasse',56.55,300,1260,{w:420,r:-5,sfx:'cash'});
+ST('2,7 M$',57.0,770,1270,{cls:'g',r:-6});
+// 11. Le Big M
+scene(58.45,63.55);
+TG('HORS DU DEAL',58.9,540,270,{r:-2});
+I('resto',58.5,540,680,{w:920,r:1});
+cross(60.9,540,620,190);
+H('BIG M',62.05,540,1150,{r:-3,st:'font-size:140px'});
+// 12. Kroc ouvre à une rue de là, Big M ferme
+scene(63.55,68.45);
+I('resto',63.6,290,640,{w:500,r:-2,sfx:false});
+TG('BIG M',63.7,290,380,{r:-3});
+I('resto',64.0,790,1120,{w:500,r:2,fx:'slideR'});
+TG("McDONALD'S",64.15,790,1350,{r:2});
+line(65.05,380,780,700,1020);
+ST('FERMÉ',67.7,300,650,{r:-10,sfx:'thud'});
+// 13. Combat de boss
+scene(68.45,71.25);
+H('COMBAT DE BOSS',68.5,540,330,{r:-2});
+I('gant',68.75,540,820,{w:560,fx:'slideR',id:'gant'});
+ST('K.O.',70.3,560,1250,{r:-8,sfx:'boom'});
+// 14. Aujourd'hui
+scene(71.25,74.05);
+S("AUJOURD'HUI",71.3,540,290,{r:-2,tape:[[-30,-16,-14]]});
+I('globe',71.6,540,760,{w:560,r:-3});
+ST('45 000+',72.75,540,1250,{cls:'g',r:-5,st:'font-size:140px'});
+// 15. 2024 : loyers vs redevances
+scene(74.05,80.9);
+S('2024',74.6,540,250,{cls:'r',r:-2,st:'font-size:72px'});
+I('cle',75.35,290,500,{w:260,r:-6});
+ST('10 MDS $',75.55,290,720,{cls:'g',r:-4,st:'font-size:80px'});
+BAR('#2E7D4F',600,75.75,290,1450);
+I('burger',77.2,790,800,{w:250,r:5});
+ST('5,6 MDS $',77.6,790,1000,{r:-4,st:'font-size:80px'});
+BAR('#C8261E',336,77.8,790,1450);
+// 16. Retour au hook
+scene(80.9,83.65);
+I('burger',80.95,540,720,{w:700,r:-3});
+ST('= LOYER',82.8,540,1200,{cls:'g',r:-6,sfx:'cash'});
+// 17. Teaser + abonnement
+scene(83.65,DUR);
+H('PROCHAIN ÉPISODE',83.75,540,330,{r:-2});
+ST('LUXE',85.1,540,640,{r:-6});
+ST('0 ACTIONNAIRE',86.3,540,880,{r:4,st:'font-size:96px'});
+ST('ABONNE-TOI',87.5,540,1220,{cls:'g',r:-4,st:'font-size:120px'});
+
+const CAP=[[0.0,"McDonald's gagne plus d'argent"],[1.59,"avec ses <em>loyers</em>"],[2.31,"qu'avec ses <em>burgers</em>."],[3.69,"Et c'était voulu."],
+[5.0,"Californie, 1954."],[7.71,"Ray Kroc vend"],[8.6,"des mixeurs à milkshake."],
+[10.21,"Un resto de San Bernardino"],[11.73,"en utilise <em>huit</em>."],[13.17,"<em>Huit !</em>"],[13.91,"Même un stade"],[14.67,"n'en demande pas autant."],
+[16.01,"Les frères McDonald"],[17.13,"servent un burger à <em>15 cents</em>"],[18.77,"en un temps record."],[20.11,"Une chaîne de montage,"],[21.37,"mais avec des frites."],
+[22.67,"Kroc vend des <em>franchises</em> partout."],[24.75,"Traduction :"],[25.69,"un patron local paie"],[26.83,"pour utiliser le nom,"],[27.97,"et Kroc touche <em>1,9 %</em> des ventes."],[30.67,"Une miette."],[31.63,"Il rame."],
+[32.67,"Puis arrive Harry Sonneborn,"],[34.39,"un financier, avec un plan :"],[36.31,"acheter <em>le terrain</em>,"],[37.35,"puis le louer au franchisé."],[39.01,"Avec une marge, évidemment."],
+[40.4,""],[48.47,"Sonneborn l'aurait résumé ainsi :"],[50.4,""],[52.41,"…mais dans <em>l'immobilier</em>."],
+[54.21,"1961."],[55.25,"Kroc rachète les frères"],[56.37,"pour <em>2,7 millions</em> de dollars."],
+[58.53,"Leur premier restaurant reste hors du deal,"],[60.71,"mais perd le nom :"],[61.75,"il devient le <em>Big M</em>."],
+[63.65,"Kroc ouvre un McDonald's"],[64.97,"à une rue de là."],[66.09,"Six ans plus tard,"],[67.09,"le Big M <em>ferme</em>."],[68.59,"Combat de boss terminé."],
+[71.33,"Aujourd'hui : plus de"],[72.6,"<em>45 000</em> restaurants."],
+[74.13,"En 2024 :"],[75.41,"<em>10 milliards</em> de dollars de loyers,"],[77.25,"contre <em>5,6 milliards</em> de redevances,"],[79.57,"la part sur les ventes."],
+[80.97,"Ton Big Mac ?"],[81.91,"C'est juste ce qui paie <em>le loyer</em>."],
+[83.83,"Prochain épisode :"],[84.93,"la marque de luxe"],[85.87,"qui n'a aucun actionnaire."],[87.59,"<em>Abonne-toi !</em>"]];
+
+const lay=$('lay');
+MARKS.forEach((m,i)=>{lay.innerHTML+=`<path id="mk${i}" d="${m.d}" stroke="#C8261E" stroke-width="12" stroke-linecap="round" fill="none" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>`;});
+LINES.forEach((L,i)=>{lay.innerHTML+=`<path id="ln${i}" d="M${L[2]} ${L[3]} Q${(L[2]+L[4])/2} ${Math.min(L[3],L[5])-80} ${L[4]} ${L[5]}" stroke="#C8261E" stroke-width="7" fill="none" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><circle id="pa${i}" cx="${L[2]}" cy="${L[3]}" r="13" fill="#B8872B" opacity="0"/><circle id="pb${i}" cx="${L[4]}" cy="${L[5]}" r="13" fill="#B8872B" opacity="0"/>`;});
+SC.slice(1).forEach(t=>EV(t-.08,'whoosh'));
+OBJ.forEach(o=>{if(o.e.querySelector('.strip'))for(let k=0;k<5;k++)EV(o.a+.05+k*.055,'key');});
+window.render=function(t){const tq=q12(t);
+ let si=0;for(let i=0;i<SC.length;i++)if(t>=SC[i])si=i;const st=SC[si],sd=(SC[si+1]||DUR)-st,k=pr(t,st,sd);
+ const jit=(Math.sin(Math.floor(t*12)*12.9898)*43758.5453)%1;
+ $('world').style.transform=`scale(${1+.045*k}) rotate(${(si%2?-1:1)*.3*k}deg)`;
+ $('paper').style.transform=`translate(${(si%2?-1:1)*14*k}px,${-6*k}px)`;
+ for(const o of OBJ){const e=o.e;if(t<o.a||t>o.z+.35){e.style.opacity=0;continue}
+  const w=e.offsetWidth,h=e.offsetHeight;let x=o.x,y=o.y,s=1,op=1,r=o.r;
+  const p=pr(tq,o.a,o.fx==='stamp'?.25:.42),pe=eb(p);
+  if(o.fx==='slideL')x=o.x-1500*(1-pe);if(o.fx==='slideR')x=o.x+1500*(1-pe);
+  if(o.fx==='slideT')y=o.y-2100*(1-pe);if(o.fx==='slideB')y=o.y+1400*(1-pe);
+  if(o.fx==='drop'){s=1.35-.35*eo(p);op=cl(p*3);r=o.r+(1-eo(p))*8;}
+  if(o.fx==='stamp'){s=2.4-1.4*eo(p);op=cl(p*4);}
+  if(o.fx==='pop'){s=.2+.8*pe;op=cl(p*3);}
+  if(o.fx.startsWith('slide'))r=o.r+(1-eo(p))*(o.fx==='slideL'?-10:10);
+  const since=tq-o.a;if(since>.42&&since<.9)r+=Math.sin(since*40)*1.2*(1-(since-.42)/.48);
+  if(o.id==='mix'&&since>.45&&since<1.6){x+=Math.sin(tq*90)*4;r+=Math.sin(tq*70)*.8;}
+  if(o.id==='gant'){const g=pr(tq,70.05,.25);x-=90*Math.sin(Math.PI*g);s*=1+.12*Math.sin(Math.PI*g);}
+  const q=pr(t,o.z,.35);if(q>0){y-=q*120;op*=1-q;s*=1-.06*q;}
+  e.style.opacity=op;e.style.transform=`translate(${x-w/2}px,${y-h/2}px) scale(${s}) rotate(${r+(jit-.5)*.35}deg)`;}
+ MARKS.forEach((m,i)=>{const el=$('mk'+i);el.style.strokeDashoffset=1-eo(pr(t,m.a,.4));el.style.opacity=(t>=m.a&&t<m.z+.2)?1:0;});
+ LINES.forEach((L,i)=>{const p=eo(pr(t,L[0],.6)),q=pr(t,L[1],.3),on=t>=L[0]&&t<L[1]+.3;$('ln'+i).style.strokeDashoffset=1-p;$('ln'+i).style.opacity=on?1-q:0;$('pa'+i).setAttribute('opacity',on?1-q:0);$('pb'+i).setAttribute('opacity',on&&p>.95?1-q:0);});
+ let c=null;for(const x of CAP)if(t>=x[0])c=x;const sb=$('sub');
+ if(c&&c[1]&&t<DUR-.3){const p=pr(tq,c[0],.17);sb.innerHTML=`<span class="w">${c[1]}</span>`;sb.style.opacity=cl(p*2);sb.style.transform=`translateY(${20*(1-eo(p))}px) rotate(${(CAP.indexOf(c)%2?-1:1)*.8}deg)`;}else sb.innerHTML='';};
+document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>i.onload=r))).then(()=>{render(0);window.READY=true;}));
+</script></body></html>

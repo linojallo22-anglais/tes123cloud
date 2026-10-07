@@ -1,0 +1,57 @@
+=== PROMPT MINIATURE A (joindre thumbnail-A.png) ===
+Use the attached image as the exact reference. Recreate the SAME YouTube thumbnail with the same composition, same person, same colors and same text, but sharper, cleaner and much more readable on a small phone screen.
+
+FORMAT: 16:9 landscape YouTube thumbnail (1280x720). If 16:9 is not available, use 1536x1024 and keep all important content inside the central 16:9 area.
+
+STYLE: VOX-style documentary paper collage. Warm cream aged paper background (#EFE4CB) with subtle paper grain, slightly darker tan vignette toward the edges. Every cutout has a thin white paper border with rough scissor-cut edges and a soft drop shadow, as if glued on paper. Flat even lighting. No 3D, no glossy look, no cartoon.
+
+LEFT SIDE (about 55% of the width): the same man as in the reference, Ray Kroc in 1955: American man in his early 50s, thinning dark hair slicked straight back, clean-shaven, gray 1950s suit, white shirt, narrow dark tie. Black and white halftone photograph cutout with visible halftone dots. Tight head-and-shoulders close-up, extremely shocked expression: eyes wide open, eyebrows raised high, mouth open in a round "O", looking straight at the camera. His face is HUGE: about 65% of the image height, face centered at about 28% from the left edge, shoulders cropped by the bottom edge of the frame. Behind him, a big hot red (#C8261E) torn paper shape with rough edges, and a small mustard yellow (#E8B737) torn paper strip peeking behind his right shoulder at the bottom.
+
+RIGHT SIDE (text, never touching the face):
+- Line 1: "$10 BILLION" in huge bold condensed sans-serif capitals (like the Anton font), emerald green (#2E7D4F) letters inside a rubber-stamp frame: thick green rounded-rectangle border on an off-white paper background, rotated about -5 degrees, slightly worn ink texture but perfectly legible. Height of the letters about 18% of the image height. Placed upper right, centered vertically around 35% of the height.
+- Line 2: "IN RENT" in huge bold condensed sans-serif capitals, cream (#F3EBD8) letters on a black (#1C1712) torn paper banner, rotated about +2 degrees, letters about 20% of the image height. Placed right side, around 65% of the height.
+- Both text blocks right-aligned with about 40 px margin from the right edge, with a clear gap between them.
+
+READABILITY: maximum contrast, thick letters, no thin strokes, nothing small. The thumbnail must stay readable at 320x180. The text must not overlap the face.
+
+TEXT: the ONLY text in the image is exactly "$10 BILLION" and "IN RENT", spelled exactly like this. No other words, no letters, no numbers, no logos, no watermark.
+
+
+=== PROMPT MINIATURE B (joindre thumbnail-B.png) ===
+Use the attached image as the exact reference. Recreate the SAME YouTube thumbnail with the same composition, same objects, same colors and same text, but sharper, cleaner and much more readable on a small phone screen.
+
+FORMAT: 16:9 landscape YouTube thumbnail (1280x720). If 16:9 is not available, use 1536x1024 and keep all important content inside the central 16:9 area.
+
+STYLE: VOX-style documentary paper collage. Warm cream aged paper background (#EFE4CB) with subtle paper grain and a slightly darker tan vignette. Every cutout has a thin white paper border with rough scissor-cut edges and a soft drop shadow, as if glued on paper. Realistic photographic objects, matte, flat even lighting. No 3D render, no glossy look, no cartoon.
+
+LEFT HALF: a tall mustard yellow (#E8B737) torn paper panel covering the left half of the image, slightly rotated (+3 degrees), bleeding off the top and bottom edges, with torn zigzag edges. On it, a BIG classic cheeseburger (sesame bun, beef patty, melted cheese) half-wrapped in white paper, photographic cutout with a hot red (#C8261E) paper shape behind it, rotated about -6 degrees, filling most of the left half. Over the burger, a giant hand-drawn red marker X (#C8261E): two very thick strokes with rounded ends, crossing the whole burger from corner to corner.
+
+RIGHT HALF:
+- Top: a brass door key with a blank paper tag on a string, photographic cutout on a mustard yellow torn paper shape, tilted about +8 degrees, large (about 40% of the image width). The tag is blank: no writing.
+- Bottom: "IT'S RENT." in huge bold condensed sans-serif capitals (like the Anton font), cream (#F3EBD8) letters on a black (#1C1712) torn paper banner, rotated about -3 degrees, letters about 22% of the image height, right-aligned with about 50 px margin, placed around 70% of the image height.
+
+READABILITY: maximum contrast, thick letters, the X and the key clearly visible, nothing small. The thumbnail must stay readable at 320x180.
+
+TEXT: the ONLY text in the image is exactly "IT'S RENT." spelled exactly like this, with the apostrophe and the period. No other words, no letters, no numbers, no logos, no brand names, no watermark.
+
+
+=== PROMPT MINIATURE C (joindre thumbnail-C.png) ===
+Use the attached image as the exact reference. Recreate the SAME YouTube thumbnail with the same composition, same person, same objects, same colors and same text, but sharper, cleaner and much more readable on a small phone screen.
+
+FORMAT: 16:9 landscape YouTube thumbnail (1280x720). If 16:9 is not available, use 1536x1024 and keep all important content inside the central 16:9 area.
+
+STYLE: VOX-style documentary paper collage. Warm cream aged paper background (#EFE4CB) with subtle paper grain on the top 60% of the image. The bottom 40% is covered by a wide hot red (#C8261E) torn paper band crossing the full width, slightly tilted (-2 degrees), with rough torn edges on top. Every cutout has a thin white paper border with rough scissor-cut edges and a soft drop shadow. Matte, flat even lighting. No 3D render, no glossy look, no cartoon.
+
+TOP LEFT: a small 1950s American walk-up hamburger stand, photographic paper cutout: red-and-white tiled building with large front windows and two tall yellow parabolic arches rising through the roof, seen from the front at a slight angle, rotated about -3 degrees, about 40% of the image width. No sign, no letters, no logo on the building.
+
+BOTTOM LEFT (on the red band): "15¢" in huge bold condensed sans-serif characters (like the Anton font), hot red letters inside a rubber-stamp frame: thick red rounded-rectangle border on an off-white paper background, rotated about -6 degrees, letters about 20% of the image height.
+
+CENTER: a thick hand-drawn black marker arrow, curved like an arc, going from the hamburger stand on the left to the man on the right.
+
+RIGHT: the same man as in the reference, Ray Kroc in 1961: American man in his late 50s, thinning hair slicked straight back and partly gray, clean-shaven, dark charcoal suit, white shirt, narrow dark tie, laughing with his mouth open, holding a black fountain pen, looking toward the left. Black and white halftone photograph cutout with visible halftone dots, waist-up, large (about 65% of the image height), slightly cut off by the right edge, with a hot red torn paper shape behind him.
+
+BOTTOM RIGHT (on the red band): "$10B RENT" in huge bold condensed sans-serif capitals, emerald green (#2E7D4F) letters inside a rubber-stamp frame: thick green rounded-rectangle border on an off-white paper background, rotated about +4 degrees, letters about 20% of the image height, right-aligned with about 40 px margin. It must not cover his face.
+
+READABILITY: maximum contrast, thick letters, nothing small. The thumbnail must stay readable at 320x180.
+
+TEXT: the ONLY text in the image is exactly "15¢" and "$10B RENT", spelled exactly like this. No other words, no letters, no numbers, no logos, no brand names, no watermark.
