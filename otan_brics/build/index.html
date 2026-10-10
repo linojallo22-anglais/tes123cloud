@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><title>OTAN BRICS</title>
+<style>
+@font-face{font-family:Poppins;font-weight:600;src:url(../node_modules/@fontsource/poppins/files/poppins-latin-600-normal.woff2)}
+@font-face{font-family:Poppins;font-weight:700;src:url(../node_modules/@fontsource/poppins/files/poppins-latin-700-normal.woff2)}
+@font-face{font-family:Poppins;font-weight:800;src:url(../node_modules/@fontsource/poppins/files/poppins-latin-800-normal.woff2)}
+@font-face{font-family:Poppins;font-weight:900;src:url(../node_modules/@fontsource/poppins/files/poppins-latin-900-normal.woff2)}
+@font-face{font-family:Caveat;font-weight:700;src:url(../node_modules/@fontsource/caveat/files/caveat-latin-700-normal.woff2)}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../node_modules/d3-array/dist/d3-array.min.js"></script>
+<script src="../node_modules/d3-geo/dist/d3-geo.min.js"></script>
+<script src="script.js"></script><script src="helpers.js"></script><script src="scene.js"></script>
+<script>(async()=>{await Promise.all(['600','700','800','900'].map(w=>document.fonts.load(w+' 60px Poppins')));await document.fonts.load('700 40px Caveat');await init();})().catch(e=>{window.ERR=String(e.stack||e)});</script>
+</body></html>

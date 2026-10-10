@@ -10,3 +10,9 @@ berlin/assets/voice16.f32
 berlin/assets/voice.wav
 berlin/build/final_*.jpg
 berlin/build/thumbs_cmp.jpg
+otan_brics/node_modules
+otan_brics/assets/bm.jpg
+otan_brics/build/prev/
+otan_brics/build/out/
+otan_brics/build/*.wav
+otan_brics/build/contact*.jpg
