@@ -16,3 +16,11 @@ otan_brics/build/prev/
 otan_brics/build/out/
 otan_brics/build/*.wav
 otan_brics/build/contact*.jpg
+france_russie/node_modules
+france_russie/assets/voice16.f32
+france_russie/assets/voice.wav
+france_russie/build/prev/
+france_russie/build/out/
+france_russie/build/*.wav
+france_russie/build/contact*.jpg
+france_russie/build/check_cut.jpg
