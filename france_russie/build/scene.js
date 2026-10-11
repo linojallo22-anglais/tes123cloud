@@ -40,22 +40,25 @@ const pathM = g => { m.beginPath(); d3.geoPath(P, m)(g); };
 const geomOf = id => (cam_s > 2200 && WORLD.c10[id]) ? WORLD.c10[id] : WORLD.byId[id].g;
 
 const YMAX = Math.log(Math.tan(Math.PI / 4 + 85.0511 * Math.PI / 360));
+const TN = 16384, TS = 1024; const TILES = {}; let LOWRES = null;
+const gX = lon => (lon + 180) / 360 * TN, gY = lat => TN / 2 - TN / (2 * Math.PI) * Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360));
+function tilesFor(st) { // tuiles visibles dans le canevas carte
+  const k = 2 * Math.PI * st.s / TN; if (k < 0.3) return [];
+  const xc = gX(st.lon), yc = gY(st.lat); const x0 = xc - (540 + OX) / k, x1 = xc + (MW - 540 - OX) / k, y0 = yc - (CY + OY) / k, y1 = yc + (MH - CY - OY) / k;
+  const out = []; for (let ty = Math.max(0, Math.floor(y0 / TS)); ty <= Math.min(15, Math.floor(y1 / TS)); ty++) for (let tx = Math.floor(x0 / TS); tx <= Math.floor(x1 / TS); tx++) out.push([((tx % 16) + 16) % 16, ty, tx]);
+  return out;
+}
 function drawSat(st) {
-  const Wpx = st.s * 2 * Math.PI, cx = 540 + OX, cy = CY + OY;
-  const x0 = cx + st.s * ((-180 - st.lon) * Math.PI / 180), y0 = cy - st.s * (YMAX - Math.log(Math.tan(Math.PI / 4 + st.lat * Math.PI / 360)));
-  const k = Wpx / BM.width; m.imageSmoothingQuality = 'high'; m.fillStyle = '#0b3a52'; m.fillRect(0, 0, MW, MH);
-  if (st.s > 9000) m.filter = 'blur(2px)';
-  for (const off of [-Wpx, 0, Wpx]) { const X0 = x0 + off; const dx0 = Math.max(0, X0), dx1 = Math.min(MW, X0 + Wpx), dy0 = Math.max(0, y0), dy1 = Math.min(MH, y0 + Wpx); if (dx1 <= dx0 || dy1 <= dy0) continue; m.drawImage(BM, (dx0 - X0) / k, (dy0 - y0) / k, (dx1 - dx0) / k, (dy1 - dy0) / k, dx0, dy0, dx1 - dx0, dy1 - dy0); }
-  m.filter = 'none';
-  const a = clamp((st.s - 1800) / 2500) * 0.82;
-  if (a > 0) {
-    const y = lat => P([st.lon, lat])[1]; const g = m.createLinearGradient(0, y(70), 0, y(-10));
-    const stops = [[70, '#8a8f84'], [60, '#3f5a32'], [52, '#55753a'], [46, '#5f7d3c'], [42, '#7f8350'], [36, '#a69a62'], [30, '#c7a76a'], [20, '#c9a46a'], [10, '#5f7f3a'], [-10, '#3d6b2c']];
-    const ya = y(70), yb = y(-10); for (const [l, col] of stops) g.addColorStop(clamp((y(l) - ya) / (yb - ya || 1)), col);
-    m.save(); m.globalAlpha = a; pathM(WORLD.land); m.fillStyle = g; m.fill(); m.restore();
-    m.save(); pathM(WORLD.land); m.clip(); m.globalAlpha = 0.14 * a; m.globalCompositeOperation = 'overlay'; m.fillStyle = m.createPattern(GRAIN, 'repeat'); m.fillRect(0, 0, MW, MH); m.restore();
+  const cx = 540 + OX, cy = CY + OY; m.fillStyle = '#2f7f8c'; m.fillRect(0, 0, MW, MH); m.imageSmoothingQuality = 'high';
+  const k = 2 * Math.PI * st.s / TN, xc = gX(st.lon), yc = gY(st.lat);
+  if (k < 0.3 || !tilesFor(st).every(([a, b]) => TILES[b + '_' + a])) {
+    const kl = 2 * Math.PI * st.s / LOWRES.width; const W2 = LOWRES.width * kl;
+    const X0 = cx - (xc / TN) * W2, Y0 = cy - (yc / TN) * W2;
+    for (const off of [-W2, 0, W2]) { const xa = X0 + off; const dx0 = Math.max(0, xa), dx1 = Math.min(MW, xa + W2), dy0 = Math.max(0, Y0), dy1 = Math.min(MH, Y0 + W2); if (dx1 > dx0 && dy1 > dy0) m.drawImage(LOWRES, (dx0 - xa) / kl, (dy0 - Y0) / kl, (dx1 - dx0) / kl, (dy1 - dy0) / kl, dx0, dy0, dx1 - dx0, dy1 - dy0); }
+  } else {
+    for (const [tx, ty, txr] of tilesFor(st)) { const img = TILES[ty + '_' + tx]; if (!img) continue; const dx = cx + (txr * TS - xc) * k, dy = cy + (ty * TS - yc) * k; m.drawImage(img, dx, dy, TS * k + 1, TS * k + 1); }
   }
-  m.save(); pathM(WORLD.land); m.lineWidth = 1.5; m.strokeStyle = 'rgba(255,255,255,.18)'; m.stroke(); pathM(WORLD.borders); m.lineWidth = 1.3; m.strokeStyle = 'rgba(255,255,255,.5)'; m.stroke(); m.restore();
+  m.save(); pathM(WORLD.borders); m.lineWidth = 1.6; m.strokeStyle = 'rgba(255,255,255,.62)'; m.stroke(); m.restore();
 }
 
 // ---------- pays ----------
@@ -63,17 +66,16 @@ let CS = {};
 function hatch(alpha) { m.save(); m.clip(); m.globalAlpha = alpha; m.strokeStyle = '#fff'; m.lineWidth = 5; m.beginPath(); for (let x = -MH; x < MW; x += 30) { m.moveTo(x, 0); m.lineTo(x + MH, MH); } m.stroke(); m.restore(); }
 const SLICE = /^(us|gb|cn|es|ca|kz|ir|by|kp|kg|tj|at|ie|cy|mt|gl|tr|pt|hr|me|al|mk|sk|si|gr|no|se|fi|dk|is)$/;
 function drawCountries(t) {
-  const zoomFade = 1 - 0.45 * clamp((cam_s - 2600) / 3000);
   for (const id in CS) {
     const c = CS[id]; if (t < c.t) continue; const g = geomOf(id); const dt = t - c.t; const fl = FL[ISO[id]];
-    const hold = c.named ? 1.3 : 0.35;
-    const flagA = clamp(dt / (c.named ? 0.25 : 0.12)) * (1 - clamp((dt - hold) / 0.5));
-    const flash = Math.max(0, 1 - dt / 0.3), teamA = clamp((dt - hold + 0.1) / 0.5);
-    const col = { f: BLUE, r: RED, g: '#8b9096' }[c.team];
-    if (col && teamA > 0) { pathM(g); m.globalAlpha = (c.team === 'g' ? 0.5 : 0.66) * teamA * (c.dim ? 0.6 : 1) * zoomFade; m.fillStyle = col; m.fill(); m.globalAlpha = 1; if (c.team === 'g') { pathM(g); hatch(0.3 * teamA); } }
-    if (flagA > 0 && fl) flagFill(m, () => pathM(g), d3.geoPath(P).bounds(g), fl, 0.9 * flagA * zoomFade, flash, SLICE.test(ISO[id]) ? 'slice' : 'stretch');
-    if (c.named && dt < 2.2) { pathM(g); m.save(); m.globalAlpha = 1 - dt / 2.2; m.shadowColor = '#fff'; m.shadowBlur = 25; m.lineWidth = 4; m.strokeStyle = '#fff'; m.stroke(); m.restore(); }
-    if (c.re && t > c.re) { const d2 = t - c.re; const fa = clamp(d2 / 0.25) * (1 - clamp((d2 - 1.3) / 0.5)); if (fa > 0) flagFill(m, () => pathM(g), d3.geoPath(P).bounds(g), fl, 0.9 * fa * zoomFade, Math.max(0, 1 - d2 / 0.3), SLICE.test(ISO[id]) ? 'slice' : 'stretch'); if (d2 < 2.2) { pathM(g); m.save(); m.globalAlpha = 1 - d2 / 2.2; m.shadowColor = '#fff'; m.shadowBlur = 25; m.lineWidth = 4; m.strokeStyle = '#fff'; m.stroke(); m.restore(); } }
+    let cur = c.re && t > c.re ? t - c.re : dt; const hold = c.named || (c.re && t > c.re) ? 1.6 : 0.4;
+    const k = clamp((cur - hold) / 0.6); const fa = clamp(cur / 0.2) * lerp(0.9, c.team === 'g' ? 0.3 : (c.named ? 0.42 : 0.36), k);
+    const flash = Math.max(0, 1 - cur / 0.3);
+    if (fl) flagFill(m, () => pathM(g), d3.geoPath(P).bounds(g), fl, fa * (c.dim ? 0.7 : 1), flash, SLICE.test(ISO[id]) ? 'slice' : 'stretch');
+    const col = { f: '#3b7bff', r: '#ff2d2d', g: '#9aa0a6' }[c.team];
+    m.save(); pathM(g); m.lineJoin = 'round'; m.lineWidth = 3.2; m.strokeStyle = col; m.globalAlpha = 0.9 * clamp(dt / 0.4); m.shadowColor = col; m.shadowBlur = 10; m.stroke(); m.restore();
+    if (cur < 2.2 && hold > 1) { pathM(g); m.save(); m.globalAlpha = 1 - cur / 2.2; m.shadowColor = '#fff'; m.shadowBlur = 25; m.lineWidth = 4; m.strokeStyle = '#fff'; m.stroke(); m.restore(); }
+    if (c.team === 'g' && dt > 1.2) { pathM(g); m.save(); m.globalAlpha = clamp((dt - 1.2) / 0.5) * 0.5; hatch(0.6); m.restore(); }
   }
 }
 
@@ -119,15 +121,16 @@ function flagPin(c, x, y, img, r) {
   c.beginPath(); c.moveTo(x, y); c.lineTo(x - r * 0.55, y - r * 1.25); c.arc(x, y - r * 1.75, r, Math.PI * 0.82, Math.PI * 0.18); c.closePath(); c.fillStyle = '#fff'; c.fill(); c.shadowColor = 'transparent';
   c.save(); c.beginPath(); c.arc(x, y - r * 1.75, r * 0.8, 0, 7); c.clip(); if (img) c.drawImage(img, x - r * 1.07, y - r * 2.55, r * 2.14, r * 1.6); c.restore(); c.restore();
 }
+function flagCard(c, x, y, img, w) { const h = w * 0.75; c.save(); c.shadowColor = 'rgba(0,0,0,.45)'; c.shadowBlur = 12; c.shadowOffsetY = 4; c.fillStyle = '#fff'; rr(c, x - w / 2 - 5, y - h / 2 - 5, w + 10, h + 10, 6); c.fill(); c.shadowColor = 'transparent'; if (img) c.drawImage(img, x - w / 2, y - h / 2, w, h); c.restore(); }
+let NAMED_T = [];
 function drawPins(c, t) {
+  if (!NAMED_T.length) NAMED_T = Object.values(CS).flatMap(x => [x.named ? x.t : null, x.re ?? null]).filter(x => x != null).sort((a, b) => a - b);
   for (const id in CS) {
-    const cs = CS[id]; const tp = cs.named ? cs.t : cs.re; if (tp == null || t < tp) continue; const a = ANCH[id]; const p = S(a[0], a[1]);
-    if (p.x < -80 || p.x > W + 80 || p.y < -80 || p.y > H + 80) continue;
-    const r = clamp(22 + Math.log2(cam_s / 300) * 6, 18, 46) * p.k * popIn(t, cs.t, 0.3);
-    flagPin(c, p.x, p.y, FL[ISO[id]], r);
-    const t0 = cs.re && t >= cs.re ? cs.re : cs.t;
-    if (t < t0 + 2.3) { c.save(); c.globalAlpha = fadeOut(t, t0 + 2.0, 0.3); txt(c, typed(NAME[id], t, t0 + 0.05, 0.3), p.x, p.y + 52 * Math.max(0.8, p.k), { size: 64, stroke: '#000', sw: 11 }); c.restore(); }
-    else if (cam_s > 900) txt(c, NAME[id], p.x, p.y + 28, { size: 28, stroke: '#000', sw: 6, weight: 700 });
+    const cs = CS[id]; const t0 = cs.re && t >= cs.re ? cs.re : (cs.named ? cs.t : null); if (t0 == null || t < t0) continue;
+    const nxt = NAMED_T.find(x => x > t0 + 0.05); const tEnd = Math.min(t0 + 2.0, nxt != null ? nxt - 0.05 : 1e9); if (t > tEnd + 0.25) continue;
+    const a = ANCH[id]; const p = S(a[0], a[1]); const al = fadeOut(t, tEnd, 0.25); const s = popIn(t, t0, 0.3);
+    c.save(); c.globalAlpha = al; c.translate(p.x, Math.min(p.y + 175, 1380)); c.scale(s, s); flagCard(c, 0, -60, FL[ISO[id]], 96);
+    txt(c, typed(NAME[id], t, t0 + 0.05, 0.3), 0, 34, { size: 66, stroke: '#000', sw: 11 }); c.restore();
   }
 }
 
@@ -330,11 +333,12 @@ window.init = async function () {
   canvas = document.getElementById('c'); ctx = canvas.getContext('2d');
   const [wd, tm] = await Promise.all(['world.json', 'timing.json'].map(u => fetch(u).then(r => r.json())));
   WORLD = wd; WORLD.byId = Object.fromEntries(WORLD.c50.map(c => [c.id, c])); WORDS = tm.words;
-  BM = await loadImg('../assets/bm_merc.jpg');
+  LOWRES = await loadImg('../relief/relief_4096.jpg');
   await Promise.all(Object.values(ISO).map(async k => { FL[k] = await loadImg('flags/' + k + '.svg'); }));
   const names = ['jet_fr', 'jet_ru', 'sol_fr_a', 'sol_fr_b', 'sol_ru_a', 'sol_ru_b', 'shield', 'handshake', 'treaty', 'shrug', 'nuke', 'waver'];
   await Promise.all(names.map(async n => { SPR[n] = await loadImg('spr/' + n + '.png'); }));
   makeGrain(); buildSubs(SCRIPT); setup();
+  { const need = new Set(); for (let t = 0; t <= DUR; t += 0.1) { const c = cam(t); for (const [tx, ty] of tilesFor(c)) need.add(ty + '_' + tx); } await Promise.all([...need].map(async n => { TILES[n] = await loadImg('../relief/tiles/' + n + '.jpg'); })); window.NTILES = need.size; }
   window.CAM = { dur: DUR, camAt: t => cam(t), angAt, tiltAt };
   window.VISUALS = SUBS.map(x => x.t0); window.DUR = DUR; window.READY = true;
 };

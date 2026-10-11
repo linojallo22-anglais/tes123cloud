@@ -101,7 +101,17 @@ def jet():
     rumble = lp(noise(1.4), 180) * 1.5
     return norm((out + rumble) * np.sin(np.pi * tt / 1.4) ** 1.2, 0.5)
 def boing(): tt = t_(0.45); return norm(sine(180 + 120 * np.sin(2 * np.pi * 7 * tt) * np.exp(-tt * 5), 0.45) * env(len(tt), 0.003, curve=6), 0.4)
-SFX = dict(jet=jet, boing=boing, whoosh=whoosh, pop=pop, ping=ping, ding=ding, tic=tic, type=typ, stamp=stamp, thud=thud, impact=impact, heartbeat=heartbeat, fall=fall, scan=scan, draw=draw, shine=shine, sparkle=sparkle,
+def sweep_noise(d, f0, f1, q=0.45):
+    n = rng.standard_normal(int(SR * d)); out = np.zeros_like(n)
+    for i in range(0, len(n), 256):
+        fc = f0 * (f1 / f0) ** (i / len(n)); seg = slice(max(0, i - 256), i + 512)
+        out[i:i + 256] = bp(n[seg], max(30, fc * (1 - q)), min(15000, fc * (1 + q)), 1)[min(i, 256):min(i, 256) + 256][:len(out[i:i + 256])]
+    return out
+def voum(d=0.9):  # bruit de zoom choisi par l'utilisateur (essai n°3 : voum d'avion qui passe)
+    tt = t_(d); n = sweep_noise(d, 500, 150); e = np.exp(-((tt - d * 0.5) / (d * 0.22)) ** 2)
+    tone = sine(110 * (1.25 - 0.5 * tt / d), d) * e
+    return norm(lp(n, 1800) * e + 0.35 * tone, 0.75)
+SFX = dict(whoosh=voum, jet=jet, boing=boing, pop=pop, ping=ping, ding=ding, tic=tic, type=typ, stamp=stamp, thud=thud, impact=impact, heartbeat=heartbeat, fall=fall, scan=scan, draw=draw, shine=shine, sparkle=sparkle,
            water=water, wave=wave, squeeze=squeeze, film=film, scissors=scissors, barrier=barrier, train=train, engine=engine, alarm=alarm, photo=photo, count=count, applause=applause, cheer=cheer,
            sweep=sweep, steps=steps, swell=swell, wire=wire, concrete=concrete, crumble=crumble)
 E = json.load(open('events.json')); dur = E['dur']
@@ -109,7 +119,7 @@ missing = {e[1] for e in E['events']} - set(SFX); assert not missing, missing
 N = int((dur + 1) * SR); fx = np.zeros(N); cache = {}
 for t, typ_ in E['events']:
     if typ_ not in cache or typ_ in ('applause', 'sparkle', 'crumble', 'cheer'): cache[typ_] = SFX[typ_]()
-    s = cache[typ_]; i = int(t * SR); j = min(N, i + len(s)); fx[i:j] += s[:j - i] * (0.9 + 0.2 * rng.random()) * (0.6 if typ_ == 'whoosh' else 1.0)
+    s = cache[typ_]; i = int(t * SR); j = min(N, i + len(s)); fx[i:j] += s[:j - i] * (0.9 + 0.2 * rng.random()) * {'whoosh': 1.0, 'jet': 0.5, 'stamp': 0.55, 'impact': 0.6, 'count': 0.7}.get(typ_, 1.0)
 # nappe grave discrète
 tt = np.arange(N) / SR; pad = lp(np.sin(2 * np.pi * 55 * tt) + 0.6 * np.sin(2 * np.pi * 82.4 * tt + 1) + 0.4 * np.sin(2 * np.pi * 110 * tt) * (0.5 + 0.5 * np.sin(2 * np.pi * tt / 9)), 300)
 pad *= np.minimum(1, tt / 1.5) * np.minimum(1, (dur - tt).clip(0) / 1.0)
