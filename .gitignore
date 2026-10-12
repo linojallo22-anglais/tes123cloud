@@ -50,3 +50,8 @@ iran_israel/build/*.wav
 iran_israel/build/contact*.jpg
 iran_israel/build/check_cut.jpg
 iran_israel/data/
+iran_short/node_modules
+iran_short/build/prev/
+iran_short/build/out/
+iran_short/build/*.wav
+iran_short/build/contact*.jpg
