@@ -13,6 +13,11 @@ LABELS: three bright yellow rounded pill-shaped tags (#FFD21F, no border, soft s
 2. "2¢ AN ACRE" placed at the upper left over the Arctic Ocean, arrow pointing to a yellow dot in the center of Alaska.
 3. "NOT FOR SALE" placed at the upper right over the Atlantic Ocean, arrow pointing to a yellow dot on Greenland.
 
+CHARACTERS (large, in the foreground, clean 2D cartoon sticker style, chibi proportions, big heads, small black dot eyes, thick white sticker outline, soft shadow under each):
+- bottom left, over the Pacific Ocean below the "3¢ AN ACRE" tag: a French emperor of 1803 (dark blue coat with gold epaulettes, white breeches, black bicorne hat) laughing and hugging a big bag of gold coins;
+- lower right, over the Gulf of Mexico and the Atlantic: an American statesman of the 1800s (dark tailcoat, white cravat, gray hair tied back) happily pushing a supermarket shopping cart filled with a small piece of land with trees and a tiny American flag. He stays slightly above the bottom-right corner.
+Generic characters, not portraits of real people. They must not cover the red lands, the flag or the tags.
+
 EXTRA: Greenland in plain white relief with a thick yellow hand-drawn double ellipse around it (like a marker circle drawn twice), because it was never bought.
 
 STYLE RULES: clean, bold, high contrast between the red bought lands, the cold teal background, the yellow tags and the black banner. All text perfectly spelled exactly as written, in English, sharp and readable even when the thumbnail is very small. Keep the bottom-right corner free of important elements. No other text, no logo, no watermark, no frame.
