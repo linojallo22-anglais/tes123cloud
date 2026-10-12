@@ -1,23 +1,18 @@
-Create a YouTube thumbnail, 16:9 landscape, 1280x720, ultra sharp, high resolution, in the style of a professional American geography and history channel.
+Create a YouTube thumbnail, 16:9 landscape, 1280x720, ultra sharp, high resolution, in the style of a professional American geography channel.
 
-BACKGROUND MAP: a top-down 3D shaded-relief map of North America (from Alaska on the upper left to Greenland on the upper right, down to Mexico and the Caribbean at the bottom), with real terrain details (Rocky Mountains, Great Plains, coastlines, underwater relief). The whole background is in cool muted teal and blue-grey tones: dark teal oceans, Canada and Mexico in desaturated blue-grey relief with thin light borders, the original eastern United States in a calm grey-blue. The background must stay calm and cold so the bought lands pop.
+BACKGROUND MAP: a top-down 3D shaded-relief map of North America, from Alaska on the upper left to Greenland on the upper right, down to Mexico and the Caribbean at the bottom, with real terrain details (Rocky Mountains, Great Plains, coastlines, underwater relief). The whole background is in cool muted teal and blue tones: dark teal oceans with visible underwater relief (Pacific Ocean on the left, Atlantic Ocean on the right, Gulf of Mexico at the bottom), Canada, Mexico and the eastern United States in desaturated blue-grey relief with thin light borders. Small spaced white uppercase labels for the main names: "CANADA", "MEXICO", "PACIFIC OCEAN", "ATLANTIC OCEAN". The background must stay calm and cold so the subject pops.
 
-MAIN SUBJECTS (the lands America bought), each keeping its real relief texture, with a thin glowing outline and a soft shadow, slightly raised above the map:
-- the huge Louisiana Purchase in the middle of the USA in bright glowing red (#E01515);
-- Alaska in bright glowing yellow (#FFD21F);
-- the Mexican Cession (California, Nevada, Utah, Arizona) in bright orange (#FF8A1F);
-- Greenland in white with a thick red dashed outline (it was never bought).
+MAIN SUBJECT: the lands the United States bought, in bright glowing red (#E01515), keeping all their real relief texture (the Rocky Mountains visible in darker and lighter reds), each with a thin bright red outer glow around its borders, slightly raised above the map with a soft shadow: the huge Louisiana Purchase in the center of the USA (from the Mississippi River to the Rocky Mountains), the Mexican Cession in the southwest (California, Nevada, Utah, Arizona), Florida, and Alaska on the upper left. Together they fill about 70% of the image width.
 
-CHARACTERS (large, in the foreground, clean 2D cartoon sticker style, chibi proportions, big heads, small black dot eyes, thick white sticker outline):
-- bottom left: a French emperor of 1803 (dark blue coat with gold epaulettes, black bicorne hat) laughing and hugging a big bag of gold coins;
-- bottom right: an American statesman of the 1800s (dark tailcoat, white cravat, gray hair tied back) happily pushing a supermarket shopping cart filled with a small piece of land with trees and a tiny American flag.
-Generic characters, not portraits of real people.
+FLAG: a large waving American flag (stars and stripes) on a thin silver flagpole, planted in the middle of the red Louisiana Purchase, with a small circular shadow at the base of the pole. Realistic fabric folds, the flag reaches above the top edge of the red area.
 
 TITLE BANNER: at the top center, a black rounded rectangle containing the text "AMERICA WENT SHOPPING" in huge bold white uppercase letters (rounded heavy sans-serif like Montserrat ExtraBold). The word "SHOPPING" is bright red with a hand-drawn red underline below it.
 
-LABELS: three bright yellow rounded pill-shaped price tags (#FFD21F, no border, soft shadow) with bold black uppercase text, each connected by a white hand-drawn curved arrow to a small solid yellow dot on the map:
-1. "3¢ AN ACRE" placed over the Pacific on the left, arrow pointing to the center of the red Louisiana Purchase.
-2. "2¢ AN ACRE" placed at the top left over the Arctic Ocean, arrow pointing to the center of yellow Alaska.
-3. "NOT FOR SALE" placed at the top right over the Atlantic, arrow pointing to Greenland.
+LABELS: three bright yellow rounded pill-shaped tags (#FFD21F, no border, soft shadow) with bold black uppercase text, each pointing to a small solid yellow dot on the map with a white hand-drawn curved arrow:
+1. "3¢ AN ACRE" placed on the left over the Pacific Ocean, arrow pointing to a yellow dot in the center of the Louisiana Purchase, next to the flagpole.
+2. "2¢ AN ACRE" placed at the upper left over the Arctic Ocean, arrow pointing to a yellow dot in the center of Alaska.
+3. "NOT FOR SALE" placed at the upper right over the Atlantic Ocean, arrow pointing to a yellow dot on Greenland.
 
-STYLE RULES: clean, bold, high contrast between the bright bought lands, the cold teal background, the yellow tags and the black banner. All text perfectly spelled exactly as written, in English, sharp and readable even when the thumbnail is very small. Keep the bottom-right corner free of important elements (the shopping cart stays slightly above it). No other text, no logo, no watermark, no frame.
+EXTRA: Greenland in plain white relief with a thick yellow hand-drawn double ellipse around it (like a marker circle drawn twice), because it was never bought.
+
+STYLE RULES: clean, bold, high contrast between the red bought lands, the cold teal background, the yellow tags and the black banner. All text perfectly spelled exactly as written, in English, sharp and readable even when the thumbnail is very small. Keep the bottom-right corner free of important elements. No other text, no logo, no watermark, no frame.
