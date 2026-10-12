@@ -32,3 +32,12 @@ carte_relief/grade_*.jpg
 carte_relief/apercu_*.jpg
 carte_relief/dl.log
 france_russie/build/contact*.jpg
+louisiane/node_modules
+louisiane/assets/voice16.f32
+louisiane/assets/voice.wav
+louisiane/build/prev/
+louisiane/build/out/
+louisiane/build/*.wav
+louisiane/build/contact*.jpg
+louisiane/build/check_cut.jpg
+louisiane/data/
