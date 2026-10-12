@@ -41,3 +41,12 @@ louisiane/build/*.wav
 louisiane/build/contact*.jpg
 louisiane/build/check_cut.jpg
 louisiane/data/
+iran_israel/node_modules
+iran_israel/assets/voice16.f32
+iran_israel/assets/voice.wav
+iran_israel/build/prev/
+iran_israel/build/out/
+iran_israel/build/*.wav
+iran_israel/build/contact*.jpg
+iran_israel/build/check_cut.jpg
+iran_israel/data/
