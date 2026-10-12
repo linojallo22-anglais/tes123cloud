@@ -1,0 +1,23 @@
+Create a YouTube thumbnail, 16:9 landscape, 1280x720, ultra sharp, high resolution, in the style of a professional American geography and history channel.
+
+BACKGROUND MAP: a top-down 3D shaded-relief map of North America (from Alaska on the upper left to Greenland on the upper right, down to Mexico and the Caribbean at the bottom), with real terrain details (Rocky Mountains, Great Plains, coastlines, underwater relief). The whole background is in cool muted teal and blue-grey tones: dark teal oceans, Canada and Mexico in desaturated blue-grey relief with thin light borders, the original eastern United States in a calm grey-blue. The background must stay calm and cold so the bought lands pop.
+
+MAIN SUBJECTS (the lands America bought), each keeping its real relief texture, with a thin glowing outline and a soft shadow, slightly raised above the map:
+- the huge Louisiana Purchase in the middle of the USA in bright glowing red (#E01515);
+- Alaska in bright glowing yellow (#FFD21F);
+- the Mexican Cession (California, Nevada, Utah, Arizona) in bright orange (#FF8A1F);
+- Greenland in white with a thick red dashed outline (it was never bought).
+
+CHARACTERS (large, in the foreground, clean 2D cartoon sticker style, chibi proportions, big heads, small black dot eyes, thick white sticker outline):
+- bottom left: a French emperor of 1803 (dark blue coat with gold epaulettes, black bicorne hat) laughing and hugging a big bag of gold coins;
+- bottom right: an American statesman of the 1800s (dark tailcoat, white cravat, gray hair tied back) happily pushing a supermarket shopping cart filled with a small piece of land with trees and a tiny American flag.
+Generic characters, not portraits of real people.
+
+TITLE BANNER: at the top center, a black rounded rectangle containing the text "AMERICA WENT SHOPPING" in huge bold white uppercase letters (rounded heavy sans-serif like Montserrat ExtraBold). The word "SHOPPING" is bright red with a hand-drawn red underline below it.
+
+LABELS: three bright yellow rounded pill-shaped price tags (#FFD21F, no border, soft shadow) with bold black uppercase text, each connected by a white hand-drawn curved arrow to a small solid yellow dot on the map:
+1. "3¢ AN ACRE" placed over the Pacific on the left, arrow pointing to the center of the red Louisiana Purchase.
+2. "2¢ AN ACRE" placed at the top left over the Arctic Ocean, arrow pointing to the center of yellow Alaska.
+3. "NOT FOR SALE" placed at the top right over the Atlantic, arrow pointing to Greenland.
+
+STYLE RULES: clean, bold, high contrast between the bright bought lands, the cold teal background, the yellow tags and the black banner. All text perfectly spelled exactly as written, in English, sharp and readable even when the thumbnail is very small. Keep the bottom-right corner free of important elements (the shopping cart stays slightly above it). No other text, no logo, no watermark, no frame.
