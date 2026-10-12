@@ -13,10 +13,10 @@ LABELS: three bright yellow rounded pill-shaped tags (#FFD21F, no border, soft s
 2. "2¢ AN ACRE" placed at the upper left over the Arctic Ocean, arrow pointing to a yellow dot in the center of Alaska.
 3. "NOT FOR SALE" placed at the upper right over the Atlantic Ocean, arrow pointing to a yellow dot on Greenland.
 
-CHARACTERS (large, in the foreground, clean 2D cartoon sticker style, chibi proportions, big heads, small black dot eyes, thick white sticker outline, soft shadow under each):
-- bottom left, over the Pacific Ocean below the "3¢ AN ACRE" tag: a French emperor of 1803 (dark blue coat with gold epaulettes, white breeches, black bicorne hat) laughing and hugging a big bag of gold coins;
-- lower right, over the Gulf of Mexico and the Atlantic: an American statesman of the 1800s (dark tailcoat, white cravat, gray hair tied back) happily pushing a supermarket shopping cart filled with a small piece of land with trees and a tiny American flag. He stays slightly above the bottom-right corner.
-Generic characters, not portraits of real people. They must not cover the red lands, the flag or the tags.
+CHARACTERS (large, in the foreground, realistic and highly detailed, like a vivid historical oil painting brought to life with photographic realism, each cut out with a thin white sticker outline and a soft shadow under him):
+- bottom left, over the Pacific Ocean below the "3¢ AN ACRE" tag: Napoleon Bonaparte as he looked in 1803, recognizable from his famous portraits (dark hair, dark blue French army general's coat with gold embroidery and epaulettes, white waistcoat and breeches, black bicorne hat worn sideways), laughing happily and hugging a big burlap bag overflowing with gold coins.
+- lower right, over the Gulf of Mexico and the Atlantic: Thomas Jefferson as he looked in 1803, recognizable from his famous portraits (tall, reddish-gray hair tied back, dark tailcoat, white cravat), smiling and happily pushing a supermarket shopping cart filled with a small piece of land with trees and a tiny American flag. He stays slightly above the bottom-right corner.
+Respectful, realistic portraits with friendly expressions, NOT caricatures, NOT exaggerated features. They must not cover the red lands, the big flag or the tags.
 
 EXTRA: Greenland in plain white relief with a thick yellow hand-drawn double ellipse around it (like a marker circle drawn twice), because it was never bought.
 
