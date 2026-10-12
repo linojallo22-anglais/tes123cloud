@@ -1,0 +1,8 @@
+Create ONE single image made of 4 photorealistic landscape photographs arranged in a 2 x 2 grid, separated by clean white bands (about 20 px wide). Each photo is a beautiful, sharp, wide documentary-style landscape, natural colors, golden-hour or soft daylight. No people in close-up, no text, no logo, no watermark.
+
+1) TOP LEFT: the Mississippi River at New Orleans, Louisiana: a wide brown river curving past the historic French Quarter with its old balconies and the white cathedral, seen from slightly above.
+2) TOP RIGHT: a giant glacier in Alaska meeting a deep blue fjord, snowy mountains behind, small icebergs floating in the water.
+3) BOTTOM LEFT: a turquoise Caribbean bay on Saint Thomas, U.S. Virgin Islands: green hills, a white sand beach, sailboats anchored in clear water.
+4) BOTTOM RIGHT: huge white icebergs in front of a small Greenland town with colorful wooden houses (red, yellow, blue) on rocky hills, under a pale arctic sky.
+
+FORMAT: landscape 1536x1024, PNG, highest resolution possible. Same light and color quality in all 4 photos.

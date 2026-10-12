@@ -1,0 +1,49 @@
+Create ONE single image: a catalogue sheet of exactly 24 separate items for an animated history-geography YouTube video about the land the United States bought (1803-1946). Arrange them in a precise grid of 4 rows and 6 columns, one item per cell, in the exact numbered order below (row by row, left to right).
+
+STYLE (identical for every item): 2D cartoon sticker style, chibi proportions for people (big head, small body, small black dot eyes, friendly expressive faces), clean flat colors with soft shading, bold black line art, thick white sticker outline around every item, high detail, crisp edges. Historically accurate costumes, uniforms and objects for each date. Generic characters defined by their role and era, not portraits of real people. NOT realistic photo, NOT 3D render.
+
+ROW 1, from LEFT to RIGHT:
+1) An American president in 1803: tall man with reddish-gray hair tied back, dark blue tailcoat, white cravat, pointing forward with excitement (pose A), facing right.
+2) The same American president as item 1 (same face and clothes), arms raised in celebration, holding a rolled parchment map (pose B), facing right.
+3) A French emperor in 1803: short man in a dark blue military coat with gold epaulettes, white breeches, black bicorne hat worn sideways, one hand tucked into his vest, proud and thinking (pose A), facing left.
+4) The same French emperor as item 3 (same face and clothes), smiling widely and hugging a big bag of gold coins (pose B), facing left.
+5) An American diplomat in 1803: man in a black tailcoat and powdered hair, sitting at a small desk, signing a treaty with a feather quill, facing right.
+6) A London banker in 1803: man in a black top hat and dark coat, carrying a huge sack of money, walking, facing right.
+
+ROW 2, from LEFT to RIGHT:
+7) A Spanish colonial governor in 1819: red and white uniform, plumed hat, handing over a big golden key, slightly sad, facing right.
+8) A US Army officer in 1848: blue uniform, cap, standing proudly, facing right.
+9) A Mexican Army officer in 1848: dark blue uniform with red details, tall shako hat, arms crossed, facing left.
+10) A gold prospector in 1848: plaid shirt, suspenders, wide hat, kneeling by a river with a gold pan full of shiny nuggets, shouting with joy, facing right.
+11) A Russian imperial official in 1867: green uniform with gold buttons, fur hat, holding out a large old key, facing right.
+12) An American secretary of state in 1867: older man with white side whiskers, black frock coat, signing a paper at night by the light of a candle, yawning, facing left.
+
+ROW 3, from LEFT to RIGHT:
+13) A newspaper seller boy in 1867: cap, waving a newspaper, laughing out loud (the newspaper has only illegible gray lines, no letters), facing right.
+14) A cute cartoon walrus with long tusks, sitting on a small ice floe, looking surprised.
+15) A Danish official in 1917: dark suit, bowler hat, mustache, shaking hands with an invisible partner, facing right.
+16) A US official in 1946: gray suit and fedora hat, holding out a stack of shiny gold bars, hopeful smile, facing right.
+17) A person from Greenland today in a modern red winter parka with a fur hood, arms crossed, shaking the head "no" with a calm smile, facing left.
+18) An American gold prospector with a pickaxe and a mule loaded with bags, walking in the snow, facing right.
+
+ROW 4, from LEFT to RIGHT (objects and vehicles):
+19) A wooden three-masted sailing ship of 1803, TOP-DOWN VIEW from directly above, bow pointing UP, white sails, small shadow.
+20) An 1850s steam locomotive with tender, side view, black and red, puffing white smoke, facing right.
+21) An oil derrick on frozen tundra with a small oil gusher, side view.
+22) An open wooden treasure chest overflowing with gold coins.
+23) A large old parchment treaty with a red wax seal and a feather quill (only illegible scribbles, no letters).
+24) A First World War submarine on the water surface, side view, gray, facing right.
+
+LAYOUT (very important):
+- Exactly 24 items, in the exact numbered order above, 4 rows of 6, perfectly aligned like a catalogue.
+- Every item roughly the same size in its cell, large and detailed.
+- Large empty space around every item, horizontally AND vertically: no item touches, overlaps or hides another.
+- Every item fully visible, nothing cut off by the image edges.
+- Characters 1-2 must look like the same person, and characters 3-4 must look like the same person.
+
+BACKGROUND: fully transparent background (PNG with alpha channel). No floor, no shadow under the cells, no scenery behind the items. If transparency is impossible, plain flat pure white (#FFFFFF). NEVER draw a fake gray-and-white checkerboard pattern, never a blurred or colored background, never black.
+NO TEXT anywhere: no words, no letters, no numbers, no labels, no logo, no watermark, no frame, no grid lines.
+
+Before finishing, count the items: there must be exactly 24, in 4 rows of 6.
+
+FORMAT: landscape 1536x1024, PNG, highest resolution possible.
