@@ -3,7 +3,7 @@
   const R = window.render; let SEG = [], SDUR = 0;
   const oldInit = window.init;
   window.init = async function () {
-    await oldInit();
+    await oldInit(); window.READY = false;
     const sj = await fetch('seg.json').then(r => r.json()); SEG = sj.SEG; SDUR = sj.dur;
     const ev2 = [], ac2 = [];
     SEG.forEach((g, k) => {
@@ -15,6 +15,7 @@
     window.EVENTS = ev2.filter(e => e[0] >= 0).sort((a, b) => a[0] - b[0]); window.ACTIONS = ac2;
     DUR = SDUR + 0.5; window.DUR = DUR;
     window.PREVIEW = SEG.flatMap(g => [g.dst + 0.6, g.dst + (g.src[1] - g.src[0]) * 0.6]).concat([SDUR - 1]);
+    window.READY = true;
   };
   function srcTime(u) { let k = 0; for (let i = 0; i < SEG.length; i++) if (u >= SEG[i].dst) k = i; const g = SEG[k]; return { t: Math.min(g.src[0] + (u - g.dst), g.src[1] - 0.02), k, du: u - g.dst }; }
   window.render = function (u) {
