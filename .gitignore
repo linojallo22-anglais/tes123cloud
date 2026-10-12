@@ -66,3 +66,15 @@ ltcm/build/*.f32
 ltcm/build/shots/
 ltcm/build/recut/
 ltcm/*-partie-*.mp4
+us_bought/raw/
+us_bought/build/out/
+us_bought/build/shots/
+us_bought/build/*.wav
+us_bought/build/*.f32
+us_bought/build/w10.json
+us_bought/build/w50.json
+us_bought/*-partie-*.mp4
+us_bought/*-short*.mp4
+us_bought/build/http.log
+us_bought/build/npm.log
+us_bought/assets/voice.wav
