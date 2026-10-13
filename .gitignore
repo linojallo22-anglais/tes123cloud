@@ -55,3 +55,12 @@ iran_short/build/prev/
 iran_short/build/out/
 iran_short/build/*.wav
 iran_short/build/contact*.jpg
+iran_israel_en/node_modules
+iran_israel_en/assets/voice16.f32
+iran_israel_en/assets/voice.wav
+iran_israel_en/build/prev/
+iran_israel_en/build/out/
+iran_israel_en/build/*.wav
+iran_israel_en/build/contact*.jpg
+iran_israel_en/build/check_cut.jpg
+iran_israel_en/data/
