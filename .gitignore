@@ -64,3 +64,11 @@ iran_israel_en/build/*.wav
 iran_israel_en/build/contact*.jpg
 iran_israel_en/build/check_cut.jpg
 iran_israel_en/data/
+france_uk/node_modules
+france_uk/assets/voice16.f32
+france_uk/assets/voice.wav
+france_uk/build/prev/
+france_uk/build/out/
+france_uk/build/*.wav
+france_uk/build/contact*.jpg
+france_uk/build/check_cut.jpg
