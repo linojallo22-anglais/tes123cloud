@@ -1,29 +1,27 @@
-# Team France vs Team Israël — Short 9:16 (rythme TikTok, ~75 s)
+# Team France vs Team Israël — Short 9:16 (rythme TikTok, ~63 s)
 
 Scénario 100 % imaginaire, ton neutre : on compare seulement les traités. Aucune image de guerre, aucun bilan, on ne dit jamais qui a raison.
 
-## Texte ElevenLabs
-Si Israël attaquait la France… qui viendrait l'aider ? Team France. Contre Team Israël. Scénario imaginaire. Mais les traités, eux, sont bien réels.
+## Texte ElevenLabs (version courte TikTok, ~1 min 03)
+Si Israël attaquait la France… qui viendrait l'aider ? Team France contre Team Israël.
 
-Team France d'abord. L'OTAN, article cinq : une attaque contre un, c'est une attaque contre tous. L'Allemagne. L'Italie. L'Espagne. La Pologne. La Belgique. Les Pays-Bas. La Norvège. Le Canada. Même la Turquie. Trente-deux pays.
+Team France. L'Allemagne. L'Italie. L'Espagne. La Pologne. La Belgique. Les Pays-Bas. La Norvège. Le Canada. Même la Turquie. Toute l'OTAN : trente-deux pays.
 
-Plus l'Union européenne : l'Autriche. L'Irlande. Malte. Et Chypre.
+Plus l'Autriche. L'Irlande. Malte. Chypre. Trente-six pays.
 
-Team Israël maintenant. Son meilleur ami : les États-Unis. Trois milliards huit cents millions de dollars d'aide militaire par an. Mais aucun traité de défense avec Israël. Et les États-Unis sont dans l'OTAN. Article cinq : ils devraient aider… la France.
+Team Israël. Les États-Unis ? Son meilleur ami. Mais aucun traité avec Israël. Et ils sont dans l'OTAN. Donc… Team France.
 
-La Grèce et Chypre ? Un plan militaire avec Israël, signé fin deux mille vingt-cinq. Mais elles sont dans l'Union européenne. Donc… Team France.
+La Grèce et Chypre ? Amies d'Israël. Mais dans l'Europe. Team France.
 
-L'Allemagne ? Elle dit que la sécurité d'Israël est sa raison d'État. Mais elle est dans l'OTAN. Team France aussi.
+Pour venir à Paris : trois mille trois cents kilomètres. Que des pays de Team France.
 
-Et la route ? Tel-Aviv, Paris : trois mille trois cents kilomètres. Au-dessus de Chypre, de la Grèce, de l'Italie. Que des pays de Team France.
+La France ? Vingt-cinq fois plus grande.
 
-La taille ? La France est vingt-cinq fois plus grande. Presque sept fois plus d'habitants.
+Résultat : trente-six pays… contre un.
 
-Résultat : trente-six pays… contre un seul.
+Mais Israël a une des armées les plus fortes du monde.
 
-Mais attention : Israël dépense quarante-huit milliards de dollars pour son armée. Une des plus entraînées au monde.
-
-Alors, quelle équipe gagne ? Team France ou Team Israël ? Dis-le en commentaire. Et abonne-toi.
+Team France ou Team Israël ? Dis-le en commentaire. Et abonne-toi.
 
 ## Plan visuel (rythme)
 - Accroche : France + Israël qui se remplissent, scoreboard TEAM FRANCE / TEAM ISRAËL, tampon « SCÉNARIO IMAGINAIRE ».
@@ -34,6 +32,7 @@ Alors, quelle équipe gagne ? Team France ou Team Israël ? Dis-le en commentair
 - Allemagne : cœur « RAISON D'ÉTAT » puis bouclier OTAN.
 - Route Tel-Aviv → Paris : ligne 3 300 km, chaque pays survolé s'allume en bleu.
 - Taille : Israël déplacé à vraie taille sur la France (25 ×), barres habitants.
+- « SCÉNARIO IMAGINAIRE » écrit à l'écran seulement (pas dans la voix).
 - Score 36 vs 1, puis avertissement : barre 48 Md$, Israël soldat déterminé.
 - Fin : soldats face à face, question.
 
