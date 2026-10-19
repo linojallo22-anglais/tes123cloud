@@ -1,29 +1,27 @@
-# Team France vs Team Algérie — Short 9:16 (rythme TikTok, ~75 s)
+# Team France vs Team Algérie — Short 9:16 (rythme TikTok, ~63 s)
 
 Scénario 100 % imaginaire, ton neutre : on compare seulement les traités. Aucune image de guerre, aucun bilan, on ne dit jamais qui a raison.
 
-## Texte ElevenLabs
-Si la France attaquait l'Algérie… qui viendrait l'aider ? Team France. Contre Team Algérie. Scénario imaginaire. Mais les traités, eux, sont bien réels. Et reste jusqu'à la fin : il y a un fait que personne ne connaît.
+## Texte ElevenLabs (version courte TikTok, ~1 min ; montée à 1 min 02-1 min 03)
+Si la France attaquait l'Algérie… qui viendrait l'aider ? Team France contre Team Algérie.
 
-Team France d'abord. L'OTAN : trente-deux pays. Mais l'article cinq ne marche que si on est attaqué. Pas si on attaque. Résultat : l'OTAN ne bouge pas.
+Team France. L'OTAN ? Trente-deux pays. Mais l'OTAN protège celui qu'on attaque. Pas celui qui attaque. Personne ne bouge.
 
-L'Union européenne ? Pareil. L'article quarante-deux sept protège la victime. Pas l'attaquant.
+L'Europe ? Pareil. Personne.
 
-L'Italie ? Un tiers de son gaz vient d'Algérie. Elle ne bouge pas non plus.
+L'Italie ? Un tiers de son gaz vient d'Algérie. Elle reste chez elle.
 
-Les États-Unis ? Ils regardent.
+Résultat : la France… toute seule.
 
-Team Algérie maintenant. L'Union africaine : un pacte de défense commune, signé par l'Algérie. La Ligue arabe : vingt-deux membres. La Russie : partenaire stratégique, et son premier vendeur d'armes. La Chine : partenaire stratégique aussi. Mais aucun traité ne les oblige à se battre.
+Team Algérie. L'Union africaine : un pacte de défense commune. La Ligue arabe : vingt-deux pays. La Russie : son premier vendeur d'armes. La Chine : partenaire stratégique. Amies… mais sans traité.
 
-Et le ciel ? En deux mille vingt et un, l'Algérie l'a déjà fermé aux avions militaires français.
+Le ciel ? En deux mille vingt et un, l'Algérie l'a fermé aux avions militaires français.
 
-La distance ? Marseille, Alger : sept cent cinquante kilomètres. À peine plus d'une heure d'avion.
+Mais la France a un budget militaire deux fois plus gros. Et la bombe nucléaire.
 
-Les chiffres ? L'Algérie : vingt-cinq milliards de dollars pour son armée. Le plus gros budget d'Afrique. La France : plus du double. Et la bombe nucléaire.
+Le plus fou ? En mille neuf cent quarante-neuf, l'Algérie était dans le traité de l'OTAN. Protégée par l'OTAN.
 
-Et le fait que personne ne connaît ? En mille neuf cent quarante-neuf, l'Algérie était écrite dans le traité de l'OTAN. Protégée par l'OTAN. Jusqu'à son indépendance, en mille neuf cent soixante-deux.
-
-Alors, quelle équipe gagne ? Team France ou Team Algérie ? Dis-le en commentaire. Et abonne-toi.
+Team France ou Team Algérie ? Dis-le en commentaire. Et abonne-toi.
 
 ## Plan visuel (rythme)
 - Accroche : carte France + Algérie, tricolore et drapeau algérien qui se remplissent, scoreboard TEAM FRANCE / TEAM ALGÉRIE, tampon « SCÉNARIO IMAGINAIRE ».
