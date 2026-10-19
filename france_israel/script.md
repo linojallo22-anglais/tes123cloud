@@ -13,6 +13,8 @@ Team Israël. Les États-Unis ? Son meilleur ami. Mais aucun traité avec Israë
 
 La Grèce et Chypre ? Amies d'Israël. Mais dans l'Europe. Team France.
 
+L'Allemagne ? Grande amie d'Israël. Mais dans l'OTAN. Team France.
+
 Pour venir à Paris : trois mille trois cents kilomètres. Que des pays de Team France.
 
 La France ? Vingt-cinq fois plus grande.
