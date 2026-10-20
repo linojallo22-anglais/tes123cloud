@@ -1,0 +1,303 @@
+{
+ "note": "Minutage ESTIMÉ (150 mots/min). À recaler sur words.json une fois la voix ElevenLabs reçue. Passages exacts des vidéos YouTube à repérer au téléchargement (2 à 4 s par plan, jamais > 8 s du même match).",
+ "duree_estimee_s": 122.5,
+ "plans": [
+  {
+   "debut": 0.5,
+   "fin": 3.5,
+   "phrase": "[OUVERTURE À FROID — pas de voix]",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=koQqldNq1uc",
+   "plan": "Messi 8 ans, dribble brut, son d'origine (cris, ballon)",
+   "surcouche": null
+  },
+  {
+   "debut": 3.5,
+   "fin": 6.5,
+   "phrase": "↳",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=HQsoIlBdhxs",
+   "plan": "2e plan enfant, ralenti léger",
+   "surcouche": null
+  },
+  {
+   "debut": 6.5,
+   "fin": 10.7,
+   "phrase": "Il mesure un mètre vingt-sept. Il a neuf ans. Et un médecin annonce que, sans traitement, cet enfant ne grandira jamais.",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=hfVKMcs0rdI",
+   "plan": "Messi 9 ans jongle, NOIR ET BLANC, ralenti",
+   "surcouche": "Counter « 1,27 m » qui monte + tic"
+  },
+  {
+   "debut": 10.7,
+   "fin": 14.9,
+   "phrase": "↳",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=ZGoAbOaJ408",
+   "plan": "gros plan visage enfant, N&B",
+   "surcouche": "YellowText « JAMAIS. » sur « grandira jamais »"
+  },
+  {
+   "debut": 15.2,
+   "fin": 17.6,
+   "phrase": "Aujourd'hui, il a huit Ballons d'Or.",
+   "type": "photo",
+   "source": "messi_8_ballons",
+   "plan": "Messi avec ses 8 Ballons d'Or (Ken Burns) — passage brutal en COULEUR",
+   "surcouche": "flash blanc + impact + YellowText « 8 BALLONS D'OR »"
+  },
+  {
+   "debut": 17.8,
+   "fin": 19.5,
+   "phrase": "Voici comment Lionel Messi est passé de « trop petit » à légende.",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=HQsoIlBdhxs",
+   "plan": "enfant (0,8 s)",
+   "surcouche": null
+  },
+  {
+   "debut": 19.5,
+   "fin": 21.3,
+   "phrase": "↳",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=j9ihJMqZGD0",
+   "plan": "but au Barça (0,8 s)",
+   "surcouche": null
+  },
+  {
+   "debut": 21.3,
+   "fin": 23.0,
+   "phrase": "↳",
+   "type": "photo",
+   "source": "messi_ballon_or",
+   "plan": "trophée (0,8 s)",
+   "surcouche": "whoosh à chaque coupe"
+  },
+  {
+   "debut": 23.6,
+   "fin": 27.2,
+   "phrase": "Rosario, Argentine. 24 juin 1987. À quatre ans, c'est sa grand-mère qui l'emmène au club du quartier, Grandoli.",
+   "type": "tvretro",
+   "source": "https://www.youtube.com/watch?v=koQqldNq1uc",
+   "plan": "TVRetro : pièce sombre + lampe, vieille télé qui diffuse Messi enfant",
+   "surcouche": "SeasonLabel « ROSARIO · 1991 » (permanent bas gauche)"
+  },
+  {
+   "debut": 27.2,
+   "fin": 30.8,
+   "phrase": "↳",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=HQsoIlBdhxs",
+   "plan": "terrain de quartier / Messi tout petit",
+   "surcouche": null
+  },
+  {
+   "debut": 30.8,
+   "fin": 34.0,
+   "phrase": "On le trouve trop petit. Elle insiste. Et en quelques minutes, il dribble tout le monde.",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=ZGoAbOaJ408",
+   "plan": "Messi plus petit que les autres sur la ligne",
+   "surcouche": null
+  },
+  {
+   "debut": 34.0,
+   "fin": 37.2,
+   "phrase": "↳",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=koQqldNq1uc",
+   "plan": "VRAI dribble qui efface plusieurs joueurs, ralenti",
+   "surcouche": "whoosh sur le dribble"
+  },
+  {
+   "debut": 37.6,
+   "fin": 40.5,
+   "phrase": "À six ans, il rejoint Newell's Old Boys. Sa génération ne perd presque jamais. On l'appelle « La Machine de 87 ».",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=HQsoIlBdhxs",
+   "plan": "Messi en maillot Newell's rouge et noir",
+   "surcouche": "CamREC (REC, CAM 03, timecode)"
+  },
+  {
+   "debut": 40.5,
+   "fin": 43.5,
+   "phrase": "↳",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=ZGoAbOaJ408",
+   "plan": "l'équipe 87 qui célèbre / plusieurs buts enchaînés",
+   "surcouche": null
+  },
+  {
+   "debut": 43.5,
+   "fin": 46.4,
+   "phrase": "↳",
+   "type": "title",
+   "source": "—",
+   "plan": "",
+   "surcouche": "ChapterTitle DORÉ « LA MACHINE DE 87 » sur l'image assombrie"
+  },
+  {
+   "debut": 46.8,
+   "fin": 52.4,
+   "phrase": "Mais à neuf ans, le diagnostic tombe : un déficit en hormone de croissance.",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=hfVKMcs0rdI",
+   "plan": "Messi 9 ans, image assombrie + légère teinte rouge",
+   "surcouche": "YellowText « DÉFICIT EN HORMONE DE CROISSANCE »"
+  },
+  {
+   "debut": 52.4,
+   "fin": 56.8,
+   "phrase": "Une piqûre chaque soir. Plus de neuf cents dollars par mois.",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=FHaT6xLRK5o",
+   "plan": "Messi ado (interview 13 ans), plan calme",
+   "surcouche": "Counter « +900 $ / MOIS » + tic de compteur"
+  },
+  {
+   "debut": 56.8,
+   "fin": 59.6,
+   "phrase": "Newell's refuse de payer. River Plate aussi.",
+   "type": "graphic",
+   "source": "logos",
+   "plan": "logo Newell's puis logo River Plate (vrais logos)",
+   "surcouche": "tampon rouge « REFUSÉ » ×2 + impact"
+  },
+  {
+   "debut": 60.0,
+   "fin": 66.0,
+   "phrase": "En 1998, sa grand-mère meurt. Depuis ce jour, à chaque but, Leo regarde le ciel.",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=j9ihJMqZGD0",
+   "plan": "VRAI plan de Messi qui pointe le ciel après un but, ralenti (autre source si absent de cet extrait)",
+   "surcouche": "SeasonLabel « 1998 », musique qui monte, 1 s sans voix"
+  },
+  {
+   "debut": 66.8,
+   "fin": 71.4,
+   "phrase": "En 2000, à treize ans et un mètre quarante, il passe un essai à Barcelone. Carles Rexach est convaincu. Mais le club hésite.",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=RaQvhgTu7QY",
+   "plan": "La Masia / terrains du Barça, archive",
+   "surcouche": "SeasonLabel « BARCELONE · 2000 »"
+  },
+  {
+   "debut": 71.4,
+   "fin": 76.0,
+   "phrase": "↳",
+   "type": "photo",
+   "source": "rexach",
+   "plan": "vraie photo de Carles Rexach (FloatFrame)",
+   "surcouche": "Counter « 1,40 m »"
+  },
+  {
+   "debut": 76.0,
+   "fin": 81.6,
+   "phrase": "Alors, le 14 décembre 2000, Rexach signe son engagement… sur une serviette en papier.",
+   "type": "photo",
+   "source": "serviette",
+   "plan": "vraie photo de la serviette (vendue aux enchères en 2024), zoom lent",
+   "surcouche": "surlignage jaune de la date + bruit de stylo"
+  },
+  {
+   "debut": 82.1,
+   "fin": 85.4,
+   "phrase": "Le Barça paie le traitement. Mais sa mère, ses frères et sa sœur rentrent en Argentine. Leo reste seul avec son père. À treize ans.",
+   "type": "photo",
+   "source": "celia",
+   "plan": "vraie photo de Celia Cuccittini qui s'efface en N&B",
+   "surcouche": null
+  },
+  {
+   "debut": 85.4,
+   "fin": 88.8,
+   "phrase": "↳",
+   "type": "photo",
+   "source": "jorge",
+   "plan": "vraie photo de Jorge Messi",
+   "surcouche": "Polaroid / cadre"
+  },
+  {
+   "debut": 88.8,
+   "fin": 92.1,
+   "phrase": "↳",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=9FRyEj1cOG0",
+   "plan": "Messi 2001 au Barça, premiers mots (sous-titres blancs si son d'origine)",
+   "surcouche": "YellowText « À TREIZE ANS. »"
+  },
+  {
+   "debut": 92.7,
+   "fin": 96.7,
+   "phrase": "16 octobre 2004 : il débute en Liga contre l'Espanyol.",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=5iWf1yczpTg",
+   "plan": "extrait officiel des débuts, n°30",
+   "surcouche": "SeasonLabel « 2004-05 » + date « 16 OCTOBRE 2004 »"
+  },
+  {
+   "debut": 96.9,
+   "fin": 100.3,
+   "phrase": "Et le 1er mai 2005, contre Albacete, Ronaldinho lui offre une passe. Lob. But… refusé pour hors-jeu.",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=BUWQqyRJtnw",
+   "plan": "la passe de Ronaldinho, ralenti",
+   "surcouche": null
+  },
+  {
+   "debut": 100.3,
+   "fin": 103.7,
+   "phrase": "↳",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=j9ihJMqZGD0",
+   "plan": "le 1er lob + le drapeau du juge de touche",
+   "surcouche": "freeze + tampon rouge « HORS-JEU » + sifflet"
+  },
+  {
+   "debut": 104.1,
+   "fin": 109.3,
+   "phrase": "Une minute plus tard : même passe. Même lob. Cette fois, c'est but.",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=j9ihJMqZGD0",
+   "plan": "la 2e passe, le lob, le ballon au fond",
+   "surcouche": "flash blanc + foule + 1 s du commentateur d'origine (voix coupée)"
+  },
+  {
+   "debut": 110.1,
+   "fin": 112.9,
+   "phrase": "Et Ronaldinho le porte sur son dos.",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=j9ihJMqZGD0",
+   "plan": "célébration, Ronaldinho porte Messi, RALENTI",
+   "surcouche": "ScoreBoard « BARÇA 2-0 ALBACETE · 1er MAI 2005 »"
+  },
+  {
+   "debut": 113.5,
+   "fin": 115.5,
+   "phrase": "L'enfant qui ne devait jamais grandir ne faisait que commencer.",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=koQqldNq1uc",
+   "plan": "enfant (N&B)",
+   "surcouche": null
+  },
+  {
+   "debut": 115.5,
+   "fin": 117.5,
+   "phrase": "↳",
+   "type": "photo",
+   "source": "messi_8_ballons",
+   "plan": "adulte, Ballons d'Or",
+   "surcouche": "montage rapide, musique au sommet"
+  },
+  {
+   "debut": 117.9,
+   "fin": 121.5,
+   "phrase": "De quel joueur veux-tu l'histoire ? Dis-le en commentaire.",
+   "type": "clip",
+   "source": "https://www.youtube.com/watch?v=j9ihJMqZGD0",
+   "plan": "plan large du Camp Nou",
+   "surcouche": "SubscribeButton + bulle commentaire avec curseur qui clique"
+  }
+ ]
+}
