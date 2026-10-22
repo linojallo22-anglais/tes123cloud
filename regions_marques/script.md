@@ -1,23 +1,21 @@
 # Chaque région de France a sa marque — Short 9:16 (rythme TikTok, ~1 min)
 
 ## Texte ElevenLabs
-Chaque région de France a sa marque. Tu les connais toutes ?
-
-Auvergne : Michelin, à Clermont-Ferrand. Le pneu… et les étoiles.
-Occitanie : Airbus, à Toulouse.
-Hauts-de-France : Décathlon, né près de Lille, en mille neuf cent soixante-seize.
-Pays de la Loire : LU, à Nantes. Le Petit Beurre.
-Bretagne : Leclerc, né à Landerneau.
+Clermont-Ferrand, Auvergne : Michelin. Le pneu… et les étoiles.
+Toulouse, Occitanie : Airbus.
+Près de Lille : Décathlon, né en mille neuf cent soixante-seize.
+Nantes : LU. Le Petit Beurre.
+Landerneau, Bretagne : Leclerc.
 Normandie : Elle et Vire, le beurre normand.
-Île-de-France : Louis Vuitton, à Paris.
-Bourgogne-Franche-Comté : Peugeot, dans le Doubs. Le lion.
-Grand Est : Clairefontaine, tes cahiers d'école, dans les Vosges.
-Centre-Val de Loire : Monin, les sirops, à Bourges.
-Nouvelle-Aquitaine : Cdiscount, à Bordeaux.
-Provence : L'Occitane… qui n'est pas en Occitanie ! Elle est née à Manosque.
-Et la Corse : Corsica Ferries, à Bastia.
+Paris : Louis Vuitton.
+Sochaux, Franche-Comté : Peugeot. Le lion.
+Les Vosges, Grand Est : Clairefontaine. Tes cahiers d'école.
+Bourges : Monin, les sirops.
+Bordeaux : Cdiscount.
+Manosque, Provence : L'Occitane… qui n'est même pas en Occitanie !
+Et Bastia, en Corse : Corsica Ferries.
 
-Treize régions. Treize marques. Et ta région, c'est quelle marque ? Dis-le en commentaire. Et abonne-toi.
+Treize régions. Treize marques. Chaque région de France a la sienne. Et toi, ta région, c'est quelle marque ? Dis-le en commentaire. Et abonne-toi.
 
 ## Planche ChatGPT (16 cases, produits SANS logo)
 ```
@@ -59,7 +57,7 @@ Phrase de secours : « Same sprite sheet, but the background must be fully trans
 - E.Leclerc : premier magasin à Landerneau (1949).
 - Elle & Vire : Condé-sur-Vire (Manche), coopérative de 1945, groupe Savencia.
 - Louis Vuitton : maison fondée à Paris (1854), ateliers d'Asnières.
-- Peugeot : famille et usines du Doubs (Valentigney, Sochaux) ; emblème du lion.
+- Peugeot : famille et usines du Doubs (Valentigney, Sochaux — usine historique depuis 1912) ; emblème du lion.
 - Clairefontaine : papeterie d'Étival-Clairefontaine (Vosges).
 - Monin : Bourges (1912).
 - Cdiscount : Bordeaux (1998).
