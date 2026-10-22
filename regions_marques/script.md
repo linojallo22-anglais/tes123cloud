@@ -5,12 +5,12 @@ Clermont-Ferrand, Auvergne : Michelin. Le pneu… et les étoiles.
 Toulouse, Occitanie : Airbus.
 Près de Lille : Décathlon, né en mille neuf cent soixante-seize.
 Nantes : LU. Le Petit Beurre.
-Landerneau, Bretagne : Leclerc.
+Landerneau, Bretagne : Leclerc. Le premier magasin, en mille neuf cent quarante-neuf.
 Normandie : Elle et Vire, le beurre normand.
-Paris : Louis Vuitton.
+Paris : Louis Vuitton. Depuis mille huit cent cinquante-quatre.
 Sochaux, Franche-Comté : Peugeot. Le lion.
 Les Vosges, Grand Est : Clairefontaine. Tes cahiers d'école.
-Bourges : Monin, les sirops.
+Bourges : Monin, les sirops. Vendus dans plus de cent cinquante pays.
 Bordeaux : Cdiscount.
 Manosque, Provence : L'Occitane… qui n'est même pas en Occitanie !
 Et Bastia, en Corse : Corsica Ferries.
