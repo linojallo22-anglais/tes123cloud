@@ -90,3 +90,12 @@ france_israel/build/out/
 france_israel/build/*.wav
 france_israel/build/contact*.jpg
 france_israel/build/check_cut.jpg
+france_usa/node_modules
+france_usa/assets/voice16.f32
+france_usa/assets/voice.wav
+france_usa/assets/voice_src.wav
+france_usa/build/prev/
+france_usa/build/out/
+france_usa/build/*.wav
+france_usa/build/contact*.jpg
+france_usa/build/check_cut.jpg
