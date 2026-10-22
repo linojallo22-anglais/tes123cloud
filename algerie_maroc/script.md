@@ -5,17 +5,15 @@ Scénario 100 % imaginaire (écrit à l'écran). Aucun pays n'attaque l'autre da
 ## Texte ElevenLabs
 Si l'Algérie et le Maroc entraient en guerre… qui viendrait les aider ? Team Algérie contre Team Maroc.
 
-Le problème ? Les deux sont dans la Ligue arabe. Et dans l'Union africaine. Les deux alliances… coupées en deux.
+Team Maroc. Les États-Unis : allié majeur depuis deux mille quatre. Israël : un accord militaire en deux mille vingt et un. La France. L'Espagne. Le Royaume-Uni. Les Émirats. L'Arabie saoudite. Bahreïn. Tous soutiennent son plan pour le Sahara.
 
-Team Maroc. Les États-Unis : allié majeur hors OTAN depuis deux mille quatre. Israël : un accord militaire en deux mille vingt et un. La France, l'Espagne, le Royaume-Uni : ils soutiennent son plan pour le Sahara.
+Team Algérie. La Russie : son premier vendeur d'armes. La Chine : partenaire stratégique. L'Afrique du Sud. La Tunisie. Tous proches d'Alger.
 
-Team Algérie. La Russie : son premier vendeur d'armes. La Chine : partenaire stratégique. L'Afrique du Sud : elle soutient le Polisario.
+Mais aucun n'est obligé de se battre. Aucun traité.
 
-Mais attention : aucun de ces pays n'est obligé d'envoyer un soldat. Aucun traité.
+Les chiffres ? L'Algérie dépense vingt-cinq milliards de dollars pour son armée. Le Maroc, six. Quatre fois moins. L'Algérie : quarante-sept millions d'habitants. Le Maroc : trente-sept.
 
-Les chiffres ? L'Algérie dépense vingt-cinq milliards de dollars pour son armée. Le Maroc, six. Quatre fois moins.
-
-Et la frontière ? Fermée depuis mille neuf cent quatre-vingt-quatorze. Plus de trente ans.
+La frontière ? Fermée depuis mille neuf cent quatre-vingt-quatorze.
 
 Team Algérie ou Team Maroc ? Dis-le en commentaire. Et abonne-toi.
 
@@ -40,7 +38,8 @@ No text anywhere, no letters, no numbers, no logos, no flags of organizations. E
 Phrase de secours : « Same sprite sheet, but the background must be fully transparent and the 8 elements must be separated with big empty space. »
 
 ## Sources
-- Ligue arabe : Algérie (1962) et Maroc (1958) membres ; Union africaine : Maroc réintégré en 2017.
+- Soutiens au plan d'autonomie : Émirats, Arabie saoudite et Bahreïn (consulats à Laâyoune pour EAU et Bahreïn, 2020), Israël (reconnaissance, 2023).
+- Population : Algérie ~47 M (ONS, 2025) ; Maroc 36,8 M (recensement 2024).
 - États-Unis : Maroc allié majeur hors OTAN (2004) ; reconnaissance de la souveraineté marocaine sur le Sahara (décembre 2020).
 - Israël–Maroc : protocole d'accord de défense signé à Rabat le 24 novembre 2021 (Al Jazeera, AP).
 - Plan d'autonomie marocain soutenu par l'Espagne (2022), la France (juillet 2024), le Royaume-Uni (juin 2025) ; résolution du Conseil de sécurité du 31 octobre 2025 (11 voix pour, 3 abstentions, l'Algérie n'a pas voté).
