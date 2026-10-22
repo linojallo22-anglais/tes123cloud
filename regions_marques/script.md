@@ -1,17 +1,17 @@
 # Chaque région de France a sa marque — Short 9:16 (rythme TikTok, ~1 min)
 
 ## Texte ElevenLabs
-Clermont-Ferrand a Michelin. Le pneu… et les étoiles.
+Clermont-Ferrand a Michelin. Le pneu… et les étoiles des restaurants.
 Toulouse a Airbus.
 Lille a Décathlon, né en mille neuf cent soixante-seize.
-Nantes a LU, et son Petit Beurre.
+Nantes a LU, et son Petit Beurre, depuis mille huit cent quatre-vingt-six.
 La Bretagne a Leclerc, né à Landerneau, en mille neuf cent quarante-neuf.
 La Normandie a Elle et Vire, le beurre normand.
 Paris a Louis Vuitton, depuis mille huit cent cinquante-quatre.
 Sochaux a Peugeot, et son lion.
 Les Vosges ont Clairefontaine, tes cahiers d'école.
 Bourges a Monin, les sirops vendus dans plus de cent cinquante pays.
-Bordeaux a Cdiscount.
+Bordeaux a Cdiscount, né en mille neuf cent quatre-vingt-dix-huit.
 Manosque a L'Occitane… qui n'est même pas en Occitanie !
 Et Bastia a Corsica Ferries.
 
