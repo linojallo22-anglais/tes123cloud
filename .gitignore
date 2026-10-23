@@ -108,3 +108,12 @@ algerie_maroc/build/out/
 algerie_maroc/build/*.wav
 algerie_maroc/build/contact*.jpg
 algerie_maroc/build/check_cut.jpg
+regions_marques/node_modules
+regions_marques/assets/voice16.f32
+regions_marques/assets/voice.wav
+regions_marques/assets/voice_src.wav
+regions_marques/build/prev/
+regions_marques/build/out/
+regions_marques/build/*.wav
+regions_marques/build/contact*.jpg
+regions_marques/build/check_cut.jpg
