@@ -1,5 +1,5 @@
 // scene.js — Chaque région de France a sa marque. Moteur : engine.js (sans score ni équipes).
-const CFG = { teamCol: {}, trail: {}, NAME: {}, ANCH: {}, sides: [], sprites: ['tyre', 'plane', 'tent', 'biscuit', 'cart', 'butter', 'bag', 'car', 'notebook', 'syrup', 'box', 'lavender', 'ferry', 'guy_point', 'guy_think', 'trophy'], extraFlags: ['fr'] };
+const CFG = { jetH: 1.15, teamCol: {}, trail: { plane: '#F7EF08' }, NAME: {}, ANCH: {}, sides: [], sprites: ['tyre', 'plane', 'tent', 'biscuit', 'cart', 'butter', 'bag', 'car', 'notebook', 'syrup', 'box', 'lavender', 'ferry', 'guy_point', 'guy_think', 'trophy'], extraFlags: ['fr'] };
 // [beat, ville, [lon, lat], code région, nom région, marque, sprite, couleur, mot de la marque, extra]
 const ITEMS = [
   [0, 'CLERMONT-FERRAND', [3.08, 45.78], '84', 'AUVERGNE-RHÔNE-ALPES', 'MICHELIN', 'tyre', '#2b6cff', 'michelin', { w: 'etoiles', tag: '★ ★ ★' }],
@@ -25,6 +25,9 @@ function setup() {
   DUR = a.fin + 3.0; a.big = [];
   for (const r of WORLD.regions) REG[r.code] = r;
 
+  // l'avion part vite d'une ville à la suivante (trajectoire jaune, caméra qui le suit)
+  for (let i = 1; i < ITEMS.length; i++) { const it = ITEMS[i], pv = ITEMS[i - 1]; const sE = it[3] === '11' ? 8600 : it[3] === '94' ? 6200 : 6400; LEGS.push({ jet: 'plane', a: pv[2], b: it[2], t0: it.t0 - 1.0, t1: it.t0 + 0.1, sMid: 3600, sEnd: sE }); }
+  JETVIS = { plane: [[ITEMS[1].t0 - 1.1, ITEMS[12].tb + 0.8]] };
   // caméra : une plongée par ville, petite respiration sur la marque
   const stops = [st(0, 0, 3.08, 46.5, 6800, { drift: 0.05 })];
   ITEMS.forEach((it, i) => {
@@ -46,7 +49,7 @@ function setup() {
   // sons et actions
   ev(0, 'whoosh');
   ITEMS.forEach((it, i) => {
-    if (i > 0) ev(it.t0 - 0.65, 'whoosh'); ev(it.t0, 'scan'); act(it.t0, it[1], 'région s\'allume'); ev(it.tb - 0.05, 'pop'); ev(it.tb + 0.12, it[6] === 'plane' ? 'jet' : it[6] === 'ferry' ? 'water' : 'thud'); act(it.tb, it[5], 'tombe sur la ville'); ev(it.tb + 0.35, 'ding');
+    if (i > 0) { ev(it.t0 - 1.0, 'jet'); ev(it.t0 - 0.2, 'whoosh'); act(it.t0 - 1.0, 'avion', 'vole vers ' + it[1]); } ev(it.t0, 'scan'); act(it.t0, it[1], 'région s\'allume'); ev(it.tb - 0.05, 'pop'); ev(it.tb + 0.12, it[6] === 'plane' ? 'jet' : it[6] === 'ferry' ? 'water' : 'thud'); act(it.tb, it[5], 'tombe sur la ville'); ev(it.tb + 0.35, 'ding');
     if (it.tx) { ev(it.tx, 'stamp'); act(it.tx, 'étiquette', it[9].tag); }
     ev(it.tb + 1.1, 'tic'); ev(it.tb + 2.0, 'tic');
   });
@@ -62,11 +65,15 @@ function mapOver(t) {
   const a = A; const k = curItem(t); const end = t > a.b13 - 0.2;
   // contours de toutes les régions
   m.save(); for (const code in REG) { pathM(REG[code].g); m.lineWidth = 2.2; m.strokeStyle = 'rgba(255,255,255,.55)'; m.stroke(); } m.restore();
+  const gF = geomOf('250'); const bF = d3.geoPath(P).bounds(gF);
+  flagFill(m, () => pathM(gF), bF, FL.fr, end ? 0.55 + 0.25 * clamp((t - a.b13) / 1.0) : 0.4, 0, 'stretch');
+  pathM(gF); m.save(); m.lineWidth = 5; m.lineJoin = 'round'; m.strokeStyle = '#fff'; m.shadowColor = '#3b7bff'; m.shadowBlur = 18; m.globalAlpha = 0.9; m.stroke(); m.restore();
   ITEMS.forEach((it, i) => {
     if (t < it.t0 - 0.05) return; const g = REG[it[3]].g; const cur = i === k && !end; const age = t - it.t0;
-    const al = end ? 0.5 + 0.1 * Math.sin(t * 3 + i) : cur ? 0.62 * clamp(age / 0.3) : 0.34;
-    pathM(g); m.save(); m.globalAlpha = al; m.fillStyle = it[7]; m.fill(); m.restore();
-    if (cur || end) { pathM(g); m.save(); m.globalAlpha = cur ? Math.max(0.6, 1 - age / 1.5) : 0.7; m.lineWidth = cur ? 7 : 4; m.lineJoin = 'round'; m.strokeStyle = '#fff'; m.shadowColor = it[7]; m.shadowBlur = 24; m.stroke(); m.restore(); }
+    const al = end ? 0.9 : cur ? 0.95 * clamp(age / 0.3) : 0.62;
+    flagFill(m, () => pathM(g), bF, FL.fr, al, cur ? Math.max(0, 1 - age / 0.35) : 0, 'stretch');
+    if (cur) { pathM(g); m.save(); m.globalAlpha = 0.22; m.fillStyle = it[7]; m.fill(); m.restore(); }
+    if (cur || end) { pathM(g); m.save(); m.globalAlpha = cur ? Math.max(0.7, 1 - age / 1.5) : 0.75; m.lineWidth = cur ? 8 : 4; m.lineJoin = 'round'; m.strokeStyle = '#fff'; m.shadowColor = cur ? it[7] : '#fff'; m.shadowBlur = 26; m.stroke(); m.restore(); }
   });
   // L'Occitane n'est pas en Occitanie
   if (t > a.occ - 0.1 && t < ITEMS[12].t0) { const al = clamp((t - a.occ + 0.1) / 0.2) * fadeOut(t, ITEMS[12].t0 - 0.3, 0.3); pathM(REG['76'].g); m.save(); m.globalAlpha = al; m.fillStyle = `rgba(230,30,40,${0.35 + 0.1 * Math.sin(t * 9)})`; m.fill(); m.lineWidth = 8; m.strokeStyle = '#ff2d2d'; m.setLineDash([24, 14]); m.lineDashOffset = t * 50; m.stroke(); m.restore(); }
@@ -88,7 +95,7 @@ function screenScene(c, t) {
     c.save(); c.globalAlpha = out; ping(c, p.x, p.y, t, it.t0, null, it.next - 0.15); c.restore();
     c.save(); c.globalAlpha = out; txt(c, typed(it[1], t, it.t0 + 0.05, 0.35), p.x, p.y + 78, { size: 54, weight: 900, stroke: '#000', sw: 10 }); c.restore();
     // produit qui tombe (avion qui se pose, ferry qui arrive par la mer)
-    if (t > it.tb - 0.1) {
+    if (t > it.tb - 0.1 && it[6] !== 'plane') {
       const h = { plane: 300, ferry: 300, syrup: 270, tent: 240, car: 210 }[it[6]] || 260; let x = p.x, y = p.y - 40, rot = 0;
       const u = easeOut(prog(t, it.tb - 0.1, 0.45));
       if (it[6] === 'plane') { x = lerp(p.x - 520, p.x, u); y = lerp(p.y - 700, p.y - 190, u); rot = -0.6 * (1 - u) + 0.04 * Math.sin(t * 3); }
