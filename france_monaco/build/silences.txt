@@ -1,0 +1,116 @@
+ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+[aist#0:0/pcm_s16le @ 0x55c56bba2180] Guessed Channel Layout: mono
+Input #0, wav, from '../assets/voice.wav':
+  Duration: 00:01:03.60, bitrate: 705 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 44100 Hz, 1 channels, s16, 705 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (pcm_s16le (native) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, null, to 'pipe:':
+  Metadata:
+    encoder         : Lavf60.16.100
+  Stream #0:0: Audio: pcm_s16le, 44100 Hz, mono, s16, 705 kb/s
+    Metadata:
+      encoder         : Lavc60.31.102 pcm_s16le
+size=       0kB time=00:00:00.00 bitrate=N/A speed=N/A    [silencedetect @ 0x55c56bba9780] silence_start: 1.98612
+[silencedetect @ 0x55c56bba9780] silence_end: 2.48728 | silence_duration: 0.501156
+[silencedetect @ 0x55c56bba9780] silence_start: 3.35664
+[silencedetect @ 0x55c56bba9780] silence_end: 4.05689 | silence_duration: 0.700249
+[silencedetect @ 0x55c56bba9780] silence_start: 4.74458
+[silencedetect @ 0x55c56bba9780] silence_end: 4.87862 | silence_duration: 0.134036
+[silencedetect @ 0x55c56bba9780] silence_start: 5.94073
+[silencedetect @ 0x55c56bba9780] silence_end: 6.53651 | silence_duration: 0.595782
+[silencedetect @ 0x55c56bba9780] silence_start: 7.20526
+[silencedetect @ 0x55c56bba9780] silence_end: 7.65728 | silence_duration: 0.452018
+[silencedetect @ 0x55c56bba9780] silence_start: 8.22494
+[silencedetect @ 0x55c56bba9780] silence_end: 8.58349 | silence_duration: 0.358549
+[silencedetect @ 0x55c56bba9780] silence_start: 9.31565
+[silencedetect @ 0x55c56bba9780] silence_end: 9.71333 | silence_duration: 0.397687
+[silencedetect @ 0x55c56bba9780] silence_start: 11.7798
+[silencedetect @ 0x55c56bba9780] silence_end: 12.1842 | silence_duration: 0.404422
+[silencedetect @ 0x55c56bba9780] silence_start: 12.8507
+[silencedetect @ 0x55c56bba9780] silence_end: 13.2358 | silence_duration: 0.385125
+[silencedetect @ 0x55c56bba9780] silence_start: 13.7949
+[silencedetect @ 0x55c56bba9780] silence_end: 14.1585 | silence_duration: 0.36356
+[silencedetect @ 0x55c56bba9780] silence_start: 14.9958
+[silencedetect @ 0x55c56bba9780] silence_end: 15.6171 | silence_duration: 0.621338
+[silencedetect @ 0x55c56bba9780] silence_start: 16.344
+[silencedetect @ 0x55c56bba9780] silence_end: 16.7134 | silence_duration: 0.369342
+[silencedetect @ 0x55c56bba9780] silence_start: 17.307
+[silencedetect @ 0x55c56bba9780] silence_end: 17.5274 | silence_duration: 0.220431
+[silencedetect @ 0x55c56bba9780] silence_start: 18.0811
+[silencedetect @ 0x55c56bba9780] silence_end: 18.3125 | silence_duration: 0.231383
+[silencedetect @ 0x55c56bba9780] silence_start: 18.9661
+[silencedetect @ 0x55c56bba9780] silence_end: 19.1355 | silence_duration: 0.16941
+[silencedetect @ 0x55c56bba9780] silence_start: 19.8091
+[silencedetect @ 0x55c56bba9780] silence_end: 19.9902 | silence_duration: 0.181111
+[silencedetect @ 0x55c56bba9780] silence_start: 20.681
+[silencedetect @ 0x55c56bba9780] silence_end: 20.9861 | silence_duration: 0.30517
+[silencedetect @ 0x55c56bba9780] silence_start: 21.6363
+[silencedetect @ 0x55c56bba9780] silence_end: 21.9349 | silence_duration: 0.298526
+[silencedetect @ 0x55c56bba9780] silence_start: 22.7504
+[silencedetect @ 0x55c56bba9780] silence_end: 23.0835 | silence_duration: 0.333107
+[silencedetect @ 0x55c56bba9780] silence_start: 24.585
+[silencedetect @ 0x55c56bba9780] silence_end: 25.0947 | silence_duration: 0.50966
+[silencedetect @ 0x55c56bba9780] silence_start: 26.317
+[silencedetect @ 0x55c56bba9780] silence_end: 26.7437 | silence_duration: 0.42678
+[silencedetect @ 0x55c56bba9780] silence_start: 28.0677
+[silencedetect @ 0x55c56bba9780] silence_end: 28.1983 | silence_duration: 0.130635
+[silencedetect @ 0x55c56bba9780] silence_start: 30.0525
+[silencedetect @ 0x55c56bba9780] silence_end: 30.2337 | silence_duration: 0.181111
+[silencedetect @ 0x55c56bba9780] silence_start: 31.0993
+[silencedetect @ 0x55c56bba9780] silence_end: 31.5326 | silence_duration: 0.433265
+[silencedetect @ 0x55c56bba9780] silence_start: 33.5202
+[silencedetect @ 0x55c56bba9780] silence_end: 33.8453 | silence_duration: 0.325079
+[silencedetect @ 0x55c56bba9780] silence_start: 35.5945
+[silencedetect @ 0x55c56bba9780] silence_end: 35.9513 | silence_duration: 0.356871
+[silencedetect @ 0x55c56bba9780] silence_start: 36.8101
+[silencedetect @ 0x55c56bba9780] silence_end: 37.4037 | silence_duration: 0.593651
+[silencedetect @ 0x55c56bba9780] silence_start: 37.938
+[silencedetect @ 0x55c56bba9780] silence_end: 38.3144 | silence_duration: 0.376417
+[silencedetect @ 0x55c56bba9780] silence_start: 39.4268
+[silencedetect @ 0x55c56bba9780] silence_end: 39.7899 | silence_duration: 0.363084
+[silencedetect @ 0x55c56bba9780] silence_start: 41.7505
+[silencedetect @ 0x55c56bba9780] silence_end: 42.0214 | silence_duration: 0.270952
+[silencedetect @ 0x55c56bba9780] silence_start: 43.7222
+[silencedetect @ 0x55c56bba9780] silence_end: 44.2766 | silence_duration: 0.554331
+[silencedetect @ 0x55c56bba9780] silence_start: 44.9101
+[silencedetect @ 0x55c56bba9780] silence_end: 45.2776 | silence_duration: 0.367483
+[silencedetect @ 0x55c56bba9780] silence_start: 45.9935
+[silencedetect @ 0x55c56bba9780] silence_end: 46.249 | silence_duration: 0.255465
+[silencedetect @ 0x55c56bba9780] silence_start: 48.0549
+[silencedetect @ 0x55c56bba9780] silence_end: 48.6193 | silence_duration: 0.564422
+[silencedetect @ 0x55c56bba9780] silence_start: 49.2763
+[silencedetect @ 0x55c56bba9780] silence_end: 49.6718 | silence_duration: 0.39542
+[silencedetect @ 0x55c56bba9780] silence_start: 50.926
+[silencedetect @ 0x55c56bba9780] silence_end: 51.2606 | silence_duration: 0.334603
+[silencedetect @ 0x55c56bba9780] silence_start: 51.7379
+[silencedetect @ 0x55c56bba9780] silence_end: 51.9331 | silence_duration: 0.195215
+[silencedetect @ 0x55c56bba9780] silence_start: 52.7571
+[silencedetect @ 0x55c56bba9780] silence_end: 53.3556 | silence_duration: 0.598526
+[silencedetect @ 0x55c56bba9780] silence_start: 53.9741
+[silencedetect @ 0x55c56bba9780] silence_end: 54.2538 | silence_duration: 0.279683
+[silencedetect @ 0x55c56bba9780] silence_start: 55.7032
+[silencedetect @ 0x55c56bba9780] silence_end: 56.1654 | silence_duration: 0.462154
+[silencedetect @ 0x55c56bba9780] silence_start: 57.5958
+[silencedetect @ 0x55c56bba9780] silence_end: 57.9869 | silence_duration: 0.391156
+[silencedetect @ 0x55c56bba9780] silence_start: 58.7208
+[silencedetect @ 0x55c56bba9780] silence_end: 59.2998 | silence_duration: 0.578934
+[silencedetect @ 0x55c56bba9780] silence_start: 60.9916
+[silencedetect @ 0x55c56bba9780] silence_end: 61.3745 | silence_duration: 0.382902
+[silencedetect @ 0x55c56bba9780] silence_start: 62.4143
+[silencedetect @ 0x55c56bba9780] silence_end: 62.771 | silence_duration: 0.356689
+[silencedetect @ 0x55c56bba9780] silence_start: 63.3832
+[out#0/null @ 0x55c56bb7b6c0] video:0kB audio:5478kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
+size=N/A time=00:01:03.57 bitrate=N/A speed= 690x    
+[silencedetect @ 0x55c56bba9780] silence_end: 63.5997 | silence_duration: 0.216485

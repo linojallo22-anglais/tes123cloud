@@ -117,3 +117,12 @@ regions_marques/build/out/
 regions_marques/build/*.wav
 regions_marques/build/contact*.jpg
 regions_marques/build/check_cut.jpg
+france_monaco/node_modules
+france_monaco/assets/voice16.f32
+france_monaco/assets/voice.wav
+france_monaco/assets/voice_src.wav
+france_monaco/build/prev/
+france_monaco/build/out/
+france_monaco/build/*.wav
+france_monaco/build/contact*.jpg
+france_monaco/build/check_cut.jpg
