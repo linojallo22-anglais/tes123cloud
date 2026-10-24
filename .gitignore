@@ -126,3 +126,11 @@ france_monaco/build/out/
 france_monaco/build/*.wav
 france_monaco/build/contact*.jpg
 france_monaco/build/check_cut.jpg
+paris_escargot/node_modules
+paris_escargot/assets/voice16.f32
+paris_escargot/assets/voice.wav
+paris_escargot/build/prev/
+paris_escargot/build/out/
+paris_escargot/build/*.wav
+paris_escargot/build/contact*.jpg
+paris_escargot/build/check_cut.jpg
