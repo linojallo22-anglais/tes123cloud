@@ -134,3 +134,12 @@ paris_escargot/build/out/
 paris_escargot/build/*.wav
 paris_escargot/build/contact*.jpg
 paris_escargot/build/check_cut.jpg
+paris_marseille/node_modules
+paris_marseille/assets/voice16.f32
+paris_marseille/assets/voice.wav
+paris_marseille/assets/voice_src.wav
+paris_marseille/build/prev/
+paris_marseille/build/out/
+paris_marseille/build/*.wav
+paris_marseille/build/contact*.jpg
+paris_marseille/build/check_cut.jpg
