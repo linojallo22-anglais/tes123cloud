@@ -17,11 +17,9 @@ L'âge ? Marseille : fondée par les Grecs, il y a plus de deux mille six cents 
 
 Les musées ? Paris : le Louvre, le musée le plus visité du monde. Point Paris.
 
-Le foot ? L'OM, premier club français champion d'Europe, en mille neuf cent quatre-vingt-treize. Le PSG, en deux mille vingt-cinq. Un point chacun.
+Le foot ? L'OM, champion d'Europe en mille neuf cent quatre-vingt-treize. Le PSG, deux fois : en deux mille vingt-cinq et en deux mille vingt-six. Point Paris.
 
-La capitale ? Paris. Point Paris.
-
-Résultat : cinq partout. Le dernier point, c'est toi qui le donnes. Team Paris ou Team Marseille ? Dis-le en commentaire. Et abonne-toi.
+Résultat : quatre partout. Le dernier point, c'est toi qui le donnes. Team Paris ou Team Marseille ? Dis-le en commentaire. Et abonne-toi.
 
 ## Planche ChatGPT (12 cases ; on réutilise Rafale, tour Eiffel, pyramide du Louvre, Arc de Triomphe, ballon, personnage en sweat bleu)
 ```
@@ -56,4 +54,5 @@ Phrase de secours : « Same sprite sheet, but the background must be fully trans
 - Métro : Paris 16 lignes (14 + 3bis + 7bis), Marseille 2 lignes.
 - Marseille (Massalia) fondée vers 600 av. J.-C. par les Grecs de Phocée.
 - Louvre : musée le plus visité du monde.
-- Ligue des champions : OM 1993 (premier club français), PSG 2025.
+- Ligue des champions : OM 1993 ; PSG 2025 (Inter) et 2026 (Arsenal, Budapest, 30 mai 2026, 1-1, 4-3 t.a.b.) — Le Temps, DH.
+- Population de référence 2023 (Insee, en vigueur au 1er janvier 2026) : Paris ≈ 2,10 M, Marseille 886 040.
