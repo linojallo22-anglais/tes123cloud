@@ -143,3 +143,11 @@ paris_marseille/build/out/
 paris_marseille/build/*.wav
 paris_marseille/build/contact*.jpg
 paris_marseille/build/check_cut.jpg
+prophetes/node_modules
+prophetes/assets/voice16.f32
+prophetes/assets/voice.wav
+prophetes/build/prev/
+prophetes/build/out/
+prophetes/build/*.wav
+prophetes/build/contact*.jpg
+prophetes/build/check_cut.jpg

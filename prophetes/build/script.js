@@ -1,0 +1,12 @@
+// Narration : [sous-titre affiché, texte prononcé]. *mot* = mot-clé surligné.
+const SCRIPT = [
+[["*JÉSUS*.","Jésus."],["SELON LES *ÉVANGILES*,","Selon les Évangiles,"],["IL NAÎT À *BETHLÉEM*","il naît à Bethléem"],["ET MEURT SUR LA CROIX,","et meurt sur la croix,"],["À *JÉRUSALEM*.","à Jérusalem."],["*9 KM* SEULEMENT.","Neuf kilomètres seulement."],["SELON LE *CORAN*,","Selon le Coran,"],["IL N'A PAS ÉTÉ CRUCIFIÉ :","il n'a pas été crucifié :"],["DIEU L'A *ÉLEVÉ* AUPRÈS DE LUI.","Dieu l'a élevé auprès de Lui."]],
+[["*ABRAHAM*,","Abraham,"],["L'ANCÊTRE COMMUN","l'ancêtre commun"],["DES *TROIS RELIGIONS*.","des trois religions."],["SELON LA TRADITION,","Selon la tradition,"],["IL NAÎT À *UR*, EN IRAK.","il naît à Ur, en Irak."],["IL REPOSE À *HÉBRON*,","Il repose à Hébron,"],["*1 000 KM* PLUS LOIN.","mille kilomètres plus loin."]],
+[["*MOÏSE*.","Moïse."],["IL NAÎT EN *ÉGYPTE*,","Il naît en Égypte,"],["AU BORD DU *NIL*.","au bord du Nil."],["IL MEURT SUR LE *MONT NÉBO*,","Il meurt sur le mont Nébo,"],["EN JORDANIE,","en Jordanie,"],["FACE À LA TERRE PROMISE.","face à la Terre promise."],["ET PERSONNE NE SAIT","Et personne ne sait"],["OÙ EST SA *TOMBE*.","où est sa tombe."]],
+[["*DAVID*.","David."],["IL NAÎT À *BETHLÉEM*,","Il naît à Bethléem,"],["COMME JÉSUS.","comme Jésus."],["IL MEURT À *JÉRUSALEM*,","Il meurt à Jérusalem,"],["LA VILLE DONT IL A FAIT","la ville dont il a fait"],["SA *CAPITALE*.","sa capitale."]],
+[["*MOHAMMED*.","Mohammed."],["IL NAÎT À *LA MECQUE*,","Il naît à La Mecque,"],["VERS *570*.","vers cinq cent soixante-dix."],["IL MEURT À *MÉDINE*,","Il meurt à Médine,"],["EN *632*.","en six cent trente-deux."],["*340 KM* PLUS AU NORD.","Trois cent quarante kilomètres plus au nord."],["IL Y REPOSE,","Il y repose,"],["SOUS LE *DÔME VERT*.","sous le dôme vert."]],
+[["*5* GRANDES FIGURES.","Cinq grandes figures."],["*3* RELIGIONS.","Trois religions."],["ET TOUT TIENT DANS UN CERCLE","Et tout tient dans un cercle"],["DE *1 000 KM*.","de mille kilomètres."]],
+[["LEQUEL T'A LE PLUS *SURPRIS* ?","Lequel t'a le plus surpris ?"],["DIS-LE EN *COMMENTAIRE*.","Dis-le en commentaire."],["ET *ABONNE-TOI*.","Et abonne-toi."]]
+];
+const tokenize = s => s.split(/\s+/).filter(Boolean).reduce((a, w) => { if (/^[?:!;…]+$/.test(w) && a.length) a[a.length - 1] += ' ' + w; else a.push(w); return a; }, []);
+if (typeof module !== 'undefined') module.exports = { SCRIPT, tokenize };
