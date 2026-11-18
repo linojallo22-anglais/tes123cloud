@@ -3,7 +3,7 @@
 Format « le saviez-vous ». Ton neutre : la France est propriétaire de ces lieux (pas de souveraineté) ; aucun drapeau politique dans la zone.
 
 ## Texte ElevenLabs
-La France est propriétaire de quatre lieux saints en Terre sainte. Trois à Jérusalem, un juste à côté. On les appelle les domaines nationaux français.
+La France est propriétaire de quatre lieux en Terre sainte. Trois à Jérusalem, un juste à côté. On les appelle les domaines nationaux français.
 
 Le premier : l'église Sainte-Anne. En mille huit cent cinquante-six, le sultan ottoman l'offre à Napoléon trois, après la guerre de Crimée.
 
