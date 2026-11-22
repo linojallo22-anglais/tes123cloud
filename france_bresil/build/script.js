@@ -1,0 +1,13 @@
+// Narration : [sous-titre affiché, texte prononcé]. *mot* = mot-clé surligné.
+const SCRIPT = [
+[["SI LE *BRÉSIL*","Si le Brésil"],["ATTAQUAIT LA *FRANCE*…","attaquait la France…"],["QUI VIENDRAIT L'AIDER ?","qui viendrait l'aider ?"],["TEAM *FRANCE*","Team France"],["CONTRE TEAM *BRÉSIL*.","contre Team Brésil."]],
+[["OUI, LA *FRANCE*","Oui, la France"],["A UNE FRONTIÈRE","a une frontière"],["AVEC LE *BRÉSIL*.","avec le Brésil."],["EN *GUYANE*.","En Guyane."],["*730 KM* :","Sept cent trente kilomètres :"],["LA *PLUS LONGUE* FRONTIÈRE","la plus longue frontière"],["DE LA FRANCE.","de la France."]],
+[["TEAM *BRÉSIL*.","Team Brésil."],["*212 MILLIONS*","Deux cent douze millions"],["D'HABITANTS.","d'habitants."],["LA *PLUS GRANDE ARMÉE*","La plus grande armée"],["D'AMÉRIQUE LATINE.","d'Amérique latine."],["ET UN *TRAITÉ* DE DÉFENSE","Et un traité de défense"],["SIGNÉ EN *1947*…","signé en mille neuf cent quarante-sept…"],["AVEC LES *ÉTATS-UNIS*.","avec les États-Unis."],["MAIS LES ÉTATS-UNIS","Mais les États-Unis"],["SONT AUSSI DANS L'*OTAN*,","sont aussi dans l'OTAN,"],["AVEC LA *FRANCE*.","avec la France."]],
+[["LES *BRICS* ?","Les BRICS ?"],["CE N'EST PAS","Ce n'est pas"],["UNE *ALLIANCE MILITAIRE*.","une alliance militaire."],["*PERSONNE* N'EST OBLIGÉ","Personne n'est obligé"],["DE BOUGER.","de bouger."]],
+[["TEAM *FRANCE*.","Team France."],["L'*OTAN* NE COUVRE PAS","L'OTAN ne couvre pas"],["L'*AMÉRIQUE DU SUD*.","l'Amérique du Sud."],["MAIS L'*UNION EUROPÉENNE*, OUI :","Mais l'Union européenne, oui :"],["LA GUYANE, C'EST L'*EUROPE*.","la Guyane, c'est l'Europe."],["AVEC L'*EURO*.","Avec l'euro."]],
+[["ET EN GUYANE,","Et en Guyane,"],["IL Y A *KOUROU* :","il y a Kourou :"],["LA BASE D'OÙ L'*EUROPE*","la base d'où l'Europe"],["ENVOIE SES *FUSÉES*","envoie ses fusées"],["DANS L'ESPACE.","dans l'espace."]],
+[["LE *BRÉSIL* EST","Le Brésil est"],["*15 FOIS* PLUS GRAND","quinze fois plus grand"],["QUE L'*HEXAGONE*.","que l'Hexagone."],["MAIS LA DERNIÈRE FOIS","Mais la dernière fois"],["QU'ILS SE SONT AFFRONTÉS","qu'ils se sont affrontés"],["EN *FINALE* ?","en finale ?"],["COUPE DU MONDE","Coupe du monde"],["*1998*.","mille neuf cent quatre-vingt-dix-huit."],["*3 À 0*.","Trois à zéro."],["POUR LA *FRANCE*.","Pour la France."]],
+[["TEAM *FRANCE*","Team France"],["OU TEAM *BRÉSIL* ?","ou Team Brésil ?"],["DIS-LE EN *COMMENTAIRE*.","Dis-le en commentaire."],["ET *ABONNE-TOI*.","Et abonne-toi."]]
+];
+const tokenize = s => s.split(/\s+/).filter(Boolean).reduce((a, w) => { if (/^[?:!;…]+$/.test(w) && a.length) a[a.length - 1] += ' ' + w; else a.push(w); return a; }, []);
+if (typeof module !== 'undefined') module.exports = { SCRIPT, tokenize };

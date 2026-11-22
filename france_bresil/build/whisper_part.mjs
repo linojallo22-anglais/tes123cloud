@@ -1,0 +1,12 @@
+import fs from 'fs';
+import { pipeline, env } from '@huggingface/transformers';
+env.localModelPath = '../node_modules/sts-whisper-base/models/'; env.allowRemoteModels = false;
+const [t0, t1] = [+process.argv[2], +process.argv[3]];
+const buf = fs.readFileSync('../assets/voice16.f32'); const all = new Float32Array(buf.buffer, buf.byteOffset, buf.length / 4);
+const audio = all.slice(Math.round(t0 * 16000), Math.round(t1 * 16000));
+const asr = await pipeline('automatic-speech-recognition', 'Xenova/whisper-base', { dtype: 'q8' });
+const r = await asr(audio, { language: 'french', task: 'transcribe', return_timestamps: 'word' });
+const ch = r.chunks.map(c => ({ text: c.text, timestamp: [c.timestamp[0] + t0, (c.timestamp[1] ?? c.timestamp[0] + 0.3) + t0] }));
+const W = JSON.parse(fs.readFileSync('whisper.json')).filter(c => c.timestamp[1] <= t0 + 0.05 || c.timestamp[0] >= t1 - 0.05);
+const out = [...W, ...ch].sort((a, b) => a.timestamp[0] - b.timestamp[0]); fs.writeFileSync('whisper.json', JSON.stringify(out));
+console.log(r.text);
