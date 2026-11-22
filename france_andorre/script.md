@@ -5,7 +5,7 @@ Scénario imaginaire et humoristique (écrit à l'écran).
 ## Texte ElevenLabs
 Si la France attaquait Andorre… qui viendrait l'aider ? Team France contre Team Andorre.
 
-Le problème ? Le chef de l'État d'Andorre… c'est le président de la République française. Depuis mille six cent sept, le chef de l'État français est coprince d'Andorre. La France attaquerait… son propre président.
+Le problème ? L'un des deux chefs d'Andorre… c'est le président de la République française. Depuis mille six cent sept, le chef de l'État français est coprince d'Andorre. La France attaquerait… son propre président.
 
 Team Andorre. Son armée ? Il n'y en a pas. Trois cent trente et un policiers. Quatre-vingt-neuf mille habitants. Pas même sa propre monnaie : elle utilise l'euro.
 
